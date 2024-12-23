@@ -1,20 +1,23 @@
-from utils import generate_text
+from utils import generate_text, expected_json_structures
 import os
+import json
 
-#Delimiters used to extract the races from the text
-race_delimiter = "&&"
-name_surround = "**"
 
-#Define details of how to generate the world
-start_prompt = "Write global lore for a fantasy world. The world is not called Eldoria!It should be loosely based on Tolkien with the main races being essentially humanoid. Include detailed descriptions of the races and include their home area nd a decription of it."
-race_prompt = f"From the following lore text for a fantasy world, extract the major races. Return the name of the race and a description of them in a list. Use {race_delimiter} as a list delimiter.  Surround each race name with ** e.g. **Dwarves**." 
+
+start_prompt = "Write a detailed lore for a fantasy world. The world is not called Eldoria!It should be loosely based on Tolkien with the main races being essentially humanoid. Include detailed descriptions of the races and include their home area and a decription of it."
+style_prompt = "The writing style should be verbose and fluid.  The descriptions should be around 100 words long.  The writing style of Tolkien would fit well."
+structuring_prompt = f"""The response MUST be in json format so that it can be read by a python program.  Please fill the structure below with the generated data.  You are able to add elements to the lists and modify their contents,  but the heirachical structure must be preserved. Do not use the ```json style flag in your response,  I want to load it directly with json.loads\n
+{expected_json_structures.expected_structure_world}
+"""
+
 
 def generate_global_lore(save=True):
     """
     Generates global lore for the game world from the given prompt.
-    Is suggested that the prompt defines that a set of races should be generated.
+    The prompt is asked to follow a structuring prompt to enforce json
+    The writing style is guided by a style prompt
     """
-    response = generate_text.generate_text(start_prompt)
+    response = generate_text.generate_text(f"{start_prompt}\n. {style_prompt}\n {structuring_prompt}")
     if save:
         BASE_DIR = os.path.dirname(os.path.realpath(__file__))
         txt_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
@@ -24,37 +27,10 @@ def generate_global_lore(save=True):
 
     return response
 
-def extract_races_text(lore_text, save=True):    
-    '''
-    Based on the given global lore text use comprehension to extract the races
-    '''
-
-    prompt = f"{race_prompt}\n\n. {lore_text}"
-
-    response = generate_text.generate_text(prompt)
-    if save:
-        BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-        txt_file = "{}/../test_data/races_lore.txt".format(BASE_DIR)
-
-        with open(txt_file, 'w') as f:
-            f.write(response)
-
-    return response
-
-def extract_races(races_text):
+def extract_races(json_lore):
     '''
     Returns races from given text based on the defined global delimiters
     '''
-    races = []
-    split_1 = races_text.split(race_delimiter)
-    for race in split_1:
-        split_2 = race.strip().split(name_surround)
-        if len(split_2)>2:
-            name = split_2[1].strip()
-            description = split_2[2].strip()
-            print(f"Race: {name} found with description {description}")
-            races.append((name, description))
-        else:
-            raise Exception("Not enough races generated")  
-    return races
+   
+    
 

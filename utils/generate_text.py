@@ -6,7 +6,7 @@ import json
 wrtiting_guidlines = "You are a creative writer generating detailed game lore."
 
 client = openai.OpenAI(
-
+    
 )
 
 

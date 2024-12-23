@@ -343,3 +343,10 @@ expected_structure_region_for_test = {
 }
 
 
+area_list = {
+    "areas":[{
+        "name":"",
+        "description":""
+    }]
+}
+

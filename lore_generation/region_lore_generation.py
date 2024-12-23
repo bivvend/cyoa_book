@@ -2,7 +2,8 @@ from utils import generate_text
 from utils import expected_json_structures
 import os
 
-
+#Region is the starting area for the quests
+#Only one exists
 
 writing_guidelines_1 = "Write a detailed description/lore for an area of a fantasy story, it should focus on key elements that immerse the reader and provide a rich foundation for the adventure. This includes the setting’s environment, important locations, notable NPCs (non-player characters), factions, quests, and potential threats."
 structuring_prompt = f"""The response MUST be in json format so that it can be read by a python program.  Please fill the structure below with the generated data.  You can and should add elements to the lists and modify their contents,  but the heirachical structure must be preserved. Do not use the ```json style flag in your response,  I want to load it directly with json.loads\n

@@ -5,8 +5,8 @@ import pytest
 import json
 
 refresh_global_lore = False  #Generate new global lore
-refresh_region_lore = False #Generate new region lore
-refresh_area_lore = False #Generate new area lore
+refresh_region_lore = True #Generate new region lore
+refresh_area_lore = True #Generate new area lore
 refrsh_refined_area_lore = True #Generate new refined areas
 
 def test_generate_lore():
@@ -122,23 +122,25 @@ def test_generate_areas():
             area_description_list.append(txt)
 
     #Now refine the areas to make them more logically cohesive 
-    count = 0
-    for area in area_description_list:
-        if count == 0:
+    if refrsh_refined_area_lore:
+        count = 0
+        for area in area_description_list:
+            if count == 0:
 
-            print("First area does not need refining")
-            txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{1}.txt"
-            with open(txt_file, 'w') as f:
-                f.write(area_description_list[0])
-        else: 
-            print(f"Refining description for area {areas[count]["name"]}")
-            description = area_lore_generation.refine_thematic_description(area_description_list[count], area_description_list[0:count])
-            BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-            txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{count+1}.txt"
-            with open(txt_file, 'w') as f:
-                f.write(description)
-        count += 1
-
+                print("First area does not need refining")
+                txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{1}.txt"
+                with open(txt_file, 'w') as f:
+                    f.write(area_description_list[0])
+            else: 
+                print(f"Refining description for area {areas[count]["name"]}")
+                description = area_lore_generation.refine_thematic_description(area_description_list[count], area_description_list[0:count])
+                BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+                txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{count+1}.txt"
+                with open(txt_file, 'w') as f:
+                    f.write(description)
+            count += 1
+    else:
+        pass
 
 
 

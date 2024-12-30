@@ -1,67 +1,83 @@
 
 expected_structure_world = {
-  "region": {
-    "name": "",
-    "description": "",
-    "environment": {
-      "terrain": "",
-      "climate": "",
-      "flora": [],
-      "fauna": []
-    },
-    "notable_locations": [
-      {
+    "world": {
         "name": "",
-        "type": "",
         "description": "",
-        "points_of_interest": [
+        "creation": {
+            "origin_story": "",
+            "primary_gods": [
+                {
+                    "name": "",
+                    "domain": "",
+                    "symbol": "",
+                    "description": ""
+                }
+            ]
+        },
+        "geography": {
+            "continents": [
+                {
+                    "name": "",
+                    "description": "",
+                    "notable_locations": [
+                        {
+                            "name": "",
+                            "description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        "notable_locations": [
           {
             "name": "",
             "type": "",
             "description": "",
-            "owner": ""
+            "points_of_interest": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "owner": ""
+              }
+            ]
           }
-        ]
-      }
-    ],
-    "factions": [
-      {
-        "name": "",
-        "type": "",
-        "description": "",
-        "alignment": "",
-        "leader": ""
-      }
-    ],
-    "notable_npcs": [
-      {
-        "name": "",
-        "role": "",
-        "description": "",
-        "alignment": "",
-        "backstory": "",
-        "secrets": ""
-      }
-    ],
-    "quests": [
-      {
-        "name": "",
-        "type": "",
-        "description": "",
-        "objectives": [],
-        "rewards": []
-      }
-    ],
-    "threats": [
-      {
-        "name": "",
-        "description": "",
-        "danger_level": "",
-        "behavior": ""
-      }
-    ]
-  }
+        ],
+        "races": [
+            {
+                "name": "",
+                "description": "",
+                "homeland": ""
+            }
+        ],
+        "magic": {
+            "source": "",
+            "description": "",
+            "schools": [
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ]
+        },
+        "history": {
+            "eras": [
+                {
+                    "name": "",
+                    "timeline": "",
+                    "events": [
+                        {
+                            "name": "",
+                            "description": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    }
 }
+
+
 
 expected_structure_world_for_test =  {
     "world": {
@@ -92,6 +108,21 @@ expected_structure_world_for_test =  {
                 }
             ]
         },
+        "notable_locations": [
+          {
+            "name": str,
+            "type": str,
+            "description": str,
+            "points_of_interest": [
+              {
+                "name": str,
+                "type": str,
+                "description": str,
+                "owner": str
+              }
+            ]
+          }
+        ],
         "races": [
             {
                 "name": str,
@@ -171,6 +202,14 @@ expected_structure_region = {
             "type": "",
             "description": "",
             "owner": ""
+          }
+        ],
+        "threats": [
+          {
+            "name": "",
+            "description": "",
+            "danger_level": "",
+            "behavior": ""
           }
         ]
       }
@@ -280,6 +319,14 @@ expected_structure_region_for_test = {
             "description": str,
             "owner": str
           }
+        ],
+        "threats": [
+          {
+            "name": str,
+            "description": str,
+            "danger_level": str,
+            "behavior": str
+          }
         ]
       }
     ],
@@ -343,10 +390,5 @@ expected_structure_region_for_test = {
 }
 
 
-area_list = {
-    "areas":[{
-        "name":"",
-        "description":""
-    }]
-}
+
 

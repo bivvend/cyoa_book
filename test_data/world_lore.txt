@@ -1,172 +1,102 @@
 {
   "world": {
     "name": "Aeloria",
-    "description": "Aeloria, a realm woven from threads of magic and myth, sprawls across vast landscapes, cradling ancient secrets and vibrant cultures within its embrace. From the towering peaks of the Eldarim Mountains to the lush expanses of the Verdant Glades, each region pulses with its own heartbeat, echoing the stories of its inhabitants. Here, the skies shimmer with the hues of twilight, and the rivers sing with the voices of long-forgotten deities, creating a tapestry of life intertwined with the very essence of the world.",
+    "description": "Aeloria is a land of verdant valleys, towering mountains, and ancient forests, where the echoes of forgotten lore whisper through the winds. It is a realm steeped in magic, teeming with diverse races, each with their own unique histories and cultures. The skies above are often painted in hues of twilight, casting a mystical glow upon the diverse landscapes that stretch as far as the eye can see.",
     "creation": {
-      "origin_story": "In the beginning, the cosmos lay shrouded in a veil of stillness, until the First Breath of Aeloria was exhaled by Luminas, the Radiant Creator. From this breath arose the celestial spheres, and with them, the land, the sea, and the sky. The Firstborn, the Eldari, emerged from the starlight, crafting the world with their artistry. They summoned forth the flora and fauna, imbuing each creation with a fragment of their divine essence. Thus, Aeloria was born, a canvas painted with the colors of life and magic, destined for stories untold.",
+      "origin_story": "In the beginning, the cosmos was a void, until the Elder Spirits, drawn by the resonance of creation, wove the fabric of Aeloria from the stardust of the heavens. They shaped the mountains with their hands, filled the rivers with their tears, and breathed life into the very soil, giving rise to the races that inhabit this wondrous land.",
       "primary_gods": [
         {
-          "name": "Luminas",
-          "domain": "Creation and Light",
-          "symbol": "A radiant sun",
-          "description": "Luminas, the Radiant Creator, embodies the brilliance of dawn and the warmth of light. Revered as the architect of Aeloria, Luminas inspires creation and growth, guiding the souls of the living with a gentle hand. His symbol, a radiant sun, serves as a reminder of hope and renewal, illuminating the darkest corners of the world."
+          "name": "Ithilra",
+          "domain": "Moonlight and Dreams",
+          "symbol": "A silver crescent moon entwined with a star",
+          "description": "Ithilra, the Dreamweaver, guides the dreams of mortals and brings the light of the moon to the darkest nights. She is revered by those who seek knowledge in their sleep and is said to grant visions of the future to those who truly believe."
         },
         {
-          "name": "Nyxara",
-          "domain": "Mystery and Night",
-          "symbol": "A crescent moon",
-          "description": "Nyxara, the Enigmatic Weaver, embodies the mysteries of the night and the unseen. She is the guardian of dreams and secrets, her presence felt in the gentle caress of twilight. Her symbol, a crescent moon, represents the dual nature of existence, where shadows dance with light, and the unknown beckons the brave."
-        },
-        {
-          "name": "Eldorath",
-          "domain": "Nature and Balance",
-          "symbol": "A green tree entwined with vines",
-          "description": "Eldorath, the Verdant Guardian, symbolizes the interconnectedness of all life. He nurtures the forests, rivers, and mountains, ensuring harmony among all beings. His symbol, a green tree entwined with vines, signifies the balance of nature, reminding all of Aeloria of their place within the great tapestry of life."
-        },
-        {
-          "name": "Vortigern",
-          "domain": "War and Valor",
-          "symbol": "A sword crossed with a shield",
-          "description": "Vortigern, the Stalwart Protector, embodies the spirit of courage and honor. He inspires warriors and champions alike, instilling the will to fight for justice and protect the innocent. His symbol, a sword crossed with a shield, serves as a rallying cry for those who take up arms in the name of righteousness."
+          "name": "Tharok",
+          "domain": "Nature and Growth",
+          "symbol": "A great oak tree with sprawling roots",
+          "description": "Tharok, the Verdant Guardian, nurtures the growth of all living things, from the smallest seed to the mightiest tree. He is the protector of the forests and the embodiment of the natural cycle of life and death."
         }
       ]
     },
     "geography": {
       "continents": [
         {
-          "name": "Aeloria Prime",
-          "description": "Aeloria Prime, the heart of the realm, is a land of breathtaking beauty and diversity. Majestic mountain ranges cradle verdant valleys, while crystalline lakes shimmer under the embrace of the sun. The air is rich with the scent of blooming flowers, and ancient trees stand sentinel over the land's secrets, whispering tales of old to those who dare to listen.",
+          "name": "Elarian",
+          "description": "Elarian is a continent of lush forests and rolling hills, crisscrossed by sparkling rivers and dotted with quaint villages. The air is filled with the scent of wildflowers and the songs of birds, creating an atmosphere of serene beauty. Ancient trees guard the secrets of the past, while vibrant flora and fauna thrive in every corner.",
           "notable_locations": [
             {
-              "name": "The Eldarim Mountains",
-              "description": "Towering and imposing, the Eldarim Mountains pierce the sky, their snow-capped peaks shrouded in mist. These ancient mountains are said to house the spirits of the Firstborn, with hidden paths leading to sacred groves where time itself seems to pause."
-            },
-            {
-              "name": "The Whispering Glades",
-              "description": "The Whispering Glades are a tranquil expanse of lush trees and vibrant flora, where the gentle rustle of leaves carries the secrets of the forest. Here, nature thrives in harmony, and the air is thick with the magic of life."
+              "name": "The Whispering Glade",
+              "description": "A sacred grove where the trees seem to converse in hushed tones, and the air is thick with enchantment. It is said that those who enter with pure intentions may hear the voices of the ancients."
             }
           ]
         },
         {
-          "name": "Thalmaris",
-          "description": "Thalmaris, a coastal paradise, boasts golden sands and azure waters that stretch as far as the eye can see. The cliffs rise majestically, adorned with vibrant flora that dances in the salty sea breeze. Here, the soothing sounds of waves crashing against the shore create a symphony of tranquility.",
+          "name": "Draekor",
+          "description": "Draekor is a rugged land dominated by towering mountains and deep valleys, where the winds howl fiercely and the terrain is harsh. It is home to brave warriors who carve their existence from the stone and iron of the earth. The skies are often shrouded in mist, lending an air of mystery to its formidable peaks.",
           "notable_locations": [
             {
-              "name": "The Crystal Cove",
-              "description": "The Crystal Cove, a hidden gem along the coast, is renowned for its luminous waters that sparkle under the moonlight. It is said that the cove holds the spirits of sailors lost at sea, their whispers echoing in the night."
-            },
-            {
-              "name": "The Coral Reefs of Marathis",
-              "description": "The Coral Reefs of Marathis teem with vibrant marine life, their colors rivaling the finest jewels. These reefs are a sanctuary for aquatic beings, woven into the lore of the sea, where legends of merfolk and sea serpents dance beneath the waves."
-            }
-          ]
-        },
-        {
-          "name": "Nerathul",
-          "description": "Nerathul, a land of stark contrasts, is characterized by its vast deserts and arid plains, interspersed with hidden oases that burst with life. The sun blazes fiercely during the day, while the nights are cool and star-studded, revealing the mysteries of the cosmos.",
-          "notable_locations": [
-            {
-              "name": "The Sands of Eternity",
-              "description": "The Sands of Eternity stretch endlessly, shimmering like gold under the midday sun. It is said that the sands hold the memories of those who have traversed them, whispering their stories to the winds."
-            },
-            {
-              "name": "The Oasis of Asha",
-              "description": "The Oasis of Asha is a verdant refuge amidst the harsh desert, where palm trees sway and crystal-clear waters flow. It is a gathering place for weary travelers and a source of life in the unforgiving landscape."
+              "name": "The Iron Fortress",
+              "description": "A colossal stronghold built into the side of the mountains, known for its impenetrable walls and the fierce clans that reside within. It serves as a bastion of strength against the perils that lurk beyond."
             }
           ]
         }
       ]
     },
+    "notable_locations": [
+      {
+        "name": "The Celestial Citadel",
+        "type": "Ancient Ruins",
+        "description": "Once a grand palace of the Elder Spirits, the Celestial Citadel now lies in ruins atop the Misty Peaks, shrouded in clouds and mystery. It is rumored to house relics of immense power, waiting to be discovered by those brave enough to seek them.",
+        "points_of_interest": [
+          {
+            "name": "The Hall of Echoes",
+            "type": "Chamber",
+            "description": "A vast chamber within the citadel where echoes of the past can be heard, offering glimpses into the history of Aeloria.",
+            "owner": "Spirits of the Ancients"
+          }
+        ]
+      }
+    ],
     "races": [
       {
-        "name": "Eldari",
-        "description": "The Eldari, the Firstborn of Aeloria, are a race of ethereal beauty and grace. They possess an innate connection to the magic that flows through the world, their skin shimmering with a soft luminescence. Eldari are known for their wisdom, artistry, and profound understanding of nature's rhythms, often serving as guardians of ancient knowledge.",
-        "homeland": "The Eldarim Mountains"
+        "name": "Elaris",
+        "description": "The Elaris are a race of ethereal beings, characterized by their graceful forms and luminous skin that glimmers with the colors of the dawn. They are deeply attuned to the natural world, often communing with flora and fauna. Their connection to magic allows them to manipulate the elements, and they are known for their artistry and wisdom.",
+        "homeland": "The Verdant Vale, a sprawling expanse of lush greenery, filled with vibrant flowers and ancient trees that seem to hum with life. The air is thick with the fragrance of blooming life, and crystal-clear streams weave through the landscape, nourishing all that dwell within."
       },
       {
-        "name": "Aelorian",
-        "description": "The Aelorian are a diverse and resilient people, shaped by the lands they inhabit. With skin tones ranging from the warm hues of sun-kissed earth to the cool shades of twilight, they embody the spirit of adaptability. Aelorian culture is rich with vibrant traditions and a deep appreciation for community, often celebrating life's milestones with grand festivals.",
-        "homeland": "Aeloria Prime"
-      },
-      {
-        "name": "Marathi",
-        "description": "The Marathi are an aquatic race, their forms resembling that of humans but adorned with scales and fins that shimmer like precious stones. They dwell within the depths of the Coral Reefs of Marathis, embracing a life intertwined with the ocean's currents. Their songs echo through the waters, telling tales of ancient sea gods and lost civilizations.",
-        "homeland": "The Coral Reefs of Marathis"
-      },
-      {
-        "name": "Dunari",
-        "description": "The Dunari are a nomadic people, traversing the arid expanses of Nerathul. With sun-kissed skin and piercing eyes, they embody the spirit of the desert. Renowned for their resilience and resourcefulness, the Dunari are skilled survivalists, adept at navigating the harsh terrain and uncovering the secrets hidden within the sands.",
-        "homeland": "The Sands of Eternity"
-      },
-      {
-        "name": "Elthari",
-        "description": "The Elthari, a mysterious race of forest dwellers, are known for their affinity with the natural world. With skin resembling the bark of ancient trees and hair that flows like cascading leaves, they are the guardians of the Whispering Glades. Their wisdom is sought by many, for they possess the ability to commune with the spirits of nature.",
-        "homeland": "The Whispering Glades"
+        "name": "Draekiri",
+        "description": "The Draekiri are a fierce and resilient race, known for their rugged strength and unwavering bravery. Possessing tough, scaled skin and bright, piercing eyes, they are formidable warriors and skilled craftsmen. Their culture is steeped in traditions of honor and valor, and they share a deep bond with the mountains they call home.",
+        "homeland": "The Craggy Highlands, a harsh environment of steep cliffs and rocky outcrops, where the air is crisp and the landscape is alive with the sounds of nature. The Draekiri carve their homes into the mountainsides, where they forge weapons and artifacts of unmatched quality."
       }
     ],
     "magic": {
       "source": "The Essence of Aeloria",
-      "description": "Magic in Aeloria is a living force, known as the Essence of Aeloria, that flows through every creature and element of the world. It is the breath of the divine, a gift from the gods that intertwines with the very fabric of existence. Those attuned to this magic can harness its power to heal, create, or even destroy, shaping the destiny of Aeloria itself.",
+      "description": "Magic in Aeloria flows from the very essence of the land, a mystical force that binds all living things. It can be harnessed by those with the gift, allowing them to manipulate the elements, heal wounds, or commune with the spirits of nature. The use of magic is a revered practice, steeped in tradition and respect for the balance of life.",
       "schools": [
         {
-          "name": "Elemental Magic",
-          "description": "Elemental Magic draws upon the primal forces of nature—earth, air, fire, and water. Practitioners manipulate these elements to create powerful spells, shaping the world around them."
+          "name": "Elemental Manipulation",
+          "description": "This school focuses on the control of the natural elements—earth, air, fire, and water. Practitioners learn to summon storms, shape the land, and ignite flames, all while respecting the balance of nature."
         },
         {
           "name": "Healing Arts",
-          "description": "The Healing Arts focus on the restoration of life and the alleviation of suffering. Healers harness the Essence of Aeloria to mend wounds and cure ailments, serving as beacons of hope."
-        },
-        {
-          "name": "Illusionary Craft",
-          "description": "Illusionary Craft is the art of bending perception, creating mirages and phantasms that deceive the senses. Skilled illusionists can weave intricate tapestries of reality and dreams."
-        },
-        {
-          "name": "Divination",
-          "description": "Divination is the practice of seeking knowledge from the past, present, and future. Through rituals and meditation, diviners connect with the Essence to uncover hidden truths and glimpses of fate."
+          "description": "A gentle yet powerful school dedicated to the art of healing. Practitioners harness the life force of Aeloria to mend wounds, cure ailments, and restore vitality to both the land and its inhabitants."
         }
       ]
     },
     "history": {
       "eras": [
         {
-          "name": "The Age of Creation",
-          "timeline": "0 - 500",
+          "name": "The Age of Awakening",
+          "timeline": "The first era of Aeloria, marked by the emergence of the Elder Spirits and the birth of the races.",
           "events": [
             {
-              "name": "The Birth of Aeloria",
-              "description": "The cosmos awakens as Luminas breathes life into Aeloria, and the Eldari emerge, shaping the land with their artistry."
+              "name": "The First Breath",
+              "description": "The Elder Spirits exhaled the breath of life, awakening the land and birthing its first inhabitants, who would go on to shape the history of Aeloria."
             },
             {
-              "name": "The Gathering of the Races",
-              "description": "The Eldari invite the emerging races to share in the joys of creation, fostering an era of harmony and collaboration."
-            }
-          ]
-        },
-        {
-          "name": "The Age of Conflict",
-          "timeline": "501 - 1000",
-          "events": [
-            {
-              "name": "The War of Shadows",
-              "description": "A dark force, born from the shadows of Nyxara, rises to challenge the harmony of Aeloria, igniting a fierce conflict among the races."
-            },
-            {
-              "name": "The Great Reconciliation",
-              "description": "In the aftermath of war, the races unite to restore balance, forging new alliances and reaffirming their commitment to coexistence."
-            }
-          ]
-        },
-        {
-          "name": "The Age of Wisdom",
-          "timeline": "1001 - Present",
-          "events": [
-            {
-              "name": "The Council of Elders",
-              "description": "The races come together to form the Council of Elders, a governing body dedicated to preserving peace and sharing knowledge across Aeloria."
-            },
-            {
-              "name": "The Great Awakening",
-              "description": "A resurgence of magic sweeps through Aeloria, awakening ancient powers and rekindling the bond between the races and the land."
+              "name": "The Great Harmony",
+              "description": "An era of peace and prosperity where the races thrived in unison, guided by the wisdom of the Elder Spirits and the bountiful gifts of nature."
             }
           ]
         }

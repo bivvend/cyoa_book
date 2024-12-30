@@ -5,8 +5,8 @@ import pytest
 import json
 
 refresh_global_lore = False  #Generate new global lore
-refresh_region_lore = True #Generate new region lore
-refresh_area_lore = True #Generate new area lore
+refresh_region_lore = False #Generate new region lore
+refresh_area_lore = False #Generate new area lore
 refrsh_refined_area_lore = True #Generate new refined areas
 
 def test_generate_lore():

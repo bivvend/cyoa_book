@@ -6,6 +6,9 @@ start_prompt = (
     "Write a detailed lore for a fantasy world. The world is not called Eldoria! "
     "It should be loosely based on Tolkien with the main races being essentially humanoid. "
     "Include detailed descriptions of the races and include their home area and a description of it."
+    "You MUST generate at least 5 different races."
+    "One of the races should be Humans, but you can add your own twist to them."
+    "The races should follow the typical fantasy tropes, but you can add your own twist to them."
 )
 
 style_prompt = (

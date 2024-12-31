@@ -1,31 +1,35 @@
 from utils import generate_text, expected_json_structures
 
-global_writing_guidelines_1 = (
-    "It should focus on key elements that immerse the reader and provide a rich foundation for the adventure. "
-    "This includes the party's composition, their backgrounds, motivations, and potential conflicts."
-)
-global_writing_guidelines_2 = "The description should be around 500 words long."
 
-def generate_party_description(global_lore_json, region_lore_json, party_name):
+
+
+def generate_party(global_lore_json):
     """
     Generates lore for a specific party in the game.
     """
     writing_guidelines_1 = (
-        f"Write a detailed description for the party called {party_name} of a fantasy story. "
-        "You can use the Starting region JSON below to get an idea of the setting."
+        f"Write a detailed description for the party of adventurers called of a fantasy novel."
+        "You can use the lore of the world in the JSON below to get an idea of the setting. "
+        "The races of the party members MUST only be taken from the lore of the world. Use the list of "
+        "races in the lore of the world JSON below to create the party members."
     )
     writing_guidelines_2 = (
-        "Use the global lore and the starting region lore defined in the two JSON structures below. "
-        "Don't drift from these, but expand on the details. The starting region lore is more important than the global."
+        "The description should include the party's composition, their backgrounds, motivations, and potential conflicts."
+        "The party should be composed of at least 3 members, but you can add more if you want."
     )
+
+    structuring_prompt = (
+    f"The response MUST be in json format so that it can be read by a python program. "
+    f"Please fill the structure below (the party JSON) with the generated data. You are able to add elements "
+    f"to the lists and modify their contents, but the hierarchical structure must be preserved. "
+    f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n\n"
+    f"{expected_json_structures.expected_structure_party}"
+)
     
     prompt = (
-        f"{global_lore_json}\n\n"
-        f"{writing_guidelines_1}\n"
-        f"{global_writing_guidelines_1}\n"
-        f"{global_writing_guidelines_2}\n"
+        f"{writing_guidelines_1}\n\n"
+        f"Lore of the world:\n{global_lore_json}\n\n"
         f"{writing_guidelines_2}\n\n"
-        f"Global lore:\n{global_lore_json}\n"
-        f"Starting region lore:\n{region_lore_json}"
+        f"{structuring_prompt}"      
     )
     return generate_text.generate_text(prompt)

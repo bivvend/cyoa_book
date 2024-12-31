@@ -1,4 +1,4 @@
-from lore_generation import global_lore_generation, region_lore_generation, area_lore_generation 
+from lore_generation import global_lore_generation, region_lore_generation, area_lore_generation, party_generation, main_enemy_generation
 from utils import expected_json_structures, structure_verification
 import os
 import pytest
@@ -7,7 +7,9 @@ import json
 refresh_global_lore = False  #Generate new global lore
 refresh_region_lore = False #Generate new region lore
 refresh_area_lore = False #Generate new area lore
-refrsh_refined_area_lore = True #Generate new refined areas
+refresh_refined_area_lore = True #Generate new refined areas
+refresh_party_lore = True #Generate new party lore
+refresh_enemy_lore = True #Generate
 
 def test_generate_lore():
     lore_json = None
@@ -122,7 +124,7 @@ def test_generate_areas():
             area_description_list.append(txt)
 
     #Now refine the areas to make them more logically cohesive 
-    if refrsh_refined_area_lore:
+    if refresh_refined_area_lore:
         count = 0
         for area in area_description_list:
             if count == 0:
@@ -143,5 +145,76 @@ def test_generate_areas():
         pass
 
 
+def test_generate_party():
+    lore_json = None
+    lore = ""
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+    if refresh_global_lore:
+        lore = global_lore_generation.generate_global_lore()
+        print(lore)
+        lore_json = json.loads(lore)
+    else:
 
+        lore_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
+        lore_txt = ""
+        with open(lore_file, 'r') as f:
+            lore_lines = f.readlines()
+            for line in lore_lines:
+                lore_txt += line
+        lore_json = json.loads(lore_txt)
+    assert lore_json is not None
 
+    if refresh_party_lore:
+        party_lore = party_generation.generate_party(lore)
+        print(party_lore)
+        party_json = json.loads(party_lore)
+        assert party_json is not None
+
+        structure_verification.verify_lore_structure(party_json, expected_json_structures.expected_structure_party_for_test)
+        txt_file = f"{BASE_DIR}/../test_data/characters/party.txt"
+        with open(txt_file, 'w') as f:
+            f.write(party_lore)
+    else:
+        party_file = "{}/../test_data/characters/party.txt".format(BASE_DIR)
+        party_txt = ""
+        with open(party_file, 'r') as f:
+            lore_lines = f.readlines()
+            for line in lore_lines:
+                party_txt += line
+        party_json = json.loads(party_txt)
+        assert party_json is not None
+        structure_verification.verify_lore_structure(party_json, expected_json_structures.expected_structure_party_for_test)
+
+def test_generate_enemy():
+    #Open the region lore
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+    start_region_file = "{}/../test_data/starting_region_lore.txt".format(BASE_DIR)
+    start_region_txt = ""
+    with open(start_region_file, 'r') as f:
+        lore_lines = f.readlines()
+        for line in lore_lines:
+            start_region_txt += line
+    region_lore_json = json.loads(start_region_txt)
+    structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
+   
+    #Generate the enemy
+    if refresh_enemy_lore:
+        enemy_lore = main_enemy_generation.generate_main_enemy(region_lore_json)
+        print(enemy_lore)
+        enemy_json = json.loads(enemy_lore)
+        assert enemy_json is not None
+
+        structure_verification.verify_lore_structure(enemy_json, expected_json_structures.main_enemy_structure_for_test)
+        txt_file = f"{BASE_DIR}/../test_data/characters/enemy.txt"
+        with open(txt_file, 'w') as f:
+            f.write(enemy_lore)
+    else:
+        enemy_file = "{}/../test_data/characters/enemy.txt".format(BASE_DIR)
+        enemy_txt = ""
+        with open(enemy_file, 'r') as f:
+            lore_lines = f.readlines()
+            for line in lore_lines:
+                enemy_txt += line
+        enemy_json = json.loads(enemy_txt)
+        assert enemy_json is not None
+        structure_verification.verify_lore_structure(enemy_json, expected_json_structures.main_enemy_structure_for_test)

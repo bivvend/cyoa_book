@@ -390,5 +390,221 @@ expected_structure_region_for_test = {
 }
 
 
+expected_structure_party ={
+    "party": {
+        "name": "",
+        "description": "",
+        "members": [
+            {
+                "name": "",
+                "race": "",
+                "class": "",
+                "role": "",
+                "alignment": "",
+                "backstory": "",
+                "abilities": {
+                    "strengths": ["", ""],
+                    "weaknesses": ["", ""]
+                },
+                "equipment": [
+                    {
+                        "name": "",
+                        "type": "",
+                        "description": "",
+                        "magical_properties": [""]
+                    }
+                ],
+                "goals": "",
+                "secrets": "",
+                "relationships": {
+                    "allies": ["", ""],
+                    "rivals": ["", ""],
+                    "other_party_connections": ["", ""]
+                }
+            }
+        ],
+        "shared_goals": "",
+        "shared_backstory": "",
+        "base_of_operations": {
+            "name": "",
+            "location": "",
+            "description": ""
+        },
+        "notable_achievements": [
+            {
+                "name": "",
+                "description": "",
+                "impact": ""
+            }
+        ],
+        "current_quest": {
+            "name": "",
+            "description": "",
+            "objectives": ["", ""]
+        }
+    }
+}
 
+expected_structure_party_for_test ={
+    "party": {
+        "name": str,
+        "description": str,
+        "members": [
+            {
+                "name": str,
+                "race": str,
+                "class": str,
+                "role": str,
+                "alignment": str,
+                "backstory": str,
+                "abilities": {
+                    "strengths": [str, str],
+                    "weaknesses": [str, str]
+                },
+                "equipment": [
+                    {
+                        "name": str,
+                        "type": str,
+                        "description": str,
+                        "magical_properties": [str]
+                    }
+                ],
+                "goals": str,
+                "secrets": str,
+                "relationships": {
+                    "allies": [str, str],
+                    "rivals": [str, str],
+                    "other_party_connections": [str, str]
+                }
+            }
+        ],
+        "shared_goals": str,
+        "shared_backstory": str,
+        "base_of_operations": {
+            "name": str,
+            "location": str,
+            "description": str
+        },
+        "notable_achievements": [
+            {
+                "name": str,
+                "description": str,
+                "impact": str
+            }
+        ],
+        "current_quest": {
+            "name": str,
+            "description": str,
+            "objectives": [str, str]
+        }
+    }
+}
+
+main_enemy_structure = {
+    "main_enemy": {
+        "name": "",
+        "title": "",
+        "description": "",
+        "race": "",
+        "role": "",
+        "alignment": "",
+        "backstory": "",
+        "motives": "",
+        "goals": "",
+        "appearance": {
+            "physical_traits": "",
+            "notable_features": ""
+        },
+        "abilities": {
+            "strengths": ["", ""],
+            "weaknesses": ["", ""]
+        },
+        "equipment": [
+            {
+                "name": "",
+                "type": "",
+                "description": "",
+                "magical_properties": [""]
+            }
+        ],
+        "lair": {
+            "name": "",
+            "location": "",
+            "description": "",
+            "defenses": ["", ""],
+            "traps": ["", ""]
+        },
+        "minions": [
+            {
+                "name": "",
+                "type": "",
+                "role": "",
+                "description": ""
+            }
+        ],
+        "secrets": "",
+        "threat_level": "",
+        "notable_acts": [
+            {
+                "name": "",
+                "description": "",
+                "impact": ""
+            }
+        ],
+    }
+}
+
+main_enemy_structure_for_test = {
+    "main_enemy": {
+        "name": str,
+        "title": str,
+        "description": str,
+        "race": str,
+        "role": str,
+        "alignment": str,
+        "backstory": str,
+        "motives": str,
+        "goals": str,
+        "appearance": {
+            "physical_traits": str,
+            "notable_features": str
+        },
+        "abilities": {
+            "strengths": [str, str],
+            "weaknesses": [str, str]
+        },
+        "equipment": [
+            {
+                "name": str,
+                "type": str,
+                "description": str,
+                "magical_properties": [str]
+            }
+        ],
+        "lair": {
+            "name": str,
+            "location": str,
+            "description": str,
+            "defenses": [str, str],
+            "traps": [str, str]
+        },
+        "minions": [
+            {
+                "name": str,
+                "type": str,
+                "role": str,
+                "description": str
+            }
+        ],
+        "secrets": str,
+        "threat_level": str,
+        "notable_acts": [
+            {
+                "name": str,
+                "description": str,
+                "impact": str
+            }
+        ]
+    }
+}
 

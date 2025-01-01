@@ -6,22 +6,21 @@ import json
 
 refresh_global_lore = False  #Generate new global lore
 refresh_region_lore = False #Generate new region lore
-refresh_area_lore = False #Generate new area lore
+refresh_area_lore = True #Generate new area lore
 refresh_refined_area_lore = True #Generate new refined areas
 refresh_party_lore = True #Generate new party lore
 refresh_enemy_lore = True #Generate
 
 def test_generate_lore():
     lore_json = None
-    lore = ""
+    lore_txt = ""
     if refresh_global_lore:
-        lore = global_lore_generation.generate_global_lore()
-        print(lore)
-        lore_json = json.loads(lore)
+        lore_txt = global_lore_generation.generate_global_lore()
+        print(lore_txt)
+        lore_json = json.loads(lore_txt)
     else:
         BASE_DIR = os.path.dirname(os.path.realpath(__file__))
         lore_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
-        lore_txt = ""
         with open(lore_file, 'r') as f:
             lore_lines = f.readlines()
             for line in lore_lines:
@@ -35,16 +34,15 @@ def test_generate_lore():
     region_lore_json = None
     region_lore_txt = ""
     if refresh_region_lore:
-        region_lore_txt = region_lore_generation.generate_starting_region_lore(lore)
+        region_lore_txt = region_lore_generation.generate_starting_region_lore(lore_txt)
         region_lore_json = json.loads(region_lore_txt)
     else:
         start_region_file = "{}/../test_data/starting_region_lore.txt".format(BASE_DIR)
-        start_region_txt = ""
         with open(start_region_file, 'r') as f:
             lore_lines = f.readlines()
             for line in lore_lines:
-                start_region_txt += line
-        region_lore_json = json.loads(start_region_txt)
+                region_lore_txt += line
+        region_lore_json = json.loads(region_lore_txt)
     assert region_lore_json is not None
     structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
       
@@ -62,12 +60,12 @@ def test_generate_areas():
     lore_json = json.loads(lore_txt)
 
     start_region_file = "{}/../test_data/starting_region_lore.txt".format(BASE_DIR)
-    start_region_txt = ""
+    region_lore_txt = ""
     with open(start_region_file, 'r') as f:
         lore_lines = f.readlines()
         for line in lore_lines:
-            start_region_txt += line
-    region_lore_json = json.loads(start_region_txt)
+            region_lore_txt += line
+    region_lore_json = json.loads(region_lore_txt)
 
     structure_verification.verify_lore_structure(lore_json, expected_json_structures.expected_structure_world_for_test)
     structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
@@ -92,7 +90,8 @@ def test_generate_areas():
         for area in areas:
             count += 1
             print(f"Generating fuller description of area {area["name"]}")
-            description = area_lore_generation.generate_area_thematic_description(lore_json, region_lore_json, area["name"])
+            #Must pass the text versions!
+            description = area_lore_generation.generate_area_thematic_description(lore_txt, region_lore_txt, area["name"])
             area_description_list.append(description)
             BASE_DIR = os.path.dirname(os.path.realpath(__file__))
             txt_file = f"{BASE_DIR}/../test_data/areas/area_{count}.txt"
@@ -147,16 +146,15 @@ def test_generate_areas():
 
 def test_generate_party():
     lore_json = None
-    lore = ""
+    lore_txt = ""
     BASE_DIR = os.path.dirname(os.path.realpath(__file__))
     if refresh_global_lore:
-        lore = global_lore_generation.generate_global_lore()
-        print(lore)
-        lore_json = json.loads(lore)
+        lore_txt = global_lore_generation.generate_global_lore()
+        print(lore_txt)
+        lore_json = json.loads(lore_txt)
     else:
 
         lore_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
-        lore_txt = ""
         with open(lore_file, 'r') as f:
             lore_lines = f.readlines()
             for line in lore_lines:
@@ -165,7 +163,7 @@ def test_generate_party():
     assert lore_json is not None
 
     if refresh_party_lore:
-        party_lore = party_generation.generate_party(lore)
+        party_lore = party_generation.generate_party(lore_txt)
         print(party_lore)
         party_json = json.loads(party_lore)
         assert party_json is not None
@@ -199,7 +197,7 @@ def test_generate_enemy():
    
     #Generate the enemy
     if refresh_enemy_lore:
-        enemy_lore = main_enemy_generation.generate_main_enemy(region_lore_json)
+        enemy_lore = main_enemy_generation.generate_main_enemy(start_region_txt)
         print(enemy_lore)
         enemy_json = json.loads(enemy_lore)
         assert enemy_json is not None

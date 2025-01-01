@@ -28,21 +28,6 @@ expected_structure_world = {
                 }
             ]
         },
-        "notable_locations": [
-          {
-            "name": "",
-            "type": "",
-            "description": "",
-            "points_of_interest": [
-              {
-                "name": "",
-                "type": "",
-                "description": "",
-                "owner": ""
-              }
-            ]
-          }
-        ],
         "races": [
             {
                 "name": "",
@@ -108,21 +93,6 @@ expected_structure_world_for_test =  {
                 }
             ]
         },
-        "notable_locations": [
-          {
-            "name": str,
-            "type": str,
-            "description": str,
-            "points_of_interest": [
-              {
-                "name": str,
-                "type": str,
-                "description": str,
-                "owner": str
-              }
-            ]
-          }
-        ],
         "races": [
             {
                 "name": str,

@@ -180,8 +180,47 @@ expected_structure_region = {
             "description": "",
             "danger_level": "",
             "behavior": ""
+          },
+          {
+            "name": "",
+            "description": "",
+            "danger_level": "",
+            "behavior": ""
+          },
+          {
+            "name": "",
+            "description": "",
+            "danger_level": "",
+            "behavior": ""
           }
-        ]
+        ],     
+        "notable_npcs": [
+          {
+            "name": "",
+            "role": "",
+            "description": "",
+            "alignment": "",
+            "backstory": "",
+            "secrets": ""
+          },
+          {
+            "name": "",
+            "role": "",
+            "description": "",
+            "alignment": "",
+            "backstory": "",
+            "secrets": ""
+          },
+          {
+            "name": "",
+            "role": "",
+            "description": "",
+            "alignment": "",
+            "backstory": "",
+            "secrets": ""
+          }
+
+        ],
       }
     ],
     "factions": [
@@ -191,16 +230,6 @@ expected_structure_region = {
         "description": "",
         "alignment": "",
         "leader": ""
-      }
-    ],
-    "notable_npcs": [
-      {
-        "name": "",
-        "role": "",
-        "description": "",
-        "alignment": "",
-        "backstory": "",
-        "secrets": ""
       }
     ],
     "quests": [
@@ -296,8 +325,19 @@ expected_structure_region_for_test = {
             "description": str,
             "danger_level": str,
             "behavior": str
-          }
-        ]
+          },
+          
+        ],
+        "notable_npcs": [
+        {
+          "name": str,
+          "role": str,
+          "description": str,
+          "alignment": str,
+          "backstory": str,
+          "secrets": str
+        }
+    ],
       }
     ],
     "factions": [
@@ -307,16 +347,6 @@ expected_structure_region_for_test = {
         "description": str,
         "alignment": str,
         "leader": str
-      }
-    ],
-    "notable_npcs": [
-      {
-        "name": str,
-        "role": str,
-        "description": str,
-        "alignment": str,
-        "backstory": str,
-        "secrets": str
       }
     ],
     "quests": [

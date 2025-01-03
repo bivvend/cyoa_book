@@ -22,11 +22,11 @@ structuring_prompt = (
 
 writing_guidelines_2 = (
     "Also use the global lore below to produce a thematically and logically consistent "
-    "starting area for the adventure in one of the home regions of the races mentioned in the lore."
+    "starting area for the adventure in one of the home regions of the races mentioned in the lore. "
 )
 
 writing_guidelines_3 = (
-    "There MUST be more than 6 notable locations and more than 6 quests and more than 10 fauna."
+    "There MUST be more than 6 notable locations in the area. Each notable location should have 3 or more threats. "
 )
 
 writing_guidelines_4 = (
@@ -49,11 +49,12 @@ def generate_starting_region_lore(global_lore, save=True):
     """
     prompt = (
         f"{writing_guidelines_1}\n"
-        f"{writing_guidelines_2}\n"
+        f"{writing_guidelines_2}\n\n"
+        f"{global_lore}\n\n"
         f"{writing_guidelines_3}\n"
         f"{writing_guidelines_4}\n"
         f"{structuring_prompt}\n\n"
-        f"{global_lore}"
+
     )
 
     response = generate_text.generate_text(prompt)

@@ -6,10 +6,9 @@ import json
 
 refresh_global_lore = False  #Generate new global lore
 refresh_region_lore = False #Generate new region lore
-refresh_area_lore = True #Generate new area lore
-refresh_refined_area_lore = True #Generate new refined areas
-refresh_party_lore = True #Generate new party lore
-refresh_enemy_lore = True #Generate
+refresh_area_lore = False #Generate new area lore
+refresh_party_lore = False #Generate new party lore
+refresh_enemy_lore = False #Generate
 
 def test_generate_lore():
     lore_json = None
@@ -67,6 +66,19 @@ def test_generate_areas():
             region_lore_txt += line
     region_lore_json = json.loads(region_lore_txt)
 
+    #Want to include the enemy in all the descriptions as they
+    #are the main threat in the region and their presence should grow more overt as the party gets closer to them.
+
+    enemy_file = "{}/../test_data/characters/enemy.txt".format(BASE_DIR)
+    enemy_txt = ""
+    with open(enemy_file, 'r') as f:
+        lore_lines = f.readlines()
+        for line in lore_lines:
+            enemy_txt += line
+    enemy_json = json.loads(enemy_txt)
+    assert enemy_json is not None
+    
+    structure_verification.verify_lore_structure(enemy_json, expected_json_structures.main_enemy_structure_for_test)
     structure_verification.verify_lore_structure(lore_json, expected_json_structures.expected_structure_world_for_test)
     structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
 
@@ -80,8 +92,6 @@ def test_generate_areas():
         dir = "{}/../test_data/areas".format(BASE_DIR)
         files = os.listdir(dir)
         files = [f for f in files if ".txt" in f]
-        files = [f for f in files if "refined" not in f] #don't delete the refined descriptions
-        print(files)
         for f in files:
             file_path = f"{BASE_DIR}/../test_data/areas/{f}"
             os.remove(file_path)
@@ -89,59 +99,41 @@ def test_generate_areas():
         
         for area in areas:
             count += 1
-            print(f"Generating fuller description of area {area["name"]}")
             #Must pass the text versions!
-            description = area_lore_generation.generate_area_thematic_description(lore_txt, region_lore_txt, area["name"])
+            if count < len(areas):
+                threat_severity = "Low"
+            else:
+                threat_severity = "High"
+            print(f"Generating fuller description of area {area["name"]} with threat severity {threat_severity}")
+            description = area_lore_generation.generate_area_thematic_description(lore_txt, region_lore_txt, area["name"], enemy_txt, threat_severity)
             area_description_list.append(description)
             BASE_DIR = os.path.dirname(os.path.realpath(__file__))
             txt_file = f"{BASE_DIR}/../test_data/areas/area_{count}.txt"
             with open(txt_file, 'w') as f:
                 f.write(description)
     else:
-        #delete old refined files
+        #Load all the descriptions from file
         dir = "{}/../test_data/areas".format(BASE_DIR)
         files = os.listdir(dir)
-        files = [f for f in files if ".txt" in f]
-        files = [f for f in files if "refined" in f] 
+        files = [f for f in files if ".txt" in f and "area" in f]
         for f in files:
             file_path = f"{BASE_DIR}/../test_data/areas/{f}"
-            os.remove(file_path)
-
-        dir = "{}/../test_data/areas".format(BASE_DIR)
-        files = os.listdir(dir)
-        files = [f for f in files if ".txt" in f]
-        files = [f for f in files if "refined" not in f] #don't use the refined descriptions
-
-        print(files)
-        for f in files:
-            file_path = f"{BASE_DIR}/../test_data/areas/{f}"
-            txt = ""
             with open(file_path, 'r') as f:
-                lines = f.readlines()
-                for line in lines:
-                    txt += line + "\n"
-            area_description_list.append(txt)
+                lore_lines = f.readlines()
+                area_description = ""
+                for line in lore_lines:
+                    area_description += line
+                area_description_list.append(area_description)
+    count = 0
+    for area_description in area_description_list:
+        region_lore_json["starting_area"]["notable_locations"][count]["description"] = area_description
+        count += 1
+    #Check structure still holds
+    structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
 
-    #Now refine the areas to make them more logically cohesive 
-    if refresh_refined_area_lore:
-        count = 0
-        for area in area_description_list:
-            if count == 0:
-
-                print("First area does not need refining")
-                txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{1}.txt"
-                with open(txt_file, 'w') as f:
-                    f.write(area_description_list[0])
-            else: 
-                print(f"Refining description for area {areas[count]["name"]}")
-                description = area_lore_generation.refine_thematic_description(area_description_list[count], area_description_list[0:count])
-                BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-                txt_file = f"{BASE_DIR}/../test_data/areas/refined_area_{count+1}.txt"
-                with open(txt_file, 'w') as f:
-                    f.write(description)
-            count += 1
-    else:
-        pass
+    #Write back the updated region lore
+    with open(start_region_file, 'w') as f:
+        f.write(json.dumps(region_lore_json, indent=4)) 
 
 
 def test_generate_party():

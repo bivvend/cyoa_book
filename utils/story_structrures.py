@@ -129,3 +129,61 @@ story_progression_structure_for_test = {
         }
     }
 }
+
+event_list_structure = {
+    "events":[ 
+            {
+                "id": "",
+                "type": "",
+                "description": "",
+                "npcs_involved": [
+                    ""
+                ],
+                "party_members_involved": [
+                    ""
+                ],
+                "threats_involved": [
+                    ""
+                ],
+                "items_involved": [
+                    ""
+                ],
+                "outcome": "",
+                "status_changes": [
+                {
+                    "description": "",
+                    "consequence": "",
+                }
+                ]
+            } 
+    ]    
+}
+
+event_list_structure_for_test = {
+    "events":[ 
+            {
+                "id": str,
+                "type": str,
+                "description": str,
+                "npcs_involved": [
+                    str
+                ],
+                "party_members_involved": [
+                    str
+                ],
+                "threats_involved": [
+                    str
+                ],
+                "items_involved": [
+                    str
+                ],
+                "outcome": "",
+                "status_changes": [
+                {
+                    "description": str,
+                    "consequence": str,
+                }
+                ]
+            } 
+    ]    
+}

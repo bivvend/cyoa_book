@@ -1,9 +1,13 @@
+import json
 from utils import generate_text, expected_json_structures
 
 def generate_main_enemy(region_lore_json):
     """
     Generates lore for the main enemy in the story.
     """
+
+    region_lore = json.dumps(region_lore_json, indent=4)
+    
     writing_guidelines_1 = (
         f"Write a detailed description for the main enemy in a fantasy novel."
         "You MUST use the lore describing the region below (in JSON format) in which the adventures take place in the JSON below to get an idea of the setting. "
@@ -23,7 +27,7 @@ def generate_main_enemy(region_lore_json):
     
     prompt = (
         f"{writing_guidelines_1}\n\n"
-        f"Lore of the region:\n{region_lore_json}\n\n"
+        f"Lore of the region:\n{region_lore}\n\n"
         f"{structuring_prompt}"      
     )
     return generate_text.generate_text(prompt)

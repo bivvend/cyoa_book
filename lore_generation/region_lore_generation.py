@@ -1,3 +1,4 @@
+import json
 from utils import generate_text, expected_json_structures
 import os
 
@@ -36,17 +37,20 @@ writing_guidelines_4 = (
     "suitable for an end-of-story grand confrontation!"
 )
 
-def generate_starting_region_lore(global_lore, save=True):
+def generate_starting_region_lore(global_lore_json, save=True):
     """
     Generates lore for the region in which the adventure happens.
 
     Args:
-        global_lore (str): The global lore to be used for generating the starting region lore.
+        global_lore (json): The global lore to be used for generating the starting region lore.
         save (bool): Whether to save the generated lore to a file. Default is True.
 
     Returns:
         str: The generated lore in JSON format.
     """
+
+    global_lore = json.dumps(global_lore_json, indent=4)
+    
     prompt = (
         f"{writing_guidelines_1}\n"
         f"{writing_guidelines_2}\n\n"

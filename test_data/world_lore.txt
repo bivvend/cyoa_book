@@ -1,33 +1,51 @@
 {
   "world": {
-    "name": "Mythrandor",
-    "description": "A realm of wonder and ancient mystery, Mythrandor is steeped in the echoes of forgotten legends. Its landscapes cradle the remnants of civilizations long past, where verdant forests intertwine with towering mountains and crystal-clear lakes shimmer under the gaze of celestial bodies. The air is thick with enchantment, and the whispers of the past guide those who dare to tread its paths.",
+    "name": "Aeloria",
+    "description": "Aeloria is a vibrant realm of diverse landscapes, where the whispers of the ancient woods intertwine with the echoes of the mountains. Here, towering spires of crystal reach toward the heavens, and lush valleys teem with life, embodying the harmony and discord of its myriad inhabitants.",
     "creation": {
-      "origin_story": "In the beginning, when the cosmos was but a swirling void, the Celestial Weavers spun the threads of existence, binding light and shadow into the fabric of Mythrandor. Thus was born the world, a tapestry of beauty and chaos, nurtured by the First Flame, a celestial spark that ignited life and magic across the lands.",
+      "origin_story": "In the primordial void, the great cosmic forces stirred, giving birth to Aeloria. From the union of Light and Shadow arose the Celestials, who shaped the land and its inhabitants, breathing life into the very fabric of existence. Thus, the world was forged in a dance of creation and destruction, a delicate balance maintained by the will of the divine.",
       "primary_gods": [
         {
-          "name": "Elanith",
-          "domain": "Light and Knowledge",
-          "symbol": "An open book with a radiant sun above it",
-          "description": "Elanith, the Radiant Sage, is revered as the deity of enlightenment and wisdom. With a heart as warm as the sun and a mind as vast as the sky, Elanith bestows knowledge upon mortals, guiding them through the darkness of ignorance."
+          "name": "Elunara",
+          "domain": "Light and Creation",
+          "symbol": "A radiant sun encircled by stars",
+          "description": "Elunara, the Dawnbringer, is revered as the embodiment of hope and inspiration. Her light nurtures the growth of all living things, and she is often invoked by artists and dreamers seeking to channel her divine creativity."
         },
         {
-          "name": "Nerathos",
-          "domain": "Nature and Balance",
-          "symbol": "A tree entwined with a serpent",
-          "description": "Nerathos, the Verdant Guardian, embodies the essence of nature and the delicate balance of life. He is the protector of the wild, nurturing the flora and fauna of Mythrandor, and maintaining the equilibrium between growth and decay."
+          "name": "Nerthul",
+          "domain": "Shadow and Destruction",
+          "symbol": "A crescent moon shrouded in mist",
+          "description": "Nerthul, the Veil of Night, represents the mysteries of existence and the inevitability of decay. His followers seek wisdom in darkness, believing that true understanding can only be attained by embracing both light and shadow."
         }
       ]
     },
     "geography": {
       "continents": [
         {
-          "name": "Altharion",
-          "description": "Altharion is a sprawling continent dominated by lush forests, rolling hills, and majestic mountains. Its varied climates give rise to a rich tapestry of ecosystems, from the misty valleys of the Sylvan Glades to the sun-drenched plains of the Golden Steppe.",
+          "name": "Thalindor",
+          "description": "Thalindor is a sprawling continent marked by its verdant forests and majestic mountains. The air is filled with the scent of ancient trees and blooming flora, while crystal-clear rivers wind through the valleys. This land is home to the Sylphirians, a race of ethereal beings who dwell in harmony with nature.",
           "notable_locations": [
             {
-              "name": "The Whispering Woods",
-              "description": "A sacred forest where ancient trees stand sentinel over hidden groves, the Whispering Woods is said to be alive with the whispers of the past. Here, the spirits of the ancients guide travelers through the thick underbrush, revealing secrets of forgotten lore."
+              "name": "The Whispering Grove",
+              "description": "An ancient forest where the trees are said to speak in hushed tones, sharing secrets of the past with those who listen. It is a sacred place for the Sylphirians, filled with vibrant flora and fauna."
+            },
+            {
+              "name": "The Shimmering Peaks",
+              "description": "A range of towering mountains that glisten under the sun, their summits often cloaked in clouds. Legends speak of hidden treasures and ancient spirits residing within these lofty heights."
+            }
+          ]
+        },
+        {
+          "name": "Eldros",
+          "description": "Eldros is a rugged land characterized by vast plains and treacherous cliffs. The fierce winds that sweep across the terrain are a testament to its untamed nature. This continent is the ancestral home of the Andurans, a proud warrior race known for their resilience and valor.",
+          "notable_locations": [
+            {
+              "name": "The Iron Fortress",
+              "description": "An impenetrable stronghold carved into the cliffs, it serves as the heart of Anduran society. Its walls resonate with the sound of hammers and the spirit of craftsmanship."
+            },
+            {
+              "name": "The Glimmering Fields",
+              "description": "A vast expanse of golden grass that dances in the wind, rumored to be blessed by Elunara herself. It is a favored battleground for the Andurans, where they train and prove their mettle."
             }
           ]
         }
@@ -36,71 +54,71 @@
     "races": [
       {
         "name": "Humans",
-        "description": "The humans of Mythrandor are a diverse and adaptable race, known for their resilience and ambition. They thrive in various environments, from the bustling cities of commerce to the serene villages nestled in the foothills. Unlike typical humans, those of Mythrandor possess a unique connection to the ethereal energies of the world, allowing them to harness magic through sheer will and determination.",
-        "homeland": "The Kingdom of Eldergrove, a vibrant realm characterized by rolling hills, fertile plains, and thriving cities, stands as a testament to human ingenuity and spirit."
+        "description": "In Aeloria, humans are a versatile and ambitious race, often characterized by their boundless curiosity and tenacity. Unlike their more steadfast kin, the humans of Aeloria are shaped by the essence of the land itself, leading them to adapt quickly to their environment. This adaptability has birthed many cultures and traditions, each with its own unique flavor, from the merchant clans of Eldros to the scholarly circles of Thalindor.",
+        "homeland": "The Plains of Eldoria, a region marked by rolling fields and bustling towns, where human settlements thrive amidst the backdrop of towering cliffs and vibrant forests."
       },
       {
-        "name": "Elves",
-        "description": "Inhabitants of the ethereal forests, the Elves of Mythrandor are timeless beings, possessing an innate grace and wisdom that transcends the ages. With skin that glimmers like moonlight and eyes reflecting the hues of the forest, they are the guardians of nature, guardians of ancient lore, and masters of the arcane.",
-        "homeland": "The Enchanted Vale, a hidden realm shrouded in mist and magic, where trees whisper secrets and rivers sing ballads of old."
+        "name": "Sylphirians",
+        "description": "The Sylphirians are graceful beings, often described as ethereal in appearance, with skin that shimmers like the dawn and hair that flows like liquid silk. They are deeply attuned to the rhythms of nature, communicating with the flora and fauna that surround them. This connection grants them unique abilities, such as healing and elemental manipulation. Sylphirians are the guardians of the forests, ensuring the delicate balance of life is maintained.",
+        "homeland": "The Whispering Grove, a sacred forest where ancient trees tower above and gentle streams weave through the verdant landscape."
       },
       {
-        "name": "Dwarves",
-        "description": "Stalwart and industrious, the Dwarves of Mythrandor are renowned for their craftsmanship and unwavering loyalty. With their sturdy frames and intricate tattoos, they delve deep into the mountains, unearthing precious gems and forging weapons of unparalleled quality. Their hearty laughter and tales of valor echo through the stone halls of their ancestral homes.",
-        "homeland": "The Ironheart Mountains, a formidable range dotted with vast caverns and shimmering forges, where the spirit of creation burns bright."
+        "name": "Andurans",
+        "description": "The Andurans are a stout-hearted race of warriors, renowned for their courage and craftsmanship. With skin like weathered stone and eyes that burn with the fire of determination, they thrive in the harshest of environments. Their society is built upon honor, loyalty, and a fierce love for their homeland. The Andurans are skilled artisans, forging weapons and armor that are sought after across the realms.",
+        "homeland": "The rugged cliffs and expansive plains of Eldros, where the Iron Fortress stands as a testament to their strength and resilience."
       },
       {
-        "name": "Gnomes",
-        "description": "The Gnomes of Mythrandor are a whimsical and inventive race, known for their eccentricity and boundless curiosity. With their colorful attire and quick wits, they tinker with mechanisms and concoct potions, pushing the boundaries of invention in a world steeped in magic. Their laughter is infectious, and their inventions often bring both joy and chaos.",
-        "homeland": "The Shimmering Glades, a vibrant haven filled with technicolor flora and bubbling streams, where Gnomes thrive amidst their playful contraptions."
+        "name": "Feylorians",
+        "description": "The Feylorians are a whimsical race, embodying the magic and mystery of the world. With skin that glimmers like moonlight and eyes that shift like the colors of the forest, they are often seen as tricksters and keepers of secrets. Feylorians possess an innate affinity for illusion and enchantment, allowing them to weave spells that bewilder and charm. They are both beloved and feared, celebrated for their artistry and mistrusted for their capricious nature.",
+        "homeland": "The Enchanted Glades, a mystical realm where the lines between reality and dreams blur, filled with vibrant flora and shimmering lights."
       },
       {
-        "name": "Orcans",
-        "description": "The Orcans, a proud and noble race, possess features reminiscent of traditional orcs but stand apart with their unique culture and traditions. They are deeply connected to the land, practicing shamanistic rituals that honor their ancestors and the spirits of nature. With skin marked by tribal tattoos, they are fierce warriors and skilled hunters, fiercely protective of their kin.",
-        "homeland": "The Bloodstone Wilds, a rugged expanse of untamed wilderness where the Orcans forge their homes among the towering cliffs and dense forests."
+        "name": "Taurens",
+        "description": "The Taurens are a formidable race, characterized by their imposing stature and strength. With the features of both humanoids and beasts, they possess the horns of great bulls and the grace of agile warriors. Known for their deep-rooted traditions and connection to the earth, Taurens are revered as druids and guardians of nature. Their wisdom is sought in times of strife, for they hold the secrets of the land and its many wonders.",
+        "homeland": "The Great Steppes, a vast expanse of rolling hills and grassy plains, where the winds carry the whispers of ancient spirits."
       }
     ],
     "magic": {
-      "source": "The Essence of the World",
-      "description": "Magic in Mythrandor flows from the very essence of the world, a mystical force interwoven with the fabric of reality. This energy can be harnessed by those attuned to its rhythms, allowing them to manipulate the elements, commune with spirits, and transcend the limitations of the physical realm.",
+      "source": "The Luminous Veil, a mystical energy that flows through the very fabric of Aeloria, connecting all living beings.",
+      "description": "Magic in Aeloria is a manifestation of the natural world, drawn from the Luminous Veil that weaves through the land. It is a gift from the Celestials, granted to those who seek to understand and protect the delicate balance of existence. Practitioners, known as Weavers, harness this power to create spells that reflect their bond with the world around them.",
       "schools": [
         {
           "name": "Elementalism",
-          "description": "A school of magic focusing on the manipulation of the elemental forces—earth, air, fire, and water. Practitioners known as Elementalists draw strength from their surroundings, shaping the elements to their will."
+          "description": "The art of harnessing the primal forces of nature—earth, air, fire, and water. Elementalists are revered for their ability to shape the very elements to their will, often serving as protectors of the natural realm."
         },
         {
-          "name": "Illusionism",
-          "description": "A mysterious branch of magic that delves into the realm of perception and reality. Illusionists weave intricate spells to bend light and shadow, creating mesmerizing visions and altering the minds of others."
+          "name": "Illusionary Magic",
+          "description": "A whimsical yet powerful school that focuses on the creation of illusions and enchantments. Illusionists weave intricate spells that can deceive the senses, bending reality to their whims."
         }
       ]
     },
     "history": {
       "eras": [
         {
-          "name": "The Age of Awakening",
-          "timeline": "0 - 500 AC",
+          "name": "The Age of Creation",
+          "timeline": "0 - 1000 A.E.",
           "events": [
             {
-              "name": "The First Council of Elders",
-              "description": "In the year 100 AC, representatives from the major races convened to establish peace and cooperation, laying the foundation for future alliances."
+              "name": "The Birth of Aeloria",
+              "description": "In the beginning, the Celestials shaped the land and its inhabitants, forging a world steeped in wonder and magic."
             },
             {
-              "name": "The Great Cataclysm",
-              "description": "In 450 AC, a catastrophic event reshaped the land, causing rifts in the fabric of magic and leading to the rise of numerous factions vying for power."
+              "name": "The Awakening of the Races",
+              "description": "As the world flourished, the races of Aeloria began to emerge and establish their realms, each contributing to the rich tapestry of life."
             }
           ]
         },
         {
           "name": "The Age of Strife",
-          "timeline": "501 - 1000 AC",
+          "timeline": "1001 - 2000 A.E.",
           "events": [
             {
-              "name": "The War of the Races",
-              "description": "In 600 AC, tensions escalated into open conflict, as the races clashed over resources and territory, resulting in widespread devastation."
+              "name": "The Great War of Shadows",
+              "description": "A tumultuous period marked by conflict between the forces of light and darkness, as the followers of Nerthul sought to shroud Aeloria in despair."
             },
             {
-              "name": "The Treaty of Unity",
-              "description": "In 950 AC, a fragile peace was brokered, establishing boundaries and mutual respect among the races, fostering cooperation in the face of common threats."
+              "name": "The Pact of Unity",
+              "description": "In the face of destruction, the races of Aeloria forged a fragile alliance, setting aside their differences to combat the encroaching darkness."
             }
           ]
         }

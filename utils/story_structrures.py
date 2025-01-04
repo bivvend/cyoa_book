@@ -82,7 +82,7 @@ story_progression_structure_for_test = {
                         "type": str,
                         "description": str,
                         "characters_involved": [
-                            str
+                            str,str
                         ],
                         "trigger": str,
                         "outcome": {
@@ -124,7 +124,7 @@ story_progression_structure_for_test = {
             }
         ],
         "progression": {
-            "visited_areas": [str],
+            "visited_areas": [str, str],
             "current_area": str,
         }
     }
@@ -137,16 +137,19 @@ event_list_structure = {
                 "type": "",
                 "description": "",
                 "npcs_involved": [
-                    ""
+                    "",""
                 ],
                 "party_members_involved": [
-                    ""
+                    "",""
                 ],
                 "threats_involved": [
-                    ""
+                    "",""
                 ],
                 "items_involved": [
-                    ""
+                    "",""
+                ],
+                "inventory_of_story_items": [
+                    "",""
                 ],
                 "outcome": "",
                 "status_changes": [
@@ -166,18 +169,21 @@ event_list_structure_for_test = {
                 "type": str,
                 "description": str,
                 "npcs_involved": [
-                    str
+                    str,str
                 ],
                 "party_members_involved": [
-                    str
+                    str,str
                 ],
                 "threats_involved": [
-                    str
+                    str,str
                 ],
                 "items_involved": [
-                    str
+                    str,str
                 ],
-                "outcome": "",
+                "inventory_of_story_items": [
+                    str,str
+                ],
+                "outcome": str,
                 "status_changes": [
                 {
                     "description": str,

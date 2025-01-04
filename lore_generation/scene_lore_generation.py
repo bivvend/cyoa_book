@@ -1,3 +1,4 @@
+import json
 from utils import generate_text
 
 writing_guidelines_1 = (
@@ -11,7 +12,7 @@ writing_guidelines_3 = (
     "Try very hard to keep consistency."
 )
 
-def generate_scene_lore(global_lore, area_lore, scene_name):
+def generate_scene_lore(global_lore_json, area_lore_json, scene_name):
     """
     Generates lore for a specific scene in the game.
 
@@ -23,6 +24,9 @@ def generate_scene_lore(global_lore, area_lore, scene_name):
     Returns:
         str: The generated lore for the scene.
     """
+    global_lore = json.dumps(global_lore_json, indent=4)
+    area_lore = json.dumps(area_lore_json, indent=4)
+    
     prompt = (
         f"{global_lore}\n\n"
         f"{area_lore}\n\n"

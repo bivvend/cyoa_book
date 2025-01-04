@@ -1,3 +1,4 @@
+import json
 from utils import generate_text, expected_json_structures
 
 global_writing_guidelines_1 = (
@@ -10,6 +11,11 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
     """
     Generates lore for a specific area in the game.
     """
+
+    global_lore = json.dumps(global_lore_json, indent=4)
+    region_lore = json.dumps(region_lore_json, indent=4)
+    enemy_lore = json.dumps(enemy_lore_json, indent=4)
+    
     writing_guidelines_1 = (
         f"Write a detailed description for the area called {area_name} of a fantasy story. "
         "You can use the Starting region JSON below to get an idea of the area."
@@ -35,11 +41,11 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
 
 
         f"{writing_guidelines_1}\n"
-        f"Starting region lore JSON: \n {region_lore_json}\n\n"
+        f"Starting region lore JSON: \n {region_lore}\n\n"
         f"{writing_guidelines_2}\n"
-        f"Global lore JSON: \n {global_lore_json}\n\n"
+        f"Global lore JSON: \n {global_lore}\n\n"
         f"{writing_guidelines_3}\n\n"
-        f"Enemy JSON:\n{enemy_lore_json}\n"
+        f"Enemy JSON:\n{enemy_lore}\n"
         f"{writing_guidelines_4}\n"
         f"{global_writing_guidelines_1}\n"
         f"{global_writing_guidelines_2}\n"

@@ -2,8 +2,13 @@ from utils import generate_text, expected_json_structures
 import os
 import json
 
-start_prompt = (
+default_start_prompt = (
     "Write a detailed lore for a fantasy world. The world is not called Eldoria! "
+    "The writing style of Tolkien would fit well."
+)
+
+start_prompt = (
+    
     "It should be loosely based on Tolkien with the main races being essentially humanoid. "
     "Include detailed descriptions of the races and include their home area and a description of it."
     "You MUST generate at least 5 different races."
@@ -14,7 +19,7 @@ start_prompt = (
 style_prompt = (
     "The writing style should be verbose and fluid. "
     "The descriptions should be around 100 words long. "
-    "The writing style of Tolkien would fit well."
+
 )
 
 structuring_prompt = (
@@ -25,26 +30,19 @@ structuring_prompt = (
     f"{expected_json_structures.expected_structure_world}"
 )
 
-def generate_global_lore(save=True):
+def generate_global_lore(input_prompt=None):
     """
     Generates global lore for the game world from the given prompt.
     The prompt is asked to follow a structuring prompt to enforce json
-    The writing style is guided by a style prompt
+    The writing style is guided by a input prompt
     """
-    response = generate_text.generate_text(
-        f"{start_prompt}\n{style_prompt}\n{structuring_prompt}"
-    )
-    if save:
-        BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-        txt_file = os.path.join(BASE_DIR, "../test_data/world_lore.txt")
+    if input_prompt is None:
+        input_prompt = default_start_prompt
 
-        with open(txt_file, 'w') as f:
-            f.write(response)
+    response = generate_text.generate_text(
+        f"{input_prompt}{start_prompt}\n{style_prompt}\n{structuring_prompt}"
+    )
 
     return response
 
-def extract_races(json_lore):
-    """
-    Returns races from given text based on the defined global delimiters
-    """
-    # Implementation of extract_races function
+

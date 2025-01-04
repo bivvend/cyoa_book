@@ -44,7 +44,18 @@ def test_generate_events():
     #We now start using the start region data to create new areas.
     areas = region_lore_json["starting_area"]["notable_locations"]   
     count = 0  
-    events_list_all_areas=[]     
+    events_list_all_areas=[] 
+    all_events = {}    
+
+    #Delete the previous events files
+
+    dir = "{}/../test_data/events".format(BASE_DIR)
+    files = os.listdir(dir)
+    files = [f for f in files if ".txt" in f and "events" in f]
+    for f in files:
+        file_path = f"{BASE_DIR}/../test_data/events/{f}"
+        os.remove(file_path)
+
     for area in areas:
         if count < len(areas) - 1:
             threat_severity = "Low"
@@ -63,7 +74,13 @@ def test_generate_events():
             next_area = None
         events_list = event_generation.generate_initial_event_sequence(region_lore_json,party_txt,enemy_txt,count,threat_severity, previous_events, next_area)
         events_list_all_areas.append(events_list)
+        events_json = json.loads(events_list)
+        structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
         count += 1
         txt_file = f"{BASE_DIR}/../test_data/events/events_{count}.txt"
         with open(txt_file, 'w') as f:
             f.write(events_list)
+        all_events[area["name"]] = events_json
+    txt_file = f"{BASE_DIR}/../test_data/events/all_events.txt"
+    with open(txt_file, 'w') as f:
+         f.write(json.dumps(all_events, indent=4))

@@ -62,8 +62,11 @@ def generate_initial_event_sequence(region_json, party_json_txt, enemy_json_txt,
 
     structuring_prompt = (
         f"The response MUST be in json format so that it can be read by a python program. "
-        f"Please fill the structure below with the generated data. You can and should add elements "
+        f"Please fill the structure below with the generated data. You can and should add elements. "
+        f"The inventory of the party should be updated as they progress through the events using the inventory_of_story_items JSON element."
+        f"An item cannot be removed from the inventory unless it is used in the event."
         f"There should be around 25 events in the sequence. "
+        f"Each event should id should be of the form event_1, event_2 etc. "
         f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
         f"{story_structrures.event_list_structure}\n"
     )

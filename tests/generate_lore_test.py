@@ -4,21 +4,26 @@ import os
 import pytest
 import json
 
-refresh_global_lore = False  #Generate new global lore
-refresh_region_lore = False #Generate new region lore
-refresh_area_lore = False #Generate new area lore
-refresh_party_lore = False #Generate new party lore
-refresh_enemy_lore = False #Generate
+refresh_global_lore = True  #Generate new global lore
+refresh_region_lore = True #Generate new region lore
+refresh_area_lore = True #Generate new area lore
+refresh_party_lore = True #Generate new party lore
+refresh_enemy_lore = True #Generate
 
 def test_generate_lore():
     lore_json = None
     lore_txt = ""
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
     if refresh_global_lore:
         lore_txt = global_lore_generation.generate_global_lore()
         print(lore_txt)
         lore_json = json.loads(lore_txt)
+        #Save the lore to file
+        txt_file = f"{BASE_DIR}/../test_data/world_lore.txt"
+        with open(txt_file, 'w') as f:
+            f.write(lore_txt)
+
     else:
-        BASE_DIR = os.path.dirname(os.path.realpath(__file__))
         lore_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
         with open(lore_file, 'r') as f:
             lore_lines = f.readlines()
@@ -33,7 +38,7 @@ def test_generate_lore():
     region_lore_json = None
     region_lore_txt = ""
     if refresh_region_lore:
-        region_lore_txt = region_lore_generation.generate_starting_region_lore(lore_txt)
+        region_lore_txt = region_lore_generation.generate_starting_region_lore(lore_json)
         region_lore_json = json.loads(region_lore_txt)
     else:
         start_region_file = "{}/../test_data/starting_region_lore.txt".format(BASE_DIR)
@@ -45,8 +50,7 @@ def test_generate_lore():
     assert region_lore_json is not None
     structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
       
-
-
+    #Generate the areas in the starting region
 def test_generate_areas():
     #Test runs after the world and starting regions are written to file
     BASE_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -105,7 +109,7 @@ def test_generate_areas():
             else:
                 threat_severity = "High"
             print(f"Generating fuller description of area {area["name"]} with threat severity {threat_severity}")
-            description = area_lore_generation.generate_area_thematic_description(lore_txt, region_lore_txt, area["name"], enemy_txt, threat_severity)
+            description = area_lore_generation.generate_area_thematic_description(lore_json, region_lore_json, area["name"], enemy_json, threat_severity)
             area_description_list.append(description)
             BASE_DIR = os.path.dirname(os.path.realpath(__file__))
             txt_file = f"{BASE_DIR}/../test_data/areas/area_{count}.txt"
@@ -155,7 +159,7 @@ def test_generate_party():
     assert lore_json is not None
 
     if refresh_party_lore:
-        party_lore = party_generation.generate_party(lore_txt)
+        party_lore = party_generation.generate_party(lore_json)
         print(party_lore)
         party_json = json.loads(party_lore)
         assert party_json is not None
@@ -186,10 +190,10 @@ def test_generate_enemy():
             start_region_txt += line
     region_lore_json = json.loads(start_region_txt)
     structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
-   
+
     #Generate the enemy
     if refresh_enemy_lore:
-        enemy_lore = main_enemy_generation.generate_main_enemy(start_region_txt)
+        enemy_lore = main_enemy_generation.generate_main_enemy(region_lore_json)
         print(enemy_lore)
         enemy_json = json.loads(enemy_lore)
         assert enemy_json is not None

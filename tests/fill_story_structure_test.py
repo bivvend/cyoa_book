@@ -43,16 +43,26 @@ def test_generate_events():
 
     #We now start using the start region data to create new areas.
     areas = region_lore_json["starting_area"]["notable_locations"]   
-    count = 0       
+    count = 0  
+    events_list_all_areas=[]     
     for area in areas:
-
-        #Must pass the text versions!
-        if count < len(areas):
+        if count < len(areas) - 1:
             threat_severity = "Low"
         else:
             threat_severity = "High"
         print(f"Generating events for area {area["name"]} with threat severity {threat_severity}")
-        events_list = event_generation.generate_initial_event_sequence(region_lore_json,party_txt,enemy_txt,count,threat_severity)
+        previous_events = None
+        next_area = None
+        if count == 0:
+            previous_events = None
+        else:   
+            previous_events = events_list_all_areas[count-1]
+        if count < len(areas) - 1:
+            next_area = areas[count+1]["name"]
+        else:
+            next_area = None
+        events_list = event_generation.generate_initial_event_sequence(region_lore_json,party_txt,enemy_txt,count,threat_severity, previous_events, next_area)
+        events_list_all_areas.append(events_list)
         count += 1
         txt_file = f"{BASE_DIR}/../test_data/events/events_{count}.txt"
         with open(txt_file, 'w') as f:

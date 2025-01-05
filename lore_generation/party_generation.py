@@ -2,8 +2,6 @@ import json
 from utils import generate_text, expected_json_structures
 
 
-
-
 def generate_party(global_lore_json):
     """
     Generates lore for a specific party in the game.

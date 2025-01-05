@@ -1,5 +1,5 @@
-from story_generation import event_generation
-from utils import expected_json_structures, structure_verification, story_structrures
+from story_generation import conversation_generation, event_generation, intro_generation
+from utils import expected_json_structures, structure_verification, story_structrures, conversation_structures
 import os
 import pytest
 import json
@@ -149,10 +149,80 @@ def test_generate_starting_events():
     #validate the structure of the events
     structure_verification.verify_lore_structure(upcoming_events, story_structrures.event_list_structure_for_test)
 
-    events_list = event_generation.generate_start_scene_events(lore_json, region_lore_json, party_json, upcoming_events)
-    events_json = json.loads(events_list)
-    structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
+    intro_text = intro_generation.generate_start_scene_text(lore_json, region_lore_json, party_json, upcoming_events)
+    
  
     txt_file = f"{BASE_DIR}/../test_data/events/intro.txt"
     with open(txt_file, 'w') as f:
-         f.write(json.dumps(events_json, indent=4))
+         f.write(intro_text)
+
+def test_generate_conversations():
+    #Test runs after the world and starting regions are written to file
+    #Load the world lore
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+    world_file = "{}/../test_data/world_lore.txt".format(BASE_DIR)
+    world_lore_txt = ""
+    with open(world_file, 'r') as f:
+        lore_lines = f.readlines()
+        for line in lore_lines:
+            world_lore_txt += line
+    lore_json = json.loads(world_lore_txt)
+    structure_verification.verify_lore_structure(lore_json, expected_json_structures.expected_structure_world_for_test)
+
+    #Load the region lore
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+    start_region_file = "{}/../test_data/starting_region_lore.txt".format(BASE_DIR)
+    region_lore_txt = ""
+    with open(start_region_file, 'r') as f:
+        lore_lines = f.readlines()
+        for line in lore_lines:
+            region_lore_txt += line
+    region_lore_json = json.loads(region_lore_txt)
+
+
+    #And the party
+    party_file = "{}/../test_data/characters/party.txt".format(BASE_DIR)
+    party_txt = ""
+    with open(party_file, 'r') as f:
+        lore_lines = f.readlines()
+        for line in lore_lines:
+            party_txt += line
+    party_json = json.loads(party_txt)
+    assert party_json is not None
+    
+    
+    structure_verification.verify_lore_structure(party_json, expected_json_structures.expected_structure_party_for_test)
+    structure_verification.verify_lore_structure(region_lore_json, expected_json_structures.expected_structure_region_for_test)
+
+    print(f"Generating general conversations for the story")
+    upcoming_events = None
+    next_area = None
+
+    #Load all the events from the directory
+    dir = "{}/../test_data/events".format(BASE_DIR)
+    files = os.listdir(dir)
+    files = [f for f in files if ".txt" in f and "events" in f and "all" not in f]
+    all_events = {}
+    count = 0
+    for f in files:      
+        area_name= region_lore_json["starting_area"]["notable_locations"][count]["name"]
+        events_txt = ""
+        with open(f"{dir}/{f}", 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                events_txt += line
+        events_json = json.loads(events_txt)
+        all_events[area_name] = events_json
+        count += 1
+    all_events_json = json.dumps(all_events, indent=4)
+
+    conversations = conversation_generation.generate_conversations(region_lore_json, party_json, all_events_json)
+    txt_file = f"{BASE_DIR}/../test_data/characters/conversations.txt"
+    with open(txt_file, 'w') as f:
+         f.write(conversations)
+         
+    conversations_json = json.loads(conversations)
+    #validate the structure of the events
+    structure_verification.verify_lore_structure(conversations_json, conversation_structures.conversation_structure_for_test)
+
+    

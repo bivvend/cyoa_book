@@ -78,3 +78,20 @@ def delete_messages(thread_id):
         client.beta.threads.messages.delete(m.id, thread_id=thread_id)
     thread_messages = client.beta.threads.messages.list(thread_id)
     return thread_messages
+
+def start_run(thread_id, assistant_id):
+    run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread_id,
+    assistant_id=assistant_id,
+    )
+
+    print("Run completed with status: " + run.status)
+    output = None
+    if run.status == "completed":
+        messages = client.beta.threads.messages.list(thread_id=thread_id)
+        #Last message will be the first
+        if len(messages.data)> 0:
+            output = messages.data[0].content[0].text.value   
+    return output
+    
+

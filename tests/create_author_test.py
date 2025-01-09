@@ -1,5 +1,6 @@
 import os
 import utils.agent as agent
+import openai
 
 instructions = ("You are a creative writer generating beautiful, well written fantasy stories. "
                        "You will be given JSON files containing the story's plot, characters, events and setting. "
@@ -115,3 +116,11 @@ def test_delete_messages():
     messages = agent.retrieve_messages(thread_id)
     assert messages is not None
     assert len(messages) == 0
+
+def test_run_message():
+    message = agent.create_message("Write an intro paragraph to the story", thread_id)
+    assert message is not None
+    response = agent.start_run(thread_id, assistant_id)
+    assert response is not None
+    print(response)
+

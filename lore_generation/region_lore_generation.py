@@ -48,25 +48,27 @@ def generate_starting_region_lore(global_lore_json, save=True):
     Returns:
         str: The generated lore in JSON format.
     """
+    try:
+        global_lore = json.dumps(global_lore_json, indent=4)
+        
+        prompt = (
+            f"{writing_guidelines_1}\n"
+            f"{writing_guidelines_2}\n\n"
+            f"{global_lore}\n\n"
+            f"{writing_guidelines_3}\n"
+            f"{writing_guidelines_4}\n"
+            f"{structuring_prompt}\n\n"
+        )
 
-    global_lore = json.dumps(global_lore_json, indent=4)
-    
-    prompt = (
-        f"{writing_guidelines_1}\n"
-        f"{writing_guidelines_2}\n\n"
-        f"{global_lore}\n\n"
-        f"{writing_guidelines_3}\n"
-        f"{writing_guidelines_4}\n"
-        f"{structuring_prompt}\n\n"
+        response = generate_text.generate_text(prompt)
+        if save:
+            BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+            txt_file = os.path.join(BASE_DIR, "../test_data/starting_region_lore.txt")
 
-    )
+            with open(txt_file, 'w') as f:
+                f.write(response)
 
-    response = generate_text.generate_text(prompt)
-    if save:
-        BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-        txt_file = os.path.join(BASE_DIR, "../test_data/starting_region_lore.txt")
-
-        with open(txt_file, 'w') as f:
-            f.write(response)
-
-    return response
+        return response
+    except Exception as e:
+        print(f"Error in generate_starting_region_lore: {e}")
+        return None

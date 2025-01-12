@@ -23,16 +23,20 @@ def generate_text(prompt, max_tokens=5000, temperature=0.7):
     Returns:
     - str: The generated text from the API.
     """
-    # Create a completion request to the OpenAI API
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",  # Specify the model to use
-        store=True,  # Store the completion for future reference
-        max_tokens=max_tokens,  # Set the maximum number of tokens to generate
-        temperature=temperature,  # Set the sampling temperature
-        messages=[
-            {"role": "user", "content": f"{writing_guidelines}\n\n. {prompt}"}
-        ]  # Include the writing guidelines and prompt in the message
-    )
+    try:
+        # Create a completion request to the OpenAI API
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",  # Specify the model to use
+            store=True,  # Store the completion for future reference
+            max_tokens=max_tokens,  # Set the maximum number of tokens to generate
+            temperature=temperature,  # Set the sampling temperature
+            messages=[
+                {"role": "user", "content": f"{writing_guidelines}\n\n. {prompt}"}
+            ]  # Include the writing guidelines and prompt in the message
+        )
 
-    # Return the generated text from the completion
-    return completion.choices[0].message.content
+        # Return the generated text from the completion
+        return completion.choices[0].message.content
+    except Exception as e:
+        print(f"Error in generate_text: {e}")
+        return None

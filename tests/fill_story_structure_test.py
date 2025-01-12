@@ -150,7 +150,7 @@ def test_generate_starting_events():
     structure_verification.verify_lore_structure(upcoming_events, story_structrures.event_list_structure_for_test)
 
     intro_text = intro_generation.generate_start_scene_text(lore_json, region_lore_json, party_json, upcoming_events)
-    
+    assert intro_text is not None
  
     txt_file = f"{BASE_DIR}/../test_data/events/intro.txt"
     with open(txt_file, 'w') as f:

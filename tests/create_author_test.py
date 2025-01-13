@@ -155,10 +155,11 @@ def test_delete_messages():
     '''
     Delete all messages from a thread.
     '''
-    agent.delete_messages(thread_id)
+    response = agent.delete_messages(thread_id)
+    assert response is not None
     messages = agent.retrieve_messages(thread_id)
     assert messages is not None
-    assert len(messages) == 0
+    assert len(messages.data) == 0
 
 def test_run_message():
     '''

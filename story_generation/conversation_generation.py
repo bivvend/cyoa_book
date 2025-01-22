@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, conversation_structures
 
-def generate_conversations(region_json, party_json, all_events_json):
+def generate_conversations(region_json, party_json, all_events_json, model = "gpt-4o-mini"):
     """
     Generates templates for conversations in the story.
     """
@@ -56,7 +56,7 @@ def generate_conversations(region_json, party_json, all_events_json):
             f"{structuring_prompt}\n"
         )
 
-        return generate_text.generate_text(prompt, max_tokens=10000)
+        return generate_text.generate_text(prompt, max_tokens=10000, model_in= model)
     except Exception as e:
         print(f"Error in generate_conversations: {e}")
         return None

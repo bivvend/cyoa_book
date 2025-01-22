@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, story_structrures
 
-def generate_area_event_sequence(region_json, party_json, enemy_json, area_number, threat_severity, previous_events_json=None, next_area=None):
+def generate_area_event_sequence(region_json, party_json, enemy_json, area_number, threat_severity, previous_events_json=None, next_area=None, model = "gpt-4o-mini"):
     """
     Generates a sequence of events for the story in this area. 
     """
@@ -86,7 +86,7 @@ def generate_area_event_sequence(region_json, party_json, enemy_json, area_numbe
             f"{structuring_prompt}\n"
         )
 
-        return generate_text.generate_text(prompt, max_tokens=10000)
+        return generate_text.generate_text(prompt, max_tokens=10000, model_in= model)
     except Exception as e:
         print(f"Error in generate_area_event_sequence: {e}")
         return None

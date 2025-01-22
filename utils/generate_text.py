@@ -11,7 +11,7 @@ client = openai.OpenAI(
     #api_key=os.getenv("OPENAI_API_KEY")
 )
 
-def generate_text(prompt, max_tokens=5000, temperature=0.7):
+def generate_text(prompt, max_tokens=5000, temperature=0.7, model_in = "gpt-4o-mini"):
     """
     Generic function to generate text using OpenAI's ChatGPT API.
     
@@ -26,7 +26,7 @@ def generate_text(prompt, max_tokens=5000, temperature=0.7):
     try:
         # Create a completion request to the OpenAI API
         completion = client.chat.completions.create(
-            model="gpt-4o-mini",  # Specify the model to use
+            model=model_in,  # Specify the model to use
             store=True,  # Store the completion for future reference
             max_tokens=max_tokens,  # Set the maximum number of tokens to generate
             temperature=temperature,  # Set the sampling temperature

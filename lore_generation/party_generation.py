@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, expected_json_structures
 
-def generate_party(global_lore_json):
+def generate_party(global_lore_json, model = "gpt-4o-mini"):
     """
     Generates lore for a specific party in the game.
     """
@@ -33,7 +33,7 @@ def generate_party(global_lore_json):
             f"{writing_guidelines_2}\n\n"
             f"{structuring_prompt}"      
         )
-        return generate_text.generate_text(prompt)
+        return generate_text.generate_text(prompt, model_in=model)
     except Exception as e:
         print(f"Error in generate_party: {e}")
         return None

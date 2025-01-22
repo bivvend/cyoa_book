@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, story_structrures
 
-def generate_start_scene_text(global_lore_json, region_lore_json, party_lore_json, first_area_events_json):
+def generate_start_scene_text(global_lore_json, region_lore_json, party_lore_json, first_area_events_json, model = "gpt-4o-mini"):
     """
     Generates lore for the start scene in the game.
     """
@@ -53,7 +53,7 @@ def generate_start_scene_text(global_lore_json, region_lore_json, party_lore_jso
             f"{writing_guidelines_5} \n"
         )
 
-        return generate_text.generate_text(prompt)
+        return generate_text.generate_text(prompt, model_in= model)
     except Exception as e:
         print(f"Error in generate_start_scene_text: {e}")
         return None

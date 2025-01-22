@@ -37,7 +37,7 @@ writing_guidelines_4 = (
     "suitable for an end-of-story grand confrontation!"
 )
 
-def generate_starting_region_lore(global_lore_json, save=True):
+def generate_starting_region_lore(global_lore_json, save=True, model = "gpt-4o-mini"):
     """
     Generates lore for the region in which the adventure happens.
 
@@ -60,7 +60,7 @@ def generate_starting_region_lore(global_lore_json, save=True):
             f"{structuring_prompt}\n\n"
         )
 
-        response = generate_text.generate_text(prompt)
+        response = generate_text.generate_text(prompt, model_in=model)
         if save:
             BASE_DIR = os.path.dirname(os.path.realpath(__file__))
             txt_file = os.path.join(BASE_DIR, "../test_data/starting_region_lore.txt")

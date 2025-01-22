@@ -30,7 +30,7 @@ structuring_prompt = (
     f"{expected_json_structures.expected_structure_world}"
 )
 
-def generate_global_lore(input_prompt=None):
+def generate_global_lore(input_prompt=None, model = "gpt-4o-mini"):
     """
     Generates global lore for the game world from the given prompt.
     The prompt is asked to follow a structuring prompt to enforce json
@@ -40,7 +40,7 @@ def generate_global_lore(input_prompt=None):
         input_prompt = default_start_prompt
 
     response = generate_text.generate_text(
-        f"{input_prompt}{start_prompt}\n{style_prompt}\n{structuring_prompt}"
+        f"{input_prompt}{start_prompt}\n{style_prompt}\n{structuring_prompt}", model_in=model
     )
 
     return response

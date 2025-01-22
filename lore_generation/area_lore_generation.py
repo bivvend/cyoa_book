@@ -7,7 +7,7 @@ global_writing_guidelines_1 = (
 )
 global_writing_guidelines_2 = "The description should be around 500 words long."
 
-def generate_area_thematic_description(global_lore_json, region_lore_json, area_name, enemy_lore_json, threat_severity):
+def generate_area_thematic_description(global_lore_json, region_lore_json, area_name, enemy_lore_json, threat_severity, model = "gpt-4o-mini"):
     """
     Generates lore for a specific area in the game.
     """
@@ -51,5 +51,5 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
         f"{global_writing_guidelines_2}\n"
 
     )
-    return generate_text.generate_text(prompt)
+    return generate_text.generate_text(prompt, model_in=model)
 

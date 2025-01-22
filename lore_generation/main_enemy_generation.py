@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, expected_json_structures
 
-def generate_main_enemy(region_lore_json):
+def generate_main_enemy(region_lore_json, model = "gpt-4o-mini"):
     """
     Generates lore for the main enemy in the story.
     """
@@ -29,7 +29,7 @@ def generate_main_enemy(region_lore_json):
             f"Lore of the region:\n{region_lore}\n\n"
             f"{structuring_prompt}"      
         )
-        return generate_text.generate_text(prompt)
+        return generate_text.generate_text(prompt, model_in= model)
     except Exception as e:
         print(f"Error in generate_main_enemy: {e}")
         return None

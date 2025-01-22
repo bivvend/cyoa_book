@@ -75,10 +75,15 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
         "The previous scene in the story is given below: \n\n"
         f"{intro_txt} \n\n"
 
-        "Write a scene for the next event in the series described by the JSON below: \n\n"
+        "Now write a scene for the next event in the story described by the JSON below: \n\n"
         f"{all_events_json[areas[0]["name"]]["events"][0]} \n\n"
         "You must not add anything other than what is described in the event JSON. "
-        "In the description link the scene with the previous scene. "                 
+        "In the new scence link directly with the previous scene by completing the last sentence in the previous scene. " 
+        "The text you write MUST end on an unfinished sentence, so that the next scene can link with it. "
+        "End the unfinished sentence with \"...\" \n"
+
+         
+
 
     )
 
@@ -86,6 +91,8 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
         f"Where possible add a converstion from \"conversations.txt\" during the event. \n"
         f"The description should not be too dramatic and does not need to end with a heroic line of what may come next.  It is a description in the middle of a story."
         f"Only include utf-8 characters in the response. \n"
+        f"The events in \"all_events.txt\" are in JSON format. The order of events in the lists for each area are in chronological order. "
+        f"You must not describe any events or objects that have not happend yet in the order defined in all_events.txt "
     )
 
     print(f"Generating link from intro and {areas[0]["name"]} {all_events_json[areas[0]["name"]]["events"][0]["id"]} ")
@@ -104,10 +111,10 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
     with open(file_path, 'w', encoding="utf-8") as f:
         f.write(response)
     area_count = 0
-    for area in areas[0:1]:
+    for area in areas:
         event_count = 0
         
-        for event in  all_events_json[areas[0]["name"]]["events"]:
+        for event in  all_events_json[areas[area_count]["name"]]["events"]:
             if area_count == 1 and event_count ==1: #Skip link to intro
                 pass
             else:
@@ -120,10 +127,12 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
                     "The previous scene in the story is given below: \n\n"
                     f"{response} \n\n"
 
-                    "Write a scene for the next event in the series described by the JSON below: \n\n"
-                    f"{all_events_json[area["name"]]["events"][event_count]} \n\n"
+                    "Now write a scene for the next event in the series described by the JSON below: \n\n"
+                    f"{event} \n\n"
                     "You must not add anything other than what is described in the event JSON. "
-                    "In the description link the scene with the previous scene. "                 
+                    "In the new scence link directly with the previous scene by completing the last sentence in the previous scene. " 
+                    "The text you write MUST end on an unfinished sentence, so that the next scene can link with it. " 
+                    "End the unfinished sentence with \"...\" \n"            
 
                 )
 
@@ -131,6 +140,9 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
                     f"Where possible add a converstion from \"conversations.txt\" during the event. \n"
                     f"The description should not be too dramatic and does not need to end with a heroic line of what may come next.  It is a description in the middle of a story."
                     f"Only include utf-8 characters in the response. \n"
+                    f"The events in \"all_events.txt\" are in JSON format. The order of events in the lists for each area are in chronological order. "
+                    f"You must not describe any events or objects or NPCs that have not happend yet in the order defined in all_events.txt. "
+                    f"Don't rely on objects not listed in the \"inventory_of_story_items\" listed in the event JSON."
                 )
 
                 print(writing_guide_line_1 + "\n" + writing_guide_line_2)
@@ -148,3 +160,46 @@ def test_write_events(load_intro_text, load_region_lore, load_events, assistant_
 
             event_count += 1
         area_count += 1 
+
+def test_assemble_story(load_intro_text):
+
+    intro_txt = load_intro_text
+
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+    full_path = file_path = f"{BASE_DIR}/../test_data/story_chunks/"
+    files = os.listdir(full_path)
+    files = [f for f in files if "area" in f]
+
+    #Build a list (area, event, filename)
+    chunks = []
+    for f in files:
+        #area_"num"_event_"num".txt
+        splits = f.split("_")
+        assert len(splits) > 3
+        area_num = int(splits[1])
+        event_num = int(splits[3].split(".")[0])
+        
+        chunks.append((area_num, event_num, f))
+
+    #sort list 
+    chuncks_sorted = sorted(chunks, key= lambda x:x[0]*len(chunks)*1000 + x[1])
+    print(chuncks_sorted)
+
+     
+
+
+    assert len(files) > 0
+    #Create a new file
+    full_story_path = full_path +"full_story.txt"
+    with open(full_story_path, "w", encoding="utf-8") as text_file:
+
+        #Add the intro
+        text_file.write(intro_txt + "\n")
+        for f in chuncks_sorted:
+            chunk_path = full_path + f[2]
+            with open(chunk_path, "r", encoding="utf-8") as cf:
+                lines = cf.readlines()
+                assert len(lines) > 0
+                text_file.writelines(lines)
+    
+    

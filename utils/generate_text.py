@@ -3,7 +3,10 @@ import json
 import os
 
 # Writing guidelines for the AI
-writing_guidelines = "You are a creative writer generating detailed game lore."
+writing_guidelines = ("You are a creative writer generating detailed game lore. "
+                      "You will be asked to return JSON structure sometimes, if so "
+                      "ALWAYS use  double quotes \"\" around strings, never single \'\' " 
+                      )
 
 # Initialize the OpenAI client
 client = openai.OpenAI(

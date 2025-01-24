@@ -11,6 +11,8 @@ writing_guidelines_1 = (
     "a rich foundation for the adventure. This includes the setting’s environment, "
     "important locations, notable NPCs (non-player characters), factions, quests, "
     "and potential threats."
+
+
 )
 
 structuring_prompt = (
@@ -23,18 +25,25 @@ structuring_prompt = (
 
 writing_guidelines_2 = (
     "Also use the global lore below to produce a thematically and logically consistent "
-    "starting area for the adventure in one of the home regions of the races mentioned in the lore. "
+    "starting area for the adventure in one of the notable_locations in the JSON. "
+    "Where possible pick an area that is not a forest.  "
 )
 
 writing_guidelines_3 = (
-    "There MUST be more than 6 notable locations in the area. Each notable location should have 3 or more threats. "
+    "There MUST be more than 4 notable locations in the area. Each notable location should have 3 or more threats. "
 )
 
 writing_guidelines_4 = (
+    "The notable_locations you generate are very important and will be used as areas for the adventure. "
+    "One area should be a dungeon or tower,  and one should be a town or village. "
+    "They can't all have the same theme e.g. can't all be forest."
+
     "The sense of peril and danger should increase through the list of notable locations. "
     "The threats in the locations should also increase. The first should be mild and gentle "
     "(but with an ominous presence of danger). The last should be dangerous and terrifying, "
     "suitable for an end-of-story grand confrontation!"
+
+
 )
 
 def generate_starting_region_lore(global_lore_json, save=True, model = "gpt-4o-mini"):

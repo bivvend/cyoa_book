@@ -13,12 +13,17 @@ PARTY_LORE_FILE = "party.txt"
 ALL_EVENTS_FILE = "all_events.txt"
 INTRO_FILE = "intro.txt"
 
+ALL_EVENTS_CRITIQUE_FILE = "all_events_critique.txt"
+CRITIQUES_BY_AREA_FILE = "critiques_by_area.txt"
+
 CHARACTERS_SUB_DIR = "characters"
 CONVERSATIONS_LORE_FILE = "conversations.txt"
 ENEMY_LORE_FILE = "enemy.txt"
 AREAS_SUB_DIR = "areas"
 EVENTS_SUB_DIR = "events"
 STORY_SUB_DIR = "story_chunks"
+CRITIQUE_SUB_DIRECTORY = "critique"
+REFINED_EVENTS_SUB_DIR = "refined_events"
 
 region_flavour_prompt = "A dark dungeon inspired by the Fighting fantasy books."
 world_flavour_prompt = "The Fighting Fantasy books by Steven Jackson"
@@ -31,8 +36,10 @@ refresh_area_lore = False
 refresh_events = False
 refresh_conversations = False
 refresh_intro = False
+refresh_all_events_critique = False
+refresh_area_events_critique = False
 
-configure_new_assistant = True
+configure_new_assistant = False
 configure_new_thread = True
 configure_new_vector_store = False
 upload_new_files = True
@@ -398,6 +405,144 @@ def create_vector_store():
     print(vector_store_id)
 
 
+def critique_all_events(all_events_json):
+    """
+    Generates critique on first pass at events
+    """
+    try:
+        critic_text = None
+        
+        if refresh_all_events_critique:
+            print(f"Generating events critique...")
+            critic_text = event_generation.get_critique_on_events(all_events_json, model=gpt_model)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, ALL_EVENTS_CRITIQUE_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading events critique text..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, ALL_EVENTS_CRITIQUE_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in critique_events: {e}")
+        return None
+
+def critique_area_events(region_lore_json, all_events_json, all_events_critique_txt):
+    """
+    Generates critique on an all areas events with feedback from the overall critique.
+    """
+    try:
+        critic_text = None
+        all_critiques = {} 
+        count = 0
+        if refresh_area_events_critique:
+            # Delete the previous critique files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY)
+            files = os.listdir(dir)
+            files = [f for f in files if ".txt" in f and "area" in f]
+            for f in files:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, f)
+                os.remove(file_path)
+            areas = region_lore_json["starting_area"]["notable_locations"]  
+            for area in areas:
+                count += 1
+                print(f"Generating events critique for {area["name"]}")
+                critic_text = event_generation.get_critique_on_single_area_events(all_events_json[area["name"]], all_events_critique_txt, model=gpt_model)
+                assert critic_text is not None
+            
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, f"area_{count}_critique.txt")
+                with open(txt_file, 'w') as f:
+                    f.write(critic_text)
+                all_critiques[area["name"]] = critic_text
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, CRITIQUES_BY_AREA_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(json.dumps(all_critiques, indent=4))
+            return all_critiques
+        else:
+            pass
+            print("Loading area by area events critique file")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, CRITIQUES_BY_AREA_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+            return json.loads(critic_text)
+    except Exception as e:
+        print(f"Error in critique_events: {e}")
+        return None
+
+def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json):
+    """
+    Regenerates events for the areas based on the critique
+    """
+    try:
+        # We now start using the start region data to create events
+        areas = region_lore_json["starting_area"]["notable_locations"]   
+
+        events_json_list_all_areas = [] 
+        all_events = {}    
+   
+        if refresh_events:
+            count = 0  
+            # Delete the previous events files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR)
+            files = os.listdir(dir)
+            files = [f for f in files if ".txt" in f and "events" in f]
+            for f in files:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, f)
+                os.remove(file_path)
+
+            for area in areas:
+                if count < len(areas) - 1:
+                    threat_severity = "Low"
+                else:
+                    threat_severity = "High"
+                print(f"Generating events for area {area['name']} with threat severity {threat_severity}")
+                previous_events = None
+                next_area = None
+                if count == 0:
+                    previous_events = None
+                else:   
+                    previous_events = events_json_list_all_areas[count-1]
+                if count < len(areas) - 1:
+                    next_area = areas[count+1]["name"]
+                else:
+                    next_area = None
+                events_list = event_generation.generate_area_event_sequence(region_lore_json, party_json, enemy_json, count, threat_severity, previous_events, next_area)
+                events_json = json.loads(events_list)
+                structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
+                events_json_list_all_areas.append(events_json)        
+                count += 1
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, f"events_{count}.txt")
+                with open(txt_file, 'w') as f:
+                    f.write(events_list)
+                all_events[area["name"]] = events_json
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, ALL_EVENTS_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(json.dumps(all_events, indent=4))
+            return all_events
+        else:
+            # Read existing region lore from file
+            print("Loading all events dictionary")
+            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, ALL_EVENTS_FILE)
+            events_txt = ""
+            with open(events_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    events_txt += line
+            all_events = json.loads(events_txt)
+            return all_events
+    except Exception as e:
+        print(f"Error in generate_events: {e}")
+        return None
+     
 if __name__ == "__main__":
 
     #Create the directories if they don't exist
@@ -425,5 +570,21 @@ if __name__ == "__main__":
     intro_text = generate_introduction(global_lore_json, region_lore_json, party_lore_json, all_events_json)
     assert intro_text is not None
 
-    
+    #Refine structure based on feedback 
 
+    critique_prompt = critique_all_events(all_events_json)
+    print(critique_prompt)
+
+    #Based on the overall feedback critique the events area by area.
+    area_by_area_critiques = critique_area_events(region_lore_json, all_events_json, critique_prompt)
+    assert area_by_area_critiques is not None
+    print(area_by_area_critiques)
+
+    #If needed we should build a new assistant 
+    if configure_new_assistant:
+        if configure_new_vector_store:
+            vector_store_id = create_vector_store()
+        if upload_new_files:
+            #First delete all the old files
+            pass
+            

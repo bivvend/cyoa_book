@@ -15,8 +15,15 @@ def generate_area_event_sequence(region_json, party_json, enemy_json, area_numbe
             previous_events_txt = ""
 
         area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
+
+        #generate other areas to exclude
+        areas_to_exclude = [r["name"] for r in region_json["starting_area"]["notable_locations"] if area_name not in r["name"]]
+
         writing_guidelines_1 = (
             f"Based on the fanatasy area called {area_name} in a fantasy story, you are to write a sequence of events that will happen to the adventuring party in the area. "
+            f"All the events must occur in {area_name}.  If you are aware of other areas in the story, don't use them here."
+            f"Do not set any of the events in the other areas below: \n"
+            f"{areas_to_exclude} \n"
         )
 
         if previous_events_json is not None:
@@ -41,6 +48,8 @@ def generate_area_event_sequence(region_json, party_json, enemy_json, area_numbe
                 "The presence of the main enemy should be more hidden and their presence should be hinted at subtly. "
                 "Events should be more focused on the party and the environment."
                 f"The events for the area should be finished with the party leaving the area to go to {next_area}."
+                f"Some of the final events should set up the reason why the party moves to the next area. E.g. an NPC should hint that something important can be found in the next area. "
+                f"Don't set any of the events in the lair of the enemy (\"lair\" in the enemy JSON). "
             )
         else:
             writing_guidelines_5 = (
@@ -59,13 +68,17 @@ def generate_area_event_sequence(region_json, party_json, enemy_json, area_numbe
             "The party should be the main focus of the events. "
             "The events should be dangerous and challenging, but the party should be able to overcome them. "
             "You must not change or add characters to the party. "
+            f"The inventory of the party should be updated as they progress through the events using the inventory_of_story_items JSON element. "
+            f"An item MUST NOT BE removed from the inventory (inventory_of_story_items) unless it is destroyed in the event."
+            f"Make sure the items gained in the event are added to the inventory_of_story_items. "
         )
 
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. "
             f"Please fill the structure below with the generated data. You can and should add elements. "
-            f"The inventory of the party should be updated as they progress through the events using the inventory_of_story_items JSON element."
-            f"An item cannot be removed from the inventory unless it is used in the event."
+            
+            
+
             f"There should be around 25 events in the sequence. "
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"

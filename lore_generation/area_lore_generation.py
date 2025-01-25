@@ -34,7 +34,8 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
     )
 
     writing_guidelines_4 = (
-        "You MUST include the main enemy in the area description. "   
+        "You MUST include the main enemy in the area description. "  
+        "For this task only answer in plain text. Don't respond in JSON." 
     )
     
     prompt = (

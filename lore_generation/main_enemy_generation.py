@@ -7,13 +7,18 @@ def generate_main_enemy(region_lore_json, model = "gpt-4o-mini"):
     """
     try:
         region_lore = json.dumps(region_lore_json, indent=4)
+        region_name = region_lore_json["starting_area"]["name"]
+        lair_location = region_lore_json["starting_area"]["notable_locations"][-1]["name"]
         
         writing_guidelines_1 = (
-            f"Write a detailed description for the main enemy in a fantasy novel."
+            f"Write a detailed description for the main enemy in a fantasy novel. "
             "You MUST use the lore describing the region below (in JSON format) in which the adventures take place in the JSON below to get an idea of the setting. "
             "The enemy MUST be an extremely powerful being that is a threat to the region. "
-            "The enemy should be unique and have a detailed background."
-            "The enemy should be characteristic of the region in which the adventures take place."
+            "The enemy should be unique and have a detailed background. "
+            "The enemy should be characteristic of the region in which the adventures take place. "
+            f"The enemy must live and come from {region_name}. No other places can be mentioned." 
+            f"The enemies lair must be in {lair_location}. "
+            f"All the places mentiond in the description must be mentioned in the region lore. "
         )
 
         structuring_prompt = (

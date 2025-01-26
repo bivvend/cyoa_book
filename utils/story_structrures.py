@@ -1,133 +1,33 @@
-story_progression_structure = {
-    "story": {
-        "title": "",
-        "description": "",
-        "current_area": "",
-        "notable_areas": [
-            {
-                "id": "",
+plot_structure = {
+        "areas" : [{
                 "name": "",
-                "description": "",
-                "related_area": "",
-                "location": "",
-                "events": [
-                    {
-                        "id": "",
-                        "type": "",
-                        "description": "",
-                        "characters_involved": [
-                            ""
-                        ],
-                        "trigger": "",
-                        "outcome": {
-                            "success": "",
-                            "failure": ""
-                        },
-                        "choices": [
-                            {
-                                "description": "",
-                                "consequence": "",
-                                "next_event_id": ""
-                            }
-                        ]
-                    }
-                ],
-                "area_state": {
-                    "status": "",
-                    "changes": [
-                        {
-                            "description": "",
-                            "trigger": ""
-                        }
-                    ]
-                },
-                "notable_features": [
-                    {
-                        "name": "",
-                        "type": "",
-                        "description": "",
-                        "related_event": ""
-                    }
-                ],
-                "factions_present": [
-                    {
-                        "faction_id": "",
-                        "status": ""
-                    }
-                ]
-            }
-        ],
-        "progression": {
-            "visited_areas": [""],
-            "current_area": "",
-        }
-    }
+                "plot_actions_in_area": ["",""],
+                "minor_events_in_area":["", ""],
+                "reason_to_move_on": "",
+                "route_to_next_area": "",
+                "threat_severity": "",
+                "important_items_in_area": ["",""],
+                "important_people_in_area":["",""],
+                "areas_visited" :["",""],
+                "enemies_in_area":["",""]
+        }   
+        ]
 }
 
-story_progression_structure_for_test = {
-    "story": {
-        "title": str,
-        "description": str,
-        "current_area": str,
-        "notable_areas": [
-            {
-                "id": str,
+plot_structure_for_test = {
+        "areas" : [{
                 "name": str,
-                "description": str,
-                "related_area": str,
-                "location": str,
-                "events": [
-                    {
-                        "id": str,
-                        "type": str,
-                        "description": str,
-                        "characters_involved": [
-                            str,str
-                        ],
-                        "trigger": str,
-                        "outcome": {
-                            "success": str,
-                            "failure": str
-                        },
-                        "choices": [
-                            {
-                                "description": str,
-                                "consequence": str,
-                                "next_event_id": str
-                            }
-                        ]
-                    }
-                ],
-                "area_state": {
-                    "status": str,
-                    "changes": [
-                        {
-                            "description": str,
-                            "trigger": str
-                        }
-                    ]
-                },
-                "notable_features": [
-                    {
-                        "name": str,
-                        "type": str,
-                        "description": str,
-                        "related_event": str
-                    }
-                ],
-                "factions_present": [
-                    {
-                        "faction_id": str,
-                        "status": str
-                    }
-                ]
-            }
-        ],
-        "progression": {
-            "visited_areas": [str, str],
-            "current_area": str,
-        }
-    }
+                "plot_actions_in_area": [str,str],
+                "minor_events_in_area":[str, str],
+                "reason_to_move_on": str,
+                "route_to_next_area": str,
+                "threat_severity": str,
+                "important_items_in_area": [str,str],
+                "important_people_in_area":[str,str],
+                "areas_visited" :[str,str],
+                "enemies_in_area":[str,str]
+        }   
+        ]
 }
 
 event_list_structure = {

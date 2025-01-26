@@ -1,104 +1,104 @@
 {
-    "world": {
-        "name": "Eldoria",
-        "description": "Eldoria is a realm of mystic beauty, woven with tales of ancient heroism and the whispers of forgotten magic. Its landscapes range from sun-drenched plains to shadowy forests, each hiding secrets of the ages.",
-        "creation": {
-            "origin_story": "In the dawn of time, Eldoria was forged by the Great Weaver, a celestial entity who spun the world from the threads of light and shadow. As the loom of creation turned, stars were born, and the land was woven into existence.",
-            "primary_gods": [
-                {
-                    "name": "Aelarion",
-                    "domain": "Light and Knowledge",
-                    "symbol": "A radiant sunburst",
-                    "description": "Aelarion, the Bringer of Dawn, is revered as the god of enlightenment and learning, guiding scholars and sages with his luminous presence."
-                },
-                {
-                    "name": "Nythra",
-                    "domain": "Darkness and Mystery",
-                    "symbol": "A crescent moon",
-                    "description": "Nythra, the Keeper of Secrets, governs the night and the unknown, her influence felt in the shadows and in the hearts of those who seek hidden truths."
-                }
-            ]
+  "world": {
+    "name": "Eldoria",
+    "description": "Eldoria is a realm of ancient magic and profound mysteries, where verdant forests and towering mountains cradle civilizations that have thrived for millennia.",
+    "creation": {
+      "origin_story": "In the time before time, Eldoria was woven from the celestial dreams of the gods, each thread imbued with the essence of life, magic, and the eternal struggle between light and shadow.",
+      "primary_gods": [
+        {
+          "name": "Aurelios",
+          "domain": "Sun and Light",
+          "symbol": "Golden Sunburst",
+          "description": "Aurelios, the radiant deity, is revered as the bringer of dawn and the patron of truth. His light banishes darkness and illuminates the paths of wisdom and justice."
         },
-        "geography": {
-            "continents": [
-                {
-                    "name": "Valonara",
-                    "description": "A continent of varied landscapes, from the verdant Emerald Forest to the icy peaks of the Frostfang Mountains. It is a land of wonder and danger, where ancient ruins whisper of past civilizations.",
-                    "notable_locations": [
-                        {
-                            "name": "Emerald Forest",
-                            "description": "A vast, lush woodland teeming with life, where the trees seem to hum with an ancient melody. It is said that the forest is alive, watching over the creatures within."
-                        },
-                        {
-                            "name": "Frostfang Mountains",
-                            "description": "Towering peaks that pierce the sky, covered in eternal snow. The mountains are home to fierce creatures and hidden treasures, guarded by the spirits of the wind."
-                        }
-                    ]
-                }
-            ]
-        },
-        "races": [
-            {
-                "name": "Humans",
-                "description": "Resilient and adaptable, humans are a versatile race known for their ambition and ingenuity. They build sprawling cities and cultivate the land, constantly seeking to push the boundaries of their knowledge and power.",
-                "homeland": "The Kingdom of Aeldera, a flourishing realm of bustling cities and fertile farmlands."
-            },
-            {
-                "name": "Elara",
-                "description": "Graceful and wise, the Elara are an ancient race of elves known for their deep connection to nature and magic. They are guardians of the forests, living in harmony with the land and its creatures.",
-                "homeland": "The Sylvan Glade, a serene and mystical woodland where the Elara dwell in arboreal cities high in the trees."
-            },
-            {
-                "name": "Dwarves",
-                "description": "Stalwart and industrious, the dwarves are master craftsmen and miners. They are a hardy race, thriving in the mountains where they carve their homes into the very rock.",
-                "homeland": "The Ironhold, a vast network of halls and tunnels beneath the Frostfang Mountains, rich with precious metals and gemstones."
-            },
-            {
-                "name": "Gryphons",
-                "description": "Noble and fierce, the gryphons are a proud race of winged humanoids with the heads of eagles and the bodies of lions. They are known for their honor and their mastery of the skies.",
-                "homeland": "The Aeries of Skyrend, a series of lofty nests and fortresses built atop high cliffs, overlooking the world below."
-            },
-            {
-                "name": "Tidekin",
-                "description": "Mysterious and elusive, the Tidekin are an amphibious race with a natural affinity for water. They are gifted swimmers and navigators, often seen as the guardians of the seas.",
-                "homeland": "The Coral Reefs of Azuredeep, an underwater paradise of vibrant colors and teeming marine life."
-            }
-        ],
-        "magic": {
-            "source": "The Arcane Veil",
-            "description": "Magic in Eldoria flows from the Arcane Veil, an ethereal layer of energy that permeates the world. It is a source of great power and mystery, accessible to those with the knowledge and will to harness it.",
-            "schools": [
-                {
-                    "name": "Elementalism",
-                    "description": "The study and manipulation of the natural elements—earth, air, fire, and water. Elementalists are revered for their ability to command the forces of nature."
-                },
-                {
-                    "name": "Illusion",
-                    "description": "A subtle and deceptive school of magic focused on creating illusions and altering perceptions. Illusionists are masters of trickery and confusion."
-                },
-                {
-                    "name": "Necromancy",
-                    "description": "The dark and forbidden art of manipulating life and death. Necromancers wield the power to raise the dead and commune with spirits."
-                }
-            ]
-        },
-        "history": {
-            "eras": [
-                {
-                    "name": "The Age of Dawn",
-                    "timeline": "0-1000 AD",
-                    "events": [
-                        {
-                            "name": "The Great Awakening",
-                            "description": "The world of Eldoria awakens to consciousness, and the first sentient beings emerge. This era marks the beginning of civilization and the rise of the first kingdoms."
-                        },
-                        {
-                            "name": "The War of Shadows",
-                            "description": "A cataclysmic conflict between the forces of light and darkness, led by the gods Aelarion and Nythra. The war shaped the destinies of the races and carved the land itself."
-                        }
-                    ]
-                }
-            ]
+        {
+          "name": "Nyxara",
+          "domain": "Moon and Night",
+          "symbol": "Silver Crescent",
+          "description": "Nyxara, the enigmatic goddess of the night, governs the realms of dreams and mystery. Her crescent guides travelers under the cloak of night, whispering secrets of the cosmos."
         }
+      ]
+    },
+    "geography": {
+      "continents": [
+        {
+          "name": "Valoria",
+          "description": "Valoria is a land of diverse landscapes, from the lush, enchanted forests of the Sylvan Glades to the rugged cliffs of the Storm Coast, where waves crash against ancient stone.",
+          "notable_locations": [
+            {
+              "name": "Sylvan Glades",
+              "description": "A mystical forest teeming with vibrant flora and fauna, home to the elusive Elarae, who commune with nature's spirits."
+            },
+            {
+              "name": "Storm Coast",
+              "description": "A dramatic coastline where tempestuous seas meet jagged cliffs, frequented by brave mariners and the mysterious Sea Elves."
+            }
+          ]
+        }
+      ]
+    },
+    "races": [
+      {
+        "name": "Humans",
+        "description": "Resilient and adaptable, humans build their cities amidst the fertile plains of Eldoria. They are known for their ingenuity and ambition, often seeking knowledge and power.",
+        "homeland": "The Plains of Aranthor"
+      },
+      {
+        "name": "Elarae",
+        "description": "Elarae, the forest-dwelling elves, possess an ethereal grace and a deep connection to the woodland spirits. They are guardians of ancient secrets and masters of archery.",
+        "homeland": "Sylvan Glades"
+      },
+      {
+        "name": "Dwarves",
+        "description": "Stout and steadfast, dwarves inhabit the mighty mountains of Grimstone Hold. They are renowned for their craftsmanship, mining the earth's treasures with unmatched skill.",
+        "homeland": "Grimstone Hold"
+      },
+      {
+        "name": "Orinfolk",
+        "description": "Residing in the coastal caves and reefs, the Orinfolk are sea-dwelling humanoids with shimmering scales. They are adept navigators and guardians of oceanic mysteries.",
+        "homeland": "Coral Reefs of Thalor"
+      },
+      {
+        "name": "Gnomes",
+        "description": "Inventive and whimsical, gnomes dwell in the rolling hills of Tinker's Vale, where they create fantastical devices and alchemical wonders.",
+        "homeland": "Tinker's Vale"
+      }
+    ],
+    "magic": {
+      "source": "The Veil of Aether",
+      "description": "Magic in Eldoria flows from the Veil of Aether, an invisible fabric of energy connecting all living things, manipulated by those who possess the knowledge and skill.",
+      "schools": [
+        {
+          "name": "Elementalism",
+          "description": "Harnessing the raw power of the elements, practitioners of Elementalism command fire, water, earth, and air with formidable might."
+        },
+        {
+          "name": "Thaumaturgy",
+          "description": "Thaumaturgy involves the intricate manipulation of the Aether, allowing for the creation of illusions and the bending of reality."
+        },
+        {
+          "name": "Necromancy",
+          "description": "A forbidden art, necromancy delves into the secrets of life and death, wielding the power to raise the dead and commune with spirits."
+        }
+      ]
+    },
+    "history": {
+      "eras": [
+        {
+          "name": "The Age of Dawn",
+          "timeline": "0-1000 AD (After Dawn)",
+          "events": [
+            {
+              "name": "The Binding of the Veil",
+              "description": "Aurelios and Nyxara weave the Veil of Aether, gifting the world with magic and setting the foundation for civilization."
+            },
+            {
+              "name": "The Founding of Aranthor",
+              "description": "Humans establish their first great city, Aranthor, marking the beginning of their rise to prominence in Eldoria."
+            }
+          ]
+        }
+      ]
     }
+  }
 }

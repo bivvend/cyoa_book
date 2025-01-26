@@ -1,5 +1,5 @@
 from lore_generation import area_lore_generation, global_lore_generation, region_lore_generation, party_generation, main_enemy_generation
-from story_generation import conversation_generation, event_generation, intro_generation
+from story_generation import conversation_generation, event_generation, intro_generation, plot_generation
 from utils import agent, conversation_structures, expected_json_structures, story_structrures, structure_verification
 import os
 import json
@@ -11,7 +11,14 @@ WORLD_LORE_FILE = "world_lore.txt"
 REGION_LORE_FILE = "starting_region_lore.txt"
 PARTY_LORE_FILE = "party.txt"
 ALL_EVENTS_FILE = "all_events.txt"
+ALL_REFINED_EVENTS_FILE = "all_refined_events.txt"
 INTRO_FILE = "intro.txt"
+BASIC_PLOT_FILE = "basic_plot.txt"
+REFINED_PLOT_FILE = "plot.txt"
+PLOT_JSON_FILE = "plot_json_file.txt"
+REFINED_PLOT_JSON_FILE = "refined_plot_json_file.txt"
+PLOT_CRITIQUE_FILE = "plot_critique.txt"
+PLOT_STRUCTURE_CRITIQUE_FILE = "plot_structure_critique.txt"
 
 ALL_EVENTS_CRITIQUE_FILE = "all_events_critique.txt"
 CRITIQUES_BY_AREA_FILE = "critiques_by_area.txt"
@@ -32,12 +39,19 @@ refresh_global_lore = False
 refresh_region_lore = False
 refresh_party_lore = False
 refresh_enemy_lore = False
+refresh_plot = False
+refresh_plot_critique = False
+refresh_refined_plot = False
+refresh_plot_structre_file = False
+refresh_critique_of_plot_structure_file = False
+refresh_plot_structure_after_critique = False
 refresh_area_lore = False
 refresh_events = False
 refresh_conversations = False
 refresh_intro = False
-refresh_all_events_critique = False
-refresh_area_events_critique = False
+refresh_all_events_critique = True
+refresh_area_events_critique = True
+refresh_refined_events = True
 
 configure_new_assistant = False
 configure_new_thread = True
@@ -209,7 +223,7 @@ def generate_enemy_lore(region_lore_json):
         print(f"Error in generate_enemy_lore: {e}")
         return None
 
-def generate_areas(global_lore_json, region_lore_json, enemy_lore_json):
+def generate_areas(refined_plot_text, region_lore_json, enemy_lore_json):
     """
     Generates detailed descriptions for areas in the starting region.
     """
@@ -234,7 +248,7 @@ def generate_areas(global_lore_json, region_lore_json, enemy_lore_json):
                 else:
                     threat_severity = "High"
                 print(f"Generating fuller description of area {area['name']} with threat severity {threat_severity}")
-                description = area_lore_generation.generate_area_thematic_description(global_lore_json, region_lore_json, area["name"], enemy_lore_json, threat_severity)
+                description = area_lore_generation.generate_area_thematic_description(refined_plot_text, region_lore_json, area["name"], enemy_lore_json, threat_severity)
                 area_description_list.append(description)
                 txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, AREAS_SUB_DIR, f"area_{count}.txt")
                 with open(txt_file, 'w') as f:
@@ -272,7 +286,7 @@ def generate_areas(global_lore_json, region_lore_json, enemy_lore_json):
         print(f"Error in generate_areas: {e}")
         return None
     
-def generate_events(region_lore_json, party_json, enemy_json):
+def generate_events(plot_json, region_lore_json, party_json, enemy_json):
     """
     Generates events for the areas in the starting region.
     """
@@ -299,17 +313,7 @@ def generate_events(region_lore_json, party_json, enemy_json):
                 else:
                     threat_severity = "High"
                 print(f"Generating events for area {area['name']} with threat severity {threat_severity}")
-                previous_events = None
-                next_area = None
-                if count == 0:
-                    previous_events = None
-                else:   
-                    previous_events = events_json_list_all_areas[count-1]
-                if count < len(areas) - 1:
-                    next_area = areas[count+1]["name"]
-                else:
-                    next_area = None
-                events_list = event_generation.generate_area_event_sequence(region_lore_json, party_json, enemy_json, count, threat_severity, previous_events, next_area)
+                events_list = event_generation.generate_area_event_sequence(plot_json["areas"][count], region_lore_json, party_json, enemy_json, count, threat_severity)
                 events_json = json.loads(events_list)
                 structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
                 events_json_list_all_areas.append(events_json)        
@@ -432,6 +436,62 @@ def critique_all_events(all_events_json):
     except Exception as e:
         print(f"Error in critique_events: {e}")
         return None
+    
+def critique_plot(plot_text):
+    """
+    Generates critique on first pass at plot
+    """
+    try:
+        critic_text = None
+        
+        if refresh_plot_critique:
+            print(f"Generating plot critique...")
+            critic_text = plot_generation.critique_plot(plot_text, model=gpt_model)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_CRITIQUE_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading plot critique text..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_CRITIQUE_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in critique_plot: {e}")
+        return None
+
+def critique_plot_structure(plot_structure_json, plot_text):
+    """
+    Generates critique on first pass at plot
+    """
+    try:
+        critic_text = None
+        
+        if refresh_critique_of_plot_structure_file:
+            print(f"Generating plot structre critique...")
+            critic_text = plot_generation.critique_plot_json(plot_structure_json, plot_text, model=gpt_model)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading plot structre critique..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in critique_plot_structure: {e}")
+        return None
 
 def critique_area_events(region_lore_json, all_events_json, all_events_critique_txt):
     """
@@ -489,14 +549,14 @@ def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, al
         events_json_list_all_areas = [] 
         all_events = {}    
    
-        if refresh_events:
+        if refresh_refined_events:
             count = 0  
             # Delete the previous events files
-            dir = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR)
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR)
             files = os.listdir(dir)
             files = [f for f in files if ".txt" in f and "events" in f]
             for f in files:
-                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, f)
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f)
                 os.remove(file_path)
 
             for area in areas:
@@ -504,34 +564,24 @@ def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, al
                     threat_severity = "Low"
                 else:
                     threat_severity = "High"
-                print(f"Generating events for area {area['name']} with threat severity {threat_severity}")
-                previous_events = None
-                next_area = None
-                if count == 0:
-                    previous_events = None
-                else:   
-                    previous_events = events_json_list_all_areas[count-1]
-                if count < len(areas) - 1:
-                    next_area = areas[count+1]["name"]
-                else:
-                    next_area = None
-                events_list = event_generation.generate_area_event_sequence(region_lore_json, party_json, enemy_json, count, threat_severity, previous_events, next_area)
+                print(f"Regenerating events for area {area['name']} with threat severity {threat_severity}")
+                events_list = event_generation.regenerate_area_events_based_on_feedback(region_lore_json, party_json, enemy_json, all_events_json, threat_severity, count, area_by_area_feedback_json[area['name']] , model = gpt_model)
                 events_json = json.loads(events_list)
                 structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
                 events_json_list_all_areas.append(events_json)        
                 count += 1
-                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, f"events_{count}.txt")
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f"refined_events_{count}.txt")
                 with open(txt_file, 'w') as f:
                     f.write(events_list)
                 all_events[area["name"]] = events_json
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, ALL_EVENTS_FILE)
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
             with open(txt_file, 'w') as f:
                 f.write(json.dumps(all_events, indent=4))
             return all_events
         else:
             # Read existing region lore from file
-            print("Loading all events dictionary")
-            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, EVENTS_SUB_DIR, ALL_EVENTS_FILE)
+            print("Loading all refined events dictionary")
+            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
             events_txt = ""
             with open(events_file, 'r') as f:
                 lines = f.readlines()
@@ -540,9 +590,132 @@ def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, al
             all_events = json.loads(events_txt)
             return all_events
     except Exception as e:
-        print(f"Error in generate_events: {e}")
+        print(f"Error in regenerate_events_from_feedback: {e}")
         return None
-     
+
+def generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json):
+    """
+    Generates a first pass at the plot
+    """
+    try:
+        plot_text = None
+        
+        if refresh_plot:
+            print(f"Generating basic plot...")
+            plot_text = plot_generation.generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json)
+            assert plot_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, BASIC_PLOT_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(plot_text)
+        else:
+            print("Loading basic plot text..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, BASIC_PLOT_FILE)
+            plot_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    plot_text += line
+        return plot_text
+    except Exception as e:
+        print(f"Error in generate_plot: {e}")
+        return None 
+
+def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text ):
+    """
+    Generates a refined plot
+    """
+    try:
+        plot_text = None
+        
+        if refresh_refined_plot:
+            print(f"Generating refined plot...")
+            plot_text = plot_generation.generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = gpt_model)
+            assert plot_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(plot_text)
+        else:
+            print("Loading refined plot text..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_FILE)
+            plot_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    plot_text += line
+        return plot_text
+    except Exception as e:
+        print(f"Error in generate_refined_plot: {e}")
+        return None 
+       
+def generate_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, plot_text):
+    """
+    Fills the plot structure based on the plot text
+    """
+    try:
+        if refresh_plot_structre_file:
+            print("Generating plot structure file...")
+            plot_json_txt = plot_generation.convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_json, plot_text,  model = gpt_model)
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, PLOT_JSON_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(plot_json_txt)
+            
+            plot_json = json.loads(plot_json_txt)
+
+        else:
+            print("Loading plot structure..")
+            plot_file = os.path.join(BASE_DIR, OUTPUT_DIR, PLOT_JSON_FILE)
+            plot_json_txt = ""
+            with open(plot_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    plot_json_txt += line
+            plot_json = json.loads(plot_json_txt)
+        
+        # Validate the structure of the conversations
+        structure_verification.verify_lore_structure(plot_json, story_structrures.plot_structure_for_test) 
+        print("Plot structure passed verification.")   
+        return plot_json
+    except Exception as e:
+        print(f"Error in generate_plot_structure: {e}")
+        return None
+    
+def generate_refined_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, plot_json, feedback_txt):
+    """
+    Refines the plot json structure
+    """
+    try:
+        if refresh_plot_structure_after_critique:
+            print("Regenerating plot structure file...")
+            plot_json_txt = plot_generation.improve_plot_json_based_on_feedback(plot_json, feedback_txt, region_lore_json, party_lore_json, enemy_lore_json,  model = gpt_model)
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_JSON_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(plot_json_txt)
+            
+            plot_json = json.loads(plot_json_txt)
+
+        else:
+            print("Loading refined plot structure..")
+            plot_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_JSON_FILE)
+            plot_json_txt = ""
+            with open(plot_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    plot_json_txt += line
+            plot_json = json.loads(plot_json_txt)
+        
+        # Validate the structure of the conversations
+        structure_verification.verify_lore_structure(plot_json, story_structrures.plot_structure_for_test) 
+        print("Refined plot structure passed verification.")   
+        return plot_json
+    except Exception as e:
+        print(f"Error in generate_refined_plot_structure: {e}")
+        return None
+
+
+
+
 if __name__ == "__main__":
 
     #Create the directories if they don't exist
@@ -556,12 +729,49 @@ if __name__ == "__main__":
     enemy_lore_json = generate_enemy_lore(region_lore_json)
     assert enemy_lore_json is not None
 
+    #With the bones of the world fleshed out we generate the most important document, the plot!
+
+    plot_text = generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json)
+    #Generate a critique of the plot
+    plot_critique_text = critique_plot(plot_text)
+    #Use the critique to improve the plot
+    refined_plot_text = generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, plot_text, plot_critique_text)
+
+
+    #Convert the plot text into a structure
+    plot_json = generate_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, refined_plot_text)
+    assert plot_json is not None
+
+    #Critique the plot structure
+    plot_structure_critique_txt = critique_plot_structure(plot_json, refined_plot_text)
+
+    refined_plot_json = generate_refined_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, plot_json, plot_structure_critique_txt)
+
     #Generate areas and then modify the region_lore to contain the new descriptions
-    region_lore_json = generate_areas(global_lore_json, region_lore_json, enemy_lore_json)
+    region_lore_json = generate_areas(refined_plot_text, region_lore_json, enemy_lore_json)
     assert region_lore_json is not None
+
+
     #Generate events from region lore
-    all_events_json = generate_events(region_lore_json, party_lore_json, enemy_lore_json)
+    all_events_json = generate_events(refined_plot_json, region_lore_json, party_lore_json, enemy_lore_json)
     assert all_events_json is not None
+
+
+    #Refine structure based on feedback 
+
+    critique_prompt = critique_all_events(all_events_json)
+
+
+    #Based on the overall feedback critique the events area by area.
+    area_by_area_critiques = critique_area_events(region_lore_json, all_events_json, critique_prompt)
+    assert area_by_area_critiques is not None
+
+    refined_events_json = regenerate_events_from_feedback(region_lore_json, party_lore_json, enemy_lore_json, all_events_json, area_by_area_critiques)
+    assert refined_events_json is not None
+
+    exit()
+
+    #PLOT AND EVENTS NOW FIXED
 
     #Generate conversations
     conversation_json = generate_conversations(region_lore_json, party_lore_json, all_events_json)
@@ -569,16 +779,6 @@ if __name__ == "__main__":
 
     intro_text = generate_introduction(global_lore_json, region_lore_json, party_lore_json, all_events_json)
     assert intro_text is not None
-
-    #Refine structure based on feedback 
-
-    critique_prompt = critique_all_events(all_events_json)
-    print(critique_prompt)
-
-    #Based on the overall feedback critique the events area by area.
-    area_by_area_critiques = critique_area_events(region_lore_json, all_events_json, critique_prompt)
-    assert area_by_area_critiques is not None
-    print(area_by_area_critiques)
 
     #If needed we should build a new assistant 
     if configure_new_assistant:

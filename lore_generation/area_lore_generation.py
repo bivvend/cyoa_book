@@ -7,22 +7,25 @@ global_writing_guidelines_1 = (
 )
 global_writing_guidelines_2 = "The description should be around 500 words long."
 
-def generate_area_thematic_description(global_lore_json, region_lore_json, area_name, enemy_lore_json, threat_severity, model = "gpt-4o-mini"):
+def generate_area_thematic_description( plot_json, region_lore_json, area_name, enemy_lore_json, threat_severity, model = "gpt-4o-mini"):
     """
     Generates lore for a specific area in the game.
     """
 
-    global_lore = json.dumps(global_lore_json, indent=4)
     region_lore = json.dumps(region_lore_json, indent=4)
     enemy_lore = json.dumps(enemy_lore_json, indent=4)
+    plot_txt = json.dumps(plot_json, indent=4)
     
     writing_guidelines_1 = (
         f"Write a detailed description for the area called {area_name} of a fantasy story. "
         "You can use the Starting region JSON below to get an idea of the area."
     )
     writing_guidelines_2 = (
-        "Use the global lore (the lore of the wider world) defined in the global lore JSON below to expand on the details. "
-        "The starting region lore is more important than the global lore"
+        "The area is part of story. The plot of the story is given below in JSON format. "
+        "Make sure the description of the area fits well with the plot, but don't talk about the plot in the description.  Is is just scene setting! "
+        f"Any characters mentioned in the region JSON for {area_name} and within the plot JSON for this area should be introduced, but don't say what they are going to do. "
+        f"Dont mention any of the next steps or where the adventurers will go in this description. "
+        f"Don't mention any of the items they might use or find. "
     )
 
     writing_guidelines_3 = (
@@ -33,8 +36,7 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
         "If the threat severity is Low, the main enemy should be more hidden and their presence should be hinted at subtly. "
     )
 
-    writing_guidelines_4 = (
-        "You MUST include the main enemy in the area description. "  
+    writing_guidelines_4 = ( 
         "For this task only answer in plain text. Don't respond in JSON." 
     )
     
@@ -44,7 +46,7 @@ def generate_area_thematic_description(global_lore_json, region_lore_json, area_
         f"{writing_guidelines_1}\n"
         f"Starting region lore JSON: \n {region_lore}\n\n"
         f"{writing_guidelines_2}\n"
-        f"Global lore JSON: \n {global_lore}\n\n"
+        f"Plot: \n {plot_txt}\n\n"
         f"{writing_guidelines_3}\n\n"
         f"Enemy JSON:\n{enemy_lore}\n"
         f"{writing_guidelines_4}\n"

@@ -36,17 +36,18 @@ writing_guidelines_3 = (
 writing_guidelines_4 = (
     "The notable_locations you generate are very important and will be used as areas for the adventure. "
     "One area should be a dungeon or tower,  and one should be a town or village. "
-    "They can't all have the same theme e.g. can't all be forest."
 
     "The sense of peril and danger should increase through the list of notable locations. "
     "The threats in the locations should also increase. The first should be mild and gentle "
     "(but with an ominous presence of danger). The last should be dangerous and terrifying, "
     "suitable for an end-of-story grand confrontation!"
 
+    "All the notable locations MUST be contistent with theme inspired by the name of the area. E.g. if it mountainous all the notable locations should be in and around mountains etc. "
+
 
 )
 
-def generate_starting_region_lore(global_lore_json, save=True, model = "gpt-4o-mini"):
+def generate_starting_region_lore(global_lore_json, model = "gpt-4o-mini"):
     """
     Generates lore for the region in which the adventure happens.
 
@@ -70,12 +71,6 @@ def generate_starting_region_lore(global_lore_json, save=True, model = "gpt-4o-m
         )
 
         response = generate_text.generate_text(prompt, model_in=model)
-        if save:
-            BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-            txt_file = os.path.join(BASE_DIR, "../test_data/starting_region_lore.txt")
-
-            with open(txt_file, 'w') as f:
-                f.write(response)
 
         return response
     except Exception as e:

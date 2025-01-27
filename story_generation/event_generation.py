@@ -267,3 +267,64 @@ def regenerate_area_events_based_on_feedback(plot_json, region_json, party_json,
     except Exception as e:
         print(f"Error in generate_area_event_sequence: {e}")
         return None
+    
+
+def regenerate_area_events_with_map(map_json, region_json, party_json, all_events_json, area_number, model = "gpt-4o-mini"):
+    """
+    Regenerates a sequence of events for the story in this area.
+    The map is given to allow the introduction of the transition events between locations 
+    """
+    try:
+        # Convert JSON to string
+        party_json_txt = json.dumps(party_json, indent=4)
+        area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
+
+        previous_events_txt = json.dumps(all_events_json[area_name], indent=4)
+
+        map_json_text = json.dumps(map_json[area_name], indent=4)
+
+        writing_guidelines_1 = (
+            f"You are an author of well written fantasy stories.  You have generated a set of events for the area known as {area_name} in the story. "
+            f"Previously, you wrote a set of events for the story in the events JSON below: \n"
+            f"{previous_events_txt} \n"
+        )
+
+        writing_guidelines_2 = (
+            f"After writing you received some information about the layout of the area in a map structure. "
+            f"The map structure in JSON format is below: \n"
+            f"{map_json_text} \n"
+
+            f"Please revise the events based on the map. "
+            "You must add more events to your events JSON every time the characters move from one location to the next. "
+            "These events should be included witin the new structure and all the event_ids should be corrected for the new events. "
+            "Don't delete the old events, just modify their event_id as required. "
+            "The map structure can be used to define the transition events. "
+            "The transition events should all have \"type\": \"transition_event\" ",
+        )
+
+        writing_guidelines_3 = (
+            "For your info, the party is a group of adventurers that are exploring the area. They are defined in the JSON structure below: \n "
+            f"{party_json_txt} \n"
+        )
+
+        structuring_prompt = (
+            f"Your response MUST be in json format so that it can be read by a python program. This is the same structure you used before."
+            f"Please fill the structure below with the modified events. If you think it would be better to add more events to meet the feedback, please do."
+            f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
+            f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
+            "All the values in the JSON should be strings enclosed with \"\". \n"
+            "No values or lists should be empty.  If you don't want to add anything just put \"NA\""
+            f"{story_structrures.event_list_structure}\n"
+        )
+        
+        prompt = (
+            f"{writing_guidelines_1}\n"
+            f"{writing_guidelines_2}\n"
+            f"{writing_guidelines_3}\n"
+            f"{structuring_prompt}\n"
+        )
+
+        return generate_text.generate_text(prompt, max_tokens=10000, model_in= model)
+    except Exception as e:
+        print(f"Error in generate_area_event_sequence: {e}")
+        return None

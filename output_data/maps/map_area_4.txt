@@ -1,0 +1,63 @@
+{
+    "name": "Maelstrom Keep",
+    "locations": [
+        "Fortress Entrance",
+        "Inner Sanctum",
+        "Throne Room",
+        "War Room",
+        "Storm Chamber",
+        "Echoing Abyss"
+    ],
+    "paths": [
+        {
+            "from": "Fortress Entrance",
+            "to": "Inner Sanctum",
+            "description": "As you leave the Fortress Entrance, the path narrows, flanked by ancient statues that seem to watch your every move. The air is thick with anticipation, and the sound of distant thunder echoes through the corridors, urging you onward.",
+            "threat_level": "Moderate",
+            "dangers": [
+                "Tidal Traps",
+                "Spectral Whispers"
+            ]
+        },
+        {
+            "from": "Inner Sanctum",
+            "to": "Throne Room",
+            "description": "The path to the Throne Room winds through shadowed halls where the flickering torchlight dances across the stone walls. The temperature drops noticeably, and a faint, eerie melody drifts through the air, tugging at your senses.",
+            "threat_level": "High",
+            "dangers": [
+                "Cursed Knights",
+                "Echoes of the Past"
+            ]
+        },
+        {
+            "from": "Throne Room",
+            "to": "War Room",
+            "description": "Leaving the grandeur of the Throne Room behind, the route to the War Room is an unsettling passage lined with relics of past victories and defeats. The air is charged with an unseen tension, and each step feels as if you're walking through history itself.",
+            "threat_level": "Low",
+            "dangers": [
+                "Lingering Memories",
+                "Fading Shadows"
+            ]
+        },
+        {
+            "from": "War Room",
+            "to": "Storm Chamber",
+            "description": "The journey from the War Room to the Storm Chamber is fraught with a palpable sense of urgency. The corridor is illuminated by flashes of distant lightning, and the sound of crashing waves can be heard, echoing through the stone walls.",
+            "threat_level": "Severe",
+            "dangers": [
+                "Tempestus's Wrath",
+                "Unpredictable Lightning"
+            ]
+        },
+        {
+            "from": "Storm Chamber",
+            "to": "Echoing Abyss",
+            "description": "As you move from the Storm Chamber towards the Echoing Abyss, the atmosphere shifts. The air grows heavier, burdened with an oppressive silence, broken only by the occasional distant rumble of thunder, hinting at the power that lies ahead.",
+            "threat_level": "Extreme",
+            "dangers": [
+                "Illusory Pitfalls",
+                "Chaotic Winds"
+            ]
+        }
+    ]
+}

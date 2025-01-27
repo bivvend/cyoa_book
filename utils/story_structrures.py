@@ -1,3 +1,32 @@
+map_structure = {
+        "name": "",
+        "locations":["", ""],
+        "paths":[
+            {
+                "from":"",
+                "to": "",
+                "description":"",
+                "threat_level":"",
+                "dangers":["",""]            
+            }
+        ],
+        
+}
+
+map_structure_for_test = {
+        "name":str,
+        "locations":[str, str],
+        "paths":[
+            {
+                "from":str,
+                "to": str,
+                "description":str,
+                "threat_level":str,
+                "dangers":[str,str]            
+            }
+        ],
+}
+
 plot_structure = {
         "areas" : [{
                 "name": "",

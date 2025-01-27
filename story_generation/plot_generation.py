@@ -44,7 +44,7 @@ def generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, e
         writing_guidelines_5 = ( 
             "The plot summary should be around 800 words long and be interesting and novel. "
             "The most important thing is that the plot makes logical sense from start to finish, without any unsolved or incomplete story elements. "
-            "The summary should introduce some of the important items in the story that used to defeat the enemy or to progress. "
+            "The summary should introduce at least one important item in the story that used to defeat the enemy or to progress. "
         )
 
         prompt = (
@@ -205,8 +205,8 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. "
             f"Please fill the structure below with the generated data. You can and should add elements. "
-            f"All the events, enemies and action within the plot should be stored in this structure. "
-            f"The story has 4 areas (explitily {areas_to_include}). Each area should be its own \"area\" within the structure. "
+            f"All the events, enemies and action within the plot should be stored in this structure."
+
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"
             f"{story_structrures.plot_structure}\n"
@@ -215,6 +215,14 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         writing_guidelines_5 = (
             "For each area please fill the \"minor_events_in_area\" with at least 10 less significant events that are thematically relevant and develop the characters and fill out the plot.  "
             "These extra events should be assiciated with the enemies, areas visited and characters in the area. "
+
+            f"The story has 4 areas (explitily {areas_to_include}). Each area should be its own \"area\" within the structure. "
+                
+            "There should be one or more main plot item, the status of which is tracked through all the areas. "
+            "Don't forget to include this item in all areas. If the party hasn't found it yet, label it as not found."
+            "Track any major changes to the status of the party members too, and update this as the story goes on. "
+            "Don't remove status changes unless the effect has expired. "
+            "The list in the next area should generally have all the status changes from the previous area. "
         )
 
         prompt = (
@@ -306,6 +314,11 @@ def improve_plot_json_based_on_feedback(plot_json, feedback_txt, region_lore_jso
             "After writing the JSON you received the feedback on the structure below: \n"
             f"{feedback_txt}"
             "You need modify the data in your JSON structure to fully addess all the feedback and improve the structure. "
+
+            "There should still be at least one main plot item, the status of which is tracked through all the areas. "
+            "Don't forget to include this item in all areas. If the party hasn't found it yet, label it as not found."
+            "Don't remove status changes unless the effect has expired. "
+            "The list in the next area should generally have all the status changes from the previous area. "
         )
 
         structuring_prompt = (

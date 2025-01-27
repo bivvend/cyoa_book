@@ -9,6 +9,7 @@ def generate_area_event_sequence(plot_json, region_json, party_json, enemy_json,
         # Convert JSON to string
         party_json_txt = json.dumps(party_json, indent=4)
         enemy_json_txt = json.dumps(enemy_json, indent=4)
+
         plot_json_txt = json.dumps(plot_json, indent=4)
 
         area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
@@ -25,8 +26,8 @@ def generate_area_event_sequence(plot_json, region_json, party_json, enemy_json,
 
         writing_guidelines_2 = (
             f"Use the plot JSON structure defined below as the prime reference for the events. \n {plot_json_txt}\n "
-            f"Don't include any plot events not in {area_name}. "
-            f"Flesh out the \"minor_events_in_area\" to complete all the events you need."
+            f"Only include event from {area_name}. "
+            f"Flesh out the \"minor_events_in_area\" for {area_name} to complete all the events you need."
         )
 
         writing_guidelines_3 = (
@@ -63,6 +64,8 @@ def generate_area_event_sequence(plot_json, region_json, party_json, enemy_json,
             f"The inventory of the party should be updated as they progress through the events using the inventory_of_story_items JSON element. "
             f"An item MUST NOT BE removed from the inventory (inventory_of_story_items) unless it is destroyed in the event."
             f"Make sure the items gained in the event are added to the inventory_of_story_items. "
+
+            "The plot JSON tracks the staus of the main plot items.  Make sure you follow the status of this item. "
         )
 
         structuring_prompt = (
@@ -75,6 +78,7 @@ def generate_area_event_sequence(plot_json, region_json, party_json, enemy_json,
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"
+            "No values or lists should be empty.  If you don't want to add anything just put \"NA\""
             f"{story_structrures.event_list_structure}\n"
         )
         
@@ -161,7 +165,7 @@ def get_critique_on_single_area_events(events_json, overall_critique_txt ,model 
         print(f"Error in get_critique_on_single_area_events: {e}")
         return None
     
-def regenerate_area_events_based_on_feedback(region_json, party_json, enemy_json, all_events_json, threat_severity, area_number, feedback_text , model = "gpt-4o-mini"):
+def regenerate_area_events_based_on_feedback(plot_json, region_json, party_json, enemy_json, all_events_json, threat_severity, area_number, feedback_text , model = "gpt-4o-mini"):
     """
     Regenerates a sequence of events for the story in this area. 
     """
@@ -169,6 +173,7 @@ def regenerate_area_events_based_on_feedback(region_json, party_json, enemy_json
         # Convert JSON to string
         party_json_txt = json.dumps(party_json, indent=4)
         enemy_json_txt = json.dumps(enemy_json, indent=4)
+        plot_json_txt = json.dumps(plot_json, indent = 4)
 
         area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
 
@@ -190,8 +195,12 @@ def regenerate_area_events_based_on_feedback(region_json, party_json, enemy_json
 
         area_decription = region_json["starting_area"]["notable_locations"][area_number]["description"]
 
+
         writing_guidelines_3 = (
-            f"Previously you used the area decription below as the prime reference for the events. " 
+            f"Previously you used the plot JSON structure defined below as the prime reference for the events. \n {plot_json_txt}\n "
+            f"Only include event from {area_name}. "
+
+            f"You also used the area decription below as another reference for the events. " 
             f"Keep this as a prime reference, but you can make modifications based on the feedback.  \n Area Description: {area_decription}\n "
         )
 
@@ -226,6 +235,7 @@ def regenerate_area_events_based_on_feedback(region_json, party_json, enemy_json
             f"The inventory of the party should be updated as they progress through the events using the inventory_of_story_items JSON element. "
             f"An item MUST NOT BE removed from the inventory (inventory_of_story_items) unless it is destroyed in the event."
             f"Make sure the items gained in the event are added to the inventory_of_story_items. "
+            f""
         )
 
         structuring_prompt = (
@@ -235,6 +245,7 @@ def regenerate_area_events_based_on_feedback(region_json, party_json, enemy_json
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"
+            "No values or lists should be empty.  If you don't want to add anything just put \"NA\""
             f"{story_structrures.event_list_structure}\n"
         )
         

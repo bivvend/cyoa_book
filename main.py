@@ -49,8 +49,8 @@ refresh_area_lore = False
 refresh_events = False
 refresh_conversations = False
 refresh_intro = False
-refresh_all_events_critique = True
-refresh_area_events_critique = True
+refresh_all_events_critique = False
+refresh_area_events_critique = False
 refresh_refined_events = True
 
 configure_new_assistant = False
@@ -538,7 +538,7 @@ def critique_area_events(region_lore_json, all_events_json, all_events_critique_
         print(f"Error in critique_events: {e}")
         return None
 
-def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json):
+def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json):
     """
     Regenerates events for the areas based on the critique
     """
@@ -565,7 +565,7 @@ def regenerate_events_from_feedback(region_lore_json, party_json, enemy_json, al
                 else:
                     threat_severity = "High"
                 print(f"Regenerating events for area {area['name']} with threat severity {threat_severity}")
-                events_list = event_generation.regenerate_area_events_based_on_feedback(region_lore_json, party_json, enemy_json, all_events_json, threat_severity, count, area_by_area_feedback_json[area['name']] , model = gpt_model)
+                events_list = event_generation.regenerate_area_events_based_on_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, threat_severity, count, area_by_area_feedback_json[area['name']] , model = gpt_model)
                 events_json = json.loads(events_list)
                 structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
                 events_json_list_all_areas.append(events_json)        
@@ -752,9 +752,10 @@ if __name__ == "__main__":
     assert region_lore_json is not None
 
 
-    #Generate events from region lore
+    #Generate events from region lore and plot
     all_events_json = generate_events(refined_plot_json, region_lore_json, party_lore_json, enemy_lore_json)
     assert all_events_json is not None
+
 
 
     #Refine structure based on feedback 
@@ -766,9 +767,10 @@ if __name__ == "__main__":
     area_by_area_critiques = critique_area_events(region_lore_json, all_events_json, critique_prompt)
     assert area_by_area_critiques is not None
 
-    refined_events_json = regenerate_events_from_feedback(region_lore_json, party_lore_json, enemy_lore_json, all_events_json, area_by_area_critiques)
+    refined_events_json = regenerate_events_from_feedback(refined_plot_json,region_lore_json, party_lore_json, enemy_lore_json, all_events_json, area_by_area_critiques)
     assert refined_events_json is not None
 
+    
     exit()
 
     #PLOT AND EVENTS NOW FIXED

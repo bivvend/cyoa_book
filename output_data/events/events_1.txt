@@ -2,183 +2,303 @@
     "events": [
         {
             "id": "event_1",
-            "type": "Plot",
-            "description": "The Seekers gather information about the Sea Wraiths and Tempestus from the villagers.",
-            "npcs_involved": ["Eldra Wavewalker", "Captain Brine"],
+            "type": "main_plot_event",
+            "description": "The Seekers arrive at Gale Village and meet Eldra Wavewalker, who shares tales of the sea and its dangers.",
+            "location_within_area": "Town Square",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Eldra Wavewalker"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers learn crucial details about Tempestus's influence over the storms and the Sea Wraiths.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers gain valuable knowledge about the sea's perils.",
+            "status_changes": [
+                {
+                    "description": "Gained insight into Gale Village's history.",
+                    "consequence": "Increased understanding of local threats."
+                }
+            ]
         },
         {
             "id": "event_2",
-            "type": "Minor",
-            "description": "Thorin helps repair a damaged boat, earning the villagers' trust.",
-            "npcs_involved": ["Villagers"],
-            "party_members_involved": ["Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The villagers become more cooperative and willing to share information.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Nerin Tidecaller warns the Seekers of ominous signs from the sea, hinting at Tempestus's growing influence.",
+            "location_within_area": "The Salty Anchor",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Nerin Tidecaller"],
+            "party_members_involved": ["Aric Stormrider"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers are alerted to the increasing danger from the sea.",
+            "status_changes": [
+                {
+                    "description": "Heightened awareness of looming threats.",
+                    "consequence": "Urgency to act increases."
+                }
+            ]
         },
         {
             "id": "event_3",
-            "type": "Minor",
-            "description": "Elaria uses her illusions to entertain children, bringing a moment of joy.",
-            "npcs_involved": ["Village Children"],
-            "party_members_involved": ["Elaria Moonshadow"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The atmosphere in Gale Village lightens, fostering goodwill toward the Seekers.",
-            "status_changes": []
+            "type": "main_plot_event",
+            "description": "The Seekers experience a violent storm, realizing the urgency of their mission to retrieve the Shell of Serenity.",
+            "location_within_area": "Coastal Path",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["Sea Wraiths"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers are forced to seek shelter and plan their next steps.",
+            "status_changes": [
+                {
+                    "description": "Increased resolve to locate the Shell of Serenity.",
+                    "consequence": "The party's mission becomes urgent."
+                }
+            ]
         },
         {
             "id": "event_4",
-            "type": "Minor",
-            "description": "Captain Brine shares tales of his pirate past with the Seekers, hinting at Tempestus's control over the seas.",
-            "npcs_involved": ["Captain Brine"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The party learns about hidden locations where Tempestus's influence is evident.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Aric discovers a maritime relic that hints at the origins of Tempestus.",
+            "location_within_area": "Abandoned Lighthouse",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Maritime Relic"],
+            "inventory_of_story_items": ["Maritime Relic"],
+            "outcome": "Aric gains knowledge about Tempestus's past.",
+            "status_changes": [
+                {
+                    "description": "Fascinated by the relic's history.",
+                    "consequence": "Strengthened resolve to confront Tempestus."
+                }
+            ]
         },
         {
             "id": "event_5",
-            "type": "Minor",
-            "description": "Nerin Tidecaller predicts an incoming storm with uncanny accuracy, revealing Tempestus's manipulation.",
-            "npcs_involved": ["Nerin Tidecaller"],
-            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist"],
-            "threats_involved": ["Tempestus"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers are alerted to a brewing storm that may threaten the village.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Elaria senses a malevolent presence in the village, linked to the Sea Wraiths.",
+            "location_within_area": "Village Square",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elaria Moonshadow"],
+            "threats_involved": ["Sea Wraiths"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "Elaria's intuition alerts the party to hidden dangers.",
+            "status_changes": [
+                {
+                    "description": "Increased caution among party members.",
+                    "consequence": "Preparedness for potential attacks."
+                }
+            ]
         },
         {
             "id": "event_6",
-            "type": "Minor",
-            "description": "A rogue wave crashes, nearly sweeping away a villager, causing panic and fear.",
-            "npcs_involved": ["Villager"],
-            "party_members_involved": ["Thorin Ironfist", "Elaria Moonshadow"],
-            "threats_involved": ["Rogue Wave"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "Thorin saves the villager, reinforcing his reputation as a protector.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Thorin helps defend the village from a Sea Wraith attack, proving his loyalty and gaining their trust.",
+            "location_within_area": "Village Perimeter",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Village Guards"],
+            "party_members_involved": ["Thorin Ironfist"],
+            "threats_involved": ["Sea Wraiths"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "Thorin earns the respect of the villagers.",
+            "status_changes": [
+                {
+                    "description": "Gains trust from villagers.",
+                    "consequence": "Stronger alliances formed."
+                }
+            ]
         },
         {
             "id": "event_7",
-            "type": "Minor",
-            "description": "The Seekers witness the eerie glow of the Storm Fern during a stormy night, linking it to Tempestus's power.",
-            "npcs_involved": [],
+            "type": "minor_event",
+            "description": "The Seekers uncover a hidden passage in The Salty Anchor, leading to Eldra's secret map.",
+            "location_within_area": "The Salty Anchor",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Eldra Wavewalker"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
-            "threats_involved": ["Tempestus"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The party realizes the Storm Fern is a sign of Tempestus’s presence in Gale Village.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["Secret Map"],
+            "inventory_of_story_items": ["Secret Map"],
+            "outcome": "The Seekers gain a crucial lead on the Shell of Serenity's location.",
+            "status_changes": [
+                {
+                    "description": "Acquired Eldra's secret map.",
+                    "consequence": "Knowledge of the Shell of Serenity's location."
+                }
+            ]
         },
         {
             "id": "event_8",
-            "type": "Minor",
-            "description": "Eldra shares a legend of Tempestus's origins with the Seekers, deepening their understanding of the threat.",
-            "npcs_involved": ["Eldra Wavewalker"],
-            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist"],
-            "threats_involved": ["Tempestus"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers gain insight into how to combat Tempestus's growing power.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Captain Brine shares tales of Tempestus's past attacks over a hearty stew, instilling urgency in the Seekers.",
+            "location_within_area": "The Salty Anchor",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Captain Brine"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers realize the severity of their mission.",
+            "status_changes": [
+                {
+                    "description": "Urgency instilled to retrieve the Shell.",
+                    "consequence": "The party's resolve strengthens."
+                }
+            ]
         },
         {
             "id": "event_9",
-            "type": "Minor",
-            "description": "The village's smuggler ring attempts to recruit the Seekers, offering information about Tempestus.",
-            "npcs_involved": ["Smugglers"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
-            "threats_involved": ["Smugglers"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers decline the offer, but gain valuable information about Tempestus's followers.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "A rogue wave crashes against the cliffs, revealing a hidden chamber beneath the village.",
+            "location_within_area": "Cliffs",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers discover a potential new location to explore.",
+            "status_changes": [
+                {
+                    "description": "New location discovered.",
+                    "consequence": "Possibility of uncovering more secrets."
+                }
+            ]
         },
         {
             "id": "event_10",
-            "type": "Minor",
-            "description": "A Sea Wraith is momentarily visible, chilling the villagers and hinting at Tempestus's reach.",
-            "npcs_involved": ["Villagers"],
-            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist"],
-            "threats_involved": ["Sea Wraiths"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The party realizes the urgency of their quest to retrieve the Shell of Serenity.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Eldra shows the Seekers an ancient map of the Storm Coast, revealing the path to the Shell of Serenity.",
+            "location_within_area": "Eldra's Hut",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Eldra Wavewalker"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Ancient Map"],
+            "inventory_of_story_items": ["Ancient Map"],
+            "outcome": "The Seekers gain a direct route to their objective.",
+            "status_changes": [
+                {
+                    "description": "Acquired the Ancient Map.",
+                    "consequence": "Clear path revealed towards the Shell."
+                }
+            ]
         },
         {
             "id": "event_11",
-            "type": "Plot",
-            "description": "Aric's accidental storm is revealed to be a sign of Tempestus's growing influence.",
-            "npcs_involved": [],
-            "party_members_involved": ["Aric Stormrider"],
-            "threats_involved": ["Tempestus"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers understand that Aric’s powers may be tied to Tempestus's influence.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Nerin demonstrates his ability to communicate with sea creatures, learning of their fear of Tempestus.",
+            "location_within_area": "Coastal Waters",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Nerin Tidecaller"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The Seekers understand the depth of Tempestus's influence.",
+            "status_changes": [
+                {
+                    "description": "Increased awareness of Tempestus's reach.",
+                    "consequence": "The urgency to act is reinforced."
+                }
+            ]
         },
         {
             "id": "event_12",
-            "type": "Plot",
-            "description": "Eldra Wavewalker reveals the existence of the Shell of Serenity hidden in the Echoing Abyss and its connection to Tempestus.",
-            "npcs_involved": ["Eldra Wavewalker"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers are now tasked with retrieving the Shell of Serenity to break Tempestus's control over the storms.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "The Seekers witness the luminescent glow of a rare Storm Fern during a storm, hinting at its magical properties.",
+            "location_within_area": "Stormy Shore",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elaria Moonshadow"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Storm Fern"],
+            "inventory_of_story_items": ["Storm Fern"],
+            "outcome": "Elaria collects the Storm Fern for potential use in their quest.",
+            "status_changes": [
+                {
+                    "description": "Gathered a rare magical item.",
+                    "consequence": "Potential future use in spellcasting."
+                }
+            ]
         },
         {
             "id": "event_13",
-            "type": "Plot",
-            "description": "The Seekers prepare to leave Gale Village, armed with knowledge and a map to the Echoing Abyss.",
-            "npcs_involved": [],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": ["Map to Echoing Abyss"],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers set their sights on Thundercrash Caverns, determined to retrieve the Shell of Serenity.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "A night watch is organized to ward off Sea Wraiths, with the Seekers' assistance, fortifying the village's defenses.",
+            "location_within_area": "Village Perimeter",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Village Guards"],
+            "party_members_involved": ["Thorin Ironfist", "Aric Stormrider"],
+            "threats_involved": ["Sea Wraiths"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The village's defenses are strengthened against attacks.",
+            "status_changes": [
+                {
+                    "description": "Increased fortification of the village.",
+                    "consequence": "Reduced immediate threat from Sea Wraiths."
+                }
+            ]
         },
         {
             "id": "event_14",
-            "type": "Minor",
-            "description": "The villagers gather to bid farewell to the Seekers, expressing their hopes for safety and peace.",
-            "npcs_involved": ["Villagers"],
+            "type": "main_plot_event",
+            "description": "The Seekers prepare to leave Gale Village, armed with the knowledge and items needed to seek the Shell of Serenity.",
+            "location_within_area": "Village Square",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Eldra Wavewalker", "Nerin Tidecaller"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers leave with the support and goodwill of the villagers.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["Ancient Map", "Secret Map"],
+            "inventory_of_story_items": ["Ancient Map", "Secret Map"],
+            "outcome": "The Seekers are ready to navigate the treacherous coastal path to Thundercrash Caverns.",
+            "status_changes": [
+                {
+                    "description": "Prepared for next leg of their journey.",
+                    "consequence": "Determination to retrieve the Shell of Serenity."
+                }
+            ]
         },
         {
             "id": "event_15",
-            "type": "Plot",
-            "description": "Nerin Tidecaller guides the Seekers to the path leading to Thundercrash Caverns, warning them of Tempestus's influence.",
-            "npcs_involved": ["Nerin Tidecaller"],
+            "type": "main_plot_event",
+            "description": "The Seekers bid farewell to the villagers, promising to return with the Shell of Serenity.",
+            "location_within_area": "Village Square",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Villagers"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": ["Tempestus"],
-            "items_involved": [],
-            "inventory_of_story_items": ["Map to Echoing Abyss", "Eldra's journal"],
-            "outcome": "The Seekers embark on their next journey, driven to confront the storm that threatens Eldoria.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Ancient Map", "Secret Map"],
+            "outcome": "The villagers express their hope and gratitude, bolstering the Seekers' resolve.",
+            "status_changes": [
+                {
+                    "description": "Strengthened bonds with the villagers.",
+                    "consequence": "Increased motivation to succeed in their quest."
+                }
+            ]
         }
     ]
 }

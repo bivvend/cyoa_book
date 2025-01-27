@@ -2,218 +2,228 @@
     "events": [
         {
             "id": "event_1",
-            "type": "Encounter",
-            "description": "The Seekers enter the base of Tempest Tower and are immediately confronted by a group of Lightning Elementals, crackling with energy.",
-            "npcs_involved": [],
+            "type": "main_plot_event",
+            "description": "The Seekers meet Zephyr Aetherwind at the entrance of Tempest Tower, who reveals the tower's hidden secrets and the significance of their quest.",
+            "location_within_area": "Entrance of Tempest Tower",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Zephyr Aetherwind"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": ["Lightning Elementals"],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers work together to defeat the Lightning Elementals, Aric channeling his Staff of Tempests to summon lightning against their foes.",
-            "status_changes": [
-                {
-                    "description": "The Seekers gain confidence after their victory.",
-                    "consequence": "Morale increased."
-                }
-            ]
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity"],
+            "outcome": "The Seekers gain crucial information about elemental magic and Tempestus.",
+            "status_changes": [{"description": "Gained knowledge of elemental magic", "consequence": "Empowered for upcoming challenges"}]
         },
         {
             "id": "event_2",
-            "type": "Discovery",
-            "description": "While exploring the lower levels, the Seekers find a hidden chamber filled with ancient runes that glow faintly with elemental energy.",
-            "npcs_involved": [],
-            "party_members_involved": ["Elaria Moonshadow"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "Elaria uses her skills to decipher the runes, revealing a historical account of Tempestus's rise to power.",
-            "status_changes": [
-                {
-                    "description": "The Seekers gain valuable knowledge about Tempestus.",
-                    "consequence": "Knowledge of Tempestus's history added."
-                }
-            ]
+            "type": "main_plot_event",
+            "description": "Zephyr agrees to assist the Seekers after understanding their purpose, sharing his knowledge of elemental magic.",
+            "location_within_area": "Library of Tempest Tower",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Zephyr Aetherwind"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity"],
+            "outcome": "The Seekers acquire valuable spells to enhance their combat capabilities.",
+            "status_changes": [{"description": "Gained access to powerful spells", "consequence": "Prepared for elemental confrontations"}]
         },
         {
             "id": "event_3",
-            "type": "Challenge",
-            "description": "Ascending to the next level, the Seekers encounter a fierce Wind Spirit that blocks their path, swirling with strong gusts.",
-            "npcs_involved": [],
-            "party_members_involved": ["Thorin Ironfist", "Aric Stormrider"],
-            "threats_involved": ["Wind Spirit"],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "Thorin uses his Axe of Grimstone to ground the Wind Spirit, allowing the Seekers to pass safely.",
-            "status_changes": [
-                {
-                    "description": "The Seekers' teamwork strengthens their bond.",
-                    "consequence": "Increased synergy in future encounters."
-                }
-            ]
+            "type": "minor_event",
+            "description": "The Seekers discover an ancient weathered tome in the tower's library, learning of Tempestus's weaknesses.",
+            "location_within_area": "Library of Tempest Tower",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Ancient weathered tome"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome"],
+            "outcome": "The Seekers gain insights into how to counter Tempestus's powers.",
+            "status_changes": [{"description": "Learned of Tempestus's weaknesses", "consequence": "Gained strategic advantage"}]
         },
         {
             "id": "event_4",
-            "type": "Aid",
-            "description": "The Seekers encounter Zephyr Aetherwind, who offers his guidance and teaches them an incantation to energize the Shell.",
+            "type": "minor_event",
+            "description": "Zephyr reveals an incantation to calm the storms, crucial for their confrontation with Tempestus.",
+            "location_within_area": "Chamber of Storms",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
             "npcs_involved": ["Zephyr Aetherwind"],
             "party_members_involved": ["Aric Stormrider"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "Aric masters the incantation, gaining new insights about Tempestus and the Shell.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["Zephyr's incantation"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers now possess the means to neutralize Tempestus's storms.",
+            "status_changes": [{"description": "Acquired incantation to calm storms", "consequence": "Enhanced readiness for final confrontation"}]
         },
         {
             "id": "event_5",
-            "type": "Incident",
-            "description": "During their exploration, Aric accidentally miscasts a spell, summoning a lightning strike that causes a temporary power surge in the tower.",
-            "npcs_involved": [],
+            "type": "minor_event",
+            "description": "Aric learns to control lightning strikes with Zephyr's guidance, preparing for the final battle against Tempestus.",
+            "location_within_area": "Lightning Spire",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Zephyr Aetherwind"],
             "party_members_involved": ["Aric Stormrider"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The surge damages some equipment, but the Seekers manage to stabilize it.",
-            "status_changes": [
-                {
-                    "description": "Aric realizes the dangers of his impulsive actions.",
-                    "consequence": "Gains a lesson in caution."
-                }
-            ]
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "Aric becomes proficient in channeling lightning, boosting his elemental powers.",
+            "status_changes": [{"description": "Mastered control over lightning strikes", "consequence": "Prepared for confrontation with Tempestus"}]
         },
         {
             "id": "event_6",
-            "type": "Conflict",
-            "description": "The Seekers encounter a group of Rogue Mages attempting to harness the power of the tower for their own ends.",
-            "npcs_involved": [],
+            "type": "minor_event",
+            "description": "Elaria uses her cloak to evade Lightning Elementals, mastering her stealth abilities amidst the chaos of the tower.",
+            "location_within_area": "Stormy Hallways",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
             "party_members_involved": ["Elaria Moonshadow"],
-            "threats_involved": ["Rogue Mages"],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "Elaria uses her illusions to confuse the Rogue Mages, allowing the Seekers to defeat them with ease.",
-            "status_changes": [
-                {
-                    "description": "The Seekers gain valuable resources from the defeated mages.",
-                    "consequence": "Gained minor magical artifacts."
-                }
-            ]
+            "threats_involved": ["Lightning Elementals"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "Elaria enhances her stealth skills, allowing the group to navigate the dangers more effectively.",
+            "status_changes": [{"description": "Improved stealth abilities", "consequence": "Increased survival in dangerous encounters"}]
         },
         {
             "id": "event_7",
-            "type": "Assistance",
-            "description": "Elara Stormweaver appears and helps the Seekers by calming a Wind Spirit they encounter, hinting at Tempestus's vulnerabilities.",
-            "npcs_involved": ["Elara Stormweaver"],
+            "type": "minor_event",
+            "description": "Thorin defends the group from Wind Spirits' attacks, proving his unwavering dedication and strength.",
+            "location_within_area": "Guardian's Chamber",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
             "party_members_involved": ["Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers learn that not all elemental beings are aligned with Tempestus.",
-            "status_changes": []
+            "threats_involved": ["Wind Spirits"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "Thorin's bravery inspires the party, reinforcing their bond and resolve.",
+            "status_changes": [{"description": "Defended against Wind Spirits", "consequence": "Strengthened team morale"}]
         },
         {
             "id": "event_8",
-            "type": "Vision",
-            "description": "Zephyr shares a vision of Tempestus's rise to power, warning the Seekers of the imminent dangers they face.",
-            "npcs_involved": ["Zephyr Aetherwind"],
-            "party_members_involved": [],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers feel a sense of urgency to prepare for the confrontation.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "The Seekers witness a rare lightning storm from the tower's peak, realizing the stakes of their mission.",
+            "location_within_area": "Tower's Peak",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The party gains a profound understanding of the power they face in Tempestus.",
+            "status_changes": [{"description": "Realized the urgency of their mission", "consequence": "Heightened determination to confront Tempestus"}]
         },
         {
             "id": "event_9",
-            "type": "Discovery",
-            "description": "The Seekers find a Storm Fern which is rumored to be tied to Tempestus, glowing with magical properties.",
-            "npcs_involved": [],
-            "party_members_involved": ["Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Storm Fern"],
-            "outcome": "The Storm Fern can be used to enhance their spells against Tempestus.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "The Seekers encounter Rogue Mages attempting to harness the tower's power, negotiating a temporary truce.",
+            "location_within_area": "Arcane Workshop",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Rogue Mages"],
+            "party_members_involved": ["Aric Stormrider"],
+            "threats_involved": ["Rogue Mages"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers manage to gain valuable information from the Rogue Mages.",
+            "status_changes": [{"description": "Negotiated a truce", "consequence": "Acquired information on Tempestus's minions"}]
         },
         {
             "id": "event_10",
-            "type": "Danger",
-            "description": "A sudden lightning strike narrowly misses the Seekers as they navigate a precarious ledge, underscoring Tempestus's omnipresence.",
-            "npcs_involved": [],
+            "type": "minor_event",
+            "description": "Aric negotiates with the Rogue Mages, understanding the importance of alliances as they prepare for their confrontation.",
+            "location_within_area": "Arcane Workshop",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["Rogue Mages"],
             "party_members_involved": ["Aric Stormrider"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers realize they are constantly under threat from Tempestus's power.",
-            "status_changes": [
-                {
-                    "description": "The Seekers become more careful in their movements.",
-                    "consequence": "Increased caution."
-                }
-            ]
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The party solidifies an alliance that may prove crucial in the upcoming battle.",
+            "status_changes": [{"description": "Strengthened alliances", "consequence": "Improved chances against Tempestus"}]
         },
         {
             "id": "event_11",
-            "type": "Challenge",
-            "description": "The Seekers must solve a series of ancient puzzles linked to Tempestus’s past influences to advance further into the tower.",
-            "npcs_involved": [],
-            "party_members_involved": ["Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "Elaria’s cleverness and Thorin’s strength help them solve the puzzles, revealing a hidden chamber.",
-            "status_changes": []
+            "type": "minor_event",
+            "description": "Elaria dreams of a vision from Nyxara, reinforcing her resolve to protect Eldoria and the Seekers' mission.",
+            "location_within_area": "Meditation Chamber",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elaria Moonshadow"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "Elaria gains renewed strength and purpose, motivating the group.",
+            "status_changes": [{"description": "Vision from Nyxara", "consequence": "Reinforced determination to confront the darkness"}]
         },
         {
             "id": "event_12",
-            "type": "Final Encounter",
-            "description": "Reaching the top of Tempest Tower, the Seekers face a final wave of Wind Spirits determined to protect the secrets of the tower.",
-            "npcs_involved": [],
-            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist", "Elaria Moonshadow"],
-            "threats_involved": ["Wind Spirits"],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "With a combination of Aric's storm magic and Thorin's brute strength, the Seekers defeat the Wind Spirits and unlock the path to the Shell.",
-            "status_changes": [
-                {
-                    "description": "The Seekers successfully energize the Shell.",
-                    "consequence": "Ready to confront Tempestus."
-                }
-            ]
+            "type": "minor_event",
+            "description": "The Seekers prepare to infuse the Shell of Serenity with energy at the Lightning Spire, sensing Tempestus's growing power.",
+            "location_within_area": "Lightning Spire",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Shell of Serenity"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers successfully energize the Shell of Serenity.",
+            "status_changes": [{"description": "Shell of Serenity energized", "consequence": "Ready to confront Tempestus"}]
         },
         {
             "id": "event_13",
-            "type": "Transition",
-            "description": "With the Shell now energized, Zephyr reveals a hidden path leading them safely out of Tempest Tower.",
-            "npcs_involved": ["Zephyr Aetherwind"],
-            "party_members_involved": [],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": ["Energized Shell of Serenity"],
-            "outcome": "The Seekers gain a new item crucial for their confrontation with Tempestus.",
-            "status_changes": []
+            "type": "main_plot_event",
+            "description": "With the Shell of Serenity energized, the Seekers prepare to confront Tempestus at Maelstrom Keep.",
+            "location_within_area": "Lightning Spire",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Shell of Serenity"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers are now ready to face the looming threat of Tempestus.",
+            "status_changes": [{"description": "Prepared to confront Tempestus", "consequence": "Determined to restore balance in Eldoria"}]
         },
         {
             "id": "event_14",
-            "type": "Preparation",
-            "description": "Before leaving, the Seekers gather their thoughts, sharing what they learned about Tempestus and preparing for the upcoming confrontation.",
-            "npcs_involved": [],
+            "type": "main_plot_event",
+            "description": "The Seekers gather their resolve and discuss strategies for crossing the stormy cliffs to reach Maelstrom Keep.",
+            "location_within_area": "Base of Lightning Spire",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["NA"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers feel more united and determined as they proceed to their next destination.",
-            "status_changes": []
+            "threats_involved": ["Tempestus's minions"],
+            "items_involved": ["Shell of Serenity"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers formulate a plan to confront Tempestus's minions on their way to Maelstrom Keep.",
+            "status_changes": [{"description": "Strategized crossing the cliffs", "consequence": "Increased chances of success against minions"}]
         },
         {
             "id": "event_15",
-            "type": "Departure",
-            "description": "The Seekers leave Tempest Tower with a sense of urgency, knowing they must confront Tempestus at Maelstrom Keep.",
-            "npcs_involved": [],
+            "type": "minor_event",
+            "description": "The Seekers take a moment to reflect on their journey, reinforcing their commitment to protect Eldoria from Tempestus's wrath.",
+            "location_within_area": "Base of Lightning Spire",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
             "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": [],
-            "items_involved": [],
-            "inventory_of_story_items": [],
-            "outcome": "The Seekers are ready to face the next challenge in their quest.",
-            "status_changes": []
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["Shell of Serenity", "Ancient weathered tome", "Zephyr's incantation"],
+            "outcome": "The Seekers' resolve is strengthened as they prepare to face the challenges ahead.",
+            "status_changes": [{"description": "Reinforced commitment to protect Eldoria", "consequence": "Heightened morale for the upcoming battle"}]
         }
     ]
 }

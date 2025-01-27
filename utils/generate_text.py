@@ -58,16 +58,27 @@ def critique_text(prompt, max_tokens=5000, temperature=1.1, model_in = "gpt-4o-m
     - str: The generated text from the API.
     """
     try:
-        # Create a completion request to the OpenAI API
-        completion = client.chat.completions.create(
-            model=model_in,  # Specify the model to use
-            store=False,  # Store the completion for future reference
-            max_tokens=max_tokens,  # Set the maximum number of tokens to generate
-            temperature=temperature,  # Set the sampling temperature
-            messages=[
-                {"role": "user", "content": f"{prompt}"}
-            ]  # Include the writing guidelines and prompt in the message
-        )
+        if model_in == "o1-mini":
+            completion = client.chat.completions.create(
+                model=model_in,  # Specify the model to use
+                store=False,  # Store the completion for future reference
+                max_completion_tokens=max_tokens,  # Set the maximum number of tokens to generate
+                messages=[
+                    {"role": "user", "content": f"{prompt}"}
+                ]  # Include the writing guidelines and prompt in the message
+            )
+        else:
+
+            # Create a completion request to the OpenAI API
+            completion = client.chat.completions.create(
+                model=model_in,  # Specify the model to use
+                store=False,  # Store the completion for future reference
+                max_tokens=max_tokens,  # Set the maximum number of tokens to generate
+                temperature=temperature,  # Set the sampling temperature
+                messages=[
+                    {"role": "user", "content": f"{prompt}"}
+                ]  # Include the writing guidelines and prompt in the message
+            )
         
         # Return the generated text from the completion
         return completion.choices[0].message.content

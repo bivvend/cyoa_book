@@ -328,3 +328,56 @@ def regenerate_area_events_with_map(map_json, region_json, party_json, all_event
     except Exception as e:
         print(f"Error in generate_area_event_sequence: {e}")
         return None
+    
+
+def get_second_critique_on_area_events(all_events_json, region_json, area_number, plot_json, model = "gpt-4o-mini"):
+    """
+    Returns a more specific critique on the structure and contents of the events in a given area with the input from an overall critique/
+    """
+
+    area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
+
+    previous_events_txt = json.dumps(all_events_json[area_name], indent=4)
+    plot_txt = json.dumps(plot_json, indent=4)
+ 
+    writing_guidelines_1  = ("You are a literary critic. Your job is to critique fantasy novels. "
+                             "You are given story summaries in JSON format. "
+                             "The main requirement of the story is that is has a logical flow of events and good internal consistency. ")
+    
+    writing_guidelines_2 = ("Below is a JSON stuctrure defining the events in a single area from the story. \n"
+                            
+                            f"{previous_events_txt} \n"
+
+                            f"You are also given the full plot of the story as JSON that includes other areas below: \n"
+                            f"{plot_txt} \n"
+
+                            "How could the events in the story be improved to be more consistent? "
+                            "Try and be very specific about improvements and mention events by id e.g. event_1 ."
+                            "The critique should be very strong if items are not used properly or forgotten half way through, or if events don't make logical or temporal sense. "
+                            "Don't critisise the style of the text or the dramatic content,  just focus on the logic."
+
+                            "You should concentrate on checking if the logic of the events make sense, e.g. does a character do something if they haven't been introduced yet. "
+                            "Characters mentioned in events must be introduced somewhere in that area in a previous event. "
+                            "Or does an event occur in the wrong place. "
+                            "Or is an item forgotten about. "
+                            "Be brutal with the critisism! "
+                            )
+    
+    structuring_prompt = (
+            "Your response should be in plain text, not JSON. "
+    )
+
+    prompt = (
+            f"{writing_guidelines_1}\n"
+            f"{writing_guidelines_2}\n"
+            f"{structuring_prompt}\n"
+
+        )
+    
+    try:
+        response = generate_text.critique_text(prompt=prompt, model_in= model)
+        return response
+
+    except Exception as e:
+        print(f"Error in get_critique_on_single_area_events: {e}")
+        return None

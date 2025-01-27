@@ -25,7 +25,8 @@ ALL_MAPS_FILE = "all_maps.txt"
 ALL_EVENTS_CRITIQUE_FILE = "all_events_critique.txt"
 CRITIQUES_BY_AREA_FILE = "critiques_by_area.txt"
 
-
+SECOND_ALL_EVENTS_CRITIQUE_FILE = "second_all_events_critique.txt"
+SECOND_CRITIQUES_BY_AREA_FILE = "second_critiques_by_area.txt"
 
 CHARACTERS_SUB_DIR = "characters"
 CONVERSATIONS_LORE_FILE = "conversations.txt"
@@ -34,6 +35,7 @@ AREAS_SUB_DIR = "areas"
 EVENTS_SUB_DIR = "events"
 STORY_SUB_DIR = "story_chunks"
 CRITIQUE_SUB_DIRECTORY = "critique"
+SECOND_CRITIQUE_SUB_DIRECTORY = "second_critique"
 REFINED_EVENTS_SUB_DIR = "refined_events"
 FINAL_EVENTS_SUB_DIR = "final_events"
 MAPS_SUB_DIRECTORY = "maps"
@@ -59,7 +61,12 @@ refresh_all_events_critique = False
 refresh_area_events_critique = False
 refresh_refined_events = False
 refresh_maps = False
-refresh_events_with_map = True
+refresh_events_with_map = False #Possibly not used
+
+
+refresh_second_area_events_critique = True
+refresh_final_events = False
+
 
 configure_new_assistant = False
 configure_new_thread = True
@@ -546,6 +553,53 @@ def critique_area_events(region_lore_json, all_events_json, all_events_critique_
         print(f"Error in critique_events: {e}")
         return None
 
+def second_critique_area_events(region_lore_json, all_events_json, plot_json):
+    """
+    Generates a second critique on refined events with more focus on logic.
+    """
+    try:
+        critic_text = None
+        all_critiques = {} 
+        count = 0
+        if refresh_second_area_events_critique:
+            # Delete the previous critique files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY)
+            files = os.listdir(dir)
+            files = [f for f in files if ".txt" in f and "area" in f]
+            for f in files:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, f)
+                os.remove(file_path)
+            areas = region_lore_json["starting_area"]["notable_locations"]  
+            for area in areas: 
+                print(f"Generating second events critique for {area["name"]}")
+                critic_text = event_generation.get_second_critique_on_area_events(all_events_json, region_lore_json, count, plot_json, model = 'o1-mini') #Reasoning model
+                assert critic_text is not None
+                count += 1
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, f"second_area_{count}_critique.txt")
+                with open(txt_file, 'w') as f:
+                    f.write(critic_text)
+                all_critiques[area["name"]] = critic_text
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, SECOND_CRITIQUES_BY_AREA_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(json.dumps(all_critiques, indent=4))
+            return all_critiques
+        else:
+            pass
+            print("Loading second area by area events critique file")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, SECOND_CRITIQUES_BY_AREA_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+            return json.loads(critic_text)
+    except Exception as e:
+        print(f"Error in second_critique_area_events: {e}")
+        return None
+    
+
+
+
 def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json):
     """
     Regenerates events for the areas based on the critique
@@ -881,10 +935,12 @@ if __name__ == "__main__":
 
     all_maps_json = generate_map_json(refined_plot_json, refined_events_json, region_lore_json)
 
+    #Try and improve event logic again.
+    second_critique_all_areas_txt = second_critique_area_events(region_lore_json, refined_events_json, refined_plot_json)
+
+    #final_events_json = regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_json, all_events_json)
+
     #PLOT AND EVENTS NOW FIXED
-
-    final_events_json = regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_json, all_events_json)
-
     #Generate conversations
     conversation_json = generate_conversations(region_lore_json, party_lore_json, all_events_json)
     assert conversation_json is not None

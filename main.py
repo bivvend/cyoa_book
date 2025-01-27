@@ -64,8 +64,8 @@ refresh_maps = False
 refresh_events_with_map = False #Possibly not used
 
 
-refresh_second_area_events_critique = True
-refresh_final_events = False
+refresh_second_area_events_critique = False
+refresh_final_events = True
 
 
 configure_new_assistant = False
@@ -600,7 +600,7 @@ def second_critique_area_events(region_lore_json, all_events_json, plot_json):
 
 
 
-def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json):
+def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, area_by_area_feedback_json, is_final=False):
     """
     Regenerates events for the areas based on the critique
     """
@@ -610,15 +610,26 @@ def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, ene
 
         events_json_list_all_areas = [] 
         all_events = {}    
+
+        if is_final:
+            model_to_use = "o1-mini"
+        else:
+            model_to_use = gpt_model
    
-        if refresh_refined_events:
+        if (is_final and refresh_final_events) or  (is_final==False and refresh_refined_events):
             count = 0  
             # Delete the previous events files
-            dir = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR)
+            if is_final:
+                dir = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR)
+            else:
+                dir = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR)
             files = os.listdir(dir)
             files = [f for f in files if ".txt" in f and "events" in f]
             for f in files:
-                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f)
+                if is_final:
+                    file_path = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f)
+                else:
+                    file_path = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f)
                 os.remove(file_path)
 
             for area in areas:
@@ -627,23 +638,32 @@ def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, ene
                 else:
                     threat_severity = "High"
                 print(f"Regenerating events for area {area['name']} with threat severity {threat_severity}")
-                events_list = event_generation.regenerate_area_events_based_on_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, threat_severity, count, area_by_area_feedback_json[area['name']] , model = gpt_model)
+                events_list = event_generation.regenerate_area_events_based_on_feedback(plot_json, region_lore_json, party_json, enemy_json, all_events_json, threat_severity, count, area_by_area_feedback_json[area['name']] , model = model_to_use)
                 events_json = json.loads(events_list)
                 structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
                 events_json_list_all_areas.append(events_json)        
                 count += 1
-                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f"refined_events_{count}.txt")
+                if is_final:
+                    txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f"final_events_{count}.txt")
+                else:
+                    txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, f"refined_events_{count}.txt")
                 with open(txt_file, 'w') as f:
                     f.write(events_list)
                 all_events[area["name"]] = events_json
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
+            if is_final:
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_FINAL_EVENTS_FILE)
+            else:
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
             with open(txt_file, 'w') as f:
                 f.write(json.dumps(all_events, indent=4))
             return all_events
         else:
             # Read existing region lore from file
             print("Loading all refined events dictionary")
-            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
+            if is_final:
+                events_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_FINAL_EVENTS_FILE)
+            else:
+                events_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_EVENTS_SUB_DIR, ALL_REFINED_EVENTS_FILE)
             events_txt = ""
             with open(events_file, 'r') as f:
                 lines = f.readlines()
@@ -938,7 +958,7 @@ if __name__ == "__main__":
     #Try and improve event logic again.
     second_critique_all_areas_txt = second_critique_area_events(region_lore_json, refined_events_json, refined_plot_json)
 
-    #final_events_json = regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_json, all_events_json)
+    final_events_json = regenerate_events_from_feedback(refined_plot_json,region_lore_json, party_lore_json, enemy_lore_json, refined_events_json, second_critique_all_areas_txt, is_final=True)
 
     #PLOT AND EVENTS NOW FIXED
     #Generate conversations

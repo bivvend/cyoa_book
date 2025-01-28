@@ -1,168 +1,137 @@
 {
     "name": "Tempest Tower",
     "locations": [
-        "Entrance of Tempest Tower",
-        "Chamber of Trials",
-        "Library of Tempest Tower",
-        "Chamber of Storms",
-        "Lightning Spire",
-        "Stormy Hallways",
-        "Guardian's Chamber",
-        "Tower's Peak",
-        "Arcane Workshop",
-        "Meditation Chamber",
-        "Base of Lightning Spire",
-        "Jagged Pathways",
-        "Hidden Passage",
-        "Ancient Hallway",
-        "Secret Chamber",
-        "Echoing Hall",
-        "Tower's Exit",
-        "Zephyr's Sanctuary",
-        "Puzzle Chamber",
-        "Base of Tempest Tower",
-        "Path to Maelstrom Keep"
+        {
+            "name": "Base of Tempest Tower",
+            "sub_locations": [
+                "Entrance of Tempest Tower",
+                "Zephyr's Sanctuary"
+            ]
+        },
+        {
+            "name": "Village Courtyard near Tempest Tower",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Chamber of Trials",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Library of Tempest Tower",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Chamber of Storms",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Lightning Spire",
+            "sub_locations": [
+                "Lightning Spire Training Ground"
+            ]
+        },
+        {
+            "name": "Stormy Hallways",
+            "sub_locations": [
+                "Hidden Passage"
+            ]
+        },
+        {
+            "name": "Meditation Chamber",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Ancient Hallway",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Secret Chamber",
+            "sub_locations": [
+                "NA"
+            ]
+        },
+        {
+            "name": "Puzzle Chamber",
+            "sub_locations": [
+                "Final Puzzle Chamber"
+            ]
+        }
     ],
     "paths": [
         {
-            "from": "Entrance of Tempest Tower",
-            "to": "Chamber of Trials",
-            "description": "As you step through the entrance, the air grows thick with the scent of salt and magic. The path winds upwards, echoing with distant thunder, and the walls are etched with runes that glow dimly in the gloom.",
-            "threat_level": "Medium",
-            "dangers": ["Unstable Magic", "Gusty Winds"]
+            "from": "Base of Tempest Tower",
+            "to": "Village Courtyard near Tempest Tower",
+            "description": "A rugged path winds down from the tower's base, weaving through hardy flora that defy the coastal winds. The air is thick with salt and anticipation, as the cries of Cliffside Gulls echo the Seekers' determined footsteps.",
+            "threat_level": "Low",
+            "dangers": [
+                "NA"
+            ]
         },
         {
-            "from": "Chamber of Trials",
-            "to": "Library of Tempest Tower",
-            "description": "The path from the Chamber of Trials leads through a narrow corridor, where shadows flicker in the torchlight. The air is cooler here, tinged with the musty scent of old parchment and ancient knowledge.",
-            "threat_level": "Low",
-            "dangers": ["Echoing Whispers", "Dusty Tomes"]
+            "from": "Entrance of Tempest Tower",
+            "to": "Chamber of Trials",
+            "description": "The path from the entrance ascends steeply, with narrow stone stairs that twist and turn unexpectedly. The walls hum with ancient energy, while gusts of wind betray the presence of unseen spirits guarding the tower's secrets.",
+            "threat_level": "Medium",
+            "dangers": [
+                "Wind Spirits"
+            ]
         },
         {
             "from": "Library of Tempest Tower",
             "to": "Chamber of Storms",
-            "description": "Exiting the library, you find yourself on a spiraling staircase. Each step vibrates with the hum of magical energy, and the sound of storms echoes down the staircase, a constant reminder of the tempest outside.",
-            "threat_level": "High",
-            "dangers": ["Lightning Flashes", "Slippery Steps"]
+            "description": "Navigating through dimly lit corridors, the Seekers find themselves in passageways lined with ancient tomes and forgotten knowledge. The air grows charged, hinting at the powerful energies that lie ahead in the Chamber of Storms.",
+            "threat_level": "Medium",
+            "dangers": [
+                "NA"
+            ]
         },
         {
             "from": "Chamber of Storms",
             "to": "Lightning Spire",
-            "description": "The passage to the Lightning Spire is fraught with danger, as arcs of electricity dance along the walls. The air crackles with energy, and every breath feels charged with the storm’s fury.",
-            "threat_level": "Very High",
-            "dangers": ["Electric Discharges", "Storm Spirits"]
-        },
-        {
-            "from": "Lightning Spire",
-            "to": "Stormy Hallways",
-            "description": "Leaving the Lightning Spire, you descend into a labyrinth of corridors where the wind howls incessantly. The walls seem alive with the storm's breath, and each turn is an exercise in endurance against the elements.",
+            "description": "A narrow staircase spirals upwards, each step resonating with the crackle of distant lightning. The tower shakes with the fury of the storm outside, as if testing the resolve of those who dare to reach the spire.",
             "threat_level": "High",
-            "dangers": ["Howling Winds", "Disorienting Maze"]
+            "dangers": [
+                "Lightning Elementals"
+            ]
         },
         {
             "from": "Stormy Hallways",
-            "to": "Guardian's Chamber",
-            "description": "Navigating the stormy hallways leads to the Guardian’s Chamber, where the air suddenly grows still. The silence is unnerving, broken only by the distant rumble of thunder as you approach the heart of the tower’s defenses.",
-            "threat_level": "Medium",
-            "dangers": ["Elemental Guardians", "Echoes of Thunder"]
-        },
-        {
-            "from": "Guardian's Chamber",
-            "to": "Tower's Peak",
-            "description": "Ascending a spiral staircase, you reach the Tower's Peak. Here, the storm seems to touch the very stones, and the view is both magnificent and terrifying, with lightning illuminating the horizon.",
-            "threat_level": "Very High",
-            "dangers": ["Exposed Heights", "Lightning Strikes"]
-        },
-        {
-            "from": "Tower's Peak",
-            "to": "Arcane Workshop",
-            "description": "Descending from the peak, the path twists and turns through a series of tunnels, each lined with ancient arcane symbols. The air hums with potential, and the walls are warm to the touch, as if alive with hidden power.",
-            "threat_level": "Medium",
-            "dangers": ["Arcane Traps", "Mystical Energies"]
-        },
-        {
-            "from": "Arcane Workshop",
             "to": "Meditation Chamber",
-            "description": "The route to the Meditation Chamber is a serene contrast to the chaos of the tower, with soft light filtering through stained glass. The air is calm, filled with the scent of incense and the gentle hum of meditation.",
-            "threat_level": "Low",
-            "dangers": ["Mystic Visions", "Illusory Paths"]
-        },
-        {
-            "from": "Meditation Chamber",
-            "to": "Base of Lightning Spire",
-            "description": "The journey back to the base of the Lightning Spire is taxing, as the path is steep and narrow. The air is charged with anticipation, every step echoing with the promise of the trials to come.",
-            "threat_level": "High",
-            "dangers": ["Steep Descents", "Unseen Spirits"]
-        },
-        {
-            "from": "Base of Lightning Spire",
-            "to": "Jagged Pathways",
-            "description": "The jagged pathways are treacherous, with the ground uneven and the wind roaring in defiance. Each step is a battle against the elements, and the path seems to shift beneath your feet.",
-            "threat_level": "Very High",
-            "dangers": ["Loose Rocks", "Gale Force Winds"]
-        },
-        {
-            "from": "Jagged Pathways",
-            "to": "Hidden Passage",
-            "description": "Hidden amongst the jagged rocks is a narrow passage, concealed from the casual observer. The air here is still, the silence a welcome respite from the storm, and every step echoes with the promise of discovery.",
-            "threat_level": "Low",
-            "dangers": ["Claustrophobic Spaces", "Unstable Ground"]
-        },
-        {
-            "from": "Hidden Passage",
-            "to": "Ancient Hallway",
-            "description": "Emerging from the hidden passage, you find yourself in an ancient hallway. The stones here are worn and weathered, whispering tales of the past as you walk through this forgotten part of the tower.",
+            "description": "Through the stormy hallways, the Seekers brave sudden gusts and flickering shadows. The path is fraught with tension, each corner potentially hiding both danger and discovery, leading to a place of reflection and insight.",
             "threat_level": "Medium",
-            "dangers": ["Crumbled Walls", "Echoing Footsteps"]
+            "dangers": [
+                "Lightning Elementals"
+            ]
         },
         {
             "from": "Ancient Hallway",
             "to": "Secret Chamber",
-            "description": "A hidden door in the ancient hallway leads to a secret chamber, filled with relics and artifacts of those who came before. The air is thick with history, each artifact a testament to past battles and victories.",
+            "description": "The ancient hallway, with its timeworn stones and mysterious carvings, leads to a hidden chamber. The air is thick with history and secrets, the weight of past adventurers felt as the Seekers tread cautiously.",
             "threat_level": "Low",
-            "dangers": ["Dusty Relics", "Historical Echoes"]
-        },
-        {
-            "from": "Secret Chamber",
-            "to": "Echoing Hall",
-            "description": "The path to the Echoing Hall is lined with mirrors, each reflecting the past. The air is heavy with the weight of memories, and every sound reverberates through the hall, a haunting reminder of what once was.",
-            "threat_level": "Medium",
-            "dangers": ["Reflected Images", "Resonant Sounds"]
-        },
-        {
-            "from": "Echoing Hall",
-            "to": "Tower's Exit",
-            "description": "The path to the tower’s exit is lined with statues of former guardians, their eyes seemingly watching as you pass. The air is charged with anticipation, each step bringing you closer to the end of your journey within the tower.",
-            "threat_level": "Medium",
-            "dangers": ["Watchful Statues", "Lingering Magic"]
-        },
-        {
-            "from": "Tower's Exit",
-            "to": "Zephyr's Sanctuary",
-            "description": "The journey to Zephyr’s Sanctuary is a peaceful one, with the path winding through a garden filled with vibrant flora. The air is fragrant with the scent of blossoms, and the sound of a gentle breeze brings a sense of calm.",
-            "threat_level": "Low",
-            "dangers": ["Illusory Paths", "Tranquilizing Scents"]
-        },
-        {
-            "from": "Zephyr's Sanctuary",
-            "to": "Puzzle Chamber",
-            "description": "The path to the Puzzle Chamber is a twisting corridor, lined with enigmatic symbols. Each twist and turn is a riddle in itself, and the air is thick with the challenge of the trials ahead.",
-            "threat_level": "Medium",
-            "dangers": ["Confounding Riddles", "Misdirection"]
+            "dangers": [
+                "NA"
+            ]
         },
         {
             "from": "Puzzle Chamber",
-            "to": "Base of Tempest Tower",
-            "description": "Emerging from the Puzzle Chamber, the path descends to the base of Tempest Tower, where the wind is fierce and the air tinged with the smell of salt. The journey through the tower has been arduous, each step a step closer to the final confrontation.",
-            "threat_level": "High",
-            "dangers": ["Gusty Winds", "Slick Stones"]
-        },
-        {
-            "from": "Base of Tempest Tower",
-            "to": "Path to Maelstrom Keep",
-            "description": "The path to Maelstrom Keep is a treacherous one, with the cliffs steep and the wind howling in defiance. The sea crashes below, a turbulent reminder of the stakes, and every step is a battle against the elements.",
-            "threat_level": "Very High",
-            "dangers": ["Sheer Cliffs", "Tempestuous Seas"]
+            "to": "Final Puzzle Chamber",
+            "description": "Navigating through the intricate puzzles, the Seekers move deeper into the tower. Each solved riddle brings them closer to a chamber that promises both revelation and challenge, testing their unity and resolve.",
+            "threat_level": "Medium",
+            "dangers": [
+                "NA"
+            ]
         }
     ]
 }

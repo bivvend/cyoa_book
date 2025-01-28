@@ -71,9 +71,6 @@ def generate_area_event_sequence(plot_json, region_json, party_json, enemy_json,
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. "
             f"Please fill the structure below with the generated data. You can and should add elements. "
-            
-            
-
             f"There should be around 15-20 events in the sequence. "
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
@@ -242,7 +239,6 @@ def regenerate_area_events_based_on_feedback(plot_json, region_json, party_json,
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. This is the same structure you used before."
             f"Please fill the structure below with the modified events. If you think it would be better to add more events to meet the feedback, please do."
-            f"There should be around 25 events in the sequence. "
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"
@@ -347,10 +343,13 @@ def check_final_events(all_events_json, model = "gpt-4o-mini"):
                             "Don't comment on how to make the story telling better, your comments should be about the ordering and missing or incorrect events."
                             "Deleteing events that don't fit well with the plot and are not important is encouraged. "
 
+                            "Make very sure that no events are present in this region that don't fit with the rest of the story. If you find any duplicate or similar events insist they are deleted in the later area. "
+                            "Deletion of events is better than risking the inclusion of bad or out of place events. "
+
                             )
     
     structuring_prompt = (
-            "Your response should be in plain text, not JSON, with very excplicit instructions on what to change naming the events by area and event id. "
+            "Your response should be in plain text, not JSON, with very excplicit demands on what to change naming the events by area and event id. "
     )
 
     prompt = (
@@ -370,14 +369,14 @@ def check_final_events(all_events_json, model = "gpt-4o-mini"):
 
 
 
-def regenerate_final_events_from_logic_feedback(all_events_json, feedback_text , model = "gpt-4o-mini"):
+def regenerate_final_events_from_logic_feedback(all_events_json, area_name, feedback_text , model = "gpt-4o-mini"):
     """
     Regenerates a sequence of events for the story.
     """
     try:
         # Convert JSON to string
 
-        previous_events_txt = json.dumps(all_events_json, indent=4)
+        previous_events_txt = json.dumps(all_events_json[area_name], indent=4)
 
         writing_guidelines_1 = (
             f"You are an author of well written fantasy stories.  You have generated a set of events for a whole story in JSON format as an outline of the story. "
@@ -389,12 +388,13 @@ def regenerate_final_events_from_logic_feedback(all_events_json, feedback_text ,
             f"After writing you received feeback on the logical ordering and content.  You take the feeback very seriously and want to make the events better. "
             f"The feeback you received is below: \n"
             f"{feedback_text}"
-            
+
             f"Please revise the events based on the feedback."
             f"Make sure the events are in a logical order. "
             f"Make sure that all the characters are introduced and object are used in a sensible order. "
-            f"Follow the feedback and make all the suggestions it asks for ."
+            f"Follow all the feedback and make all the suggestions it asks for ."
             f"Don't change events that the feedback doesn't want you to change. "
+            "Don't just dream up new events, stick to modifying or deleteing the ones there. "
         )
 
         
@@ -402,7 +402,6 @@ def regenerate_final_events_from_logic_feedback(all_events_json, feedback_text ,
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. This is the same structure you used before."
             f"Please fill the structure below with the modified events. If you think it would be better to add more events to meet the feedback, please do."
-            f"There should be around 25 events in the sequence. "
             f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"

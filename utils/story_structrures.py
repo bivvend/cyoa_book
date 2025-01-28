@@ -1,6 +1,48 @@
+item_structure = {
+    "items":[{
+        "name": "",
+        "area_found": "",
+        "properties": "",
+        "description": ""
+    }
+    ]
+}
+
+item_structure_for_test = {
+    "items":[{
+        "name": str,
+        "area_found": str,
+        "properties": str,
+        "description": str
+    }
+    ]
+}
+
+character_structure = {
+    "characters":[{
+        "name": "",
+        "area_found": "",
+        "skills_and_abilities": ["",""],
+        "description": "",
+        "appearance": "",
+    }
+    ]
+}
+
+character_structure_for_test = {
+    "characters":[{
+        "name": str,
+        "area_found": str,
+        "skills_and_abilities": [str, str],
+        "description": str,
+        "appearance": str,
+    }
+    ]
+}
+
 map_structure = {
         "name": "",
-        "locations":["", ""],
+        "locations":[{"name": "", "sub_locations":["",""]}, {"name": "", "sub_locations":["",""]},],
         "paths":[
             {
                 "from":"",
@@ -15,7 +57,7 @@ map_structure = {
 
 map_structure_for_test = {
         "name":str,
-        "locations":[str, str],
+        "locations":[{"name": str, "sub_locations":[str,str]}, {"name": str, "sub_locations":[str,str]},],
         "paths":[
             {
                 "from":str,

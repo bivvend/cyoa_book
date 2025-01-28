@@ -1,136 +1,220 @@
 {
     "name": "Thundercrash Caverns",
     "locations": [
-        "Cavern Entrance",
-        "Twisting Tunnels",
-        "Gloomy Passage",
-        "Cavern Pathway",
-        "Shadowed Hollow",
-        "Ancient Ruins",
-        "Rockfall Chamber",
-        "Flooded Chamber",
-        "Forgotten Tomb",
-        "Glowing Pool",
-        "Cavern Camp",
-        "Ambush Site",
-        "Carving Nook",
-        "Chamber of Secrets",
-        "Luminescent Path",
-        "Echoing Abyss",
-        "Luminescent Exit"
+        {
+            "name": "Cavern Entrance",
+            "sub_locations": []
+        },
+        {
+            "name": "Stabilized Pathway",
+            "sub_locations": []
+        },
+        {
+            "name": "Ancient Niche",
+            "sub_locations": []
+        },
+        {
+            "name": "Shadowed Hollow",
+            "sub_locations": []
+        },
+        {
+            "name": "Gloomy Passage",
+            "sub_locations": []
+        },
+        {
+            "name": "Cavern Pathway",
+            "sub_locations": []
+        },
+        {
+            "name": "Cavern Camp",
+            "sub_locations": []
+        },
+        {
+            "name": "Ambush Site",
+            "sub_locations": []
+        },
+        {
+            "name": "Instable Tunnel",
+            "sub_locations": []
+        },
+        {
+            "name": "Forgotten Tomb",
+            "sub_locations": []
+        },
+        {
+            "name": "Glowing Pool",
+            "sub_locations": []
+        },
+        {
+            "name": "Sealed Chamber",
+            "sub_locations": []
+        },
+        {
+            "name": "Flooded Corridor",
+            "sub_locations": []
+        },
+        {
+            "name": "Luminescent Pathway",
+            "sub_locations": []
+        },
+        {
+            "name": "Hidden Luminescent Passage",
+            "sub_locations": []
+        },
+        {
+            "name": "Ancient Remains",
+            "sub_locations": []
+        },
+        {
+            "name": "Luminescent Path",
+            "sub_locations": []
+        },
+        {
+            "name": "Locked Corridor",
+            "sub_locations": []
+        },
+        {
+            "name": "Echoing Abyss",
+            "sub_locations": []
+        },
+        {
+            "name": "Luminescent Exit",
+            "sub_locations": []
+        }
     ],
     "paths": [
         {
             "from": "Cavern Entrance",
-            "to": "Twisting Tunnels",
-            "description": "Leaving the ominous maw of the Cavern Entrance, the path narrows into the Twisting Tunnels. Shadows dance across the walls, guided by the soft glow of fungi. The air is heavy with the scent of salt and damp earth, each step echoing in the confined space.",
+            "to": "Stabilized Pathway",
+            "description": "The path from the Cavern Entrance to the Stabilized Pathway is narrow and treacherous. Echoes of distant waves create an unsettling symphony, while the air grows heavier with each step. Luminescent fungi guide the way, casting an eerie glow on the slick, rocky terrain.",
             "threat_level": "Medium",
-            "dangers": ["Loose stones", "Echoing footsteps"]
+            "dangers": ["Slippery Rocks", "Darkness"]
         },
         {
-            "from": "Twisting Tunnels",
-            "to": "Gloomy Passage",
-            "description": "The twisting pathways give way to the Gloomy Passage, where the air grows thick with the smell of the sea. Strange glyphs etched into the walls seem to pulse with an eerie glow, hinting at the influence of Tempestus. Every sound is magnified, adding to the growing tension.",
+            "from": "Stabilized Pathway",
+            "to": "Ancient Niche",
+            "description": "Moving towards the Ancient Niche, the passage narrows further, forcing adventurers to tread carefully. The air is filled with the musty scent of age-old stone, and the shadows seem to dance against the flickering light of the fungi, hinting at secrets long forgotten.",
+            "threat_level": "Low",
+            "dangers": ["Narrow Passage", "Low Visibility"]
+        },
+        {
+            "from": "Ancient Niche",
+            "to": "Shadowed Hollow",
+            "description": "The transition from the Ancient Niche to the Shadowed Hollow is marked by a noticeable drop in temperature. The path winds through convoluted turns, with echoes of unseen movements whispering through the darkness, keeping explorers on high alert.",
             "threat_level": "High",
-            "dangers": ["Tempestus's influence", "Glyphs"]
+            "dangers": ["Cave Stalkers", "Echoing Sounds"]
+        },
+        {
+            "from": "Shadowed Hollow",
+            "to": "Gloomy Passage",
+            "description": "Shadows deepen as the path leads into the Gloomy Passage. Here, the cavern walls seem to close in, with the sound of dripping water echoing ominously. The air is thick with the scent of salt, hinting at the proximity of the ocean beyond.",
+            "threat_level": "Medium",
+            "dangers": ["Elemental Disturbance", "Claustrophobic Space"]
         },
         {
             "from": "Gloomy Passage",
             "to": "Cavern Pathway",
-            "description": "The passage opens up into the Cavern Pathway, where a sudden drizzle from above keeps the stones slick. A sense of unease pervades the air, as if the caverns themselves are waiting for something to happen. The sound of distant waves crashing adds to the ominous atmosphere.",
-            "threat_level": "High",
-            "dangers": ["Sudden downpour", "Flood Tides"]
+            "description": "The journey to the Cavern Pathway is fraught with an increasing sense of urgency. The path widens slightly, revealing jagged stalactites that loom overhead. The roar of the ocean fades, replaced by an unsettling silence that amplifies every footstep.",
+            "threat_level": "Medium",
+            "dangers": ["Rockfall", "Silence"]
         },
         {
             "from": "Cavern Pathway",
-            "to": "Shadowed Hollow",
-            "description": "Navigating carefully, the path leads to the Shadowed Hollow, where darkness reigns supreme. The faint luminescence of fungi barely pierces the shadows, and the constant drip of water echoes ominously. This area is notorious for the stealthy Cave Stalkers that prey on the unwary.",
-            "threat_level": "Very High",
-            "dangers": ["Cave Stalkers", "Thick shadows"]
-        },
-        {
-            "from": "Shadowed Hollow",
-            "to": "Ancient Ruins",
-            "description": "Leaving the oppressive darkness behind, the path opens into the Ancient Ruins. Here, remnants of old structures tell tales of forgotten civilizations. The air hums with a latent power, and Thorin's dwarven instincts resonate with the ancient runes that cover the walls.",
-            "threat_level": "Medium",
-            "dangers": ["Old traps", "Unstable structures"]
-        },
-        {
-            "from": "Ancient Ruins",
-            "to": "Rockfall Chamber",
-            "description": "The path winds deeper into the caverns, leading to the Rockfall Chamber. The aftermath of recent collapses leaves the terrain treacherous. Every step must be carefully placed to avoid triggering another collapse, and the ever-present sound of shifting stones keeps nerves taut.",
-            "threat_level": "High",
-            "dangers": ["Rockfalls", "Shifting stones"]
-        },
-        {
-            "from": "Rockfall Chamber",
-            "to": "Flooded Chamber",
-            "description": "From the debris of the Rockfall Chamber, the way leads to the Flooded Chamber. Water rushes through here with a relentless force, and the air is filled with the roar of the tides. Navigating this area requires skill and teamwork to resist being swept away.",
-            "threat_level": "Very High",
-            "dangers": ["Flood Tides", "Strong currents"]
-        },
-        {
-            "from": "Flooded Chamber",
-            "to": "Forgotten Tomb",
-            "description": "Emerging from the tumultuous waters, the path leads to the solemn Forgotten Tomb. Dusty and silent, the air is filled with the weight of history. The remains of past adventurers serve as a grim reminder of the caverns' dangers. Here, secrets whisper from the shadows.",
-            "threat_level": "Medium",
-            "dangers": ["Hidden traps", "Ghostly whispers"]
-        },
-        {
-            "from": "Forgotten Tomb",
-            "to": "Glowing Pool",
-            "description": "The path ascends slightly, revealing the Glowing Pool, where the water radiates with the light of bioluminescent creatures. The serene glow offers a moment of respite, as if the caverns themselves are acknowledging the Seekers' courage. The tranquil atmosphere is deceptive, masking the lurking dangers around.",
-            "threat_level": "Low",
-            "dangers": ["Slippery surfaces", "Mesmerizing lights"]
-        },
-        {
-            "from": "Glowing Pool",
             "to": "Cavern Camp",
-            "description": "Beyond the glow, the trail becomes rougher, leading to a secure niche suitable for a Cavern Camp. Here, the Seekers can regroup and rest. The warmth of a small fire flickers against the stone, and Mara Deepseer's tales weave a tapestry of hope and caution.",
+            "description": "Crossing into the Cavern Camp, the atmosphere shifts to one of temporary respite. This nook within the caverns offers a brief sanctuary, where the group can gather their thoughts and prepare for the challenges that lie ahead.",
             "threat_level": "Low",
-            "dangers": ["Fatigue", "Growing complacency"]
+            "dangers": ["NA"]
         },
         {
             "from": "Cavern Camp",
             "to": "Ambush Site",
-            "description": "Rested and resolute, the path forward is fraught with danger, leading to the Ambush Site. This narrow stretch is ideal terrain for Cave Stalkers. The air is thick with tension, and every shadow seems to hide a threat. The Seekers must be ready for anything.",
-            "threat_level": "Very High",
-            "dangers": ["Cave Stalkers", "Ambushes"]
+            "description": "The path leading to the Ambush Site is fraught with peril. Narrow and twisted, it is a place where the shadows reign supreme. Each step taken reverberates through the cave, a constant reminder of the lurking dangers in the dark corners.",
+            "threat_level": "High",
+            "dangers": ["Cave Stalkers", "Ambush Potential"]
         },
         {
             "from": "Ambush Site",
-            "to": "Carving Nook",
-            "description": "Escaping the ambush, the path takes a gentler turn into the Carving Nook. This small alcove provides a moment of solace, where Thorin finds comfort in his art. The air resonates with a calming energy, as if the caverns are offering a brief reprieve.",
+            "to": "Instable Tunnel",
+            "description": "Leaving the Ambush Site, the journey to the Instable Tunnel is precarious. The cavern's architecture seems to shift unpredictably, and the very air feels charged with a latent energy, as if the caverns themselves are aware of the group's presence.",
+            "threat_level": "High",
+            "dangers": ["Unstable Structures", "Sudden Collapses"]
+        },
+        {
+            "from": "Instable Tunnel",
+            "to": "Forgotten Tomb",
+            "description": "The path to the Forgotten Tomb is marked by an eerie quietness, as if the very stones are holding their breath. The journey is one of introspection, where the weight of history can be felt with each step toward the resting place of those who came before.",
+            "threat_level": "Medium",
+            "dangers": ["Falling Debris", "Ancient Traps"]
+        },
+        {
+            "from": "Forgotten Tomb",
+            "to": "Glowing Pool",
+            "description": "The route to the Glowing Pool is a winding trail through the heart of the caverns. The path is illuminated by the gentle glow of bioluminescent creatures, creating an ethereal atmosphere that hints at the elemental forces at play within the caverns.",
             "threat_level": "Low",
-            "dangers": ["Isolation", "Lack of vigilance"]
+            "dangers": ["Slippery Surface", "Distracting Light"]
         },
         {
-            "from": "Carving Nook",
-            "to": "Chamber of Secrets",
-            "description": "Continuing onward, the path leads to the Chamber of Secrets. The air thrums with a mysterious energy, and the walls are covered in an ancient script. Elaria's eyes gleam with curiosity, and the room's secrets beckon, promising revelations and hope.",
+            "from": "Glowing Pool",
+            "to": "Sealed Chamber",
+            "description": "Approaching the Sealed Chamber, the air grows thick with anticipation. The path is lined with ancient runes that pulse with a soft light, guiding adventurers to their destination while whispering secrets of the past and the power that lies within.",
+            "threat_level": "High",
+            "dangers": ["Ancient Runes", "Arcane Traps"]
+        },
+        {
+            "from": "Sealed Chamber",
+            "to": "Flooded Corridor",
+            "description": "The transition to the Flooded Corridor is abrupt, as the ground descends sharply. The air is heavy with moisture, and the sound of rushing water fills the space, reminding travelers of the cavern's close relationship with the ocean.",
+            "threat_level": "High",
+            "dangers": ["Sudden Floods", "Slippery Ground"]
+        },
+        {
+            "from": "Flooded Corridor",
+            "to": "Luminescent Pathway",
+            "description": "Navigating from the Flooded Corridor to the Luminescent Pathway requires caution. The path is marked by glowing fungi that cast long shadows, creating an otherworldly ambiance that both guides and disorients those who traverse it.",
             "threat_level": "Medium",
-            "dangers": ["Complex puzzles", "Hidden enemies"]
+            "dangers": ["Disorienting Light", "Hidden Puddles"]
         },
         {
-            "from": "Chamber of Secrets",
+            "from": "Luminescent Pathway",
+            "to": "Hidden Luminescent Passage",
+            "description": "The journey to the Hidden Luminescent Passage is a secretive one, shrouded in mystery. The path is lined with luminescent fungi, casting an ethereal glow that dances off the cavern walls. Each step taken seems to echo with the whispers of the past.",
+            "threat_level": "Medium",
+            "dangers": ["Cave Stalkers", "Illusory Paths"]
+        },
+        {
+            "from": "Hidden Luminescent Passage",
+            "to": "Ancient Remains",
+            "description": "From the Hidden Luminescent Passage, the path to the Ancient Remains is a solemn journey. The air is filled with the scent of time and decay, and the weight of history presses down upon those who tread this path, revealing the remnants of past explorers.",
+            "threat_level": "Low",
+            "dangers": ["Uneven Terrain", "Emotional Weight"]
+        },
+        {
+            "from": "Ancient Remains",
             "to": "Luminescent Path",
-            "description": "The journey progresses to the Luminescent Path, where the fungi's glow becomes a guiding beacon. The path is eerily beautiful, yet the air is charged with anticipation. The light seems to pulse with a rhythm, leading the way towards greater challenges.",
+            "description": "The transition to the Luminescent Path is marked by a growing sense of purpose. The fungi's glow intensifies, illuminating the way forward. The path is lined with obstacles that test the group's resolve, hinting at the challenges yet to come.",
             "threat_level": "Medium",
-            "dangers": ["Sudden darkness", "Deceptive paths"]
+            "dangers": ["Obstacles", "Disorienting Light"]
         },
         {
             "from": "Luminescent Path",
+            "to": "Locked Corridor",
+            "description": "The journey to the Locked Corridor is one of intrigue and challenge. The path is fraught with ancient locks and mechanisms, each one a testament to the craftsmanship of those who once called this place home. The air is filled with anticipation and the promise of discovery.",
+            "threat_level": "Medium",
+            "dangers": ["Locked Mechanisms", "Complex Puzzles"]
+        },
+        {
+            "from": "Locked Corridor",
             "to": "Echoing Abyss",
-            "description": "The luminescent glow fades as the path opens into the Echoing Abyss. The sheer drop, combined with the deafening roar of the ocean, creates a sense of awe and trepidation. Here, the Seekers must confront their fears and retrieve the Shell of Serenity.",
-            "threat_level": "Very High",
-            "dangers": ["Sheer drop", "Cave Stalkers"]
+            "description": "The route to the Echoing Abyss is an awe-inspiring one. The path widens, and the sound of the ocean's fury grows louder, reverberating through the cavern walls. The air is charged with energy, and each step taken is a reminder of the power that resides within the abyss.",
+            "threat_level": "High",
+            "dangers": ["Elemental Instability", "Echoing Sounds"]
         },
         {
             "from": "Echoing Abyss",
             "to": "Luminescent Exit",
-            "description": "With the Shell of Serenity in hand, the way out is marked by the luminescent fungi, leading to the Luminescent Exit. The path is fraught with danger, as Cave Stalkers lurk in the shadows. The Seekers must use all their skills to navigate safely to the exit.",
+            "description": "Approaching the Luminescent Exit, the path is one of determination and resolve. The luminescent fungi guide the way, casting a hopeful glow on the path ahead. The air is thick with anticipation as the group nears the end of their journey through the caverns.",
             "threat_level": "High",
-            "dangers": ["Cave Stalkers", "Treacherous footing"]
+            "dangers": ["Cave Stalkers", "Lasting Shadows"]
         }
     ]
 }

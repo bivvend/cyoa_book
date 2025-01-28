@@ -1,4 +1,4 @@
-from lore_generation import area_lore_generation, global_lore_generation, region_lore_generation, party_generation, main_enemy_generation, map_generation
+from lore_generation import area_lore_generation, global_lore_generation, region_lore_generation, party_generation, main_enemy_generation, map_generation, item_generation, character_generation
 from story_generation import conversation_generation, event_generation, intro_generation, plot_generation
 from utils import agent, conversation_structures, expected_json_structures, story_structrures, structure_verification
 import os
@@ -22,6 +22,8 @@ REFINED_PLOT_JSON_FILE = "refined_plot_json_file.txt"
 PLOT_CRITIQUE_FILE = "plot_critique.txt"
 PLOT_STRUCTURE_CRITIQUE_FILE = "plot_structure_critique.txt"
 ALL_MAPS_FILE = "all_maps.txt"
+ALL_ITEMS_FILE = "all_items.txt"
+ALL_CHARACTERS_FILE = "all_characters.txt"
 
 ALL_EVENTS_CRITIQUE_FILE = "all_events_critique.txt"
 CRITIQUES_BY_AREA_FILE = "critiques_by_area.txt"
@@ -42,6 +44,7 @@ SECOND_CRITIQUE_SUB_DIRECTORY = "second_critique"
 REFINED_EVENTS_SUB_DIR = "refined_events"
 FINAL_EVENTS_SUB_DIR = "final_events"
 MAPS_SUB_DIRECTORY = "maps"
+ITEMS_SUB_DIR = "items"
 
 region_flavour_prompt = "A dark dungeon inspired by the Fighting fantasy books."
 world_flavour_prompt = "The Fighting Fantasy books by Steven Jackson"
@@ -63,19 +66,19 @@ refresh_intro = False
 refresh_all_events_critique = False
 refresh_area_events_critique = False
 refresh_refined_events = False
-refresh_maps = False
-refresh_events_with_map = False #Possibly not used
 
 
 refresh_second_area_events_critique = False
 refresh_final_events = False
 
 refresh_final_events_critique = False
-refresh_refined_final_all_events = True
+refresh_refined_final_events = False
 
+refresh_maps = False
+refresh_items = False
+refresh_characters = False
 
-
-configure_new_assistant = False
+configure_new_assistant = True
 configure_new_thread = True
 configure_new_vector_store = False
 upload_new_files = True
@@ -827,55 +830,106 @@ def generate_map_json(refined_plot_json, refined_events_json, region_lore_json):
         print(f"Error in generate_map_json: {e}")
         return None
 
-def regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_json, all_events_json):
+def generate_items_json(refined_plot_json, refined_events_json, region_lore_json):
     """
-    Regenerates events for the areas based on the map to add transitions
+    Generates item descriptions
     """
     try:
+        # Using the story structures we try and build a list of items for the story
         areas = region_lore_json["starting_area"]["notable_locations"]   
 
-        events_json_list_all_areas = [] 
-        all_events = {}    
+        items_json_list_all_areas = [] 
+        all_items = {}    
    
-        if refresh_events_with_map:
+        if refresh_items:
             count = 0  
-            # Delete the previous events files
-            dir = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR)
+            # Delete the previous map files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, ITEMS_SUB_DIR)
             files = os.listdir(dir)
-            files = [f for f in files if ".txt" in f and "events" in f]
+            files = [f for f in files if ".txt" in f and "items_area" in f]
             for f in files:
-                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f)
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, ITEMS_SUB_DIR, f)
                 os.remove(file_path)
-
+            count = 0
             for area in areas:
-                print(f"Regenerating events for area {area['name']} with map.")
-                events_list = event_generation.regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_json, all_events_json, count, model=gpt_model )
-                events_json = json.loads(events_list)
-                structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
-                events_json_list_all_areas.append(events_json)        
+                print(f"Generating items for area {area['name']}")
+                items = item_generation.generate_item_json(refined_plot_json, refined_events_json, region_lore_json, count, model=gpt_model)
+                items_json = json.loads(items)
+                structure_verification.verify_lore_structure(items_json, story_structrures.item_structure_for_test)
+                items_json_list_all_areas.append(items_json)        
                 count += 1
-                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f"final_events_{count}.txt")
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, ITEMS_SUB_DIR, f"items_area_{count}.txt")
                 with open(txt_file, 'w') as f:
-                    f.write(events_list)
-                all_events[area["name"]] = events_json
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_FINAL_EVENTS_FILE)
+                    f.write(items)
+                all_items[area["name"]] = items_json
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, ITEMS_SUB_DIR, ALL_ITEMS_FILE)
             with open(txt_file, 'w') as f:
-                f.write(json.dumps(all_events, indent=4))
-            return all_events
+                f.write(json.dumps(all_items, indent=4))
+            return all_items
         else:
             # Read existing region lore from file
-            print("Loading all final events dictionary")
-            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_FINAL_EVENTS_FILE)
-            events_txt = ""
-            with open(events_file, 'r') as f:
+            print("Loading all items")
+            items_file = os.path.join(BASE_DIR, OUTPUT_DIR, ITEMS_SUB_DIR, ALL_ITEMS_FILE)
+            items_txt = ""
+            with open(items_file, 'r') as f:
                 lines = f.readlines()
                 for line in lines:
-                    events_txt += line
-            all_events = json.loads(events_txt)
-            return all_events
-        
+                    items_txt += line
+            all_items = json.loads(items_txt)
+            return all_items
     except Exception as e:
-        print(f"Error in regenerate_area_events_with_map: {e}")
+        print(f"Error in generate_item_json: {e}")
+        return None
+    
+def generate_characters_json(refined_plot_json, refined_events_json, region_lore_json):
+    """
+    Generates character descriptions
+    """
+    try:
+        # Using the story structures we try and build a list of characters from the story
+        areas = region_lore_json["starting_area"]["notable_locations"]   
+
+        characters_json_list_all_areas = [] 
+        all_characters = {}    
+   
+        if refresh_characters:
+            count = 0  
+            # Delete the previous map files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, CHARACTERS_SUB_DIR)
+            files = os.listdir(dir)
+            files = [f for f in files if ".txt" in f and "characters_area" in f]
+            for f in files:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, CHARACTERS_SUB_DIR, f)
+                os.remove(file_path)
+            count = 0
+            for area in areas:
+                print(f"Generating characters for area {area['name']}")
+                characters = character_generation.generate_character_json(refined_plot_json, refined_events_json, region_lore_json, count, model=gpt_model)
+                characters_json = json.loads(characters)
+                structure_verification.verify_lore_structure(characters_json, story_structrures.character_structure_for_test)
+                characters_json_list_all_areas.append(characters_json)        
+                count += 1
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CHARACTERS_SUB_DIR, f"characters_area_{count}.txt")
+                with open(txt_file, 'w') as f:
+                    f.write(characters)
+                all_characters[area["name"]] = characters_json
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CHARACTERS_SUB_DIR, ALL_CHARACTERS_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(json.dumps(all_characters, indent=4))
+            return all_characters
+        else:
+            # Read existing region lore from file
+            print("Loading all characters")
+            characters_file = os.path.join(BASE_DIR, OUTPUT_DIR, CHARACTERS_SUB_DIR, ALL_CHARACTERS_FILE)
+            characters_txt = ""
+            with open(characters_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    characters_txt += line
+            all_characters = json.loads(characters_txt)
+            return all_characters
+    except Exception as e:
+        print(f"Error in generate_characters_json: {e}")
         return None
     
 def critique_plot_structure(plot_structure_json, plot_text):
@@ -934,36 +988,66 @@ def check_final_events_logic(final_events_json):
     except Exception as e:
         print(f"Error in check_final_events_logic: {e}")
         return None
-    
-def regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt):
+
+
+def regenerate_final_events_from_logic_feedback(region_lore_json, all_events_json, logic_feedback_txt, use_o1=False):
     """
-    Generates the final? events (could be used cyclically)
+    Regenerates events for the areas based on the logic critique
     """
     try:
-        critic_text = None
-        
-        if refresh_refined_final_all_events:
-            print(f"Refining final events...")
-            critic_text = event_generation.regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt, model=gpt_model)
-            assert critic_text is not None
-        
+        # We now start using the start region data to create events
+        areas = region_lore_json["starting_area"]["notable_locations"]   
+
+        events_json_list_all_areas = [] 
+        all_events = {}    
+
+        if use_o1:
+            model_to_use = "o1-mini"
+        else:
+            model_to_use = gpt_model
+   
+        if refresh_refined_final_events:
+            count = 0  
+            # Delete the previous events files
+            dir = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR)
+            files = os.listdir(dir)
+            files = [f for f in files if ".txt" in f and "refined" in f]
+            for f in files:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f)
+                os.remove(file_path)
+
+            for area in areas:
+                
+                print(f"Regenerating refined final events for area {area['name']}")
+                events_list = event_generation.regenerate_final_events_from_logic_feedback(all_events_json, area['name'], logic_feedback_txt, model_to_use)
+                events_json = json.loads(events_list)
+                structure_verification.verify_lore_structure(events_json, story_structrures.event_list_structure_for_test)
+                events_json_list_all_areas.append(events_json)        
+                count += 1
+                txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, f"refined_final_events_{count}.txt")
+                with open(txt_file, 'w') as f:
+                    f.write(events_list)
+                all_events[area["name"]] = events_json
+
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE)
             with open(txt_file, 'w') as f:
-                f.write(critic_text)
+                f.write(json.dumps(all_events, indent=4))
+            return all_events
         else:
-            print("Loading refined final events")
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE)
-            critic_text = ""
-            with open(txt_file, 'r') as f:
+            # Read existing region lore from file
+            print("Loading all refined final events dictionary")
+
+            events_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE)
+            events_txt = ""
+            with open(events_file, 'r') as f:
                 lines = f.readlines()
                 for line in lines:
-                    critic_text += line
-        return critic_text
+                    events_txt += line
+            all_events = json.loads(events_txt)
+            return all_events
     except Exception as e:
         print(f"Error in regenerate_final_events_from_logic_feedback: {e}")
         return None
-
-
 
 if __name__ == "__main__":
 
@@ -1006,11 +1090,9 @@ if __name__ == "__main__":
     assert all_events_json is not None
 
 
-
     #Refine structure based on feedback 
 
     critique_prompt = critique_all_events(all_events_json)
-
 
     #Based on the overall feedback critique the events area by area.
     area_by_area_critiques = critique_area_events(region_lore_json, all_events_json, critique_prompt)
@@ -1018,10 +1100,6 @@ if __name__ == "__main__":
 
     refined_events_json = regenerate_events_from_feedback(refined_plot_json,region_lore_json, party_lore_json, enemy_lore_json, all_events_json, area_by_area_critiques)
     assert refined_events_json is not None
-
-    #generate the maps for the region
-
-    all_maps_json = generate_map_json(refined_plot_json, refined_events_json, region_lore_json)
 
     #Try and improve event logic again.
     second_critique_all_areas_txt = second_critique_area_events(region_lore_json, refined_events_json, refined_plot_json)
@@ -1031,15 +1109,22 @@ if __name__ == "__main__":
     logic_critique_final_events_txt = check_final_events_logic(final_events_json)
 
     #Build the final set of events (finally!)
-    refined_final_events_json = regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt)
+    refined_final_events_json = regenerate_final_events_from_logic_feedback(region_lore_json, final_events_json, logic_critique_final_events_txt, False)
+
 
 
     #PLOT AND EVENTS NOW FIXED
+    #generate stores of the maps, items and characters for the region
+
+    all_maps_json = generate_map_json(refined_plot_json, refined_final_events_json, region_lore_json)
+    all_items_json = generate_items_json(refined_plot_json, refined_final_events_json, region_lore_json)
+    all_characters_json = generate_characters_json(refined_plot_json, refined_final_events_json, region_lore_json)
+
     #Generate conversations
-    conversation_json = generate_conversations(region_lore_json, party_lore_json, all_events_json)
+    conversation_json = generate_conversations(region_lore_json, party_lore_json, refined_final_events_json)
     assert conversation_json is not None
 
-    intro_text = generate_introduction(global_lore_json, region_lore_json, party_lore_json, all_events_json)
+    intro_text = generate_introduction(global_lore_json, region_lore_json, party_lore_json, refined_final_events_json)
     assert intro_text is not None
 
     #If needed we should build a new assistant 

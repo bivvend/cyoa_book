@@ -1,0 +1,34 @@
+{
+    "characters": [
+        {
+            "name": "Zephyr Aetherwind",
+            "area_found": "Base of Tempest Tower",
+            "skills_and_abilities": [
+                "Mastery of elemental magic",
+                "Knowledge of storms"
+            ],
+            "description": "A reclusive sage with profound understanding of elemental forces, Zephyr is pivotal to the Seekers' journey, offering wisdom and guidance.",
+            "appearance": "Clad in tattered robes, his eyes reflect the turbulent skies, embodying the tempestuous nature of the Storm Coast."
+        },
+        {
+            "name": "Village Elder",
+            "area_found": "Village Courtyard near Tempest Tower",
+            "skills_and_abilities": [
+                "Storytelling",
+                "Local knowledge"
+            ],
+            "description": "The Village Elder shares tales of Zephyr's trials and the tower's history, providing valuable context to the Seekers.",
+            "appearance": "A wizened figure with a long, silver beard, dressed in simple robes that hint at a lifetime of wisdom."
+        },
+        {
+            "name": "Tempestus, the Storm Sovereign",
+            "area_found": "Tempest Tower (presence felt)",
+            "skills_and_abilities": [
+                "Control over storms",
+                "Elemental manipulation"
+            ],
+            "description": "Tempestus is a shadowy, malevolent force that once reigned over the Storm Coast, his presence still haunting the tower.",
+            "appearance": "NA"
+        }
+    ]
+}

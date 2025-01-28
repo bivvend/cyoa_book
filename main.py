@@ -93,9 +93,13 @@ instructions = ("You are a creative writer generating beautiful, well written fa
 files_list = [os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, CONVERSATIONS_LORE_FILE),
               os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, ENEMY_LORE_FILE), 
               os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, PARTY_LORE_FILE),  
-              os.path.join(OUTPUT_DIR, EVENTS_SUB_DIR, ALL_EVENTS_FILE),
+              os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, ALL_CHARACTERS_FILE), 
+              os.path.join(OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE),
               os.path.join(OUTPUT_DIR, REGION_LORE_FILE), 
-              os.path.join(OUTPUT_DIR, WORLD_LORE_FILE),           
+              os.path.join(OUTPUT_DIR, WORLD_LORE_FILE), 
+              os.path.join(OUTPUT_DIR, REFINED_PLOT_JSON_FILE), 
+              os.path.join(OUTPUT_DIR, MAPS_SUB_DIRECTORY, ALL_MAPS_FILE),
+              os.path.join(OUTPUT_DIR, ITEMS_SUB_DIR, ALL_ITEMS_FILE),            
               ]
 #Default values if the agent is not to be regenerated
 vector_store_id ="vs_faIZLMDu6hQyWA9LiUHKOlYD"  #
@@ -431,8 +435,21 @@ def create_vector_store():
     '''
     vector_store_id = agent.create_vector_store("Fantasy story vector store").id
     assert vector_store_id is not None
-    print(vector_store_id)
+    return vector_store_id
 
+def check_vector_store(store_id):
+    '''
+    Checks the vetor store exists
+    '''
+    vector_store = agent.retrieve_vector_store(store_id)
+    assert vector_store is not None
+    print(f" Vector store {vector_store.id} found.")
+
+def upload_new_files_to_api(files):
+    '''
+    Upload files
+    '''
+    pass
 
 def critique_all_events(all_events_json):
     """
@@ -1131,7 +1148,10 @@ if __name__ == "__main__":
     if configure_new_assistant:
         if configure_new_vector_store:
             vector_store_id = create_vector_store()
+        else:
+            check_vector_store(vector_store_id)
         if upload_new_files:
-            #First delete all the old files
-            pass
+            #Just upload to API 
             
+    
+

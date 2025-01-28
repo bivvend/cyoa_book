@@ -270,66 +270,6 @@ def regenerate_area_events_based_on_feedback(plot_json, region_json, party_json,
         print(f"Error in generate_area_event_sequence: {e}")
         return None
     
-
-def regenerate_area_events_with_map(map_json, region_json, party_json, all_events_json, area_number, model = "gpt-4o-mini"):
-    """
-    Regenerates a sequence of events for the story in this area.
-    The map is given to allow the introduction of the transition events between locations 
-    """
-    try:
-        # Convert JSON to string
-        party_json_txt = json.dumps(party_json, indent=4)
-        area_name = region_json["starting_area"]["notable_locations"][area_number]["name"]
-
-        previous_events_txt = json.dumps(all_events_json[area_name], indent=4)
-
-        map_json_text = json.dumps(map_json[area_name], indent=4)
-
-        writing_guidelines_1 = (
-            f"You are an author of well written fantasy stories.  You have generated a set of events for the area known as {area_name} in the story. "
-            f"Previously, you wrote a set of events for the story in the events JSON below: \n"
-            f"{previous_events_txt} \n"
-        )
-
-        writing_guidelines_2 = (
-            f"After writing you received some information about the layout of the area in a map structure. "
-            f"The map structure in JSON format is below: \n"
-            f"{map_json_text} \n"
-
-            f"Please revise the events based on the map. "
-            "You must add more events to your events JSON every time the characters move from one location to the next. "
-            "These events should be included witin the new structure and all the event_ids should be corrected for the new events. "
-            "Don't delete the old events, just modify their event_id as required. "
-            "The map structure can be used to define the transition events. "
-            "The transition events should all have \"type\": \"transition_event\" ",
-        )
-
-        writing_guidelines_3 = (
-            "For your info, the party is a group of adventurers that are exploring the area. They are defined in the JSON structure below: \n "
-            f"{party_json_txt} \n"
-        )
-
-        structuring_prompt = (
-            f"Your response MUST be in json format so that it can be read by a python program. This is the same structure you used before."
-            f"Please fill the structure below with the modified events. If you think it would be better to add more events to meet the feedback, please do."
-            f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
-            f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
-            "All the values in the JSON should be strings enclosed with \"\". \n"
-            "No values or lists should be empty.  If you don't want to add anything just put \"NA\" "
-            f"{story_structrures.event_list_structure}\n"
-        )
-        
-        prompt = (
-            f"{writing_guidelines_1}\n"
-            f"{writing_guidelines_2}\n"
-            f"{writing_guidelines_3}\n"
-            f"{structuring_prompt}\n"
-        )
-
-        return generate_text.generate_text(prompt, max_tokens=10000, model_in= model)
-    except Exception as e:
-        print(f"Error in generate_area_event_sequence: {e}")
-        return None
     
 
 def get_second_critique_on_area_events(all_events_json, region_json, area_number, plot_json, model = "gpt-4o-mini"):
@@ -382,4 +322,102 @@ def get_second_critique_on_area_events(all_events_json, region_json, area_number
 
     except Exception as e:
         print(f"Error in get_critique_on_single_area_events: {e}")
+        return None
+
+
+def check_final_events(all_events_json, model = "gpt-4o-mini"):
+    """
+    Returns a more specific critique on the structure and contents of the events in a given area with the input from an overall critique/
+    """
+
+    event_txt = json.dumps(all_events_json, indent=4)
+ 
+    writing_guidelines_1  = ("You are reviewing a book plot. Your job is to critique fantasy novel story plans and find problems. "
+                             "You are given story summaries listing all the events in JSON format. "
+                             "The main requirement of the story is that is has a logical flow of events and good internal consistency. ")
+    
+    writing_guidelines_2 = ("Below is a JSON stuctrure defining the events for a whole story. The story happens in multiple areas within the same region.\n"
+                            
+                            f"{event_txt} \n"
+
+                            "Please check the JSON and find logical errors, e.g. characters that are not introduced, items that are not used or repeated place names in two different areas. "
+                            "You should be very critical. "
+                            "Make explit instruction on what to change. "
+                            "DO NOT critisise the writing style or the plot.  You are only to comment on logic errors. "
+                            "Don't comment on how to make the story telling better, your comments should be about the ordering and missing or incorrect events."
+                            "Deleteing events that don't fit well with the plot and are not important is encouraged. "
+
+                            )
+    
+    structuring_prompt = (
+            "Your response should be in plain text, not JSON, with very excplicit instructions on what to change naming the events by area and event id. "
+    )
+
+    prompt = (
+            f"{writing_guidelines_1}\n"
+            f"{writing_guidelines_2}\n"
+            f"{structuring_prompt}\n"
+
+        )
+    
+    try:
+        response = generate_text.critique_text(prompt=prompt, model_in= model)
+        return response
+
+    except Exception as e:
+        print(f"Error in get_critique_on_single_area_events: {e}")
+        return None
+
+
+
+def regenerate_final_events_from_logic_feedback(all_events_json, feedback_text , model = "gpt-4o-mini"):
+    """
+    Regenerates a sequence of events for the story.
+    """
+    try:
+        # Convert JSON to string
+
+        previous_events_txt = json.dumps(all_events_json, indent=4)
+
+        writing_guidelines_1 = (
+            f"You are an author of well written fantasy stories.  You have generated a set of events for a whole story in JSON format as an outline of the story. "
+            f"Previously, you wrote the set of events as an outline for the story in the JSON below: \n"
+            f"{previous_events_txt} \n"
+        )
+
+        writing_guidelines_2 = (
+            f"After writing you received feeback on the logical ordering and content.  You take the feeback very seriously and want to make the events better. "
+            f"The feeback you received is below: \n"
+            f"{feedback_text}"
+            
+            f"Please revise the events based on the feedback."
+            f"Make sure the events are in a logical order. "
+            f"Make sure that all the characters are introduced and object are used in a sensible order. "
+            f"Follow the feedback and make all the suggestions it asks for ."
+            f"Don't change events that the feedback doesn't want you to change. "
+        )
+
+        
+
+        structuring_prompt = (
+            f"The response MUST be in json format so that it can be read by a python program. This is the same structure you used before."
+            f"Please fill the structure below with the modified events. If you think it would be better to add more events to meet the feedback, please do."
+            f"There should be around 25 events in the sequence. "
+            f"Each event should id should be of the form \"event_1\", \"event_2\" etc. "
+            f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
+            "All the values in the JSON should be strings enclosed with \"\". \n"
+            "No values or lists should be empty.  If you don't want to add anything just put \"NA\" "
+            "Always use , as a delimiter. "
+            f"{story_structrures.event_list_structure}\n"
+        )
+        
+        prompt = (
+            f"{writing_guidelines_1}\n"
+            f"{writing_guidelines_2}\n"
+            f"{structuring_prompt}\n"
+        )
+
+        return generate_text.generate_text(prompt, max_tokens=10000, model_in= model)
+    except Exception as e:
+        print(f"Error in generate_area_event_sequence: {e}")
         return None

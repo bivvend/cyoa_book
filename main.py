@@ -13,6 +13,7 @@ PARTY_LORE_FILE = "party.txt"
 ALL_EVENTS_FILE = "all_events.txt"
 ALL_REFINED_EVENTS_FILE = "all_refined_events.txt"
 ALL_FINAL_EVENTS_FILE = "all_final_events.txt"
+ALL_REFINED_FINAL_EVENTS_FILE = "all_refined_final_events.txt"
 INTRO_FILE = "intro.txt"
 BASIC_PLOT_FILE = "basic_plot.txt"
 REFINED_PLOT_FILE = "plot.txt"
@@ -27,6 +28,8 @@ CRITIQUES_BY_AREA_FILE = "critiques_by_area.txt"
 
 SECOND_ALL_EVENTS_CRITIQUE_FILE = "second_all_events_critique.txt"
 SECOND_CRITIQUES_BY_AREA_FILE = "second_critiques_by_area.txt"
+
+FINAL_EVENTS_CRITIQUE_FILE = "final_events_logic_critique.txt"
 
 CHARACTERS_SUB_DIR = "characters"
 CONVERSATIONS_LORE_FILE = "conversations.txt"
@@ -65,7 +68,11 @@ refresh_events_with_map = False #Possibly not used
 
 
 refresh_second_area_events_critique = False
-refresh_final_events = True
+refresh_final_events = False
+
+refresh_final_events_critique = False
+refresh_refined_final_all_events = True
+
 
 
 configure_new_assistant = False
@@ -480,33 +487,7 @@ def critique_plot(plot_text):
         print(f"Error in critique_plot: {e}")
         return None
 
-def critique_plot_structure(plot_structure_json, plot_text):
-    """
-    Generates critique on first pass at plot
-    """
-    try:
-        critic_text = None
-        
-        if refresh_critique_of_plot_structure_file:
-            print(f"Generating plot structre critique...")
-            critic_text = plot_generation.critique_plot_json(plot_structure_json, plot_text, model=gpt_model)
-            assert critic_text is not None
-        
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
-            with open(txt_file, 'w') as f:
-                f.write(critic_text)
-        else:
-            print("Loading plot structre critique..")
-            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
-            critic_text = ""
-            with open(txt_file, 'r') as f:
-                lines = f.readlines()
-                for line in lines:
-                    critic_text += line
-        return critic_text
-    except Exception as e:
-        print(f"Error in critique_plot_structure: {e}")
-        return None
+
 
 def critique_area_events(region_lore_json, all_events_json, all_events_critique_txt):
     """
@@ -897,6 +878,93 @@ def regenerate_area_events_with_map(all_maps_json, region_lore_json, party_lore_
         print(f"Error in regenerate_area_events_with_map: {e}")
         return None
     
+def critique_plot_structure(plot_structure_json, plot_text):
+    """
+    Generates critique on first pass at plot
+    """
+    try:
+        critic_text = None
+        
+        if refresh_critique_of_plot_structure_file:
+            print(f"Generating plot structre critique...")
+            critic_text = plot_generation.critique_plot_json(plot_structure_json, plot_text, model=gpt_model)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading plot structre critique..")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in critique_plot_structure: {e}")
+        return None
+    
+    
+def check_final_events_logic(final_events_json):
+    """
+    Generates critique on final events for logic errors only
+    """
+    try:
+        critic_text = None
+        
+        if refresh_final_events_critique:
+            print(f"Checking logic of final events...")
+            critic_text = event_generation.check_final_events(final_events_json)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, FINAL_EVENTS_CRITIQUE_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading check on final logic")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, SECOND_CRITIQUE_SUB_DIRECTORY, FINAL_EVENTS_CRITIQUE_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in check_final_events_logic: {e}")
+        return None
+    
+def regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt):
+    """
+    Generates the final? events (could be used cyclically)
+    """
+    try:
+        critic_text = None
+        
+        if refresh_refined_final_all_events:
+            print(f"Refining final events...")
+            critic_text = event_generation.regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt, model=gpt_model)
+            assert critic_text is not None
+        
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE)
+            with open(txt_file, 'w') as f:
+                f.write(critic_text)
+        else:
+            print("Loading refined final events")
+            txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, FINAL_EVENTS_SUB_DIR, ALL_REFINED_FINAL_EVENTS_FILE)
+            critic_text = ""
+            with open(txt_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    critic_text += line
+        return critic_text
+    except Exception as e:
+        print(f"Error in regenerate_final_events_from_logic_feedback: {e}")
+        return None
+
+
+
 if __name__ == "__main__":
 
     #Create the directories if they don't exist
@@ -959,6 +1027,12 @@ if __name__ == "__main__":
     second_critique_all_areas_txt = second_critique_area_events(region_lore_json, refined_events_json, refined_plot_json)
 
     final_events_json = regenerate_events_from_feedback(refined_plot_json,region_lore_json, party_lore_json, enemy_lore_json, refined_events_json, second_critique_all_areas_txt, is_final=True)
+
+    logic_critique_final_events_txt = check_final_events_logic(final_events_json)
+
+    #Build the final set of events (finally!)
+    refined_final_events_json = regenerate_final_events_from_logic_feedback(final_events_json, logic_critique_final_events_txt)
+
 
     #PLOT AND EVENTS NOW FIXED
     #Generate conversations

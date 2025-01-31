@@ -78,17 +78,40 @@ refresh_maps = False
 refresh_items = False
 refresh_characters = False
 
-configure_new_assistant = True
-configure_new_thread = True
-configure_new_vector_store = False
-upload_new_files = True
+#Author configuration
 
+configure_new_assistant = False
+create_new_assitant = False
+create_new_thread = False
+configure_new_vector_store = False
+upload_new_files = False
+add_new_files_to_vector_store = False
+
+#Critic configuration
+
+cr_configure_new_assistant = False
+cr_create_new_assitant = False
+cr_create_new_thread = False
+
+
+#Story generation
+
+write_intro = False
+write_events = True
 
 # Instructions for the creative writer agent
 instructions = ("You are a creative writer generating beautiful, well written fantasy stories. "
                 "You will be given JSON files containing the story's plot, characters, events and setting. "
                 "You will create sections of the story for a given range of events in the JSON file. "
                 "You will try and keep the content consistent throughout the story by analysis of the previous events. ")
+
+# Instructions for the critic agent
+critic_instructions = ("You are a critic of fantasy stories.  "
+                "You have been given JSON files containing the story's plot, characters, events and setting. "
+                "Your job is to suggest improvements to sections of the story you are given.  Using your knowledge of the events make sure the "
+                "story sections are consistent with the plot as you know it. "
+                "You also need to suggest improvements to the writing style and help the author make a more interesting and well written story. ")
+
 #Files to upload to the author agent
 files_list = [os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, CONVERSATIONS_LORE_FILE),
               os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, ENEMY_LORE_FILE), 
@@ -101,12 +124,17 @@ files_list = [os.path.join(OUTPUT_DIR, CHARACTERS_SUB_DIR, CONVERSATIONS_LORE_FI
               os.path.join(OUTPUT_DIR, MAPS_SUB_DIRECTORY, ALL_MAPS_FILE),
               os.path.join(OUTPUT_DIR, ITEMS_SUB_DIR, ALL_ITEMS_FILE),            
               ]
-#Default values if the agent is not to be regenerated
+#Default values for the author if the agent is not to be regenerated
 vector_store_id ="vs_faIZLMDu6hQyWA9LiUHKOlYD"  #
-assistant_id = "asst_rLhqNkUB77vU3Pfavd3HeChr"
-thread_id= "thread_nvJfWjlC7RFFuUNiUZDTY45G"
+assistant_id = "asst_0zO6Lxz1oXJ8NV8zve4cYbZL" #
+thread_id= "thread_896SMcVnpavikQ0AYUvZqch1" #
+
+#Default values for the critic if the agent is not to be regenerated
+critic_assistant_id = "asst_CG3rGo4zUDN5LXhnezFWFEaX" 
+critic_thread_id= "thread_i2F9WCakDNd5SgB3tuFwAZ93" #
 
 gpt_model = "gpt-4o"
+author_gpt_model = "gpt-4o-mini"
 
 def generate_global_lore():
     """
@@ -1066,6 +1094,10 @@ def regenerate_final_events_from_logic_feedback(region_lore_json, all_events_jso
         print(f"Error in regenerate_final_events_from_logic_feedback: {e}")
         return None
 
+def list_files():
+    files = agent.list_files()
+    return files.data
+
 if __name__ == "__main__":
 
     #Create the directories if they don't exist
@@ -1144,6 +1176,10 @@ if __name__ == "__main__":
     intro_text = generate_introduction(global_lore_json, region_lore_json, party_lore_json, refined_final_events_json)
     assert intro_text is not None
 
+    author = None
+    thread = None
+    critic = None
+    thread_critic = None
     #If needed we should build a new assistant 
     if configure_new_assistant:
         if configure_new_vector_store:
@@ -1151,8 +1187,236 @@ if __name__ == "__main__":
         else:
             check_vector_store(vector_store_id)
         if upload_new_files:
+            #Check if files are uploaded 
+            files = list_files()
+            print("Current files:")
+            print("---------------")
+            for f in files:
+                print(f"{f.id} : {f.filename}")
+            print("---------------")
+            if(len(files) > 0):
+                print("Deleteing old files....")
+                for f in files:
+                    agent.delete_file(f.id)
+                    print(f"Deleteing {f.filename}")
+                files = list_files()
+                assert len(files) == 0
+            print("Uploading new files...")
+            for f in files_list:
+                print(f"Uploading {f}")
+                agent.upload_file(f)
+            files = list_files()
+            assert len(files) == len(files_list)    
             #Just upload to API
-            pass 
+        if add_new_files_to_vector_store:
+            files = list_files()
+            v_files = agent.list_files_in_vector_store(vector_store_id)
+            #Remove all the files in the vector store
+            print("Current files in vector store:")
+            print("---------------")
+            for f in v_files:
+                print(f"File: {f.id}")
+            print("---------------")
+            if(len(v_files) > 0):
+                print("Removing old vector store files....")
+                for f in v_files:
+                    agent.remove_file_from_vector_store(vector_store_id, f.id)
+                    print(f"Removing {f.id}")
+                v_files = agent.list_files_in_vector_store(vector_store_id)
+                assert len(v_files) == 0
+            print("Adding new files...")
+            for f in files:
+                print(f"Adding file {f.id} : {f.filename} to vector store {vector_store_id} ")
+                agent.add_file_to_vector_store(vector_store_id, f.id)
+            v_files = agent.list_files_in_vector_store(vector_store_id)
+            assert len(v_files) == len(files_list)
+        if create_new_assitant:
+            #Create the new assistant
+            author = agent.create_author("Fantasy author", instructions, vector_store_id)
+            assistant_id = author.id
+            print(assistant_id)
+        else:
+            author = agent.retrieve_author(assistant_id)
+            print(f"Author (assistant) id = {assistant_id}")
+        assert author is not None
+        if create_new_thread:
+            print("Creating new thread...")
+            thread = agent.create_thread()
+            assert thread is not None
+            thread_id = thread.id
+            print(f"New thread = {thread_id}")
+        else:
+            thread = agent.retrieve_thread(thread_id)
+            assert thread is not None
+            print(f"Thread {thread_id} found.")
+        #Set model 
+        print(f"Setting author {assistant_id} to model {author_gpt_model}")
+        agent.set_author_model(assistant_id,author_gpt_model)
+    else:
+        author = agent.retrieve_author(assistant_id)
+        assert author is not None
+        print(f"Author (assistant) id = {assistant_id} found.")
+        thread = agent.retrieve_thread(thread_id)
+        assert thread is not None
+        print(f"Thread {thread_id} found.")
+
+
+    #If needed we should build a new critic
+    if cr_configure_new_assistant:
+        if cr_create_new_assitant:
+            #Create the new assistant
+            critic = agent.create_author("Fantasy critic", critic_instructions, vector_store_id)
+            critic_assistant_id = critic.id
+            print(critic_assistant_id)
+        else:
+            critic = agent.retrieve_author(critic_assistant_id)
+            print(f"Critic (assistant) id = {critic_assistant_id}")
+        assert critic is not None
+        if cr_create_new_thread:
+            print("Creating new critic thread...")
+            thread_critic = agent.create_thread()
+            assert thread_critic is not None
+            critic_thread_id = thread_critic.id
+            print(f"New critic thread = {critic_thread_id}")
+        else:
+            thread_critic = agent.retrieve_thread(critic_thread_id)
+            assert thread_critic is not None
+            print(f"Thread {critic_thread_id} found.")
+        #Set model 
+        print(f"Setting critic {critic_assistant_id} to model {author_gpt_model}")
+        agent.set_author_model(critic_assistant_id,author_gpt_model)
+    else:
+        critic = agent.retrieve_author(critic_assistant_id)
+        assert critic is not None
+        print(f"Critic (assistant) id = {critic_assistant_id} found.")
+        thread_critic = agent.retrieve_thread(critic_thread_id)
+        assert thread_critic is not None
+        print(f"Thread {thread_critic.id} found.")
+
+    #Write the intro
+    if write_intro:
+        #Extract the name of the first area
+        area_name =  region_lore_json["starting_area"]["notable_locations"][0]["name"]
+
+
+        #Use the critic to comment on the intro we already have.
+        critic_guidlines_1 = (
+            "You are given the text below to write a critisim of: \n"
+            f"{intro_text} \n "
+
+            "Your response should include ways in which the writing quality could be improved. "
+        )
+
+        critic_guidlines_2 = ( 
+            "Your response should also comment on the time line based on the following important points: \n"
+            f"The events in the text should lead up to \"event_1\" for {area_name} as described in \"all_events.txt\". "
+            f"The party have never met any of the other characters described in \"all_characters.txt\" so the text mustn't mention any of them. "
+            f"The party have not heard of any of the items in \"all_items.txt\" so it mustn't mention them. "
+            f"The party have never visited any of the locations in \"all_maps.txt\" so the text shouldn't mention them. "
+        )
+
+        message = agent.create_message(critic_guidlines_1 + critic_guidlines_2, critic_thread_id)
+        assert message is not None
+        response_2 = agent.start_run(critic_thread_id, critic_assistant_id)
+        assert response_2 is not None
+        print(response_2)
+
+        # Generate the prompt
+        writing_guidelines_1 = (
+            "You wrote a detailed introduction scene for the story below:\n  "
+            f"{intro_text}\n"
+
+            "Based on this you received the feedback below from a critic: \n"
+            f"{response_2} \n"
+
+        )
+
+
+        writing_guidelines_2 = (
+            "You must rewrite your scene based on the feeback. "
+            "Try and address all the points raised."
+            "You should increase the length of the text to around 600-1000 words by adding much more description of the scenery and more conversation. "
+        )
+
+        prompt = (
+            f"{writing_guidelines_1} \n"
+            f"{writing_guidelines_2} \n"
+        )
+
+        message = agent.create_message(prompt, thread_id)
+        assert message is not None
+        response_3 = agent.start_run(thread_id, assistant_id)
+        assert response_3 is not None
+        print(response_3)
+
+        txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, "intro.txt")
+        with open(txt_file, 'w') as f:
+            f.write(response_3)
+        intro_text = response_3
+    else: 
+        intro_text = ""
+        txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, "intro.txt")
+        with open(txt_file, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                intro_text += line 
+        print("Intro text reloaded.")
+    if write_events:
+        response = intro_text
+        print("Writing events...")
+        area_count = 0
+    
+        areas = region_lore_json["starting_area"]["notable_locations"]
+        for area in areas[0:1]:
+            event_count = 0
+            
+            for event in  refined_final_events_json[areas[area_count]["name"]]["events"][0:10]:
+                file_path = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, f"area_{area_count+1}_event_{event_count+1}.txt")
+                print(file_path)
+
+                print(f"Writing event {event_count+1}...")
+
+                writing_guide_line_1 = (
+                    "The previous scene in the story is given below: \n\n"
+                    f"{response} \n\n"
+
+                    "Now write a scene for the next event in the series described by the JSON below: \n\n"
+                    f"{event} \n\n"
+                    "You must not add anything other than what is described in the event JSON. "
+                    "In the new scence link directly with the previous scene by continuing from the last sentence. " 
+                    "If the two locations for the previous scene and the new event are different, describe how the party got to the new location. "
+                    f"\"all_maps.txt \" describes the paths between different locations.  Use this to add detail to the transitions.  "      
+
+                )
+
+                writing_guide_line_2 = (
+                    f"Where possible add a converstion from \"conversations.txt\" during the event. \n"
+                    f"The description should not be too dramatic and does not need to end with a heroic line of what may come next.  It is a description in the middle of a story."
+                    f"Only include utf-8 characters in the response. \n"
+                    f"The events in \"all_events.txt\" are in JSON format. The order of events in the lists for each area are in chronological order. "
+                    f"You must not describe any events or objects or NPCs that have not happend yet in the order defined in \"all_events.txt.\" "
+                    f"Don't rely on objects not listed in the \"all_items.txt\" listed in the event JSON."
+                )
+
+                print(writing_guide_line_1 + "\n" + writing_guide_line_2)
+
+                message = agent.create_message(writing_guide_line_1 + "\n" + writing_guide_line_2, thread_id)
+                assert message is not None
+                response = agent.start_run(thread_id, assistant_id)
+                assert response is not None
+                #print(response)
+
+                with open(file_path, 'w', encoding="utf-8") as f:
+                    f.write(response)
+
+                agent.delete_messages(thread_id)
+
+                event_count += 1
+            area_count += 1 
+        
+            
+            
+
             
     
 

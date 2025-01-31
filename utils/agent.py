@@ -19,6 +19,7 @@ def create_author(name, instructions, vector_store_id):
     except Exception as e:
         print(f"Error in create_author: {e}")
         return None
+    
 
 def modify_author_instructions(author_id, instructions):
     """
@@ -32,6 +33,20 @@ def modify_author_instructions(author_id, instructions):
         return author
     except Exception as e:
         print(f"Error in modify_author_instructions: {e}")
+        return None
+    
+def set_author_model(author_id, model_in):
+    """
+    Modify the instructions for an existing author.
+    """
+    try:
+        author = client.beta.assistants.update(
+            author_id,
+            model= model_in
+        )
+        return author
+    except Exception as e:
+        print(f"Error in set_author_model: {e}")
         return None
 
 def create_vector_store(name):
@@ -102,6 +117,17 @@ def retrieve_file(file_id):
         print(f"Error in retrieve_file: {e}")
         return None
 
+def delete_file(file_id):
+    """
+    Delete a specific file by ID from the OpenAI API.
+    """
+    try:
+        file = client.files.delete(file_id)
+        return file
+    except Exception as e:
+        print(f"Error in delete_file: {e}")
+        return None
+
 def add_file_to_vector_store(vector_store_id, file_id):
     """
     Add a file to a vector store.
@@ -115,6 +141,36 @@ def add_file_to_vector_store(vector_store_id, file_id):
         return vector_store
     except Exception as e:
         print(f"Error in add_file_to_vector_store: {e}")
+        return None
+
+def remove_file_from_vector_store(vector_store_id, file_id):
+    '''
+    Remove a file from a vector store.
+    '''
+    try:
+        vector_store = client.beta.vector_stores.retrieve(vector_store_id)
+        client.beta.vector_stores.files.delete(
+            vector_store_id=vector_store_id,
+            file_id=file_id
+        )
+        return vector_store
+    except Exception as e:
+        print(f"Error in remove_file_from_vector_store: {e}")
+        return None
+  
+
+    
+def list_files_in_vector_store(vector_store_id):
+    """
+    List files in vector store
+    """
+    try:
+        files = client.beta.vector_stores.files.list(
+            vector_store_id=vector_store_id,
+        )
+        return files.data
+    except Exception as e:
+        print(f"Error in list_files_in_vector_store: {e}")
         return None
 
 def create_thread():

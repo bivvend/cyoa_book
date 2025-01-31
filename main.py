@@ -1151,7 +1151,8 @@ if __name__ == "__main__":
         else:
             check_vector_store(vector_store_id)
         if upload_new_files:
-            #Just upload to API 
+            #Just upload to API
+            pass 
             
     
 

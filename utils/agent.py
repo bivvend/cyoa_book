@@ -194,6 +194,34 @@ def retrieve_thread(thread_id):
     except Exception as e:
         print(f"Error in retrieve_thread: {e}")
         return None
+    
+def list_threads_runs(thread_id):
+    """
+    Clear an existing thread by ID.
+    """
+    try:
+        runs = client.beta.threads.runs.retrieve(thread_id)
+        return runs
+    except Exception as e:
+        print(f"Error in list_threads_runs: {e}")
+        return None  
+
+def cancel_all_threads_runs(thread_id):
+    """
+    Clear an existing thread by ID.
+    """
+    try:
+        runs = client.beta.threads.runs.list(thread_id)
+        for run in runs.data:
+            try:
+                if run.status != "completed":
+                    client.beta.threads.runs.cancel(run_id=run.id, thread_id=thread_id)
+            except Exception as inner_e:
+                print(inner_e)
+        return runs
+    except Exception as e:
+        print(f"Error in cancel_all_threads_runs: {e}")
+        return None  
 
 def create_message(prompt, thread_id):
     """
@@ -243,6 +271,9 @@ def start_run(thread_id, assistant_id):
         run = client.beta.threads.runs.create_and_poll(
             thread_id=thread_id,
             assistant_id=assistant_id,
+            max_completion_tokens= 20000,
+            max_prompt_tokens=50000
+
         )
         print("Run completed with status: " + run.status)
         output = None
@@ -251,7 +282,16 @@ def start_run(thread_id, assistant_id):
             # Last message will be the first
             if len(messages.data) > 0:
                 output = messages.data[0].content[0].text.value
-        return output
+            return output
+        else:
+            print(run.status)
+            messages = client.beta.threads.messages.list(thread_id=thread_id)
+            # Last message will be the first
+            if len(messages.data) > 0:
+                output = messages.data[0].content[0].text.value
+                print(output)
+            return None
+        
     except Exception as e:
         print(f"Error in start_run: {e}")
         return None

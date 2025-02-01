@@ -98,6 +98,7 @@ cr_create_new_thread = False
 
 write_intro = False
 write_events = True
+assemble_story = True
 
 # Instructions for the creative writer agent
 instructions = ("You are a creative writer generating beautiful, well written fantasy stories. "
@@ -1335,7 +1336,7 @@ if __name__ == "__main__":
         writing_guidelines_2 = (
             "You must rewrite your scene based on the feeback. "
             "Try and address all the points raised."
-            "You should increase the length of the text to around 600-1000 words by adding much more description of the scenery and more conversation. "
+            "You should increase the length of the text to around 600 words by adding much more description of the scenery and more conversation. "
         )
 
         prompt = (
@@ -1361,20 +1362,37 @@ if __name__ == "__main__":
             for line in lines:
                 intro_text += line 
         print("Intro text reloaded.")
+
+
     if write_events:
+        #Delete all the old events
+        dir = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR)
+        files = os.listdir(dir)
+        files = [f for f in files if ".txt" in f and "area" in f]
+        for f in files:
+            file_path = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, f)
+            os.remove(file_path)
+
         response = intro_text
         print("Writing events...")
         area_count = 0
     
         areas = region_lore_json["starting_area"]["notable_locations"]
-        for area in areas[0:1]:
+        for area in areas:
             event_count = 0
+            area_name = area["name"]
             
-            for event in  refined_final_events_json[areas[area_count]["name"]]["events"][0:10]:
+            for event in  refined_final_events_json[areas[area_count]["name"]]["events"]:
                 file_path = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, f"area_{area_count+1}_event_{event_count+1}.txt")
-                print(file_path)
+
+                agent.delete_messages(thread_id)
+                agent.delete_messages(critic_thread_id)
+
+                agent.cancel_all_threads_runs(thread_id)
+                agent.cancel_all_threads_runs(critic_thread_id)
 
                 print(f"Writing event {event_count+1}...")
+                print("_______________________________\n" )
 
                 writing_guide_line_1 = (
                     "The previous scene in the story is given below: \n\n"
@@ -1384,8 +1402,7 @@ if __name__ == "__main__":
                     f"{event} \n\n"
                     "You must not add anything other than what is described in the event JSON. "
                     "In the new scence link directly with the previous scene by continuing from the last sentence. " 
-                    "If the two locations for the previous scene and the new event are different, describe how the party got to the new location. "
-                    f"\"all_maps.txt \" describes the paths between different locations.  Use this to add detail to the transitions.  "      
+                    "Do not repeat any of the events from the previous scence in the new scene! "    
 
                 )
 
@@ -1396,24 +1413,140 @@ if __name__ == "__main__":
                     f"The events in \"all_events.txt\" are in JSON format. The order of events in the lists for each area are in chronological order. "
                     f"You must not describe any events or objects or NPCs that have not happend yet in the order defined in \"all_events.txt.\" "
                     f"Don't rely on objects not listed in the \"all_items.txt\" listed in the event JSON."
+
+                    "You must not end the scene with a dramatic sentence about what is to come. "
+                    "This is a scene in the middle of the book, so it good to end without a heroic sounding finale. "
                 )
 
-                print(writing_guide_line_1 + "\n" + writing_guide_line_2)
+                prompt = writing_guide_line_1 + "\n" + writing_guide_line_2
+                print(prompt)
+                print("_______________________________\n" )
+                print("Output: \n" )
+                message = agent.create_message(prompt, thread_id)
+                assert message is not None
+                response_to_improve = agent.start_run(thread_id, assistant_id)
+                assert response_to_improve is not None
+                print(response_to_improve + "\n")                
+                print("_______________________________\n" )
+                #print(response)
 
-                message = agent.create_message(writing_guide_line_1 + "\n" + writing_guide_line_2, thread_id)
+                #Next use the critic to improve the text 
+
+                critic_guidlines_1 = (
+                    "You are given the text below to write a critisim of: \n"
+                    f"{response_to_improve} \n "
+
+                    "Your response should include ways in which the writing quality could be improved. "
+                    "You should give specific guidance on where the writing style and contents could be changed. "
+                )
+
+                critic_guidlines_2 = ( 
+                    "Your response should also comment on the time line based on the following important points: \n"
+                    f"The events in the text should all occur in {area_name} as described in \"all_events.txt\". "
+                    f"The party have not visited any of the other areas yet."
+
+                    "The text is from the middle of a story, so the end should not have  a dramatic sentence about what is to come. "
+                    "Make sure to critise strongly any final dramatic sounding heroic/noble wrapping up sentences. "
+                )
+                prompt = critic_guidlines_1 + critic_guidlines_2 + "\n"
+
+                print("_______________________________\n" )
+                print("Critic input: \n")
+                print(prompt)
+                print("_______________________________\n" )
+                message = agent.create_message(prompt , critic_thread_id)
+                assert message is not None
+                critic_response  = agent.start_run(critic_thread_id, critic_assistant_id)
+                assert critic_response is not None
+                print("_______________________________\n" )
+                print("Critic response: \n" )
+                print(critic_response + "\n")
+                print("_______________________________\n" )
+                #Then refine the text based on the critic's feedback
+
+                # Generate the prompt
+                writing_guidelines_1 = (
+                    "You wrote a detailed scene for the story below:\n  "
+                    f"{response_to_improve}\n"
+
+                    "Based on this you received the feedback below from a critic: \n"
+                    f"{critic_response} \n"
+
+
+                )
+
+
+                writing_guidelines_2 = (
+                    "You must rewrite your scene based on the feeback. "
+
+                    "The scene is described by the JSON below: \n\n"
+                    f"{event} \n\n"
+
+                    "Try and address all the points raised in the feedback, but stick to the scene description in the JSON."
+                    "You should increase the length of the text to around 500 words by adding much more description of the scenery and more conversations. " 
+                    "Make the writing style much better, using the critic's feedback as a guide."
+
+
+                )
+
+                prompt = (
+                    f"{writing_guidelines_1} \n"
+                    f"{writing_guidelines_2} \n"
+                )
+                print("_______________________________\n" )
+                print("Refinement prompt: \n")
+                print(prompt + "\n")
+                print("_______________________________\n" )
+
+                message = agent.create_message(prompt, thread_id)
                 assert message is not None
                 response = agent.start_run(thread_id, assistant_id)
                 assert response is not None
-                #print(response)
+                print("Final output:")
+                print(response + "\n")
+                print("_______________________________\n" )
+
 
                 with open(file_path, 'w', encoding="utf-8") as f:
                     f.write(response)
 
-                agent.delete_messages(thread_id)
-
                 event_count += 1
             area_count += 1 
-        
+    if assemble_story:
+
+        dir = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR)
+        files = os.listdir(dir)
+        files = [f for f in files if "area" in f]
+
+        #Build a list (area, event, filename)
+        chunks = []
+        for f in files:
+            #area_"num"_event_"num".txt
+            splits = f.split("_")
+            assert len(splits) > 3
+            area_num = int(splits[1])
+            event_num = int(splits[3].split(".")[0])
+            
+            chunks.append((area_num, event_num, f))
+
+        #sort list 
+        chuncks_sorted = sorted(chunks, key= lambda x:x[0]*len(chunks)*1000 + x[1])
+        print(chuncks_sorted)
+
+    
+        assert len(files) > 0
+        #Create a new file
+        full_story_path = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, "full_story.txt")
+        with open(full_story_path, "w", encoding="utf-8") as text_file:
+
+            #Add the intro
+            text_file.write(intro_text + "\n")
+            for f in chuncks_sorted:
+                chunk_path = os.path.join(BASE_DIR, OUTPUT_DIR, STORY_SUB_DIR, f[2])
+                with open(chunk_path, "r", encoding="utf-8") as cf:
+                    lines = cf.readlines()
+                    assert len(lines) > 0
+                    text_file.writelines(lines)
             
             
 

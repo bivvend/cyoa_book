@@ -1,94 +1,34 @@
 {
     "items": [
         {
-            "name": "Maritime Relic",
-            "area_found": "Abandoned Lighthouse",
-            "properties": "Resonates with elemental powers, unlocks sealed areas",
-            "description": "An ornate compass, the Maritime Relic grants Aric visions of Tempestus's origins and can unlock hidden areas, deepening his understanding of his elemental abilities."
+            "name": "Map Fragment",
+            "area_found": "Whispering Plaza",
+            "properties": "Mysterious, Ancient",
+            "description": "A fragment of an ancient map, its edges frayed and worn. It is critical in revealing the secrets hidden beneath Whispering Plaza."
         },
         {
-            "name": "Secret Map",
-            "area_found": "The Salty Anchor",
-            "properties": "Reveals hidden locations",
-            "description": "An intricately drawn chart that highlights secret locations around Gale Village, potentially leading to the Shell of Serenity and other ancient artifacts."
+            "name": "Twilight Bloom",
+            "area_found": "Whispering Plaza",
+            "properties": "Healing, Rare",
+            "description": "A rare flower with potent healing properties, found nestled in the plaza's cobblestones. It is used to craft a powerful healing potion."
         },
         {
-            "name": "Map of the Storm Coast",
-            "area_found": "Captain Brine's Treasure Stash",
-            "properties": "Navigational tool",
-            "description": "A partial map found in Captain Brine's treasure stash, offering important navigational routes around the Storm Coast and clues to the Shell of Serenity."
+            "name": "Healing Potion",
+            "area_found": "Whispering Plaza",
+            "properties": "Restorative, Valuable",
+            "description": "Crafted from the Twilight Bloom, this potion offers significant healing benefits, providing the party with a crucial resource for future challenges."
         },
         {
-            "name": "Rare Gems",
-            "area_found": "Captain Brine's Treasure Stash",
-            "properties": "Valuable, possibly magical",
-            "description": "Collected from Captain Brine's stash, these rare gems could hold significant value or magical properties useful for the Seekers' quest."
+            "name": "Makeshift Weapon",
+            "area_found": "Whispering Plaza",
+            "properties": "Crafted, Effective",
+            "description": "A weapon forged from debris by Korr Stonefist, enhancing the party's defenses and symbolizing his skill as a blacksmith."
         },
         {
-            "name": "Ancient Map",
-            "area_found": "Eldra's Hut",
-            "properties": "Comprehensive guide",
-            "description": "A combination of secret maps, providing a complete guide to the Storm Coast and indicating areas of danger and resources necessary for the quest."
-        },
-        {
-            "name": "Ancient Inscriptions",
-            "area_found": "Hidden Chamber",
-            "properties": "Reveals Tempestus's vulnerabilities",
-            "description": "Inscriptions detailing the rise of Tempestus, offering insights into his weaknesses and the true power of the Shell of Serenity."
-        },
-        {
-            "name": "Storm Fern",
-            "area_found": "Stormy Shore",
-            "properties": "Magical, enhances spells",
-            "description": "A luminescent plant that emits a magical aura, offering healing properties and the potential to enhance spells, crucial for the Seekers' magical defenses."
-        },
-        {
-            "name": "Unlocked Vault Items",
-            "area_found": "The Salty Anchor",
-            "properties": "Additional resources",
-            "description": "Artifacts and items revealed beneath The Salty Anchor using the Maritime Relic, providing more resources and strategic advantages for the Seekers."
-        },
-        {
-            "name": "Navigational Instruments",
-            "area_found": "Captain Brine's Treasure Stash",
-            "properties": "Specialized tools",
-            "description": "Precise instruments aiding the Seekers in safely navigating the Storm Coast, enhancing their ability to locate the Shell of Serenity."
-        },
-        {
-            "name": "Protective Charms",
-            "area_found": "Captain Brine's Treasure Stash",
-            "properties": "Protection against sea spirits",
-            "description": "Charms designed to ward off sea spirits, offering the Seekers protection from Tempestus's minions and enhancing their resilience."
-        },
-        {
-            "name": "Provisions",
-            "area_found": "Captain Brine's Treasure Stash",
-            "properties": "Sustenance for the journey",
-            "description": "Essential supplies provided by Captain Brine, ensuring the Seekers remain well-fed and energized for their arduous quest."
-        },
-        {
-            "name": "Enchanted Artifacts",
-            "area_found": "Hidden Chamber",
-            "properties": "Protection and ability enhancement",
-            "description": "Artifacts that provide protection against Storm Spirits and amplify the Seekers' abilities, crucial for their confrontation with Tempestus."
-        },
-        {
-            "name": "Piece of the Shell of Serenity",
-            "area_found": "Hidden Chamber",
-            "properties": "Key artifact",
-            "description": "A tangible fragment of the legendary Shell of Serenity, vital in the quest to calm the storms and confront Tempestus."
-        },
-        {
-            "name": "Unified Ancient Map",
-            "area_found": "Town Square",
-            "properties": "Direct path to Thundercrash Caverns",
-            "description": "A comprehensive map presented to the Seekers, marking the route to Thundercrash Caverns where the Shell of Serenity is believed to reside."
-        },
-        {
-            "name": "Farewell Tokens",
-            "area_found": "Town Square",
-            "properties": "Emotional significance",
-            "description": "Tokens of appreciation from the villagers, symbolizing hope and gratitude, bolstering the Seekers' resolve."
+            "name": "Broken Statue",
+            "area_found": "Whispering Plaza",
+            "properties": "Ruined, Historical",
+            "description": "A statue partially concealed by debris, its restoration reveals hidden connections to the Order of the Shattered Star."
         }
     ]
 }

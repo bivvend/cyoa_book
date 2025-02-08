@@ -1,135 +1,183 @@
 {
-    "name": "Tempest Tower",
+    "name": "The Sunken Library",
     "locations": [
         {
-            "name": "Base of Tempest Tower",
+            "name": "Grand Hall of Tomes",
             "sub_locations": [
-                "Entrance of Tempest Tower",
-                "Zephyr's Sanctuary"
-            ]
-        },
-        {
-            "name": "Village Courtyard near Tempest Tower",
-            "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Chamber of Trials",
+            "name": "Artifact Alcove",
             "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Library of Tempest Tower",
+            "name": "Veil Cult Meeting Room",
             "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Chamber of Storms",
+            "name": "Great Reading Room",
             "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Lightning Spire",
+            "name": "Hall of Shadows",
             "sub_locations": [
-                "Lightning Spire Training Ground"
-            ]
-        },
-        {
-            "name": "Stormy Hallways",
-            "sub_locations": [
-                "Hidden Passage"
-            ]
-        },
-        {
-            "name": "Meditation Chamber",
-            "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Ancient Hallway",
+            "name": "Veilweaving Chamber",
             "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Secret Chamber",
+            "name": "Spirit Grove",
             "sub_locations": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "name": "Puzzle Chamber",
+            "name": "Mechanism Room",
             "sub_locations": [
-                "Final Puzzle Chamber"
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Shadowed Hallway",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Veil Resonance Chamber",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Hidden Passage",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Archivist's Study",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Exit Hall",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "name": "Gathering Space",
+            "sub_locations": [
+                "NA",
+                "NA"
             ]
         }
     ],
     "paths": [
         {
-            "from": "Base of Tempest Tower",
-            "to": "Village Courtyard near Tempest Tower",
-            "description": "A rugged path winds down from the tower's base, weaving through hardy flora that defy the coastal winds. The air is thick with salt and anticipation, as the cries of Cliffside Gulls echo the Seekers' determined footsteps.",
-            "threat_level": "Low",
+            "from": "Grand Hall of Tomes",
+            "to": "Artifact Alcove",
+            "description": "A narrow path winds through the dimly lit aisles, where the towering bookshelves cast long shadows. The air is thick with the scent of aged parchment, and the faint glow of bioluminescent fungi provides a ghostly illumination.",
+            "threat_level": "Moderate",
             "dangers": [
-                "NA"
+                "Guardian Wraiths",
+                "Falling Books"
             ]
         },
         {
-            "from": "Entrance of Tempest Tower",
-            "to": "Chamber of Trials",
-            "description": "The path from the entrance ascends steeply, with narrow stone stairs that twist and turn unexpectedly. The walls hum with ancient energy, while gusts of wind betray the presence of unseen spirits guarding the tower's secrets.",
-            "threat_level": "Medium",
-            "dangers": [
-                "Wind Spirits"
-            ]
-        },
-        {
-            "from": "Library of Tempest Tower",
-            "to": "Chamber of Storms",
-            "description": "Navigating through dimly lit corridors, the Seekers find themselves in passageways lined with ancient tomes and forgotten knowledge. The air grows charged, hinting at the powerful energies that lie ahead in the Chamber of Storms.",
-            "threat_level": "Medium",
-            "dangers": [
-                "NA"
-            ]
-        },
-        {
-            "from": "Chamber of Storms",
-            "to": "Lightning Spire",
-            "description": "A narrow staircase spirals upwards, each step resonating with the crackle of distant lightning. The tower shakes with the fury of the storm outside, as if testing the resolve of those who dare to reach the spire.",
+            "from": "Artifact Alcove",
+            "to": "Veil Cult Meeting Room",
+            "description": "This passage is hidden behind a curtain of thick cobwebs, barely visible to the untrained eye. As one moves through, the temperature drops noticeably, and distant echoes of chanting can be heard faintly, adding to the eerie atmosphere.",
             "threat_level": "High",
             "dangers": [
-                "Lightning Elementals"
+                "Veil Cultists",
+                "Hidden Traps"
             ]
         },
         {
-            "from": "Stormy Hallways",
-            "to": "Meditation Chamber",
-            "description": "Through the stormy hallways, the Seekers brave sudden gusts and flickering shadows. The path is fraught with tension, each corner potentially hiding both danger and discovery, leading to a place of reflection and insight.",
-            "threat_level": "Medium",
-            "dangers": [
-                "Lightning Elementals"
-            ]
-        },
-        {
-            "from": "Ancient Hallway",
-            "to": "Secret Chamber",
-            "description": "The ancient hallway, with its timeworn stones and mysterious carvings, leads to a hidden chamber. The air is thick with history and secrets, the weight of past adventurers felt as the Seekers tread cautiously.",
+            "from": "Great Reading Room",
+            "to": "Hall of Shadows",
+            "description": "Lit by the flickering glow of enchanted lanterns, this path is lined with ancient murals that depict forgotten stories. The air grows colder here, as if the shadows themselves are alive, whispering secrets to those who dare to listen.",
             "threat_level": "Low",
             "dangers": [
+                "NA",
                 "NA"
             ]
         },
         {
-            "from": "Puzzle Chamber",
-            "to": "Final Puzzle Chamber",
-            "description": "Navigating through the intricate puzzles, the Seekers move deeper into the tower. Each solved riddle brings them closer to a chamber that promises both revelation and challenge, testing their unity and resolve.",
-            "threat_level": "Medium",
+            "from": "Veilweaving Chamber",
+            "to": "Spirit Grove",
+            "description": "A hidden staircase descends into a lush grove bathed in an ethereal light. The leaves rustle softly, carrying the gentle murmurs of spirits. The path is serene but holds an undercurrent of anticipation, as if the grove itself is waiting.",
+            "threat_level": "Low",
             "dangers": [
+                "NA",
+                "NA"
+            ]
+        },
+        {
+            "from": "Mechanism Room",
+            "to": "Shadowed Hallway",
+            "description": "A tight corridor of stone and metal, where the sound of grinding gears echoes ominously. The hallway is dim, with light provided only by occasional sparks from malfunctioning mechanisms, casting fleeting shadows on the walls.",
+            "threat_level": "Moderate",
+            "dangers": [
+                "Malfunctioning Mechanisms",
+                "Loose Flooring"
+            ]
+        },
+        {
+            "from": "Veil Resonance Chamber",
+            "to": "Hidden Passage",
+            "description": "This path is cloaked in a shimmering veil of magic, distorting reality as you walk through. The air hums with latent energy, and each step seems to echo with the distant sound of whispers, urging you onward.",
+            "threat_level": "High",
+            "dangers": [
+                "Veil Distortions",
+                "Ambushes"
+            ]
+        },
+        {
+            "from": "Archivist's Study",
+            "to": "Exit Hall",
+            "description": "A grand corridor lined with statues of past archivists, their eyes seeming to follow your every move. The walls are etched with runes that pulse with a faint light, guiding you toward the exit with an inexplicable pull.",
+            "threat_level": "Low",
+            "dangers": [
+                "Spectral Watchers",
+                "Illusions"
+            ]
+        },
+        {
+            "from": "Gathering Space",
+            "to": "Grand Hall of Tomes",
+            "description": "A vast open area where the ceiling arches high above, adorned with intricate carvings and faded frescoes. The path is lined with remnants of ancient gatherings, and the silence is both reverent and intimidating.",
+            "threat_level": "Low",
+            "dangers": [
+                "NA",
                 "NA"
             ]
         }

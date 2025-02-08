@@ -36,7 +36,7 @@ FINAL_EVENTS_CRITIQUE_FILE = "final_events_logic_critique.txt"
 CHARACTERS_SUB_DIR = "characters"
 CONVERSATIONS_LORE_FILE = "conversations.txt"
 ENEMY_LORE_FILE = "enemy.txt"
-AREAS_SUB_DIR = "areas"
+AREAS_SUB_DIR = "areas" 
 EVENTS_SUB_DIR = "events"
 STORY_SUB_DIR = "story_chunks"
 CRITIQUE_SUB_DIRECTORY = "critique"
@@ -46,8 +46,11 @@ FINAL_EVENTS_SUB_DIR = "final_events"
 MAPS_SUB_DIRECTORY = "maps"
 ITEMS_SUB_DIR = "items"
 
-region_flavour_prompt = "A dark dungeon inspired by the Fighting fantasy books."
-world_flavour_prompt = "The Fighting Fantasy books by Steven Jackson"
+
+world_flavour_prompt = ("You are an author of gritty dark fantasy stories. Write a detailed lore for a fantasy world called Arden. "
+                        "Arden is a fictional setting within the fantasy genre that emphasizes bleakness, violence, moral ambiguity, and a sense of harsh realism, "
+                        "it features decaying cities, brutal political landscapes, and monstrous creatures, where survival is a constant struggle and the lines between good and evil are blurred. "
+    )
 
 refresh_global_lore = False
 refresh_region_lore = False
@@ -61,8 +64,6 @@ refresh_critique_of_plot_structure_file = False
 refresh_plot_structure_after_critique = False
 refresh_area_lore = False
 refresh_events = False
-refresh_conversations = False
-refresh_intro = False
 refresh_all_events_critique = False
 refresh_area_events_critique = False
 refresh_refined_events = False
@@ -77,31 +78,33 @@ refresh_refined_final_events = False
 refresh_maps = False
 refresh_items = False
 refresh_characters = False
+refresh_conversations = False
+refresh_intro = True
 
 #Author configuration
 
-configure_new_assistant = False
-create_new_assitant = False
-create_new_thread = False
-configure_new_vector_store = False
-upload_new_files = False
-add_new_files_to_vector_store = False
+configure_new_assistant = True
+create_new_assitant = True
+create_new_thread = True
+configure_new_vector_store = True
+upload_new_files = True
+add_new_files_to_vector_store = True
 
 #Critic configuration
 
-cr_configure_new_assistant = False
-cr_create_new_assitant = False
-cr_create_new_thread = False
+cr_configure_new_assistant = True
+cr_create_new_assitant = True
+cr_create_new_thread = True
 
 
 #Story generation
 
-write_intro = False
+write_intro = True
 write_events = True
 assemble_story = True
 
 # Instructions for the creative writer agent
-instructions = ("You are a creative writer generating beautiful, well written fantasy stories. "
+instructions = ("You are a creative writer generating gritty dark fantasy fantasy stories. "
                 "You will be given JSON files containing the story's plot, characters, events and setting. "
                 "You will create sections of the story for a given range of events in the JSON file. "
                 "You will try and keep the content consistent throughout the story by analysis of the previous events. ")
@@ -173,7 +176,7 @@ def generate_global_lore():
         print(f"Error in generate_global_lore: {e}")
         return None
     
-def generate_region_lore(global_lore_json):
+def generate_region_lore(global_lore_json, world_style_prompt):
     """
     Generates or retrieves the lore for the region within which the adventure takes place
     """
@@ -184,7 +187,7 @@ def generate_region_lore(global_lore_json):
         if refresh_region_lore:
             # Generate new region lore
             print("Generating region lore...")
-            lore_txt = region_lore_generation.generate_starting_region_lore(global_lore_json,  model=gpt_model)
+            lore_txt = region_lore_generation.generate_starting_region_lore(global_lore_json, world_style_prompt, model=gpt_model)
             lore_json = json.loads(lore_txt)
             # Save the generated lore to a file
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REGION_LORE_FILE)
@@ -209,7 +212,7 @@ def generate_region_lore(global_lore_json):
         print(f"Error in generate_region_lore: {e}")
         return None
     
-def generate_party_lore(global_lore_json):
+def generate_party_lore(global_lore_json, world_style_prompt):
     """
     Generates or retrieves the lore for the adventuring party
     """
@@ -220,7 +223,7 @@ def generate_party_lore(global_lore_json):
         if refresh_party_lore:
             # Generate new party
             print("Generating party...")
-            lore_txt = party_generation.generate_party(global_lore_json,  model=gpt_model)
+            lore_txt = party_generation.generate_party(global_lore_json, world_style_prompt,  model=gpt_model)
             lore_json = json.loads(lore_txt)
             # Save the generated lore to a file
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR,CHARACTERS_SUB_DIR, PARTY_LORE_FILE)
@@ -705,7 +708,7 @@ def regenerate_events_from_feedback(plot_json, region_lore_json, party_json, ene
         print(f"Error in regenerate_events_from_feedback: {e}")
         return None
 
-def generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json):
+def generate_plot(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json):
     """
     Generates a first pass at the plot
     """
@@ -714,7 +717,7 @@ def generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lor
         
         if refresh_plot:
             print(f"Generating basic plot...")
-            plot_text = plot_generation.generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json)
+            plot_text = plot_generation.generate_plot_summary(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json)
             assert plot_text is not None
         
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, BASIC_PLOT_FILE)
@@ -733,7 +736,7 @@ def generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lor
         print(f"Error in generate_plot: {e}")
         return None 
 
-def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text ):
+def generate_refined_plot(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text ):
     """
     Generates a refined plot
     """
@@ -742,7 +745,7 @@ def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, e
         
         if refresh_refined_plot:
             print(f"Generating refined plot...")
-            plot_text = plot_generation.generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = gpt_model)
+            plot_text = plot_generation.generate_refined_plot(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = gpt_model)
             assert plot_text is not None
         
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_FILE)
@@ -1105,20 +1108,20 @@ if __name__ == "__main__":
 
     global_lore_json = generate_global_lore()
     assert global_lore_json is not None
-    region_lore_json = generate_region_lore(global_lore_json)
+    region_lore_json = generate_region_lore(global_lore_json, world_flavour_prompt)
     assert region_lore_json is not None
-    party_lore_json = generate_party_lore(global_lore_json)
+    party_lore_json = generate_party_lore(global_lore_json, world_flavour_prompt)
     assert party_lore_json is not None
     enemy_lore_json = generate_enemy_lore(region_lore_json)
     assert enemy_lore_json is not None
 
     #With the bones of the world fleshed out we generate the most important document, the plot!
 
-    plot_text = generate_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json)
+    plot_text = generate_plot(global_lore_json, world_flavour_prompt, region_lore_json, party_lore_json, enemy_lore_json)
     #Generate a critique of the plot
     plot_critique_text = critique_plot(plot_text)
     #Use the critique to improve the plot
-    refined_plot_text = generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, plot_text, plot_critique_text)
+    refined_plot_text = generate_refined_plot(global_lore_json,world_flavour_prompt, region_lore_json, party_lore_json, enemy_lore_json, plot_text, plot_critique_text)
 
 
     #Convert the plot text into a structure

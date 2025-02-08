@@ -1,39 +1,64 @@
 {
     "characters": [
         {
-            "name": "Eldra Wavewalker",
-            "area_found": "Gale Village",
-            "skills_and_abilities": ["In-depth sea knowledge", "Wise leadership"],
-            "description": "Eldra is the village elder, offering guidance and insight into the mysteries of the sea. She is revered for her wisdom and deep connection with the ocean.",
-            "appearance": "Eldra has a weathered face, silver hair, and always wears a cloak resembling ocean waves."
+            "name": "Eldrin the Historian",
+            "area_found": "Whispering Plaza",
+            "skills_and_abilities": [
+                "Historical Knowledge",
+                "Communication with Spirits"
+            ],
+            "description": "A sage dedicated to preserving Eldenfall's history, Eldrin interacts with both the living and the spectral, sharing knowledge and guiding those who seek the past's secrets.",
+            "appearance": "Scruffy old sage with wild silver hair and tattered robes."
         },
         {
-            "name": "Captain Brine",
-            "area_found": "The Salty Anchor",
-            "skills_and_abilities": ["Storytelling", "Maritime knowledge"],
-            "description": "A former pirate, Captain Brine owns The Salty Anchor tavern. He is known for his gruff demeanor but warm heart, sharing tales of the sea with patrons.",
-            "appearance": "Captain Brine has a rugged appearance, with a long beard and a tricorn hat adorned with sea trinkets."
+            "name": "Forgotten Spirits",
+            "area_found": "Whispering Plaza",
+            "skills_and_abilities": [
+                "Whispers of the Past",
+                "Ethereal Presence"
+            ],
+            "description": "Restless souls of Eldenfall's past, they drift through the plaza, bound by memories and longing for the lives they once led.",
+            "appearance": "Barely discernible spectral forms amidst the fog."
         },
         {
-            "name": "Nerin Tidecaller",
-            "area_found": "Gale Village",
-            "skills_and_abilities": ["Sea communication", "Prophetic insights"],
-            "description": "Nerin is a mysterious figure with a strong connection to the sea, offering warnings and guidance to those who seek to calm Tempestus's wrath.",
-            "appearance": "Nerin has deep sea-blue eyes and robes that shimmer like the ocean surface."
+            "name": "Shadowy Figure",
+            "area_found": "Whispering Plaza",
+            "skills_and_abilities": [
+                "Stealth",
+                "Malice Exertion"
+            ],
+            "description": "A mysterious entity exuding a sense of malice, its presence hints at Malakar's influence, vanishing as suddenly as it appears.",
+            "appearance": "A shadowy silhouette with ember-like glowing eyes."
         },
         {
-            "name": "Sea Wraiths",
-            "area_found": "Storm Coast",
-            "skills_and_abilities": ["Intangible presence", "Fear induction"],
-            "description": "Ghostly apparitions known as Sea Wraiths haunt the village, believed to be souls lost to Tempestus's storms, seeking vengeance for their untimely demise.",
-            "appearance": "Sea Wraiths are spectral figures with translucent, flowing forms, glowing with an eerie bluish light."
+            "name": "Rubble Rats",
+            "area_found": "Fountain of Echoes",
+            "skills_and_abilities": [
+                "Scavenging",
+                "Negotiation"
+            ],
+            "description": "A group of scavengers adept at finding resources amid ruins, they provide information in exchange for safe passage.",
+            "appearance": "Ragged and unkempt scavengers, blending with the debris."
         },
         {
-            "name": "Villagers",
-            "area_found": "Gale Village",
-            "skills_and_abilities": ["Community spirit", "Resilience"],
-            "description": "The villagers of Gale Village are a tight-knit community, bound by shared struggles against the relentless storms, fostering a spirit of camaraderie and hope.",
-            "appearance": "Villagers are typically dressed in simple, weathered clothing, often adorned with colorful fishing nets and local jewelry."
+            "name": "Veil Cultists",
+            "area_found": "Whispering Plaza",
+            "skills_and_abilities": [
+                "Ritual Magic",
+                "Veil Manipulation"
+            ],
+            "description": "Members of a clandestine group intent on merging the Veil with reality, posing a significant threat to Eldenfall.",
+            "appearance": "Clad in dark robes, shrouded in mystery."
+        },
+        {
+            "name": "Mysterious Figure",
+            "area_found": "Whispering Plaza",
+            "skills_and_abilities": [
+                "Observation",
+                "Stealth"
+            ],
+            "description": "An enigmatic observer, this figure follows the party, adding tension and uncertainty to their quest.",
+            "appearance": "A shadowy presence lurking in the background."
         }
     ]
 }

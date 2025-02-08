@@ -11,9 +11,9 @@ writing_guidelines_1 = (
     "a rich foundation for the adventure. This includes the setting’s environment, "
     "important locations, notable NPCs (non-player characters), factions, quests, "
     "and potential threats."
-
-
 )
+
+
 
 structuring_prompt = (
     f"The response MUST be in json format so that it can be read by a python program. "
@@ -47,7 +47,7 @@ writing_guidelines_4 = (
 
 )
 
-def generate_starting_region_lore(global_lore_json, model = "gpt-4o-mini"):
+def generate_starting_region_lore(global_lore_json, global_style_prompt, model = "gpt-4o-mini"):
     """
     Generates lore for the region in which the adventure happens.
 
@@ -65,6 +65,8 @@ def generate_starting_region_lore(global_lore_json, model = "gpt-4o-mini"):
             f"{writing_guidelines_1}\n"
             f"{writing_guidelines_2}\n\n"
             f"{global_lore}\n\n"
+            
+            f"The prompt used to generate the global lore above was: \n  \"{global_style_prompt}.\" \n Keep this in mind while you generate. \n"
             f"{writing_guidelines_3}\n"
             f"{writing_guidelines_4}\n"
             f"{structuring_prompt}\n\n"

@@ -1,52 +1,34 @@
 {
     "items": [
         {
-            "name": "Shell of Serenity",
-            "area_found": "Lightning Spire",
-            "properties": "Energized with elemental energy",
-            "description": "A mystical shell capable of calming storms. It's pivotal in the Seekers' quest to balance the forces of Tempestus."
+            "name": "Veilweaving Texts",
+            "area_found": "Veilweaving Chamber",
+            "properties": "Enhances magical abilities",
+            "description": "Ancient scrolls detailing the art of Veilweaving, capable of augmenting a user's magical prowess and offering insights into manipulating the Veil."
         },
         {
-            "name": "Ancient Carving",
-            "area_found": "Base of Tempest Tower",
-            "properties": "Depicts elemental mastery",
-            "description": "An ancient stone carving that illustrates Zephyr Aetherwind's connection to elemental magic, offering insights into the tower's history."
+            "name": "Blueprint for Stonekin Forge",
+            "area_found": "Grand Hall of Tomes",
+            "properties": "Crafting guide",
+            "description": "A detailed schematic for constructing a Stonekin Forge, an ancient smithing tool used to create powerful artifacts from rare materials."
         },
         {
-            "name": "Ancient Tome of Tempestus",
-            "area_found": "Library of Tempest Tower",
-            "properties": "Contains elemental protection spells",
-            "description": "A weathered tome filled with knowledge about Tempestus's vulnerabilities, crucial for strategizing against the Storm Sovereign."
+            "name": "Enchanted Trinkets",
+            "area_found": "Artifact Alcove",
+            "properties": "Mystical enhancements",
+            "description": "A set of small, enchanted items that pulse with energy, offering various magical enhancements and potential protection against dark forces."
         },
         {
-            "name": "Zephyr's Incantation",
-            "area_found": "Chamber of Storms",
-            "properties": "Calms storms",
-            "description": "A powerful spell taught by Zephyr, essential for controlling and calming the elemental forces within Tempest Tower."
+            "name": "Tome of Forgotten Lore",
+            "area_found": "Grand Hall of Tomes",
+            "properties": "Reveals hidden knowledge",
+            "description": "A mysterious tome containing secrets of the past, offering revelations about the library's history and the Order's hidden truths."
         },
         {
-            "name": "Talisman of Resonance",
-            "area_found": "Meditation Chamber",
-            "properties": "Enhances magical energy",
-            "description": "A talisman that amplifies the user's magical abilities, resonating with the Shell of Serenity to strengthen their elemental control."
-        },
-        {
-            "name": "Dwarven Carving",
-            "area_found": "Ancient Hallway",
-            "properties": "Reveals hidden paths",
-            "description": "An intricately carved stone that unveils secret routes within the tower, providing strategic advantages to those who decipher it."
-        },
-        {
-            "name": "Guardian's Relic",
-            "area_found": "Secret Chamber",
-            "properties": "Resonates with the Shell of Serenity",
-            "description": "An ancient amulet that holds protective powers, crucial in the Seekers' confrontation with Tempestus, enhancing their battle capabilities."
-        },
-        {
-            "name": "Cache of Supplies",
-            "area_found": "Puzzle Chamber",
-            "properties": "Contains enhanced artifacts and potions",
-            "description": "A hidden cache providing vital resources, including elemental artifacts and healing potions, bolstering the Seekers' readiness for battle."
+            "name": "Ancient Scrolls",
+            "area_found": "Mechanism Room",
+            "properties": "Historical insights",
+            "description": "A collection of scrolls that provide historical context and insights into the Veil's influence on Eldenfall, potentially guiding future actions."
         }
     ]
 }

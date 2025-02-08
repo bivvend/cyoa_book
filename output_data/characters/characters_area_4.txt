@@ -1,32 +1,32 @@
 {
     "characters": [
         {
-            "name": "Tempestus",
-            "area_found": "Maelstrom Keep",
-            "skills_and_abilities": ["Storm Control", "Summoning Hurricanes"],
-            "description": "The Storm Sovereign, entwined with the fury of the sea, who rules Maelstrom Keep with an iron grip.",
-            "appearance": "A towering figure clad in swirling storm clouds, with eyes crackling with lightning."
+            "name": "Malakar",
+            "area_found": "The Abyssal Tower",
+            "skills_and_abilities": ["Veil Manipulation", "Shadow Control"],
+            "description": "Once a revered scholar, Malakar now reigns as the Veil Sovereign, a corrupted entity bound to the Abyssal Tower.",
+            "appearance": "Malakar is cloaked in swirling shadows, with ember-like eyes and claw-like hands that absorb light."
         },
         {
-            "name": "Lord Vortex",
-            "area_found": "Throne Room",
-            "skills_and_abilities": ["Spectral Leadership", "Curse Breaking"],
-            "description": "The spectral leader of the Cursed Knights, whose tragic past holds the key to breaking their curse.",
-            "appearance": "A ghostly figure with a noble bearing, shrouded in a spectral aura."
+            "name": "Veilbound Horrors",
+            "area_found": "Throughout the Abyssal Tower",
+            "skills_and_abilities": ["Shadow Ambush", "Relentless Pursuit"],
+            "description": "Nightmarish beings born from the essence of the Veil, they patrol the Abyssal Tower to guard their dark lord.",
+            "appearance": "Veilbound Horrors are amorphous shadows with distorted, menacing forms that shift and writhe."
         },
         {
-            "name": "Seraphina Tidebringer",
-            "area_found": "Throne Room",
-            "skills_and_abilities": ["Calming Spells", "Elemental Magic"],
-            "description": "A powerful sorceress determined to calm the maelstrom and unlock the keep's hidden secrets.",
-            "appearance": "A graceful woman with flowing robes, adorned with symbols of water and tranquility."
+            "name": "Zarath the Unseen",
+            "area_found": "The Abyssal Tower",
+            "skills_and_abilities": ["Veil Mastery", "Ancient Magic"],
+            "description": "A mysterious figure shrouded in secrecy, Zarath once succumbed to the Veil's madness, possessing dangerous knowledge of forbidden arts.",
+            "appearance": "Zarath is often unseen, moving like a specter through shadows, his presence felt rather than seen."
         },
         {
-            "name": "Cursed Knights",
-            "area_found": "Inner Sanctum",
-            "skills_and_abilities": ["Spectral Combat", "Guardian Duty"],
-            "description": "Ghostly guardians bound to Tempestus's will, eternally guarding the secrets of Maelstrom Keep.",
-            "appearance": "Ethereal knights in ancient armor, their forms flickering with ghostly light."
+            "name": "Malakar's Minions",
+            "area_found": "Central Chamber",
+            "skills_and_abilities": ["Shadow Assault", "Trap Activation"],
+            "description": "Loyal to Malakar, these shadowy minions intensify their assault to protect their master and thwart intruders.",
+            "appearance": "Malakar's Minions are indistinct, dark figures that blend into the shadows, only revealing themselves when attacking."
         }
     ]
 }

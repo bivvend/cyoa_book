@@ -9,11 +9,10 @@ default_start_prompt = (
 
 start_prompt = (
     
-    "It should be loosely based on Tolkien with the main races being essentially humanoid. "
+    "The main races in the world should be essentially humanoid. "
     "Include detailed descriptions of the races and include their home area and a description of it."
     "You MUST generate at least 5 different races."
     "One of the races should be Humans, but you can add your own twist to them."
-    "The races should follow the typical fantasy tropes, but you can add your own twist to them."
 )
 
 style_prompt = (

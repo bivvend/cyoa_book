@@ -1,34 +1,39 @@
 {
     "characters": [
         {
-            "name": "Zephyr Aetherwind",
-            "area_found": "Base of Tempest Tower",
-            "skills_and_abilities": [
-                "Mastery of elemental magic",
-                "Knowledge of storms"
-            ],
-            "description": "A reclusive sage with profound understanding of elemental forces, Zephyr is pivotal to the Seekers' journey, offering wisdom and guidance.",
-            "appearance": "Clad in tattered robes, his eyes reflect the turbulent skies, embodying the tempestuous nature of the Storm Coast."
+            "name": "Archivist Solin",
+            "area_found": "The Sunken Library",
+            "skills_and_abilities": ["Guidance", "Wisdom"],
+            "description": "A ghostly figure eternally bound to the library, offering insight and guidance to those who respect its legacy.",
+            "appearance": "Translucent, with an air of both wisdom and melancholy, often seen gliding between dusty bookshelves."
         },
         {
-            "name": "Village Elder",
-            "area_found": "Village Courtyard near Tempest Tower",
-            "skills_and_abilities": [
-                "Storytelling",
-                "Local knowledge"
-            ],
-            "description": "The Village Elder shares tales of Zephyr's trials and the tower's history, providing valuable context to the Seekers.",
-            "appearance": "A wizened figure with a long, silver beard, dressed in simple robes that hint at a lifetime of wisdom."
+            "name": "Knowledge Keepers",
+            "area_found": "Grand Hall of Tomes",
+            "skills_and_abilities": ["Riddles", "Spectral Defense"],
+            "description": "Spectral guardians of the library, dedicated to protecting the most sensitive tomes from unworthy seekers.",
+            "appearance": "Ethereal figures, shrouded in arcane energy, their forms flickering with an otherworldly glow."
         },
         {
-            "name": "Tempestus, the Storm Sovereign",
-            "area_found": "Tempest Tower (presence felt)",
-            "skills_and_abilities": [
-                "Control over storms",
-                "Elemental manipulation"
-            ],
-            "description": "Tempestus is a shadowy, malevolent force that once reigned over the Storm Coast, his presence still haunting the tower.",
-            "appearance": "NA"
+            "name": "Guardian Wraiths",
+            "area_found": "Shadowed Hallway",
+            "skills_and_abilities": ["Intimidation", "Spectral Attack"],
+            "description": "Ancient protectors bound to the library, attacking those who approach sacred texts with ill intentions.",
+            "appearance": "Spectral forms gliding silently, flickering in and out of visibility, their presence both ominous and menacing."
+        },
+        {
+            "name": "Spirit Guide",
+            "area_found": "Spirit Grove",
+            "skills_and_abilities": ["Premonition", "Spiritual Guidance"],
+            "description": "A gentle breeze carrying the voice of a spirit, warning of Malakar's growing influence and impending dangers.",
+            "appearance": "Invisible to the eye, felt as a gentle breeze whispering secrets and warnings of the Veil."
+        },
+        {
+            "name": "Shadowy Ally",
+            "area_found": "Hall of Shadows",
+            "skills_and_abilities": ["Veil Manipulation", "Deception"],
+            "description": "A minor servant of Malakar, aiding the wraiths in their efforts, embodying the corruption of the Veil.",
+            "appearance": "A dark, indistinct figure lurking in the shadows, exuding an aura of malice and deceit."
         }
     ]
 }

@@ -1,0 +1,39 @@
+{
+    "characters": [
+        {
+            "name": "Eldra Wavewalker",
+            "area_found": "Gale Village",
+            "skills_and_abilities": ["In-depth sea knowledge", "Wise leadership"],
+            "description": "Eldra is the village elder, offering guidance and insight into the mysteries of the sea. She is revered for her wisdom and deep connection with the ocean.",
+            "appearance": "Eldra has a weathered face, silver hair, and always wears a cloak resembling ocean waves."
+        },
+        {
+            "name": "Captain Brine",
+            "area_found": "The Salty Anchor",
+            "skills_and_abilities": ["Storytelling", "Maritime knowledge"],
+            "description": "A former pirate, Captain Brine owns The Salty Anchor tavern. He is known for his gruff demeanor but warm heart, sharing tales of the sea with patrons.",
+            "appearance": "Captain Brine has a rugged appearance, with a long beard and a tricorn hat adorned with sea trinkets."
+        },
+        {
+            "name": "Nerin Tidecaller",
+            "area_found": "Gale Village",
+            "skills_and_abilities": ["Sea communication", "Prophetic insights"],
+            "description": "Nerin is a mysterious figure with a strong connection to the sea, offering warnings and guidance to those who seek to calm Tempestus's wrath.",
+            "appearance": "Nerin has deep sea-blue eyes and robes that shimmer like the ocean surface."
+        },
+        {
+            "name": "Sea Wraiths",
+            "area_found": "Storm Coast",
+            "skills_and_abilities": ["Intangible presence", "Fear induction"],
+            "description": "Ghostly apparitions known as Sea Wraiths haunt the village, believed to be souls lost to Tempestus's storms, seeking vengeance for their untimely demise.",
+            "appearance": "Sea Wraiths are spectral figures with translucent, flowing forms, glowing with an eerie bluish light."
+        },
+        {
+            "name": "Villagers",
+            "area_found": "Gale Village",
+            "skills_and_abilities": ["Community spirit", "Resilience"],
+            "description": "The villagers of Gale Village are a tight-knit community, bound by shared struggles against the relentless storms, fostering a spirit of camaraderie and hope.",
+            "appearance": "Villagers are typically dressed in simple, weathered clothing, often adorned with colorful fishing nets and local jewelry."
+        }
+    ]
+}

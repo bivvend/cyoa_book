@@ -3,20 +3,21 @@
         {
             "id": "event_1",
             "type": "main_plot_event",
-            "description": "As the Seekers approach the Thundercrash Caverns, a foreboding energy hangs in the air. Mara Deepseer, their guide, recounts the ominous whispers of the caverns—tales of adventurers who ventured in and never returned. The caverns entrance looms ahead, a dark maw that seems to swallow the light. The Seekers, with hearts pounding, step into the shadowed depths, aware that the very walls seem to watch and listen.",
-            "location_within_area": "Cavern Entrance",
+            "description": "The Twilight Vanguard steps into the eerie silence of The Shattered Temple's Entrance Hall. As they advance cautiously, shadows begin to swirl unnaturally around them. Suddenly, Shadow Creatures, drawn to the lingering essence of the temple, emerge from the darkness. These ethereal beings, twisted and malevolent, attack with a ferocity that tests the party's unity and resolve.",
+            "location_within_area": "Entrance Hall",
             "is_main_plot_event": "Yes",
             "is_minor_event": "No",
             "npcs_involved": [
-                "Mara Deepseer"
+                "Shadow Creatures"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Elara Nightshade",
+                "Korr Stonefist",
+                "Thalia Mirefoot",
+                "Mirela Windrider"
             ],
             "threats_involved": [
-                "NA"
+                "Shadow Creatures"
             ],
             "items_involved": [
                 "NA"
@@ -24,60 +25,56 @@
             "inventory_of_story_items": [
                 "NA"
             ],
-            "outcome": "The Seekers enter the caverns, their resolve steeled by Mara's warnings.",
+            "outcome": "The party defeats the Shadow Creatures through strategic use of their abilities, learning that teamwork is crucial against the darkness.",
             "status_changes": [
                 {
-                    "description": "Entered Thundercrash Caverns",
-                    "consequence": "Increased awareness of potential dangers."
+                    "description": "The party gains insight into the nature of the shadows.",
+                    "consequence": "Increased understanding of shadow-based threats."
                 }
             ]
         },
         {
             "id": "event_2",
             "type": "minor_event",
-            "description": "As the Seekers delve deeper, the twisting tunnels seem to conspire against them. Mara's guidance is invaluable, yet even she hesitates before certain paths. A wrong turn nearly leads them into a trap of collapsing stones, a stark reminder of the caverns' treachery. The group narrowly escapes, shaken but unharmed, their trust in Mara's expertise solidified.",
-            "location_within_area": "Twisting Tunnels",
+            "description": "Exploring further, Mirela stumbles upon a hidden cache beneath a crumbled altar. Amongst the debris, she discovers a collection of Old Coins. Realizing their potential, she recalls stories of these coins being used as offerings to gain favor with ancient spirits.",
+            "location_within_area": "Ruined Chamber",
             "is_main_plot_event": "No",
             "is_minor_event": "Yes",
             "npcs_involved": [
-                "Mara Deepseer"
+                "NA"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Mirela Windrider"
             ],
             "threats_involved": [
                 "NA"
             ],
             "items_involved": [
-                "NA"
+                "Old Coins"
             ],
             "inventory_of_story_items": [
-                "NA"
+                "Old Coins"
             ],
-            "outcome": "The Seekers narrowly avoid a trap, deepening their reliance on Mara.",
+            "outcome": "Mirela adds the Old Coins to her inventory, aware that they might be used to appease spirits or negotiate with enigmatic figures.",
             "status_changes": [
                 {
-                    "description": "Avoided trap",
-                    "consequence": "Increased trust in Mara's guidance."
+                    "description": "Mirela's inventory is updated with Old Coins.",
+                    "consequence": "Potential leverage in future spiritual interactions."
                 }
             ]
         },
         {
             "id": "event_3",
-            "type": "minor_event",
-            "description": "The caverns grow darker, and the air thickens with the scent of the sea. Subtle signs of Tempestus's influence manifest as strange glyphs etched into the walls. Aric senses a disturbance in the elemental balance, a harbinger of the dangers ahead. The group is on edge, their senses heightened to the lurking peril.",
-            "location_within_area": "Gloomy Passage",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
+            "type": "main_plot_event",
+            "description": "As the party arrives at the Sacred Altar, Thalia is enveloped by a chilling presence. A spectral figure emerges, whispering cryptic warnings of betrayal and internal strife. This ominous message unsettles Thalia, who senses its gravity and urgency.",
+            "location_within_area": "Sacred Altar",
+            "is_main_plot_event": "Yes",
+            "is_minor_event": "No",
             "npcs_involved": [
-                "NA"
+                "Spectral Figure"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Thalia Mirefoot"
             ],
             "threats_involved": [
                 "NA"
@@ -88,120 +85,119 @@
             "inventory_of_story_items": [
                 "NA"
             ],
-            "outcome": "The Seekers glean insights into Tempestus's power, steeling themselves for future confrontations.",
+            "outcome": "Thalia shares the warning with the party, heightening their awareness and vigilance.",
             "status_changes": [
                 {
-                    "description": "Sensed Tempestus's influence",
-                    "consequence": "Heightened vigilance."
+                    "description": "Increased tension and suspicion within the party.",
+                    "consequence": "Heightened alertness and caution."
                 }
             ]
         },
         {
             "id": "event_4",
             "type": "minor_event",
-            "description": "As the Seekers traverse the cavern's pathways, the environment changes unexpectedly. A sudden downpour from above drenches the party. Aric reacts swiftly, using his elemental prowess to redirect the water, preventing a flood. The team works in unison, their combined efforts a testament to their growing synergy.",
-            "location_within_area": "Cavern Pathway",
+            "description": "In a secluded Botanical Niche, Thalia discovers Gloom Ferns thriving in the darkness. Recognizing their rare healing properties, she carefully harvests them, knowing they could be crucial in a moment of dire need.",
+            "location_within_area": "Botanical Niche",
             "is_main_plot_event": "No",
             "is_minor_event": "Yes",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Thalia Mirefoot"
             ],
             "threats_involved": [
-                "Flood Tides"
+                "NA"
             ],
             "items_involved": [
-                "NA"
+                "Gloom Ferns"
             ],
             "inventory_of_story_items": [
-                "NA"
+                "Gloom Ferns"
             ],
-            "outcome": "Aric's quick thinking averts disaster, strengthening the party's teamwork.",
+            "outcome": "Thalia secures the Gloom Ferns for later use, viewing them as a potential lifesaver.",
             "status_changes": [
                 {
-                    "description": "Redirected flood",
-                    "consequence": "Enhanced group cohesion."
+                    "description": "Thalia's inventory is updated with Gloom Ferns.",
+                    "consequence": "Potential healing resources for the party."
                 }
             ]
         },
         {
             "id": "event_5",
             "type": "minor_event",
-            "description": "In the Shadowed Hollow, Elaria senses the presence of Cave Stalkers. She conjures intricate illusions, weaving shadows to confuse and misdirect the creatures. Her magic creates an ephemeral maze, allowing the Seekers to slip past unseen. Her mastery of illusions impresses the group, reinforcing her role as their mystical guide.",
-            "location_within_area": "Shadowed Hollow",
+            "description": "Korr uncovers a fragment of an ancient relic beneath the Altar of Thalor. As he holds it, he feels a connection to his ancestors, and a sense of purpose is reignited within him.",
+            "location_within_area": "Altar of Thalor",
             "is_main_plot_event": "No",
             "is_minor_event": "Yes",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Elaria Moonshadow"
+                "Korr Stonefist"
             ],
             "threats_involved": [
-                "Cave Stalkers"
+                "NA"
             ],
             "items_involved": [
-                "NA"
+                "Piece of Ancient Relic"
             ],
             "inventory_of_story_items": [
-                "NA"
+                "Piece of Ancient Relic"
             ],
-            "outcome": "Elaria's illusions allow the Seekers to bypass danger stealthily.",
+            "outcome": "Korr adds the relic to his inventory, determined to uncover its significance and how it might aid their quest.",
             "status_changes": [
                 {
-                    "description": "Distracted Cave Stalkers",
-                    "consequence": "Showcased Elaria's magical prowess."
+                    "description": "Korr's inventory is updated with the Piece of Ancient Relic.",
+                    "consequence": "Strengthened resolve and purpose."
                 }
             ]
         },
         {
             "id": "event_6",
-            "type": "minor_event",
-            "description": "Thorin stumbles upon an ancient dwarven rune etched into the cavern walls, a relic from a bygone era. As he traces its patterns, the rune hums with latent power. The discovery resonates with Thorin's dwarven heritage, providing insight into the caverns' history and Tempestus's past. This connection to his ancestors fills him with a renewed sense of purpose.",
-            "location_within_area": "Ancient Ruins",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
+            "type": "main_plot_event",
+            "description": "Elara approaches the Altar of Thalor, feeling a surge of energy as her connection to the Veil deepens. The altar responds to her presence, illuminating hidden symbols that hint at the history of the temple and its ties to the Veil.",
+            "location_within_area": "Altar of Thalor",
+            "is_main_plot_event": "Yes",
+            "is_minor_event": "No",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Thorin Ironfist"
+                "Elara Nightshade"
             ],
             "threats_involved": [
                 "NA"
             ],
             "items_involved": [
-                "Hidden dwarven rune"
+                "NA"
             ],
             "inventory_of_story_items": [
-                "Hidden dwarven rune"
+                "NA"
             ],
-            "outcome": "Thorin gains knowledge of the caverns' ancient history, bolstering his resolve.",
+            "outcome": "Elara gains new insights into the Veil, unlocking advanced illusion spells that will aid the party.",
             "status_changes": [
                 {
-                    "description": "Discovered dwarven rune",
-                    "consequence": "Strengthened ancestral connection."
+                    "description": "Elara's connection to the Veil strengthens.",
+                    "consequence": "Unlocks new illusion spells for future use."
                 }
             ]
         },
         {
             "id": "event_7",
             "type": "minor_event",
-            "description": "The Seekers come across the aftermath of a recent rockfall, the debris a testament to the caverns' instability. As they carefully navigate the treacherous terrain, the distant echoes of Tempestus's power reverberate through the stone. Each step is a reminder of the elemental forces at play, testing their endurance and resolve.",
-            "location_within_area": "Rockfall Chamber",
+            "description": "As the party moves through the temple, they hear the faint whispers of forgotten prayers echoing through the halls. These ethereal voices speak of a time when the temple stood as a beacon of hope, instilling the party with a renewed sense of purpose.",
+            "location_within_area": "Echoing Halls",
             "is_main_plot_event": "No",
             "is_minor_event": "Yes",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Elara Nightshade",
+                "Korr Stonefist",
+                "Thalia Mirefoot",
+                "Mirela Windrider"
             ],
             "threats_involved": [
                 "NA"
@@ -212,31 +208,32 @@
             "inventory_of_story_items": [
                 "NA"
             ],
-            "outcome": "The Seekers navigate through the rockfall, their determination undeterred.",
+            "outcome": "The whispers bolster the party's confidence, enhancing their resolve for the journey ahead.",
             "status_changes": [
                 {
-                    "description": "Navigated rockfall",
-                    "consequence": "Test of endurance."
+                    "description": "The party gains a temporary boost in morale.",
+                    "consequence": "Increased effectiveness in future encounters."
                 }
             ]
         },
         {
             "id": "event_8",
             "type": "minor_event",
-            "description": "A sudden surge of water floods the chamber, catching the Seekers off guard. Thorin, with a swift and decisive action, anchors himself against the current, providing a bastion for his companions. The group's unity is tested, and they emerge stronger, their teamwork reaffirmed in the face of adversity.",
-            "location_within_area": "Flooded Chamber",
+            "description": "Priestess Lyra appears in the dim light of a Sacred Chamber, her presence both ethereal and grounded. She offers enigmatic advice about the Veil and the temple's history, hinting at the connection between the two and the party's quest.",
+            "location_within_area": "Sacred Chamber",
             "is_main_plot_event": "No",
             "is_minor_event": "Yes",
             "npcs_involved": [
-                "NA"
+                "Priestess Lyra"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Elara Nightshade",
+                "Korr Stonefist",
+                "Thalia Mirefoot",
+                "Mirela Windrider"
             ],
             "threats_involved": [
-                "Flood Tides"
+                "NA"
             ],
             "items_involved": [
                 "NA"
@@ -244,322 +241,77 @@
             "inventory_of_story_items": [
                 "NA"
             ],
-            "outcome": "The Seekers withstand the flood tide, their teamwork and resilience on full display.",
+            "outcome": "The party gains insight into the Veil's mysteries, furthering their understanding of their quest.",
             "status_changes": [
                 {
-                    "description": "Overcame flood tide",
-                    "consequence": "Strengthened group unity."
+                    "description": "The party's knowledge of the Veil deepens.",
+                    "consequence": "Increased effectiveness against Veil-related threats."
                 }
             ]
         },
         {
             "id": "event_9",
-            "type": "minor_event",
-            "description": "Elaria, exploring the shadows of the caverns, discovers a hidden alcove containing the remains of a past adventurer. Clutched in skeletal fingers is a weathered journal, its pages filled with tales of previous attempts to thwart Tempestus. The words resonate with Elaria, offering insights into the elemental sovereign's vulnerabilities and the sacrifices made by those who came before.",
-            "location_within_area": "Forgotten Tomb",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
+            "type": "main_plot_event",
+            "description": "After their encounters, Elara's evolving illusions reveal the precise location of a hidden passageway. This discovery is a critical breakthrough, granting the party access to unexplored areas potentially leading to the Sunken Library.",
+            "location_within_area": "Hidden Passage",
+            "is_main_plot_event": "Yes",
+            "is_minor_event": "No",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Elaria Moonshadow"
+                "Elara Nightshade",
+                "Korr Stonefist",
+                "Thalia Mirefoot",
+                "Mirela Windrider"
             ],
             "threats_involved": [
                 "NA"
             ],
             "items_involved": [
-                "Ancient journal"
+                "NA"
             ],
             "inventory_of_story_items": [
-                "Ancient journal"
+                "NA"
             ],
-            "outcome": "Elaria gains crucial insights into Tempestus's past and potential weaknesses.",
+            "outcome": "The party prepares to venture into the hidden passage, excited about the potential discoveries.",
             "status_changes": [
                 {
-                    "description": "Retrieved ancient journal",
-                    "consequence": "Gained historical perspective."
+                    "description": "The party is invigorated by their discovery.",
+                    "consequence": "Increased anticipation for the next area."
                 }
             ]
         },
         {
             "id": "event_10",
-            "type": "minor_event",
-            "description": "As Aric delves deeper into the caverns, he stumbles upon a natural pool glowing with bioluminescent creatures. The radiant spectacle captivates him, and he feels a profound connection to the elemental forces swirling around him. In this moment of clarity, Aric realizes a hidden strength within himself—an understanding of how Tempestus's power is mirrored in nature.",
-            "location_within_area": "Glowing Pool",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Aric Stormrider"
-            ],
-            "threats_involved": [
-                "NA"
-            ],
-            "items_involved": [
-                "NA"
-            ],
-            "inventory_of_story_items": [
-                "NA"
-            ],
-            "outcome": "Aric gains a deeper understanding of elemental forces, fortifying his resolve against Tempestus.",
-            "status_changes": [
-                {
-                    "description": "Sensed elemental connection",
-                    "consequence": "Enhanced elemental insight."
-                }
-            ]
-        },
-        {
-            "id": "event_11",
-            "type": "minor_event",
-            "description": "Mara gathers the Seekers around a small campfire within a secure cavern nook. As the flames flicker, she shares stories of her past explorations, her voice echoing against the stone. Her tales of courage, danger, and narrow escapes serve as both warning and inspiration, preparing the Seekers for the trials that lie ahead.",
-            "location_within_area": "Cavern Camp",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "Mara Deepseer"
-            ],
-            "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "NA"
-            ],
-            "items_involved": [
-                "NA"
-            ],
-            "inventory_of_story_items": [
-                "NA"
-            ],
-            "outcome": "The Seekers gain valuable insight from Mara's experiences, steeling themselves for future challenges.",
-            "status_changes": [
-                {
-                    "description": "Gained insight from Mara's stories",
-                    "consequence": "Prepared for upcoming trials."
-                }
-            ]
-        },
-        {
-            "id": "event_12",
-            "type": "minor_event",
-            "description": "While traversing a narrow path, the Seekers are ambushed by Cave Stalkers. In the chaotic skirmish, Thorin is wounded, yet he refuses to falter. His indomitable spirit shines through, inspiring his comrades to rally and fend off the attackers. Despite his injury, Thorin's steadfastness becomes a symbol of strength for the group.",
-            "location_within_area": "Ambush Site",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "Cave Stalkers"
-            ],
-            "items_involved": [
-                "NA"
-            ],
-            "inventory_of_story_items": [
-                "NA"
-            ],
-            "outcome": "Thorin's resilience galvanizes the Seekers, fortifying their resolve.",
-            "status_changes": [
-                {
-                    "description": "Thorin injured by Cave Stalker",
-                    "consequence": "Galvanized group resolve."
-                }
-            ]
-        },
-        {
-            "id": "event_13",
-            "type": "minor_event",
-            "description": "Thorin, still recovering from his injury, finds solace in his craftsmanship. He carves a small totem from a piece of stone, its intricate design a testament to his skill and heritage. As he works, he finds comfort and healing, the act of creation a balm for his spirit.",
-            "location_within_area": "Carving Nook",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "NA"
-            ],
-            "items_involved": [
-                "Stone Totem"
-            ],
-            "inventory_of_story_items": [
-                "Stone Totem"
-            ],
-            "outcome": "Thorin's craftsmanship aids his recovery, renewing his sense of purpose.",
-            "status_changes": [
-                {
-                    "description": "Crafted stone totem",
-                    "consequence": "Renewed sense of purpose."
-                }
-            ]
-        },
-        {
-            "id": "event_14",
-            "type": "minor_event",
-            "description": "Elaria, driven by the knowledge from the journal, deciphers an ancient script adorning a chamber wall. Her translation reveals the existence of a hidden power within the caverns, a force that could potentially calm Tempestus's wrath. This revelation adds a new layer to their quest, igniting hope within the Seekers.",
-            "location_within_area": "Chamber of Secrets",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Elaria Moonshadow"
-            ],
-            "threats_involved": [
-                "NA"
-            ],
-            "items_involved": [
-                "Ancient Script"
-            ],
-            "inventory_of_story_items": [
-                "Ancient journal",
-                "Ancient Script"
-            ],
-            "outcome": "Elaria uncovers a potential means to calm Tempestus, fueling the Seekers' determination.",
-            "status_changes": [
-                {
-                    "description": "Deciphered ancient script",
-                    "consequence": "New hope ignited."
-                }
-            ]
-        },
-        {
-            "id": "event_15",
-            "type": "minor_event",
-            "description": "The luminescent fungi guide the Seekers through the caverns, their glow a beacon in the darkness. As they move with caution, Aric senses a subtle shift in the air—a calming presence that seems to counter Tempestus's chaos. This discovery strengthens their resolve, confirming that their path is true and their goal within reach.",
-            "location_within_area": "Luminescent Path",
-            "is_main_plot_event": "No",
-            "is_minor_event": "Yes",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "NA"
-            ],
-            "items_involved": [
-                "NA"
-            ],
-            "inventory_of_story_items": [
-                "NA"
-            ],
-            "outcome": "The Seekers find assurance in the luminescent path, bolstering their confidence.",
-            "status_changes": [
-                {
-                    "description": "Guided by luminescent fungi",
-                    "consequence": "Confidence bolstered."
-                }
-            ]
-        },
-        {
-            "id": "event_16",
             "type": "main_plot_event",
-            "description": "The Seekers reach the Echoing Abyss, a vast chasm resonating with the fury of the ocean. As the waves crash below, the sound is amplified into a deafening roar that shakes the very stone. Amid this chaos, they spot the glint of the Shell of Serenity, a relic that seems to pulse with an inner light. Overcoming their fear, they retrieve the shell, realizing its significance in calming the storms.",
-            "location_within_area": "Echoing Abyss",
+            "description": "The party reaches a decisive moment in the Temple Nexus, realizing the necessity of accessing the Sunken Library to retrieve the Tome of Forgotten Lore. The knowledge within is crucial to their quest, promising insights into thwarting the Blightfall.",
+            "location_within_area": "Temple Nexus",
             "is_main_plot_event": "Yes",
             "is_minor_event": "No",
             "npcs_involved": [
                 "NA"
             ],
             "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "Cave Stalkers"
-            ],
-            "items_involved": [
-                "Shell of Serenity"
-            ],
-            "inventory_of_story_items": [
-                "Shell of Serenity"
-            ],
-            "outcome": "The Seekers retrieve the Shell of Serenity, a pivotal artifact in their quest.",
-            "status_changes": [
-                {
-                    "description": "Retrieved Shell of Serenity",
-                    "consequence": "Key item secured."
-                }
-            ]
-        },
-        {
-            "id": "event_17",
-            "type": "main_plot_event",
-            "description": "With the Shell of Serenity in hand, the Seekers gather to plan their next move. They must energize the shell at Tempest Tower, a task that requires precision and courage. As they discuss their strategy, they feel the weight of their mission, yet their determination is unwavering. The journey ahead is fraught with danger, but they are ready to face it together.",
-            "location_within_area": "Echoing Abyss",
-            "is_main_plot_event": "Yes",
-            "is_minor_event": "No",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
+                "Elara Nightshade",
+                "Korr Stonefist",
+                "Thalia Mirefoot",
+                "Mirela Windrider"
             ],
             "threats_involved": [
                 "NA"
             ],
             "items_involved": [
-                "Shell of Serenity"
-            ],
-            "inventory_of_story_items": [
-                "Shell of Serenity"
-            ],
-            "outcome": "The Seekers are prepared to leave the caverns and continue their quest.",
-            "status_changes": [
-                {
-                    "description": "Planned route to Tempest Tower",
-                    "consequence": "Focus and resolve heightened."
-                }
-            ]
-        },
-        {
-            "id": "event_18",
-            "type": "main_plot_event",
-            "description": "As the Seekers make their way towards the exit of the caverns, they follow the trail of luminescent fungi. The path is fraught with danger, as Cave Stalkers lurk in the shadows, their eyes glinting with malice. The Seekers move with caution, avoiding the creatures with the help of Elaria's illusions and Aric's elemental manipulation. Together, they navigate the perilous route, emerging victorious.",
-            "location_within_area": "Luminescent Exit",
-            "is_main_plot_event": "Yes",
-            "is_minor_event": "No",
-            "npcs_involved": [
-                "NA"
-            ],
-            "party_members_involved": [
-                "Aric Stormrider",
-                "Elaria Moonshadow",
-                "Thorin Ironfist"
-            ],
-            "threats_involved": [
-                "Cave Stalkers"
-            ],
-            "items_involved": [
                 "NA"
             ],
             "inventory_of_story_items": [
-                "Shell of Serenity"
+                "NA"
             ],
-            "outcome": "The Seekers successfully navigate out of the Thundercrash Caverns.",
+            "outcome": "The party resolves to find a way to the Sunken Library, setting a new objective.",
             "status_changes": [
                 {
-                    "description": "Exited Thundercrash Caverns",
-                    "consequence": "Onward to Tempest Tower."
+                    "description": "The party's goal shifts towards retrieving the Tome of Forgotten Lore.",
+                    "consequence": "New motivations drive their actions."
                 }
             ]
         }

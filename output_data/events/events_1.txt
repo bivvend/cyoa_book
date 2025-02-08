@@ -2,303 +2,213 @@
     "events": [
         {
             "id": "event_1",
-            "type": "main_plot_event",
-            "description": "The Seekers arrive at Gale Village and meet Eldra Wavewalker, who shares tales of the sea and its dangers.",
-            "location_within_area": "Town Square",
+            "type": "Main Plot Event",
+            "description": "Elara senses a disturbance in the ambiance of Whispering Plaza, prompting her to gather the party.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "True",
             "is_minor_event": "False",
-            "npcs_involved": ["Eldra Wavewalker"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "npcs_involved": ["Elara Nightshade"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
             "threats_involved": ["NA"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers gain valuable knowledge about the sea's perils.",
-            "status_changes": [
-                {
-                    "description": "Gained insight into Gale Village's history.",
-                    "consequence": "Increased understanding of local threats."
-                }
-            ]
+            "outcome": "The party prepares to investigate the source of the disturbance.",
+            "status_changes": [{"description": "Elara's awareness of the Veil deepens.", "consequence": "Increased focus on uncovering secrets."}]
         },
         {
             "id": "event_2",
-            "type": "minor_event",
-            "description": "Nerin Tidecaller warns the Seekers of ominous signs from the sea, hinting at Tempestus's growing influence.",
-            "location_within_area": "The Salty Anchor",
-            "is_main_plot_event": "False",
-            "is_minor_event": "True",
-            "npcs_involved": ["Nerin Tidecaller"],
-            "party_members_involved": ["Aric Stormrider"],
+            "type": "Main Plot Event",
+            "description": "Elara leads the group to Eldrin the Historian, who is known for his knowledge of ancient lore.",
+            "location_within_area": "Fountain of Echoes",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Eldrin the Historian"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
             "threats_involved": ["NA"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers are alerted to the increasing danger from the sea.",
-            "status_changes": [
-                {
-                    "description": "Heightened awareness of looming threats.",
-                    "consequence": "Urgency to act increases."
-                }
-            ]
+            "outcome": "The party gains valuable information regarding the hidden library beneath the ruins.",
+            "status_changes": [{"description": "Eldrin mentions the Order of the Shattered Star.", "consequence": "Thalia becomes intrigued."}]
         },
         {
             "id": "event_3",
-            "type": "main_plot_event",
-            "description": "The Seekers experience a violent storm, realizing the urgency of their mission to retrieve the Shell of Serenity.",
-            "location_within_area": "Coastal Path",
-            "is_main_plot_event": "True",
-            "is_minor_event": "False",
+            "type": "Minor Event",
+            "description": "The party encounters a group of Rubble Rats scavenging near the Fountain of Echoes.",
+            "location_within_area": "Fountain of Echoes",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
             "npcs_involved": ["NA"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": ["Sea Wraiths"],
+            "party_members_involved": ["Korr Stonefist"],
+            "threats_involved": ["Rubble Rats"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers are forced to seek shelter and plan their next steps.",
-            "status_changes": [
-                {
-                    "description": "Increased resolve to locate the Shell of Serenity.",
-                    "consequence": "The party's mission becomes urgent."
-                }
-            ]
+            "outcome": "Korr intimidates the Rubble Rats, securing a safe passage for the party.",
+            "status_changes": [{"description": "Korr's reputation among the locals improves.", "consequence": "Possible future allies."}]
         },
         {
             "id": "event_4",
-            "type": "minor_event",
-            "description": "Aric discovers a maritime relic that hints at the origins of Tempestus.",
-            "location_within_area": "Abandoned Lighthouse",
+            "type": "Minor Event",
+            "description": "Thalia attempts to communicate with a Forgotten Spirit but only receives ominous whispers about the Veil cult.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
-            "npcs_involved": ["NA"],
-            "party_members_involved": ["Aric Stormrider"],
+            "npcs_involved": ["Forgotten Spirit"],
+            "party_members_involved": ["Thalia Mirefoot"],
             "threats_involved": ["NA"],
-            "items_involved": ["Maritime Relic"],
-            "inventory_of_story_items": ["Maritime Relic"],
-            "outcome": "Aric gains knowledge about Tempestus's past.",
-            "status_changes": [
-                {
-                    "description": "Fascinated by the relic's history.",
-                    "consequence": "Strengthened resolve to confront Tempestus."
-                }
-            ]
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "Thalia grows concerned about the Veil cult's influence.",
+            "status_changes": [{"description": "Thalia's connection to the spirits intensifies.", "consequence": "Gains insight into potential dangers."}]
         },
         {
             "id": "event_5",
-            "type": "minor_event",
-            "description": "Elaria senses a malevolent presence in the village, linked to the Sea Wraiths.",
-            "location_within_area": "Village Square",
+            "type": "Minor Event",
+            "description": "Korr repairs a broken statue in the plaza, earning the respect of Eldrin.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
-            "npcs_involved": ["NA"],
-            "party_members_involved": ["Elaria Moonshadow"],
-            "threats_involved": ["Sea Wraiths"],
+            "npcs_involved": ["Eldrin the Historian"],
+            "party_members_involved": ["Korr Stonefist"],
+            "threats_involved": ["NA"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "Elaria's intuition alerts the party to hidden dangers.",
-            "status_changes": [
-                {
-                    "description": "Increased caution among party members.",
-                    "consequence": "Preparedness for potential attacks."
-                }
-            ]
+            "outcome": "Eldrin shares additional lore about the plaza's history.",
+            "status_changes": [{"description": "Korr gains Eldrin's favor.", "consequence": "Possible future assistance."}]
         },
         {
             "id": "event_6",
-            "type": "minor_event",
-            "description": "Thorin helps defend the village from a Sea Wraith attack, proving his loyalty and gaining their trust.",
-            "location_within_area": "Village Perimeter",
+            "type": "Minor Event",
+            "description": "Mirela pickpockets a passerby and finds a mysterious map fragment.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
-            "npcs_involved": ["Village Guards"],
-            "party_members_involved": ["Thorin Ironfist"],
-            "threats_involved": ["Sea Wraiths"],
-            "items_involved": ["NA"],
-            "inventory_of_story_items": ["NA"],
-            "outcome": "Thorin earns the respect of the villagers.",
-            "status_changes": [
-                {
-                    "description": "Gains trust from villagers.",
-                    "consequence": "Stronger alliances formed."
-                }
-            ]
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Mirela Windrider"],
+            "threats_involved": ["NA"],
+            "items_involved": ["Map Fragment"],
+            "inventory_of_story_items": ["Map Fragment"],
+            "outcome": "Mirela adds the map fragment to the party's inventory, hinting at potential treasure.",
+            "status_changes": [{"description": "Mirela's stealth skills impress the party.", "consequence": "Increased confidence."}]
         },
         {
             "id": "event_7",
-            "type": "minor_event",
-            "description": "The Seekers uncover a hidden passage in The Salty Anchor, leading to Eldra's secret map.",
-            "location_within_area": "The Salty Anchor",
+            "type": "Minor Event",
+            "description": "Elara has a vision of the past, seeing Eldenfall in its former glory.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
-            "npcs_involved": ["Eldra Wavewalker"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elara Nightshade"],
             "threats_involved": ["NA"],
-            "items_involved": ["Secret Map"],
-            "inventory_of_story_items": ["Secret Map"],
-            "outcome": "The Seekers gain a crucial lead on the Shell of Serenity's location.",
-            "status_changes": [
-                {
-                    "description": "Acquired Eldra's secret map.",
-                    "consequence": "Knowledge of the Shell of Serenity's location."
-                }
-            ]
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "Elara is inspired to uncover more about the past.",
+            "status_changes": [{"description": "Elara's resolve strengthens.", "consequence": "Increased determination to restore Eldenfall."}]
         },
         {
             "id": "event_8",
-            "type": "minor_event",
-            "description": "Captain Brine shares tales of Tempestus's past attacks over a hearty stew, instilling urgency in the Seekers.",
-            "location_within_area": "The Salty Anchor",
+            "type": "Minor Event",
+            "description": "The party finds a Twilight Bloom and Thalia uses it to create a healing potion.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
-            "npcs_involved": ["Captain Brine"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Thalia Mirefoot"],
             "threats_involved": ["NA"],
-            "items_involved": ["NA"],
-            "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers realize the severity of their mission.",
-            "status_changes": [
-                {
-                    "description": "Urgency instilled to retrieve the Shell.",
-                    "consequence": "The party's resolve strengthens."
-                }
-            ]
+            "items_involved": ["Twilight Bloom"],
+            "inventory_of_story_items": ["Twilight Bloom"],
+            "outcome": "The party gains a potent healing potion for future challenges.",
+            "status_changes": [{"description": "Thalia's healing abilities are recognized.", "consequence": "Increased trust from the party."}]
         },
         {
             "id": "event_9",
-            "type": "minor_event",
-            "description": "A rogue wave crashes against the cliffs, revealing a hidden chamber beneath the village.",
-            "location_within_area": "Cliffs",
+            "type": "Minor Event",
+            "description": "Mirela overhears a conversation about a Veil cult in the city.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
             "npcs_involved": ["NA"],
-            "party_members_involved": ["Aric Stormrider", "Thorin Ironfist"],
+            "party_members_involved": ["Mirela Windrider"],
             "threats_involved": ["NA"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers discover a potential new location to explore.",
-            "status_changes": [
-                {
-                    "description": "New location discovered.",
-                    "consequence": "Possibility of uncovering more secrets."
-                }
-            ]
+            "outcome": "Mirela reports back to the party, raising concerns about the Veil cult's activities.",
+            "status_changes": [{"description": "The party becomes more vigilant.", "consequence": "Increased awareness of potential threats."}]
         },
         {
             "id": "event_10",
-            "type": "minor_event",
-            "description": "Eldra shows the Seekers an ancient map of the Storm Coast, revealing the path to the Shell of Serenity.",
-            "location_within_area": "Eldra's Hut",
-            "is_main_plot_event": "False",
-            "is_minor_event": "True",
-            "npcs_involved": ["Eldra Wavewalker"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
-            "threats_involved": ["NA"],
-            "items_involved": ["Ancient Map"],
-            "inventory_of_story_items": ["Ancient Map"],
-            "outcome": "The Seekers gain a direct route to their objective.",
-            "status_changes": [
-                {
-                    "description": "Acquired the Ancient Map.",
-                    "consequence": "Clear path revealed towards the Shell."
-                }
-            ]
-        },
-        {
-            "id": "event_11",
-            "type": "minor_event",
-            "description": "Nerin demonstrates his ability to communicate with sea creatures, learning of their fear of Tempestus.",
-            "location_within_area": "Coastal Waters",
-            "is_main_plot_event": "False",
-            "is_minor_event": "True",
-            "npcs_involved": ["Nerin Tidecaller"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow"],
-            "threats_involved": ["NA"],
-            "items_involved": ["NA"],
-            "inventory_of_story_items": ["NA"],
-            "outcome": "The Seekers understand the depth of Tempestus's influence.",
-            "status_changes": [
-                {
-                    "description": "Increased awareness of Tempestus's reach.",
-                    "consequence": "The urgency to act is reinforced."
-                }
-            ]
-        },
-        {
-            "id": "event_12",
-            "type": "minor_event",
-            "description": "The Seekers witness the luminescent glow of a rare Storm Fern during a storm, hinting at its magical properties.",
-            "location_within_area": "Stormy Shore",
+            "type": "Minor Event",
+            "description": "Korr forges a makeshift weapon from debris, readying the party for any threats.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "False",
             "is_minor_event": "True",
             "npcs_involved": ["NA"],
-            "party_members_involved": ["Elaria Moonshadow"],
+            "party_members_involved": ["Korr Stonefist"],
             "threats_involved": ["NA"],
-            "items_involved": ["Storm Fern"],
-            "inventory_of_story_items": ["Storm Fern"],
-            "outcome": "Elaria collects the Storm Fern for potential use in their quest.",
-            "status_changes": [
-                {
-                    "description": "Gathered a rare magical item.",
-                    "consequence": "Potential future use in spellcasting."
-                }
-            ]
+            "items_involved": ["Makeshift Weapon"],
+            "inventory_of_story_items": ["Makeshift Weapon"],
+            "outcome": "Korr provides the party with additional firepower if needed.",
+            "status_changes": [{"description": "Korr's crafting skills prove valuable.", "consequence": "Increased confidence in his abilities."}]
+        },
+        {
+            "id": "event_11",
+            "type": "Minor Event",
+            "description": "The party notices the shadows in the plaza behaving unusually, hinting at Malakar's influence.",
+            "location_within_area": "Whispering Plaza",
+            "is_main_plot_event": "False",
+            "is_minor_event": "True",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
+            "threats_involved": ["Malakar"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The party senses a looming threat, increasing their vigilance.",
+            "status_changes": [{"description": "The party's awareness of Malakar's influence heightens.", "consequence": "Heightened tension among party members."}]
+        },
+        {
+            "id": "event_12",
+            "type": "Main Plot Event",
+            "description": "Eldrin reveals the existence of a hidden library beneath the ruins and hints at the Order of the Shattered Star's ancient role in safeguarding its secrets.",
+            "location_within_area": "Whispering Plaza",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["Eldrin the Historian"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
+            "threats_involved": ["NA"],
+            "items_involved": ["NA"],
+            "inventory_of_story_items": ["NA"],
+            "outcome": "The party resolves to uncover the secrets of the Sunken Library.",
+            "status_changes": [{"description": "The party's goal shifts towards the Sunken Library.", "consequence": "Preparation for the next area."}]
         },
         {
             "id": "event_13",
-            "type": "minor_event",
-            "description": "A night watch is organized to ward off Sea Wraiths, with the Seekers' assistance, fortifying the village's defenses.",
-            "location_within_area": "Village Perimeter",
-            "is_main_plot_event": "False",
-            "is_minor_event": "True",
-            "npcs_involved": ["Village Guards"],
-            "party_members_involved": ["Thorin Ironfist", "Aric Stormrider"],
-            "threats_involved": ["Sea Wraiths"],
+            "type": "Main Plot Event",
+            "description": "The party discovers a hidden passage leading to the Sunken Library, shrouded in mist.",
+            "location_within_area": "Whispering Plaza",
+            "is_main_plot_event": "True",
+            "is_minor_event": "False",
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
+            "threats_involved": ["NA"],
             "items_involved": ["NA"],
             "inventory_of_story_items": ["NA"],
-            "outcome": "The village's defenses are strengthened against attacks.",
-            "status_changes": [
-                {
-                    "description": "Increased fortification of the village.",
-                    "consequence": "Reduced immediate threat from Sea Wraiths."
-                }
-            ]
+            "outcome": "The party prepares to enter the hidden passage.",
+            "status_changes": [{"description": "The party's resolve strengthens as they venture forward.", "consequence": "Increased anticipation of the challenges ahead."}]
         },
         {
             "id": "event_14",
-            "type": "main_plot_event",
-            "description": "The Seekers prepare to leave Gale Village, armed with the knowledge and items needed to seek the Shell of Serenity.",
-            "location_within_area": "Village Square",
+            "type": "Final Event",
+            "description": "With newfound knowledge and a map fragment, the party sets off through the mist-shrouded streets towards the Sunken Library.",
+            "location_within_area": "Whispering Plaza",
             "is_main_plot_event": "True",
             "is_minor_event": "False",
-            "npcs_involved": ["Eldra Wavewalker", "Nerin Tidecaller"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
+            "npcs_involved": ["NA"],
+            "party_members_involved": ["Elara Nightshade", "Korr Stonefist", "Thalia Mirefoot", "Mirela Windrider"],
             "threats_involved": ["NA"],
-            "items_involved": ["Ancient Map", "Secret Map"],
-            "inventory_of_story_items": ["Ancient Map", "Secret Map"],
-            "outcome": "The Seekers are ready to navigate the treacherous coastal path to Thundercrash Caverns.",
-            "status_changes": [
-                {
-                    "description": "Prepared for next leg of their journey.",
-                    "consequence": "Determination to retrieve the Shell of Serenity."
-                }
-            ]
-        },
-        {
-            "id": "event_15",
-            "type": "main_plot_event",
-            "description": "The Seekers bid farewell to the villagers, promising to return with the Shell of Serenity.",
-            "location_within_area": "Village Square",
-            "is_main_plot_event": "True",
-            "is_minor_event": "False",
-            "npcs_involved": ["Villagers"],
-            "party_members_involved": ["Aric Stormrider", "Elaria Moonshadow", "Thorin Ironfist"],
-            "threats_involved": ["NA"],
-            "items_involved": ["NA"],
-            "inventory_of_story_items": ["Ancient Map", "Secret Map"],
-            "outcome": "The villagers express their hope and gratitude, bolstering the Seekers' resolve.",
-            "status_changes": [
-                {
-                    "description": "Strengthened bonds with the villagers.",
-                    "consequence": "Increased motivation to succeed in their quest."
-                }
-            ]
+            "items_involved": ["Map Fragment"],
+            "inventory_of_story_items": ["Map Fragment"],
+            "outcome": "The party embarks on their next adventure, ready to uncover the secrets hidden within the Sunken Library.",
+            "status_changes": [{"description": "The party's mission shifts towards the Sunken Library.", "consequence": "Excitement and determination among members."}]
         }
     ]
 }

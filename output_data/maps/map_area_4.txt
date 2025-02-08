@@ -1,66 +1,99 @@
 {
-    "name": "Maelstrom Keep",
+    "name": "The Abyssal Tower",
     "locations": [
         {
-            "name": "Fortress Entrance",
-            "sub_locations": ["Outer Gates", "Watchtower"]
+            "name": "Entrance Hall",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
         },
         {
-            "name": "Grand Hall",
-            "sub_locations": ["Throne of Waves", "Statue Gallery"]
+            "name": "Shadowed Corridor",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
         },
         {
-            "name": "Inner Sanctum",
-            "sub_locations": ["Knight's Quarters", "Dark Altar"]
+            "name": "Armory",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
         },
         {
-            "name": "Library",
-            "sub_locations": ["Ancient Scroll Room", "Secret Archive"]
+            "name": "Central Chamber",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
         },
         {
-            "name": "Echoing Abyss",
-            "sub_locations": ["Illusion Maze", "Trance Chamber"]
+            "name": "Chamber of the Veil",
+            "sub_locations": [
+                "Hidden Chamber",
+                "NA"
+            ]
         },
         {
-            "name": "Storm Chamber",
-            "sub_locations": ["Raging Arena", "Calm Center"]
+            "name": "Exit of the Tower",
+            "sub_locations": [
+                "NA",
+                "NA"
+            ]
         }
     ],
     "paths": [
         {
-            "from": "Fortress Entrance",
-            "to": "Grand Hall",
-            "description": "As you pass through the towering gates of the Fortress Entrance, the path widens into a grand corridor, echoing with the distant rumble of thunder. The heavy stone walls are adorned with faded banners, a testament to the keep's storied past.",
+            "from": "Entrance Hall",
+            "to": "Shadowed Corridor",
+            "description": "The path from the Entrance Hall to the Shadowed Corridor is a narrow passageway lined with flickering runes. The oppressive silence is punctuated by the distant echoes of footsteps, and shadows seem to stretch and twist as if alive.",
             "threat_level": "Moderate",
-            "dangers": ["Rogue Gusts", "Crumbled Stone"]
+            "dangers": [
+                "Veilbound Horrors",
+                "Perception-distorting illusions"
+            ]
         },
         {
-            "from": "Grand Hall",
-            "to": "Inner Sanctum",
-            "description": "The transition from the Grand Hall to the Inner Sanctum is marked by an eerie quiet that descends as you walk through a narrow passage. The air grows colder, and the shadows seem to lengthen, hinting at the secrets that lie ahead.",
+            "from": "Shadowed Corridor",
+            "to": "Armory",
+            "description": "Traversing from the Shadowed Corridor to the Armory, the air grows colder as the party navigates through a series of twisting hallways. The walls whisper faintly of lost souls, and the floor is uneven and treacherous.",
             "threat_level": "High",
-            "dangers": ["Cursed Whispers", "Dark Magic"]
+            "dangers": [
+                "Traps",
+                "Veilbound Horrors"
+            ]
         },
         {
-            "from": "Inner Sanctum",
-            "to": "Library",
-            "description": "Leaving the Inner Sanctum, you follow a spiraling staircase that leads upwards into a vast library. The scent of old parchment fills the air, and shelves upon shelves of ancient tomes beckon with promises of forgotten knowledge.",
-            "threat_level": "Low",
-            "dangers": ["Dust Motes", "Loose Scrolls"]
-        },
-        {
-            "from": "Library",
-            "to": "Echoing Abyss",
-            "description": "Exiting the Library, a hidden door opens to reveal a descent into the Echoing Abyss. The path is treacherous, with jagged rocks underfoot and strange echoes that seem to mock your every step. Here, the air is thick with a sense of foreboding.",
-            "threat_level": "Severe",
-            "dangers": ["Illusory Traps", "Falling Rocks"]
-        },
-        {
-            "from": "Echoing Abyss",
-            "to": "Storm Chamber",
-            "description": "Emerging from the Echoing Abyss, the path to the Storm Chamber is a narrow ledge overlooking a churning sea. Lightning cracks the sky, illuminating the way. The roar of the tempest grows louder, warning of the formidable power that awaits.",
+            "from": "Armory",
+            "to": "Central Chamber",
+            "description": "The route from the Armory to the Central Chamber is a perilous journey through a labyrinth of darkened hallways. The shadows seem to ripple with malevolence, and the air is thick with the scent of ancient decay.",
             "threat_level": "Extreme",
-            "dangers": ["Lightning Strikes", "Gale Force Winds"]
+            "dangers": [
+                "Veilbound Horrors",
+                "Shadow energy surges"
+            ]
+        },
+        {
+            "from": "Central Chamber",
+            "to": "Chamber of the Veil",
+            "description": "As the party moves from the Central Chamber to the Chamber of the Veil, the atmosphere becomes increasingly oppressive. The walls pulse with shadow energy, and the very air feels charged with dark magic, making each step a struggle.",
+            "threat_level": "Extreme",
+            "dangers": [
+                "Malakar's influence",
+                "Shadow illusions"
+            ]
+        },
+        {
+            "from": "Chamber of the Veil",
+            "to": "Exit of the Tower",
+            "description": "The path from the Chamber of the Veil to the Exit of the Tower is a somber journey through the remnants of Malakar's influence. The shadows recede, revealing the crumbling architecture of Eldenfall, as echoes of past battles linger in the air.",
+            "threat_level": "Moderate",
+            "dangers": [
+                "Residual shadow energy",
+                "Weakened structural integrity"
+            ]
         }
     ]
 }

@@ -1,0 +1,32 @@
+{
+    "characters": [
+        {
+            "name": "Tempestus",
+            "area_found": "Maelstrom Keep",
+            "skills_and_abilities": ["Storm Control", "Summoning Hurricanes"],
+            "description": "The Storm Sovereign, entwined with the fury of the sea, who rules Maelstrom Keep with an iron grip.",
+            "appearance": "A towering figure clad in swirling storm clouds, with eyes crackling with lightning."
+        },
+        {
+            "name": "Lord Vortex",
+            "area_found": "Throne Room",
+            "skills_and_abilities": ["Spectral Leadership", "Curse Breaking"],
+            "description": "The spectral leader of the Cursed Knights, whose tragic past holds the key to breaking their curse.",
+            "appearance": "A ghostly figure with a noble bearing, shrouded in a spectral aura."
+        },
+        {
+            "name": "Seraphina Tidebringer",
+            "area_found": "Throne Room",
+            "skills_and_abilities": ["Calming Spells", "Elemental Magic"],
+            "description": "A powerful sorceress determined to calm the maelstrom and unlock the keep's hidden secrets.",
+            "appearance": "A graceful woman with flowing robes, adorned with symbols of water and tranquility."
+        },
+        {
+            "name": "Cursed Knights",
+            "area_found": "Inner Sanctum",
+            "skills_and_abilities": ["Spectral Combat", "Guardian Duty"],
+            "description": "Ghostly guardians bound to Tempestus's will, eternally guarding the secrets of Maelstrom Keep.",
+            "appearance": "Ethereal knights in ancient armor, their forms flickering with ghostly light."
+        }
+    ]
+}

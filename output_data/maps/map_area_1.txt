@@ -1,90 +1,50 @@
 {
-    "name": "Gale Village",
+    "name": "Whispering Plaza",
     "locations": [
         {
-            "name": "Town Square",
+            "name": "Whispering Plaza",
             "sub_locations": [
-                "Eldra's Hut",
-                "Village Perimeter"
+                "Fountain of Echoes",
+                "Twilight Vanguard's Campsite"
             ]
         },
         {
-            "name": "The Salty Anchor",
+            "name": "Fountain of Echoes",
             "sub_locations": [
-                "Bar Area",
-                "Hidden Room"
-            ]
-        },
-        {
-            "name": "Coastal Path",
-            "sub_locations": [
-                "Stormy Shore",
-                "Cliffs"
-            ]
-        },
-        {
-            "name": "Abandoned Lighthouse",
-            "sub_locations": [
-                "Lighthouse Tower",
-                "Lighthouse Basement"
-            ]
-        },
-        {
-            "name": "Hidden Chamber",
-            "sub_locations": [
-                "Ancient Vault",
-                "Chamber Antechamber"
+                "Central Basin",
+                "Eldrin's Study Area"
             ]
         }
     ],
     "paths": [
         {
-            "from": "Town Square",
-            "to": "The Salty Anchor",
-            "description": "The cobblestone path from the Town Square to The Salty Anchor winds through bustling market stalls, where villagers barter and exchange goods. The salty sea breeze carries the scent of fresh fish, mingling with the aroma of baked bread and exotic spices from distant lands.",
+            "from": "Whispering Plaza",
+            "to": "Fountain of Echoes",
+            "description": "The path from Whispering Plaza to the Fountain of Echoes is lined with ancient cobblestones, their surfaces slick with mist. As you walk, the air grows denser, and the echoes of distant whispers fill your ears, weaving stories of Eldenfall's past.",
             "threat_level": "Low",
             "dangers": [
-                "Pickpockets"
+                "Forgotten Spirits",
+                "Veil Cultists"
             ]
         },
         {
-            "from": "The Salty Anchor",
-            "to": "Coastal Path",
-            "description": "Exiting The Salty Anchor, the path leads down towards the Coastal Path. The route is lined with ancient, twisted trees, their branches swaying gently in the breeze. The distant roar of waves crashing against the cliffs echoes, creating a serene yet foreboding atmosphere.",
-            "threat_level": "Medium",
+            "from": "Fountain of Echoes",
+            "to": "Twilight Vanguard's Campsite",
+            "description": "Winding through the shadow-laden paths, you arrive at the Twilight Vanguard's Campsite. The journey takes you past remnants of toppled statues and crumbling walls, where the spirits of the past seem to linger, watching your every step.",
+            "threat_level": "Low",
             "dangers": [
-                "Rogue Waves",
-                "Slippery Rocks"
+                "Whispering Shadows",
+                "Eerie Silence"
             ]
         },
         {
-            "from": "Coastal Path",
-            "to": "Abandoned Lighthouse",
-            "description": "The rugged trail along the Coastal Path meanders through rocky outcrops and patches of luminescent flowers, known for their magical properties. The lighthouse looms ahead, its silhouette stark against the stormy sky, whispering secrets of the sea to those who dare to listen.",
-            "threat_level": "High",
+            "from": "Twilight Vanguard's Campsite",
+            "to": "Whispering Plaza",
+            "description": "Retracing your steps back to Whispering Plaza, the air feels charged with anticipation. The cobblestones beneath your feet seem to pulse with an ancient energy, urging you onward as the mist swirls around, concealing hidden secrets.",
+            "threat_level": "Low",
             "dangers": [
-                "Sea Wraiths",
-                "Treacherous Cliffs"
-            ]
-        },
-        {
-            "from": "Abandoned Lighthouse",
-            "to": "Hidden Chamber",
-            "description": "A narrow, concealed trail leads from the base of the lighthouse to the Hidden Chamber, shrouded in mystery. The path is fraught with hidden traps and ancient wards, remnants of forgotten magic designed to protect the secrets held within the chamber's depths.",
-            "threat_level": "High",
-            "dangers": [
-                "Ancient Traps",
-                "Ghostly Guardians"
-            ]
-        },
-        {
-            "from": "Hidden Chamber",
-            "to": "Town Square",
-            "description": "The return path to the Town Square from the Hidden Chamber takes one through a series of winding alleys, where shadows play tricks on the eyes. The air is thick with anticipation, as if the village itself holds its breath, waiting for the return of the Seekers with newfound knowledge.",
-            "threat_level": "Medium",
-            "dangers": [
-                "Smugglers",
-                "Ambushes"
+                "Lingering Spirits",
+                "Shifting Shadows"
             ]
         }
     ]

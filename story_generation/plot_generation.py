@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, story_structrures
 
-def generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, model = "gpt-4o-mini"):
+def generate_plot_summary(global_lore_json, style_prompt_in,  region_lore_json, party_lore_json, enemy_lore_json, model = "gpt-4o-mini"):
     """
     Generates the first pass of the plot of the story
     """
@@ -19,6 +19,11 @@ def generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, e
             "You are a fantasy story author writing the plot for a story."
             "The story is set in the world defined in the JSON below. \n World Lore: \n"
             f"{global_lore_txt} \n"
+        )
+
+        style_prompt = (
+                "You are also given a style prompt to follow below: \n"
+                f"{style_prompt_in}\n"
         )
 
         writing_guidelines_2 = (
@@ -49,6 +54,7 @@ def generate_plot_summary(global_lore_json, region_lore_json, party_lore_json, e
 
         prompt = (
             f"{writing_guidelines_1} \n"
+            f"{style_prompt} \n"
             f"{writing_guidelines_2} \n"
             f"{writing_guidelines_3} \n"
             f"{writing_guidelines_4} \n"
@@ -93,7 +99,7 @@ def critique_plot(plot_summary_text, model = "gpt-4o-mini"):
         return None
     
 
-def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = "gpt-4o-mini"):
+def generate_refined_plot(global_lore_json,style_prompt_in, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = "gpt-4o-mini"):
     """
     Generates the first pass of the plot of the story
     """
@@ -111,6 +117,11 @@ def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, e
             "You are a fantasy story author writing the plot for a story."
             "The story is set in the world defined in the JSON below. \n World Lore: \n"
             f"{global_lore_txt} \n"
+        )
+
+        style_prompt = (
+                "You are also given a style prompt to follow below: \n"
+                f"{style_prompt_in}\n"
         )
 
         writing_guidelines_2 = (
@@ -147,6 +158,7 @@ def generate_refined_plot(global_lore_json, region_lore_json, party_lore_json, e
 
         prompt = (
             f"{writing_guidelines_1} \n"
+            f"{style_prompt} \n"
             f"{writing_guidelines_2} \n"
             f"{writing_guidelines_3} \n"
             f"{writing_guidelines_4} \n"

@@ -1,7 +1,7 @@
 import json
 from utils import generate_text, expected_json_structures
 
-def generate_party(global_lore_json, model = "gpt-4o-mini"):
+def generate_party(global_lore_json, style_prompt_in, model = "gpt-4o-mini"):
     """
     Generates lore for a specific party in the game.
     """
@@ -9,10 +9,16 @@ def generate_party(global_lore_json, model = "gpt-4o-mini"):
         global_lore = json.dumps(global_lore_json, indent=4)
         
         writing_guidelines_1 = (
-            f"Write a detailed description for the party of adventurers called of a fantasy novel."
+            f"Write a detailed description for the party of adventurers for a fantasy novel."
             "You can use the lore of the world in the JSON below to get an idea of the setting. "
             "The races of the party members MUST only be taken from the lore of the world. Use the list of "
             "races in the lore of the world JSON below to create the party members."
+        )
+
+        style_prompt = (
+            "You should also use the prompt below that was used to generate the world JSON to give a thematic style to the party. \n"
+            f"{style_prompt_in}\n"
+
         )
         writing_guidelines_2 = (
             "The description should include the party's composition, their backgrounds, motivations, and potential conflicts."
@@ -30,6 +36,7 @@ def generate_party(global_lore_json, model = "gpt-4o-mini"):
         prompt = (
             f"{writing_guidelines_1}\n\n"
             f"Lore of the world:\n{global_lore}\n\n"
+            f"{style_prompt} \n"
             f"{writing_guidelines_2}\n\n"
             f"{structuring_prompt}"      
         )

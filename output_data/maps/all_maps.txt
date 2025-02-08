@@ -1,603 +1,434 @@
 {
-    "Gale Village": {
-        "name": "Gale Village",
+    "Whispering Plaza": {
+        "name": "Whispering Plaza",
         "locations": [
             {
-                "name": "Town Square",
+                "name": "Whispering Plaza",
                 "sub_locations": [
-                    "Eldra's Hut",
-                    "Village Perimeter"
+                    "Fountain of Echoes",
+                    "Twilight Vanguard's Campsite"
                 ]
             },
             {
-                "name": "The Salty Anchor",
+                "name": "Fountain of Echoes",
                 "sub_locations": [
-                    "Bar Area",
-                    "Hidden Room"
-                ]
-            },
-            {
-                "name": "Coastal Path",
-                "sub_locations": [
-                    "Stormy Shore",
-                    "Cliffs"
-                ]
-            },
-            {
-                "name": "Abandoned Lighthouse",
-                "sub_locations": [
-                    "Lighthouse Tower",
-                    "Lighthouse Basement"
-                ]
-            },
-            {
-                "name": "Hidden Chamber",
-                "sub_locations": [
-                    "Ancient Vault",
-                    "Chamber Antechamber"
+                    "Central Basin",
+                    "Eldrin's Study Area"
                 ]
             }
         ],
         "paths": [
             {
-                "from": "Town Square",
-                "to": "The Salty Anchor",
-                "description": "The cobblestone path from the Town Square to The Salty Anchor winds through bustling market stalls, where villagers barter and exchange goods. The salty sea breeze carries the scent of fresh fish, mingling with the aroma of baked bread and exotic spices from distant lands.",
+                "from": "Whispering Plaza",
+                "to": "Fountain of Echoes",
+                "description": "The path from Whispering Plaza to the Fountain of Echoes is lined with ancient cobblestones, their surfaces slick with mist. As you walk, the air grows denser, and the echoes of distant whispers fill your ears, weaving stories of Eldenfall's past.",
                 "threat_level": "Low",
                 "dangers": [
-                    "Pickpockets"
+                    "Forgotten Spirits",
+                    "Veil Cultists"
                 ]
             },
             {
-                "from": "The Salty Anchor",
-                "to": "Coastal Path",
-                "description": "Exiting The Salty Anchor, the path leads down towards the Coastal Path. The route is lined with ancient, twisted trees, their branches swaying gently in the breeze. The distant roar of waves crashing against the cliffs echoes, creating a serene yet foreboding atmosphere.",
-                "threat_level": "Medium",
+                "from": "Fountain of Echoes",
+                "to": "Twilight Vanguard's Campsite",
+                "description": "Winding through the shadow-laden paths, you arrive at the Twilight Vanguard's Campsite. The journey takes you past remnants of toppled statues and crumbling walls, where the spirits of the past seem to linger, watching your every step.",
+                "threat_level": "Low",
                 "dangers": [
-                    "Rogue Waves",
-                    "Slippery Rocks"
+                    "Whispering Shadows",
+                    "Eerie Silence"
                 ]
             },
             {
-                "from": "Coastal Path",
-                "to": "Abandoned Lighthouse",
-                "description": "The rugged trail along the Coastal Path meanders through rocky outcrops and patches of luminescent flowers, known for their magical properties. The lighthouse looms ahead, its silhouette stark against the stormy sky, whispering secrets of the sea to those who dare to listen.",
-                "threat_level": "High",
+                "from": "Twilight Vanguard's Campsite",
+                "to": "Whispering Plaza",
+                "description": "Retracing your steps back to Whispering Plaza, the air feels charged with anticipation. The cobblestones beneath your feet seem to pulse with an ancient energy, urging you onward as the mist swirls around, concealing hidden secrets.",
+                "threat_level": "Low",
                 "dangers": [
-                    "Sea Wraiths",
-                    "Treacherous Cliffs"
-                ]
-            },
-            {
-                "from": "Abandoned Lighthouse",
-                "to": "Hidden Chamber",
-                "description": "A narrow, concealed trail leads from the base of the lighthouse to the Hidden Chamber, shrouded in mystery. The path is fraught with hidden traps and ancient wards, remnants of forgotten magic designed to protect the secrets held within the chamber's depths.",
-                "threat_level": "High",
-                "dangers": [
-                    "Ancient Traps",
-                    "Ghostly Guardians"
-                ]
-            },
-            {
-                "from": "Hidden Chamber",
-                "to": "Town Square",
-                "description": "The return path to the Town Square from the Hidden Chamber takes one through a series of winding alleys, where shadows play tricks on the eyes. The air is thick with anticipation, as if the village itself holds its breath, waiting for the return of the Seekers with newfound knowledge.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Smugglers",
-                    "Ambushes"
+                    "Lingering Spirits",
+                    "Shifting Shadows"
                 ]
             }
         ]
     },
-    "Thundercrash Caverns": {
-        "name": "Thundercrash Caverns",
+    "The Shattered Temple": {
+        "name": "The Shattered Temple",
         "locations": [
             {
-                "name": "Cavern Entrance",
-                "sub_locations": []
-            },
-            {
-                "name": "Stabilized Pathway",
-                "sub_locations": []
-            },
-            {
-                "name": "Ancient Niche",
-                "sub_locations": []
-            },
-            {
-                "name": "Shadowed Hollow",
-                "sub_locations": []
-            },
-            {
-                "name": "Gloomy Passage",
-                "sub_locations": []
-            },
-            {
-                "name": "Cavern Pathway",
-                "sub_locations": []
-            },
-            {
-                "name": "Cavern Camp",
-                "sub_locations": []
-            },
-            {
-                "name": "Ambush Site",
-                "sub_locations": []
-            },
-            {
-                "name": "Instable Tunnel",
-                "sub_locations": []
-            },
-            {
-                "name": "Forgotten Tomb",
-                "sub_locations": []
-            },
-            {
-                "name": "Glowing Pool",
-                "sub_locations": []
-            },
-            {
-                "name": "Sealed Chamber",
-                "sub_locations": []
-            },
-            {
-                "name": "Flooded Corridor",
-                "sub_locations": []
-            },
-            {
-                "name": "Luminescent Pathway",
-                "sub_locations": []
-            },
-            {
-                "name": "Hidden Luminescent Passage",
-                "sub_locations": []
-            },
-            {
-                "name": "Ancient Remains",
-                "sub_locations": []
-            },
-            {
-                "name": "Luminescent Path",
-                "sub_locations": []
-            },
-            {
-                "name": "Locked Corridor",
-                "sub_locations": []
-            },
-            {
-                "name": "Echoing Abyss",
-                "sub_locations": []
-            },
-            {
-                "name": "Luminescent Exit",
-                "sub_locations": []
-            }
-        ],
-        "paths": [
-            {
-                "from": "Cavern Entrance",
-                "to": "Stabilized Pathway",
-                "description": "The path from the Cavern Entrance to the Stabilized Pathway is narrow and treacherous. Echoes of distant waves create an unsettling symphony, while the air grows heavier with each step. Luminescent fungi guide the way, casting an eerie glow on the slick, rocky terrain.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Slippery Rocks",
-                    "Darkness"
-                ]
-            },
-            {
-                "from": "Stabilized Pathway",
-                "to": "Ancient Niche",
-                "description": "Moving towards the Ancient Niche, the passage narrows further, forcing adventurers to tread carefully. The air is filled with the musty scent of age-old stone, and the shadows seem to dance against the flickering light of the fungi, hinting at secrets long forgotten.",
-                "threat_level": "Low",
-                "dangers": [
-                    "Narrow Passage",
-                    "Low Visibility"
-                ]
-            },
-            {
-                "from": "Ancient Niche",
-                "to": "Shadowed Hollow",
-                "description": "The transition from the Ancient Niche to the Shadowed Hollow is marked by a noticeable drop in temperature. The path winds through convoluted turns, with echoes of unseen movements whispering through the darkness, keeping explorers on high alert.",
-                "threat_level": "High",
-                "dangers": [
-                    "Cave Stalkers",
-                    "Echoing Sounds"
-                ]
-            },
-            {
-                "from": "Shadowed Hollow",
-                "to": "Gloomy Passage",
-                "description": "Shadows deepen as the path leads into the Gloomy Passage. Here, the cavern walls seem to close in, with the sound of dripping water echoing ominously. The air is thick with the scent of salt, hinting at the proximity of the ocean beyond.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Elemental Disturbance",
-                    "Claustrophobic Space"
-                ]
-            },
-            {
-                "from": "Gloomy Passage",
-                "to": "Cavern Pathway",
-                "description": "The journey to the Cavern Pathway is fraught with an increasing sense of urgency. The path widens slightly, revealing jagged stalactites that loom overhead. The roar of the ocean fades, replaced by an unsettling silence that amplifies every footstep.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Rockfall",
-                    "Silence"
-                ]
-            },
-            {
-                "from": "Cavern Pathway",
-                "to": "Cavern Camp",
-                "description": "Crossing into the Cavern Camp, the atmosphere shifts to one of temporary respite. This nook within the caverns offers a brief sanctuary, where the group can gather their thoughts and prepare for the challenges that lie ahead.",
-                "threat_level": "Low",
-                "dangers": [
+                "name": "Entrance Hall",
+                "sub_locations": [
+                    "NA",
                     "NA"
                 ]
             },
             {
-                "from": "Cavern Camp",
-                "to": "Ambush Site",
-                "description": "The path leading to the Ambush Site is fraught with peril. Narrow and twisted, it is a place where the shadows reign supreme. Each step taken reverberates through the cave, a constant reminder of the lurking dangers in the dark corners.",
-                "threat_level": "High",
-                "dangers": [
-                    "Cave Stalkers",
-                    "Ambush Potential"
-                ]
-            },
-            {
-                "from": "Ambush Site",
-                "to": "Instable Tunnel",
-                "description": "Leaving the Ambush Site, the journey to the Instable Tunnel is precarious. The cavern's architecture seems to shift unpredictably, and the very air feels charged with a latent energy, as if the caverns themselves are aware of the group's presence.",
-                "threat_level": "High",
-                "dangers": [
-                    "Unstable Structures",
-                    "Sudden Collapses"
-                ]
-            },
-            {
-                "from": "Instable Tunnel",
-                "to": "Forgotten Tomb",
-                "description": "The path to the Forgotten Tomb is marked by an eerie quietness, as if the very stones are holding their breath. The journey is one of introspection, where the weight of history can be felt with each step toward the resting place of those who came before.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Falling Debris",
-                    "Ancient Traps"
-                ]
-            },
-            {
-                "from": "Forgotten Tomb",
-                "to": "Glowing Pool",
-                "description": "The route to the Glowing Pool is a winding trail through the heart of the caverns. The path is illuminated by the gentle glow of bioluminescent creatures, creating an ethereal atmosphere that hints at the elemental forces at play within the caverns.",
-                "threat_level": "Low",
-                "dangers": [
-                    "Slippery Surface",
-                    "Distracting Light"
-                ]
-            },
-            {
-                "from": "Glowing Pool",
-                "to": "Sealed Chamber",
-                "description": "Approaching the Sealed Chamber, the air grows thick with anticipation. The path is lined with ancient runes that pulse with a soft light, guiding adventurers to their destination while whispering secrets of the past and the power that lies within.",
-                "threat_level": "High",
-                "dangers": [
-                    "Ancient Runes",
-                    "Arcane Traps"
-                ]
-            },
-            {
-                "from": "Sealed Chamber",
-                "to": "Flooded Corridor",
-                "description": "The transition to the Flooded Corridor is abrupt, as the ground descends sharply. The air is heavy with moisture, and the sound of rushing water fills the space, reminding travelers of the cavern's close relationship with the ocean.",
-                "threat_level": "High",
-                "dangers": [
-                    "Sudden Floods",
-                    "Slippery Ground"
-                ]
-            },
-            {
-                "from": "Flooded Corridor",
-                "to": "Luminescent Pathway",
-                "description": "Navigating from the Flooded Corridor to the Luminescent Pathway requires caution. The path is marked by glowing fungi that cast long shadows, creating an otherworldly ambiance that both guides and disorients those who traverse it.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Disorienting Light",
-                    "Hidden Puddles"
-                ]
-            },
-            {
-                "from": "Luminescent Pathway",
-                "to": "Hidden Luminescent Passage",
-                "description": "The journey to the Hidden Luminescent Passage is a secretive one, shrouded in mystery. The path is lined with luminescent fungi, casting an ethereal glow that dances off the cavern walls. Each step taken seems to echo with the whispers of the past.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Cave Stalkers",
-                    "Illusory Paths"
-                ]
-            },
-            {
-                "from": "Hidden Luminescent Passage",
-                "to": "Ancient Remains",
-                "description": "From the Hidden Luminescent Passage, the path to the Ancient Remains is a solemn journey. The air is filled with the scent of time and decay, and the weight of history presses down upon those who tread this path, revealing the remnants of past explorers.",
-                "threat_level": "Low",
-                "dangers": [
-                    "Uneven Terrain",
-                    "Emotional Weight"
-                ]
-            },
-            {
-                "from": "Ancient Remains",
-                "to": "Luminescent Path",
-                "description": "The transition to the Luminescent Path is marked by a growing sense of purpose. The fungi's glow intensifies, illuminating the way forward. The path is lined with obstacles that test the group's resolve, hinting at the challenges yet to come.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Obstacles",
-                    "Disorienting Light"
-                ]
-            },
-            {
-                "from": "Luminescent Path",
-                "to": "Locked Corridor",
-                "description": "The journey to the Locked Corridor is one of intrigue and challenge. The path is fraught with ancient locks and mechanisms, each one a testament to the craftsmanship of those who once called this place home. The air is filled with anticipation and the promise of discovery.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Locked Mechanisms",
-                    "Complex Puzzles"
-                ]
-            },
-            {
-                "from": "Locked Corridor",
-                "to": "Echoing Abyss",
-                "description": "The route to the Echoing Abyss is an awe-inspiring one. The path widens, and the sound of the ocean's fury grows louder, reverberating through the cavern walls. The air is charged with energy, and each step taken is a reminder of the power that resides within the abyss.",
-                "threat_level": "High",
-                "dangers": [
-                    "Elemental Instability",
-                    "Echoing Sounds"
-                ]
-            },
-            {
-                "from": "Echoing Abyss",
-                "to": "Luminescent Exit",
-                "description": "Approaching the Luminescent Exit, the path is one of determination and resolve. The luminescent fungi guide the way, casting a hopeful glow on the path ahead. The air is thick with anticipation as the group nears the end of their journey through the caverns.",
-                "threat_level": "High",
-                "dangers": [
-                    "Cave Stalkers",
-                    "Lasting Shadows"
-                ]
-            }
-        ]
-    },
-    "Tempest Tower": {
-        "name": "Tempest Tower",
-        "locations": [
-            {
-                "name": "Base of Tempest Tower",
+                "name": "Altar of Thalor",
                 "sub_locations": [
-                    "Entrance of Tempest Tower",
-                    "Zephyr's Sanctuary"
+                    "Ruined Chamber",
+                    "Botanical Niche"
                 ]
             },
             {
-                "name": "Village Courtyard near Tempest Tower",
+                "name": "Echoing Halls",
                 "sub_locations": [
+                    "NA",
                     "NA"
                 ]
             },
             {
-                "name": "Chamber of Trials",
+                "name": "Sacred Chamber",
                 "sub_locations": [
+                    "NA",
                     "NA"
                 ]
             },
             {
-                "name": "Library of Tempest Tower",
+                "name": "Hidden Passage",
                 "sub_locations": [
+                    "NA",
                     "NA"
                 ]
             },
             {
-                "name": "Chamber of Storms",
+                "name": "Temple Nexus",
                 "sub_locations": [
+                    "NA",
                     "NA"
-                ]
-            },
-            {
-                "name": "Lightning Spire",
-                "sub_locations": [
-                    "Lightning Spire Training Ground"
-                ]
-            },
-            {
-                "name": "Stormy Hallways",
-                "sub_locations": [
-                    "Hidden Passage"
-                ]
-            },
-            {
-                "name": "Meditation Chamber",
-                "sub_locations": [
-                    "NA"
-                ]
-            },
-            {
-                "name": "Ancient Hallway",
-                "sub_locations": [
-                    "NA"
-                ]
-            },
-            {
-                "name": "Secret Chamber",
-                "sub_locations": [
-                    "NA"
-                ]
-            },
-            {
-                "name": "Puzzle Chamber",
-                "sub_locations": [
-                    "Final Puzzle Chamber"
                 ]
             }
         ],
         "paths": [
             {
-                "from": "Base of Tempest Tower",
-                "to": "Village Courtyard near Tempest Tower",
-                "description": "A rugged path winds down from the tower's base, weaving through hardy flora that defy the coastal winds. The air is thick with salt and anticipation, as the cries of Cliffside Gulls echo the Seekers' determined footsteps.",
-                "threat_level": "Low",
-                "dangers": [
-                    "NA"
-                ]
-            },
-            {
-                "from": "Entrance of Tempest Tower",
-                "to": "Chamber of Trials",
-                "description": "The path from the entrance ascends steeply, with narrow stone stairs that twist and turn unexpectedly. The walls hum with ancient energy, while gusts of wind betray the presence of unseen spirits guarding the tower's secrets.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Wind Spirits"
-                ]
-            },
-            {
-                "from": "Library of Tempest Tower",
-                "to": "Chamber of Storms",
-                "description": "Navigating through dimly lit corridors, the Seekers find themselves in passageways lined with ancient tomes and forgotten knowledge. The air grows charged, hinting at the powerful energies that lie ahead in the Chamber of Storms.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "NA"
-                ]
-            },
-            {
-                "from": "Chamber of Storms",
-                "to": "Lightning Spire",
-                "description": "A narrow staircase spirals upwards, each step resonating with the crackle of distant lightning. The tower shakes with the fury of the storm outside, as if testing the resolve of those who dare to reach the spire.",
-                "threat_level": "High",
-                "dangers": [
-                    "Lightning Elementals"
-                ]
-            },
-            {
-                "from": "Stormy Hallways",
-                "to": "Meditation Chamber",
-                "description": "Through the stormy hallways, the Seekers brave sudden gusts and flickering shadows. The path is fraught with tension, each corner potentially hiding both danger and discovery, leading to a place of reflection and insight.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "Lightning Elementals"
-                ]
-            },
-            {
-                "from": "Ancient Hallway",
-                "to": "Secret Chamber",
-                "description": "The ancient hallway, with its timeworn stones and mysterious carvings, leads to a hidden chamber. The air is thick with history and secrets, the weight of past adventurers felt as the Seekers tread cautiously.",
-                "threat_level": "Low",
-                "dangers": [
-                    "NA"
-                ]
-            },
-            {
-                "from": "Puzzle Chamber",
-                "to": "Final Puzzle Chamber",
-                "description": "Navigating through the intricate puzzles, the Seekers move deeper into the tower. Each solved riddle brings them closer to a chamber that promises both revelation and challenge, testing their unity and resolve.",
-                "threat_level": "Medium",
-                "dangers": [
-                    "NA"
-                ]
-            }
-        ]
-    },
-    "Maelstrom Keep": {
-        "name": "Maelstrom Keep",
-        "locations": [
-            {
-                "name": "Fortress Entrance",
-                "sub_locations": [
-                    "Outer Gates",
-                    "Watchtower"
-                ]
-            },
-            {
-                "name": "Grand Hall",
-                "sub_locations": [
-                    "Throne of Waves",
-                    "Statue Gallery"
-                ]
-            },
-            {
-                "name": "Inner Sanctum",
-                "sub_locations": [
-                    "Knight's Quarters",
-                    "Dark Altar"
-                ]
-            },
-            {
-                "name": "Library",
-                "sub_locations": [
-                    "Ancient Scroll Room",
-                    "Secret Archive"
-                ]
-            },
-            {
-                "name": "Echoing Abyss",
-                "sub_locations": [
-                    "Illusion Maze",
-                    "Trance Chamber"
-                ]
-            },
-            {
-                "name": "Storm Chamber",
-                "sub_locations": [
-                    "Raging Arena",
-                    "Calm Center"
-                ]
-            }
-        ],
-        "paths": [
-            {
-                "from": "Fortress Entrance",
-                "to": "Grand Hall",
-                "description": "As you pass through the towering gates of the Fortress Entrance, the path widens into a grand corridor, echoing with the distant rumble of thunder. The heavy stone walls are adorned with faded banners, a testament to the keep's storied past.",
+                "from": "Entrance Hall",
+                "to": "Altar of Thalor",
+                "description": "The path from the Entrance Hall to the Altar of Thalor winds through a series of narrow corridors, where cracked walls bear witness to the temple's ancient grandeur. Faint traces of light filter through the fractured stone, creating an otherworldly glow that guides adventurers onward.",
                 "threat_level": "Moderate",
                 "dangers": [
-                    "Rogue Gusts",
-                    "Crumbled Stone"
+                    "Shadow Creatures",
+                    "Falling Debris"
                 ]
             },
             {
-                "from": "Grand Hall",
-                "to": "Inner Sanctum",
-                "description": "The transition from the Grand Hall to the Inner Sanctum is marked by an eerie quiet that descends as you walk through a narrow passage. The air grows colder, and the shadows seem to lengthen, hinting at the secrets that lie ahead.",
-                "threat_level": "High",
-                "dangers": [
-                    "Cursed Whispers",
-                    "Dark Magic"
-                ]
-            },
-            {
-                "from": "Inner Sanctum",
-                "to": "Library",
-                "description": "Leaving the Inner Sanctum, you follow a spiraling staircase that leads upwards into a vast library. The scent of old parchment fills the air, and shelves upon shelves of ancient tomes beckon with promises of forgotten knowledge.",
+                "from": "Altar of Thalor",
+                "to": "Echoing Halls",
+                "description": "Walking from the Altar of Thalor to the Echoing Halls, adventurers are enveloped in a haunting symphony of whispers. The air grows colder as they traverse the shadowed passage, echoing with the memories of those who once sought solace within these sacred walls.",
                 "threat_level": "Low",
                 "dangers": [
-                    "Dust Motes",
-                    "Loose Scrolls"
+                    "Illusory Shadows",
+                    "NA"
                 ]
             },
             {
-                "from": "Library",
-                "to": "Echoing Abyss",
-                "description": "Exiting the Library, a hidden door opens to reveal a descent into the Echoing Abyss. The path is treacherous, with jagged rocks underfoot and strange echoes that seem to mock your every step. Here, the air is thick with a sense of foreboding.",
-                "threat_level": "Severe",
+                "from": "Echoing Halls",
+                "to": "Sacred Chamber",
+                "description": "The journey from the Echoing Halls to the Sacred Chamber is marked by a gradual descent into darkness. Along the way, walls lined with cryptic symbols hint at ancient secrets, and the atmosphere becomes charged with an inexplicable energy resonating with quiet power.",
+                "threat_level": "Moderate",
                 "dangers": [
-                    "Illusory Traps",
-                    "Falling Rocks"
+                    "Shadow Creatures",
+                    "Trickster Spirits"
                 ]
             },
             {
-                "from": "Echoing Abyss",
-                "to": "Storm Chamber",
-                "description": "Emerging from the Echoing Abyss, the path to the Storm Chamber is a narrow ledge overlooking a churning sea. Lightning cracks the sky, illuminating the way. The roar of the tempest grows louder, warning of the formidable power that awaits.",
+                "from": "Sacred Chamber",
+                "to": "Hidden Passage",
+                "description": "The path from the Sacred Chamber to the Hidden Passage is obscured by a veil of illusion, only revealed to those attuned to the temple's mystical energies. As the walls seem to shift and shimmer, determined adventurers must rely on their instincts to find their way.",
+                "threat_level": "High",
+                "dangers": [
+                    "Veil Disturbances",
+                    "Ethereal Traps"
+                ]
+            },
+            {
+                "from": "Hidden Passage",
+                "to": "Temple Nexus",
+                "description": "The Hidden Passage opens into the Temple Nexus, a space where shadows and light converge in a dance of ethereal beauty. Here, the boundaries between the material world and the Veil blur, inviting adventurers to delve deeper into the temple's enigmatic mysteries.",
+                "threat_level": "Moderate",
+                "dangers": [
+                    "Veil Distortions",
+                    "Whispering Spirits"
+                ]
+            }
+        ]
+    },
+    "The Sunken Library": {
+        "name": "The Sunken Library",
+        "locations": [
+            {
+                "name": "Grand Hall of Tomes",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Artifact Alcove",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Veil Cult Meeting Room",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Great Reading Room",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Hall of Shadows",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Veilweaving Chamber",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Spirit Grove",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Mechanism Room",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Shadowed Hallway",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Veil Resonance Chamber",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Hidden Passage",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Archivist's Study",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Exit Hall",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Gathering Space",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            }
+        ],
+        "paths": [
+            {
+                "from": "Grand Hall of Tomes",
+                "to": "Artifact Alcove",
+                "description": "A narrow path winds through the dimly lit aisles, where the towering bookshelves cast long shadows. The air is thick with the scent of aged parchment, and the faint glow of bioluminescent fungi provides a ghostly illumination.",
+                "threat_level": "Moderate",
+                "dangers": [
+                    "Guardian Wraiths",
+                    "Falling Books"
+                ]
+            },
+            {
+                "from": "Artifact Alcove",
+                "to": "Veil Cult Meeting Room",
+                "description": "This passage is hidden behind a curtain of thick cobwebs, barely visible to the untrained eye. As one moves through, the temperature drops noticeably, and distant echoes of chanting can be heard faintly, adding to the eerie atmosphere.",
+                "threat_level": "High",
+                "dangers": [
+                    "Veil Cultists",
+                    "Hidden Traps"
+                ]
+            },
+            {
+                "from": "Great Reading Room",
+                "to": "Hall of Shadows",
+                "description": "Lit by the flickering glow of enchanted lanterns, this path is lined with ancient murals that depict forgotten stories. The air grows colder here, as if the shadows themselves are alive, whispering secrets to those who dare to listen.",
+                "threat_level": "Low",
+                "dangers": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "from": "Veilweaving Chamber",
+                "to": "Spirit Grove",
+                "description": "A hidden staircase descends into a lush grove bathed in an ethereal light. The leaves rustle softly, carrying the gentle murmurs of spirits. The path is serene but holds an undercurrent of anticipation, as if the grove itself is waiting.",
+                "threat_level": "Low",
+                "dangers": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "from": "Mechanism Room",
+                "to": "Shadowed Hallway",
+                "description": "A tight corridor of stone and metal, where the sound of grinding gears echoes ominously. The hallway is dim, with light provided only by occasional sparks from malfunctioning mechanisms, casting fleeting shadows on the walls.",
+                "threat_level": "Moderate",
+                "dangers": [
+                    "Malfunctioning Mechanisms",
+                    "Loose Flooring"
+                ]
+            },
+            {
+                "from": "Veil Resonance Chamber",
+                "to": "Hidden Passage",
+                "description": "This path is cloaked in a shimmering veil of magic, distorting reality as you walk through. The air hums with latent energy, and each step seems to echo with the distant sound of whispers, urging you onward.",
+                "threat_level": "High",
+                "dangers": [
+                    "Veil Distortions",
+                    "Ambushes"
+                ]
+            },
+            {
+                "from": "Archivist's Study",
+                "to": "Exit Hall",
+                "description": "A grand corridor lined with statues of past archivists, their eyes seeming to follow your every move. The walls are etched with runes that pulse with a faint light, guiding you toward the exit with an inexplicable pull.",
+                "threat_level": "Low",
+                "dangers": [
+                    "Spectral Watchers",
+                    "Illusions"
+                ]
+            },
+            {
+                "from": "Gathering Space",
+                "to": "Grand Hall of Tomes",
+                "description": "A vast open area where the ceiling arches high above, adorned with intricate carvings and faded frescoes. The path is lined with remnants of ancient gatherings, and the silence is both reverent and intimidating.",
+                "threat_level": "Low",
+                "dangers": [
+                    "NA",
+                    "NA"
+                ]
+            }
+        ]
+    },
+    "The Abyssal Tower": {
+        "name": "The Abyssal Tower",
+        "locations": [
+            {
+                "name": "Entrance Hall",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Shadowed Corridor",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Armory",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Central Chamber",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Chamber of the Veil",
+                "sub_locations": [
+                    "Hidden Chamber",
+                    "NA"
+                ]
+            },
+            {
+                "name": "Exit of the Tower",
+                "sub_locations": [
+                    "NA",
+                    "NA"
+                ]
+            }
+        ],
+        "paths": [
+            {
+                "from": "Entrance Hall",
+                "to": "Shadowed Corridor",
+                "description": "The path from the Entrance Hall to the Shadowed Corridor is a narrow passageway lined with flickering runes. The oppressive silence is punctuated by the distant echoes of footsteps, and shadows seem to stretch and twist as if alive.",
+                "threat_level": "Moderate",
+                "dangers": [
+                    "Veilbound Horrors",
+                    "Perception-distorting illusions"
+                ]
+            },
+            {
+                "from": "Shadowed Corridor",
+                "to": "Armory",
+                "description": "Traversing from the Shadowed Corridor to the Armory, the air grows colder as the party navigates through a series of twisting hallways. The walls whisper faintly of lost souls, and the floor is uneven and treacherous.",
+                "threat_level": "High",
+                "dangers": [
+                    "Traps",
+                    "Veilbound Horrors"
+                ]
+            },
+            {
+                "from": "Armory",
+                "to": "Central Chamber",
+                "description": "The route from the Armory to the Central Chamber is a perilous journey through a labyrinth of darkened hallways. The shadows seem to ripple with malevolence, and the air is thick with the scent of ancient decay.",
                 "threat_level": "Extreme",
                 "dangers": [
-                    "Lightning Strikes",
-                    "Gale Force Winds"
+                    "Veilbound Horrors",
+                    "Shadow energy surges"
+                ]
+            },
+            {
+                "from": "Central Chamber",
+                "to": "Chamber of the Veil",
+                "description": "As the party moves from the Central Chamber to the Chamber of the Veil, the atmosphere becomes increasingly oppressive. The walls pulse with shadow energy, and the very air feels charged with dark magic, making each step a struggle.",
+                "threat_level": "Extreme",
+                "dangers": [
+                    "Malakar's influence",
+                    "Shadow illusions"
+                ]
+            },
+            {
+                "from": "Chamber of the Veil",
+                "to": "Exit of the Tower",
+                "description": "The path from the Chamber of the Veil to the Exit of the Tower is a somber journey through the remnants of Malakar's influence. The shadows recede, revealing the crumbling architecture of Eldenfall, as echoes of past battles linger in the air.",
+                "threat_level": "Moderate",
+                "dangers": [
+                    "Residual shadow energy",
+                    "Weakened structural integrity"
                 ]
             }
         ]

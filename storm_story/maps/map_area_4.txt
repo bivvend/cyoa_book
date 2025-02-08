@@ -1,0 +1,66 @@
+{
+    "name": "Maelstrom Keep",
+    "locations": [
+        {
+            "name": "Fortress Entrance",
+            "sub_locations": ["Outer Gates", "Watchtower"]
+        },
+        {
+            "name": "Grand Hall",
+            "sub_locations": ["Throne of Waves", "Statue Gallery"]
+        },
+        {
+            "name": "Inner Sanctum",
+            "sub_locations": ["Knight's Quarters", "Dark Altar"]
+        },
+        {
+            "name": "Library",
+            "sub_locations": ["Ancient Scroll Room", "Secret Archive"]
+        },
+        {
+            "name": "Echoing Abyss",
+            "sub_locations": ["Illusion Maze", "Trance Chamber"]
+        },
+        {
+            "name": "Storm Chamber",
+            "sub_locations": ["Raging Arena", "Calm Center"]
+        }
+    ],
+    "paths": [
+        {
+            "from": "Fortress Entrance",
+            "to": "Grand Hall",
+            "description": "As you pass through the towering gates of the Fortress Entrance, the path widens into a grand corridor, echoing with the distant rumble of thunder. The heavy stone walls are adorned with faded banners, a testament to the keep's storied past.",
+            "threat_level": "Moderate",
+            "dangers": ["Rogue Gusts", "Crumbled Stone"]
+        },
+        {
+            "from": "Grand Hall",
+            "to": "Inner Sanctum",
+            "description": "The transition from the Grand Hall to the Inner Sanctum is marked by an eerie quiet that descends as you walk through a narrow passage. The air grows colder, and the shadows seem to lengthen, hinting at the secrets that lie ahead.",
+            "threat_level": "High",
+            "dangers": ["Cursed Whispers", "Dark Magic"]
+        },
+        {
+            "from": "Inner Sanctum",
+            "to": "Library",
+            "description": "Leaving the Inner Sanctum, you follow a spiraling staircase that leads upwards into a vast library. The scent of old parchment fills the air, and shelves upon shelves of ancient tomes beckon with promises of forgotten knowledge.",
+            "threat_level": "Low",
+            "dangers": ["Dust Motes", "Loose Scrolls"]
+        },
+        {
+            "from": "Library",
+            "to": "Echoing Abyss",
+            "description": "Exiting the Library, a hidden door opens to reveal a descent into the Echoing Abyss. The path is treacherous, with jagged rocks underfoot and strange echoes that seem to mock your every step. Here, the air is thick with a sense of foreboding.",
+            "threat_level": "Severe",
+            "dangers": ["Illusory Traps", "Falling Rocks"]
+        },
+        {
+            "from": "Echoing Abyss",
+            "to": "Storm Chamber",
+            "description": "Emerging from the Echoing Abyss, the path to the Storm Chamber is a narrow ledge overlooking a churning sea. Lightning cracks the sky, illuminating the way. The roar of the tempest grows louder, warning of the formidable power that awaits.",
+            "threat_level": "Extreme",
+            "dangers": ["Lightning Strikes", "Gale Force Winds"]
+        }
+    ]
+}

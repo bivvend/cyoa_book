@@ -78,6 +78,8 @@ def critique_plot(plot_summary_text, model = "gpt-4o-mini"):
                              "The plot should include multiple regions and give clear indications of why the adventurers move from one area to the next. "
                              "There should be important items that are found at various points and used to defeat the enemy. "
                              "The plot should also be exciting, dramatic and well written. "
+                             "The items used in the plot MUST be correctly tracked.  The main plot item used to defeat the main enemy should be hinted at a first, found in the middle somewhere and used at the end. "
+                             "Items must not appear from no where and NPC characters can't be involved unless introduced. "
                              "You are a very brutal critic and don't try and be nice,  just say strong what is wrong. ")
     
     writing_guidelines_2 = ("Below is a some text defining a plot you are given. "
@@ -183,7 +185,7 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         enemy_lore_txt = json.dumps(enemy_lore_json, indent=4)
 
         areas_to_include = [r["name"] for r in region_lore_json["starting_area"]["notable_locations"]]
-        numberof_area = len(areas_to_include)
+        number_of_areas = len(areas_to_include)
 
         
 
@@ -191,12 +193,6 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         writing_guidelines_1 = (
             "Below is the plot outline for an fantsy story: \n"
             f"{plot_text} \n"
-        )
-
-        writing_guidelines_2 = (
-            "Within the world, the story takes place in the region defined by the "
-            "starting region lore JSON below: \n"
-            f"{region_lore_txt} \n"
         )
 
         writing_guidelines_3 = (
@@ -217,7 +213,7 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         structuring_prompt = (
             f"The response MUST be in json format so that it can be read by a python program. "
             f"Please fill the structure below with the generated data. You can and should add elements. "
-            f"All the events, enemies and action within the plot should be stored in this structure."
+            f"All the events, enemies and actions within the plot should be stored in this structure."
 
             f"Do not use the ```json style flag in your response, I want to load it directly with json.loads\n"
             "All the values in the JSON should be strings enclosed with \"\". \n"
@@ -225,13 +221,9 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
         )
 
         writing_guidelines_5 = (
-            "For each area please fill the \"minor_events_in_area\" with at least 10 less significant events that are thematically relevant and develop the characters and fill out the plot.  "
-            "These extra events should be assiciated with the enemies, areas visited and characters in the area. "
 
-            f"The story has 4 areas (explitily {areas_to_include}). Each area should be its own \"area\" within the structure. "
-                
-            "There should be one or more main plot item, the status of which is tracked through all the areas. "
-            "Don't forget to include this item in all areas. If the party hasn't found it yet, label it as not found."
+            f"The story has {number_of_areas} areas (explitily {areas_to_include}). Each area should be its own \"area\" within the structure. "
+            "There should be at least 8 \"plot_events\" per area, apart from the first area which can have 5. "
             "Track any major changes to the status of the party members too, and update this as the story goes on. "
             "Don't remove status changes unless the effect has expired. "
             "The list in the next area should generally have all the status changes from the previous area. "
@@ -239,7 +231,6 @@ def convert_plot_to_json_and_fill(region_lore_json, party_lore_json, enemy_lore_
 
         prompt = (
             f"{writing_guidelines_1} \n"
-            f"{writing_guidelines_2} \n"
             f"{writing_guidelines_3} \n"
             f"{writing_guidelines_4} \n"
             f"{structuring_prompt}\n"
@@ -266,8 +257,9 @@ def critique_plot_json(plot_summary_json, plot_summary_text, model = "gpt-4o-min
                             f"{plot_summary_text}"
                             )
     
-    writing_guidelines_2 = ("You are also given a JSON file below describing the plot that also includes many minor events. Please make suggestion (in plain text) on how to improve the structure to make it fit the plot well.  "
-                            "Feedback on the ordering of events would be useful. \n"
+    writing_guidelines_2 = ("You are also given a JSON file below describing the plot. Please make suggestion (in plain text) on how to improve the structure to make it fit the plot well.  "
+                            "You should suggest around 10 more events to include to help the flow of the story e.g. adding a event that shows how or why the party travelled between events might help with the flow. "
+                            "Feedback on the ordering of events would also be useful. \n"
                             f"{plot_json_txt}"
                             )
 

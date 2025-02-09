@@ -1,37 +1,37 @@
 {
     "world": {
         "name": "Arden",
-        "description": "Arden is a realm shrouded in perpetual twilight, where the sun barely pierces the thick, swirling clouds. The land is scarred by ancient wars, its cities crumbling and its people hardened by ceaseless conflict. The landscape is a tapestry of desolation punctuated by pockets of grim beauty, where survival is a daily struggle and the difference between right and wrong is often obscured by necessity.",
+        "description": "Arden is a realm where shadows stretch long and the very air is thick with foreboding. Its lands are scarred by ancient wars and teeter on the brink of chaos, where the populace clings to life amid the ruins of once-great cities. Political machinations weave a web of deceit and betrayal, as monstrous horrors lurk in the peripheries, ever hungry for the flesh of the unwary. In Arden, survival is not merely a struggle; it is an art.",
         "creation": {
-            "origin_story": "In the primordial chaos, Arden was forged by the hands of titanic deities who wove the fabric of reality from the void. The gods, in their eternal conflict, imbued the world with a mixture of creation and destruction, leaving a legacy of both beauty and ruin.",
+            "origin_story": "In the dim prehistory of time, Arden was shaped by the hands of the Primordial Titans. These colossal beings forged the world from the raw substances of the cosmos, infusing it with their own chaotic essence. Their battles carved mountains and filled seas, until their power waned and they faded into myth, leaving behind a world both beautiful and terrifying.",
             "primary_gods": [
                 {
-                    "name": "Thalor, the Weaver",
-                    "domain": "Creation and Time",
-                    "symbol": "A loom with threads of light and shadow",
-                    "description": "Thalor is the deity responsible for weaving the very fabric of Arden, crafting time and existence with a deft hand. Revered by artisans and feared by those who wish to defy fate, Thalor's influence is felt in the creation of all things."
+                    "name": "Zyraxes",
+                    "domain": "Chaos and Darkness",
+                    "symbol": "A swirling void",
+                    "description": "Zyraxes is the god of chaos and darkness, embodying the unpredictable and the unseen. Worshipped by cultists and feared by most, Zyraxes delights in the disruption of order, whispering promises of power to those willing to embrace the shadows."
                 },
                 {
-                    "name": "Zyra, the Devourer",
-                    "domain": "Destruction and Chaos",
-                    "symbol": "A gaping maw swallowing stars",
-                    "description": "Zyra embodies the destructive forces of nature, the inevitable decay that follows creation. She is worshipped by those who seek power through destruction and feared by all who value stability."
+                    "name": "Valoria",
+                    "domain": "Decay and Rebirth",
+                    "symbol": "A withered tree entwined with new shoots",
+                    "description": "Valoria governs the cycle of decay and rebirth. She is revered as a goddess of inevitable endings and new beginnings, her followers understanding that death is but a transition to new life. Her presence is felt in the constant transformation of the land."
                 }
             ]
         },
         "geography": {
             "continents": [
                 {
-                    "name": "Nethar",
-                    "description": "A land of twisted forests and shadowed valleys, Nethar is a place where the echoes of past conflicts linger. The terrain is rugged, with jagged mountains and deep ravines that speak of ancient cataclysms.",
+                    "name": "Drakhar",
+                    "description": "Drakhar is a continent of jagged peaks and endless moors, where the land itself seems to moan with the weight of its history. Its skies are perpetually overcast, casting a dreary pall over its inhabitants.",
                     "notable_locations": [
                         {
-                            "name": "The Ruins of Eldenfall",
-                            "description": "Once a thriving city, Eldenfall now stands as a testament to the cataclysms that tore through Nethar. Its once-grand towers lie in ruins, haunted by the spirits of its past inhabitants."
+                            "name": "The Fallen Spires",
+                            "description": "Once the center of a thriving empire, the Fallen Spires now stand as crumbling towers, haunted by the ghosts of a civilization that fell to its own hubris."
                         },
                         {
-                            "name": "The Blackwood",
-                            "description": "A dense and foreboding forest where light seldom penetrates, the Blackwood is home to many dark creatures and is a place of superstition and danger."
+                            "name": "The Wailing Marshes",
+                            "description": "A vast expanse of fetid swamps where the very air seems to wail. It is said that the marshes are the resting place of Zyraxes, and those who enter rarely return."
                         }
                     ]
                 }
@@ -39,42 +39,46 @@
         },
         "races": [
             {
-                "name": "Twilight Humans",
-                "description": "Descendants of ancient survivors, Twilight Humans have adapted to the dim light of Arden. Their eyes are keen and reflective, their skin pale and toughened by the harsh elements. They are resilient and resourceful, thriving in the ruins of once-great cities.",
-                "homeland": "The Ashen Plains"
+                "name": "Humans",
+                "description": "In Arden, humans are hardy and resourceful, shaped by generations of survival in a land that offers little mercy. They are known for their adaptability and resilience, but also for their propensity for deceit and betrayal in the pursuit of power.",
+                "homeland": "The Decayed Kingdoms"
             },
             {
-                "name": "Vargan",
-                "description": "A brutish race with thick, leathery skin and tusks protruding from their lower jaws. Vargans are feared warriors, known for their strength and ferocity. They live in the jagged mountains of Nethar, where they war constantly with rival clans.",
-                "homeland": "The Jagged Peaks"
+                "name": "Vargeists",
+                "description": "Vargeists are a race of nocturnal humanoids with an affinity for the dark. Their skin is ashen and their eyes glow with an inner light. They are feared as assassins and spies, able to traverse the shadows with ease.",
+                "homeland": "The Shadowed Vale"
             },
             {
-                "name": "Shade Elves",
-                "description": "Mysterious and elusive, Shade Elves dwell in the shadows of the Blackwood. Their skin is a deep charcoal, and their eyes glow with an eerie, luminescent light. They are masters of stealth and illusion, guarding their secrets fiercely.",
-                "homeland": "The Blackwood"
+                "name": "Ironborn",
+                "description": "The Ironborn are a race of metallic-skinned humanoids, forged from the remnants of an ancient war. They are resilient and slow to trust, with an innate talent for crafting and war, their bodies as unyielding as steel.",
+                "homeland": "The Rusted Plains"
             },
             {
-                "name": "Stonekin",
-                "description": "Born of the earth, Stonekin are a sturdy and resilient race, with skin resembling stone and veins of precious minerals. They are master craftsmen and builders, residing in the hollowed caverns beneath Arden's mountains.",
-                "homeland": "The Deep Caverns"
+                "name": "Feykin",
+                "description": "Feykin are ethereal beings, distant relatives of the ancient fae. Their presence distorts reality, creating illusions that beguile and confound. They are both feared and revered for their otherworldly beauty and capricious nature.",
+                "homeland": "The Enchanted Glade"
             },
             {
-                "name": "Mirefolk",
-                "description": "Dwelling in the swamps and marshes, Mirefolk are a reclusive race with webbed fingers and amphibious features. They are adept at surviving in their treacherous environment, with a culture rich in shamanistic traditions.",
-                "homeland": "The Boglands"
+                "name": "Ghul",
+                "description": "Ghul are a race of scavengers, lurking in the shadows of civilization. They are gaunt and wiry, with a predilection for flesh, living or dead. Despised by most, they survive through cunning and a ruthlessness born of necessity.",
+                "homeland": "The Bleak Barrens"
             }
         ],
         "magic": {
-            "source": "The Veil",
-            "description": "Magic in Arden is drawn from the Veil, a mystical barrier between the physical and ethereal realms. It is a volatile and unpredictable force, capable of both wondrous creation and catastrophic destruction.",
+            "source": "The Weave of Shadows",
+            "description": "Magic in Arden is drawn from the Weave of Shadows, an ethereal network that permeates the world. It is a source of great power, but to tap into it is to risk one's soul, as the Weave is as capricious as it is potent.",
             "schools": [
                 {
-                    "name": "Veilweaving",
-                    "description": "The art of manipulating the Veil to create illusions and bend reality to one's will. It requires great skill and concentration, as the Veil is a fickle and dangerous force."
+                    "name": "Umbral Sorcery",
+                    "description": "Umbral Sorcery manipulates shadows and darkness, granting the ability to cloak oneself in night and summon the fears that dwell within it."
                 },
                 {
-                    "name": "Bloodbinding",
-                    "description": "A dark and ancient school of magic that uses the power of blood to forge powerful bonds and control life forces. It is often feared and misunderstood, associated with curses and forbidden knowledge."
+                    "name": "Necromancy",
+                    "description": "Necromancy draws upon the energies of death and decay, allowing practitioners to animate the dead and siphon the life force of the living."
+                },
+                {
+                    "name": "Illusioncraft",
+                    "description": "Illusioncraft weaves light and sound into deceptive facades, bewildering and beguiling those who fail to see through the lies."
                 }
             ]
         },
@@ -82,21 +86,29 @@
             "eras": [
                 {
                     "name": "The Age of Titans",
-                    "timeline": "Before Time was Measured",
+                    "timeline": "Before recorded history",
                     "events": [
                         {
-                            "name": "The Shattering",
-                            "description": "A cataclysmic battle between the gods that tore the fabric of Arden asunder, creating the desolate landscapes and scattering the races across the land."
+                            "name": "The Shaping",
+                            "description": "The Primordial Titans fashioned the world of Arden, their battles forming the landscape and imbuing it with their chaotic essence."
+                        },
+                        {
+                            "name": "The Titanfall",
+                            "description": "The Titans, exhausted from their ceaseless conflict, faded from existence, leaving behind a world both beautiful and terrifying."
                         }
                     ]
                 },
                 {
-                    "name": "The Darkening",
-                    "timeline": "1000-1500 AW (After Weaving)",
+                    "name": "The Age of Darkness",
+                    "timeline": "The first millennium",
                     "events": [
                         {
-                            "name": "The Blightfall",
-                            "description": "A mysterious plague that swept across Arden, decimating populations and leaving entire cities in ruin. Its origins remain unknown, adding to the fear and superstition that surrounds it."
+                            "name": "The Rise of Zyraxes",
+                            "description": "The dark god Zyraxes gained prominence, his influence spreading chaos and fear throughout the land."
+                        },
+                        {
+                            "name": "The Shadow Wars",
+                            "description": "A series of brutal conflicts sparked by the machinations of Zyraxes, plunging the continent into an age of strife and despair."
                         }
                     ]
                 }

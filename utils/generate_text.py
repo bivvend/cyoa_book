@@ -15,7 +15,7 @@ client = openai.OpenAI(
     #api_key=os.getenv("OPENAI_API_KEY")
 )
 
-def generate_text(prompt, max_tokens=5000, temperature=0.7, model_in = "gpt-4o-mini"):
+def generate_text(prompt, max_tokens=10000, temperature=0.7, model_in = "gpt-4o-mini"):
     """
     Generic function to generate text using OpenAI's ChatGPT API.
     
@@ -54,7 +54,7 @@ def generate_text(prompt, max_tokens=5000, temperature=0.7, model_in = "gpt-4o-m
         print(f"Error in generate_text: {e}")
         return None
 
-def critique_text(prompt, max_tokens=5000, temperature=1.1, model_in = "gpt-4o-mini"):
+def critique_text(prompt, max_tokens=10000, temperature=1.1, model_in = "gpt-4o-mini"):
     """
     Generic function to comment on structures using OpenAI's ChatGPT API.
     

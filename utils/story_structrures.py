@@ -72,61 +72,70 @@ map_structure_for_test = {
 plot_structure = {
         "areas" : [{
                 "name": "",
-                "plot_actions_in_area": ["",""],
-                "minor_events_in_area":["", ""],
+                "plot_events": [
+                    {
+                        "event_id": "",
+                        "location_within_area": "",
+                        "party_members_involved": ["",""],
+                        "other_characters_involved": ["",""],
+                        "threats": ["",""],
+                        "decription_of_event":"",
+                        "event_type":"",
+                        "party_status_changes":[
+                            {"name": "",
+                             "status_change": ""
+                            },  
+                            {"name": "",
+                             "status_change": ""
+                            },
+                        ],
+                        "outcome":"",
+                        "next_action":"",
+                        "reason_for_next_action":"",
+                        "items_found":["",""],
+                        "items_lost":["",""],
+                        "updated_party_inventory":["","","",""]
+                    },
+                ],
                 "reason_to_move_to_next_area": "",
                 "route_to_next_area": "",
-                "threat_severity": "",
-                "important_items_in_area": ["",""],
-                "important_people_in_area":["",""],
-                "main_plot_items_status_tracking":[
-                    {
-                        "name": "",
-                        "status":"",
-                        "found_yet": ""    
-                    },
-                ],
-                "party_member_status_tracking":[
-                    {
-                        "name": "",
-                        "status_changes":["",""],  
-                    },
-                ],
-                "areas_to_visit" :["",""],
-                "enemies_in_area":["",""],
-                "party_status_changes" : ["",""]
         }   
         ]
 }
 
 plot_structure_for_test = {
-        "areas" : [{
-                "name": str,
-                "plot_actions_in_area": [str,str],
-                "minor_events_in_area":[str, str],
-                "reason_to_move_to_next_area": str,
-                "route_to_next_area": str,
-                "threat_severity": str,
-                "important_items_in_area": [str,str],
-                "important_people_in_area":[str,str],
-                "main_plot_items_status_tracking":[
+    "areas": [{
+        "name": str,
+        "plot_events": [
+            {
+                "event_id": str,
+                "location_within_area": str,
+                "party_members_involved": [str, str],
+                "other_characters_involved": [str, str],
+                "threats": [str, str],
+                "decription_of_event": str,
+                "event_type": str,
+                "party_status_changes": [
                     {
                         "name": str,
-                        "status":str,
-                        "found_yet": str    
+                        "status_change": str
                     },
-                ],
-                "party_member_status_tracking":[
                     {
                         "name": str,
-                        "status_changes":[str,str],  
+                        "status_change": str
                     },
                 ],
-                "areas_to_visit" :[str,str],
-                "enemies_in_area":[str,str],
-                "party_status_changes" : [str,str]
-        }   
-        ]
+                "outcome": str,
+                "next_action": str,
+                "reason_for_next_action": str,
+                "items_found":[str,str],
+                "items_lost":[str,str],
+                "updated_party_inventory":[str,str,str,str]
+            },
+        ],
+        "reason_to_move_to_next_area": str,
+        "route_to_next_area": str,
+    }]
 }
 
 event_list_structure = {

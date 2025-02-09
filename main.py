@@ -59,9 +59,9 @@ refresh_enemy_lore = False
 refresh_plot = False
 refresh_plot_critique = False
 refresh_refined_plot = False
-refresh_plot_structre_file = False
-refresh_critique_of_plot_structure_file = False
-refresh_plot_structure_after_critique = False
+refresh_plot_structre_file = True
+refresh_critique_of_plot_structure_file = True
+refresh_plot_structure_after_critique = True
 refresh_area_lore = False
 refresh_events = False
 refresh_all_events_critique = False
@@ -79,22 +79,22 @@ refresh_maps = False
 refresh_items = False
 refresh_characters = False
 refresh_conversations = False
-refresh_intro = True
+refresh_intro = False
 
 #Author configuration
 
-configure_new_assistant = True
-create_new_assitant = True
-create_new_thread = True
-configure_new_vector_store = True
-upload_new_files = True
-add_new_files_to_vector_store = True
+configure_new_assistant = False
+create_new_assitant = False
+create_new_thread = False
+configure_new_vector_store = False
+upload_new_files = False
+add_new_files_to_vector_store = False
 
 #Critic configuration
 
-cr_configure_new_assistant = True
-cr_create_new_assitant = True
-cr_create_new_thread = True
+cr_configure_new_assistant = False
+cr_create_new_assitant = False
+cr_create_new_thread = False
 
 
 #Story generation
@@ -745,7 +745,7 @@ def generate_refined_plot(global_lore_json, style_prompt, region_lore_json, part
         
         if refresh_refined_plot:
             print(f"Generating refined plot...")
-            plot_text = plot_generation.generate_refined_plot(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = gpt_model)
+            plot_text = plot_generation.generate_refined_plot(global_lore_json, style_prompt, region_lore_json, party_lore_json, enemy_lore_json, previous_plot_text, critique_text, model = "o1-mini")
             assert plot_text is not None
         
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, REFINED_PLOT_FILE)
@@ -990,7 +990,7 @@ def critique_plot_structure(plot_structure_json, plot_text):
         
         if refresh_critique_of_plot_structure_file:
             print(f"Generating plot structre critique...")
-            critic_text = plot_generation.critique_plot_json(plot_structure_json, plot_text, model=gpt_model)
+            critic_text = plot_generation.critique_plot_json(plot_structure_json, plot_text, model="o1-mini")
             assert critic_text is not None
         
             txt_file = os.path.join(BASE_DIR, OUTPUT_DIR, CRITIQUE_SUB_DIRECTORY, PLOT_STRUCTURE_CRITIQUE_FILE)
@@ -1123,15 +1123,26 @@ if __name__ == "__main__":
     #Use the critique to improve the plot
     refined_plot_text = generate_refined_plot(global_lore_json,world_flavour_prompt, region_lore_json, party_lore_json, enemy_lore_json, plot_text, plot_critique_text)
 
+    #Do a second cyle of refinement
+    plot_critique_text = critique_plot(refined_plot_text)
+    #Use the critique to improve the plot
+    refined_plot_text = generate_refined_plot(global_lore_json,world_flavour_prompt, region_lore_json, party_lore_json, enemy_lore_json, refined_plot_text, plot_critique_text)
+
+
+
 
     #Convert the plot text into a structure
     plot_json = generate_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, refined_plot_text)
     assert plot_json is not None
 
+    
+
     #Critique the plot structure
     plot_structure_critique_txt = critique_plot_structure(plot_json, refined_plot_text)
 
     refined_plot_json = generate_refined_plot_structure(region_lore_json, party_lore_json, enemy_lore_json, plot_json, plot_structure_critique_txt)
+
+    exit()
 
     #Generate areas and then modify the region_lore to contain the new descriptions
     region_lore_json = generate_areas(refined_plot_text, region_lore_json, enemy_lore_json)
